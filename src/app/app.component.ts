@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Mkento-angular-tool';
+  title = 'Vericash-angular-tool';
 }
