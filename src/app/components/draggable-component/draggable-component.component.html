@@ -1,9 +1,23 @@
 <div class="appbar">
-    <p>9:00 am</p>
-    <span ng-dblclick="editItem(item)">{{ item }}</span>
+  <p>9:00 am</p>
+  <span ng-dblclick="editItem(item)">{{ item }}</span>
 </div>
 <div class="example-boundary">
-    <a class="example-box" cdkDragBoundary=".example-boundary" cdkDrag target="_blank" rel="noopener">
-        <span>Element to drag</span>
-    </a>
+  <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport"> -->
+  <div
+    class="example-list"
+    cdkDropList
+    [cdkDropListData]="selectedElements"
+    (cdkDropListDropped)="drag($event)"
+  >
+    <div
+      class="example-box"
+      cdkDrag
+      cdkDragBoundary=".example-boundary"
+      *ngFor="let item of selectedElements"
+    >
+      <ng-container *ngComponentOutlet="item.type"> </ng-container>
+    </div>
+  </div>
+  <!-- </cdk-virtual-scroll-viewport> -->
 </div>
