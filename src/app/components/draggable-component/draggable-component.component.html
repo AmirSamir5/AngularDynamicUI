@@ -14,9 +14,11 @@
       class="example-box"
       cdkDrag
       cdkDragBoundary=".example-boundary"
-      *ngFor="let item of selectedElements;let index = index"
+      *ngFor="let item of selectedElements; let index = index"
     >
-      <ng-container *ngComponentOutlet="item.type"> </ng-container>
+      <div class="item">
+        <ng-container *ngComponentOutlet="item.type"> </ng-container>
+      </div>
       <span class="close" (click)="removeElement(index)">&times;</span>
     </div>
   </div>
