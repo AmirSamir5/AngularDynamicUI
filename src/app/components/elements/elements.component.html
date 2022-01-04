@@ -1,6 +1,6 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
   <div> <p>Select an element </p> </div>
-    <div *cdkVirtualFor="let item of items" class="example-item">
+    <div *cdkVirtualFor="let item of items" class="example-item" (click)="elementOnClick(item);">
       <ng-container *ngComponentOutlet="item.type" ></ng-container>
       </div>
 </cdk-virtual-scroll-viewport>    

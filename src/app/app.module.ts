@@ -14,7 +14,6 @@ import { ElementService } from './services/element.service';
 import { DropdownComponent } from './components/elements/dropdown/dropdown.component';
 import { ButtonComponent } from './components/elements/button/button.component';
 import { TextfieldComponent } from './components/elements/textfield/textfield.component';
-import { TextComponent } from './components/elements/text/text.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { TextComponent } from './components/elements/text/text.component';
     ElementsComponent,
     DropdownComponent,
     ButtonComponent,
-    TextfieldComponent,
-    TextComponent
+    TextfieldComponent
   ],
   imports: [
     BrowserModule,

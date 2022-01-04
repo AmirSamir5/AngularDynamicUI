@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ElementModel } from 'src/app/models/element.model';
+import { ElementService } from 'src/app/services/element.service';
 
 @Component({
   selector: 'app-draggable-component',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DraggableComponentComponent implements OnInit {
   item = 'appbar title';
-  constructor() { }
+  selectedElements:ElementModel[] = [];
+  constructor(private elementService:ElementService) { }
 
   ngOnInit(): void {
+    this.elementService.elementChanged.subscribe((elements) => {
+      this.selectedElements = elements;
+    })
   }
 
   editItem(item:string){
