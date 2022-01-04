@@ -14,11 +14,12 @@ export class DraggableComponentComponent implements OnInit {
   selectedElements:ElementModel[] = [];
   
   constructor(private elementService:ElementService, private elementPropertyService:ElementPropertyService) { }
+  height = 350;
 
   ngOnInit(): void {
     this.elementService.elementChanged.subscribe((elements) => {
       this.selectedElements = elements;
-    })
+    });
   }
 
   editItem(item: string) {
