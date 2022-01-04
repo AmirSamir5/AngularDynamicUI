@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./draggable-component.component.css']
 })
 export class DraggableComponentComponent implements OnInit {
-
+  item = 'appbar title';
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  editItem(item:string){
+    this.item = item;
   }
 
 }

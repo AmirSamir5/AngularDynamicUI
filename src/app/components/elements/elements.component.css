@@ -1,0 +1,17 @@
+.example-viewport {
+    height: 400px;
+    width: 200px;
+    border: 1px solid black;
+  }
+  
+  .example-item {
+    height: 50px;
+    margin: 16px;
+  }
+
+  p{
+    align-items: center;
+    font-size: 18px;
+    margin: 16px;
+    margin-left: 28px;
+  }
