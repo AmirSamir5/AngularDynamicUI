@@ -10,13 +10,15 @@ import { ElementService } from 'src/app/services/element.service';
 })
 export class DraggableComponentComponent implements OnInit {
   item = 'appbar title';
-  selectedElements:ElementModel[] = [];
-  constructor(private elementService:ElementService) { }
+  height = 350;
+
+  selectedElements: ElementModel[] = [];
+  constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
     this.elementService.elementChanged.subscribe((elements) => {
       this.selectedElements = elements;
-    })
+    });
   }
 
   editItem(item: string) {
