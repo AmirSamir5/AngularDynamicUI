@@ -34,4 +34,8 @@ export class DraggableComponentComponent implements OnInit {
       this.selectedElements.splice(event.previousIndex, 1);
     }
   }
+
+  removeElement(index:number){
+    this.elementService.removeSelectedItems(index);
+  }
 }
