@@ -11,13 +11,5 @@ export class ElementPropertyService{
     elementPropertyEvent = new EventEmitter<ElementModel>();
     checkProperty(item:ElementModel){
         this.elementPropertyEvent.emit(item);
-        // switch(item.type){
-        //     case ButtonComponent:
-        //         return this.elementPropertyEvent.emit(ButtonPropertiesComponent);
-        //     case TextfieldComponent:
-        //         return this.elementPropertyEvent.emit(TextfieldPropertiesComponent);
-        //     case DropdownComponent:
-        //         return this.elementPropertyEvent.emit(DropdownPropertiesComponent);      
-        // }
     }
 }
