@@ -5,18 +5,19 @@ import { TextfieldPropertiesComponent } from "../components/elements-properties/
 import { ButtonComponent } from "../components/elements/button/button.component";
 import { DropdownComponent } from "../components/elements/dropdown/dropdown.component";
 import { TextfieldComponent } from "../components/elements/textfield/textfield.component";
+import { ElementModel } from "../models/element.model";
 
 export class ElementPropertyService{
-    elementPropertyEvent = new EventEmitter<any>();
-    checkProperty(type:any){
-        
-        switch(type){
-            case ButtonComponent:
-                return this.elementPropertyEvent.emit(ButtonPropertiesComponent);
-            case TextfieldComponent:
-                return this.elementPropertyEvent.emit(TextfieldPropertiesComponent);
-            case DropdownComponent:
-                return this.elementPropertyEvent.emit(DropdownPropertiesComponent);      
-        }
+    elementPropertyEvent = new EventEmitter<ElementModel>();
+    checkProperty(item:ElementModel){
+        this.elementPropertyEvent.emit(item);
+        // switch(item.type){
+        //     case ButtonComponent:
+        //         return this.elementPropertyEvent.emit(ButtonPropertiesComponent);
+        //     case TextfieldComponent:
+        //         return this.elementPropertyEvent.emit(TextfieldPropertiesComponent);
+        //     case DropdownComponent:
+        //         return this.elementPropertyEvent.emit(DropdownPropertiesComponent);      
+        // }
     }
 }

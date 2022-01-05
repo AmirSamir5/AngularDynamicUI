@@ -11,14 +11,14 @@
     (cdkDropListDropped)="drag($event)"
   >
     <div
-     (click)="onClickElement(item.type)"
+     (click)="onClickElement(item)"
       class="example-box"
       cdkDrag
       cdkDragBoundary=".example-boundary"
       *ngFor="let item of selectedElements; let index = index"
     >
       <div class="item">
-        <ng-container *ngComponentOutlet="item.type"> </ng-container>
+        <ng-container *ngComponentOutlet="item.type" > </ng-container>
       </div>
       <span class="close" (click)="removeElement(index)">&times;</span>
     </div>

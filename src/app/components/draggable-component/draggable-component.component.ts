@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { ElementModel } from 'src/app/models/element.model';
 import { ElementPropertyService } from 'src/app/services/element-property.service';
 import { ElementService } from 'src/app/services/element.service';
@@ -10,11 +10,13 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./draggable-component.component.css'],
 })
 export class DraggableComponentComponent implements OnInit {
+  height = 350;
   item = 'appbar title';
   selectedElements:ElementModel[] = [];
   
-  constructor(private elementService:ElementService, private elementPropertyService:ElementPropertyService) { }
-  height = 350;
+  constructor(private elementService:ElementService,
+     private elementPropertyService:ElementPropertyService) { }
+  
 
   ngOnInit(): void {
     this.elementService.elementChanged.subscribe((elements) => {
@@ -42,7 +44,7 @@ export class DraggableComponentComponent implements OnInit {
     this.elementService.removeSelectedItems(index);
   }
 
-  onClickElement(type:any){
-    var component = this.elementPropertyService.checkProperty(type);
+  onClickElement(item:ElementModel){
+    var component = this.elementPropertyService.checkProperty(item);
   }
 }

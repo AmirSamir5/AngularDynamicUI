@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementPropertyService } from 'src/app/services/element-property.service';
+import { ButtonComponent } from '../elements/button/button.component';
+import { DropdownComponent } from '../elements/dropdown/dropdown.component';
+import { TextfieldComponent } from '../elements/textfield/textfield.component';
+import { ButtonPropertiesComponent } from './button-properties/button-properties.component';
+import { DropdownPropertiesComponent } from './dropdown-properties/dropdown-properties.component';
+import { TextfieldPropertiesComponent } from './textfield-properties/textfield-properties.component';
 
 @Component({
   selector: 'app-elements-properties',
@@ -12,9 +18,18 @@ export class ElementsPropertiesComponent implements OnInit {
   constructor(private elementPropertyService:ElementPropertyService) { }
 
   ngOnInit(): void {
-    this.elementPropertyService.elementPropertyEvent.subscribe((type)=>{
-      this.type = type;
-      console.log(type);
+    this.elementPropertyService.elementPropertyEvent.subscribe((item)=>{
+      switch(item.type){
+            case ButtonComponent:
+                this.type = ButtonPropertiesComponent;
+                return;
+            case TextfieldComponent:
+              this.type = TextfieldPropertiesComponent;
+                return;
+            case DropdownComponent:
+              this.type = DropdownPropertiesComponent;
+                return;      
+        }
     });
   }
 
