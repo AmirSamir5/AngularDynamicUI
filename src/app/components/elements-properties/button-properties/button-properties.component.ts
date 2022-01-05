@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { ElementPropertyService } from 'src/app/services/element-property.service';
 
 @Component({
   selector: 'app-button-properties',
@@ -9,14 +10,13 @@ export class ButtonPropertiesComponent implements OnInit {
   buttonTitle: string = '';
   
 
-  constructor() { }
+  constructor(private elementPropertyService:ElementPropertyService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log(this.buttonTitle);
-    return this.buttonTitle;
+    this.elementPropertyService.buttonSubmit(this.buttonTitle);
   }
 
 }

@@ -4,6 +4,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -40,7 +41,8 @@ import { ElementPropertyService } from './services/element-property.service';
     DragDropModule,
     ScrollingModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    CommonModule
   ],
   providers: [ElementService,ElementPropertyService],
   bootstrap: [AppComponent]

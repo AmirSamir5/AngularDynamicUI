@@ -1,16 +1,13 @@
 import { EventEmitter } from "@angular/core";
-import { ButtonComponent } from "../components/elements/button/button.component";
-import { DropdownComponent } from "../components/elements/dropdown/dropdown.component";
-import { TextfieldComponent } from "../components/elements/textfield/textfield.component";
 import { ElementModel } from "../models/element.model";
 
 export class ElementService{
     elementChanged = new EventEmitter<ElementModel[]>();
 
     private elements:ElementModel[] = [
-       new ElementModel(DropdownComponent,'', 'Button'),
-       new ElementModel(TextfieldComponent,'', 'DropDown'),
-       new ElementModel(ButtonComponent,'','Input Field'),
+       new ElementModel('Dropdown', 'Title', 'Dropdown',''),
+       new ElementModel('Textfield','Title','Textfield',''),
+       new ElementModel('Button','Button','',''),
     ];
 
     public selectedElements: ElementModel[] = [];
@@ -20,6 +17,7 @@ export class ElementService{
     }
 
     addSelectedItems(selectedElement:ElementModel){
+        console.log('Elements ' , this.elements);
         this.selectedElements.push(selectedElement);
         this.elementChanged.emit(this.selectedElements);
     }

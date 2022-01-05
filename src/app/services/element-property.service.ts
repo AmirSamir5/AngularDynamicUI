@@ -9,7 +9,13 @@ import { ElementModel } from "../models/element.model";
 
 export class ElementPropertyService{
     elementPropertyEvent = new EventEmitter<ElementModel>();
+    buttonSubmitEvent = new EventEmitter<string>();
+    
     checkProperty(item:ElementModel){
         this.elementPropertyEvent.emit(item);
+    }
+
+    buttonSubmit(buttonTitle:string){
+        this.buttonSubmitEvent.emit(buttonTitle);
     }
 }

@@ -20,13 +20,13 @@ export class ElementsPropertiesComponent implements OnInit {
   ngOnInit(): void {
     this.elementPropertyService.elementPropertyEvent.subscribe((item)=>{
       switch(item.type){
-            case ButtonComponent:
+            case 'Button':
                 this.type = ButtonPropertiesComponent;
                 return;
-            case TextfieldComponent:
+            case 'Textfield':
               this.type = TextfieldPropertiesComponent;
                 return;
-            case DropdownComponent:
+            case 'Dropdown':
               this.type = DropdownPropertiesComponent;
                 return;      
         }

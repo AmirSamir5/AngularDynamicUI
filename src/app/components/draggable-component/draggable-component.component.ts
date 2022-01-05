@@ -12,6 +12,7 @@ import { ElementService } from 'src/app/services/element.service';
 export class DraggableComponentComponent implements OnInit {
   height = 350;
   item = 'appbar title';
+  index = 0;
   selectedElements:ElementModel[] = [];
   
   constructor(private elementService:ElementService,
@@ -21,6 +22,10 @@ export class DraggableComponentComponent implements OnInit {
   ngOnInit(): void {
     this.elementService.elementChanged.subscribe((elements) => {
       this.selectedElements = elements;
+    });
+    this.elementPropertyService.buttonSubmitEvent.subscribe((buttonTitle)=>{
+      this.selectedElements[this.index].title = buttonTitle;
+      console.log(this.selectedElements);
     });
   }
 
@@ -44,7 +49,8 @@ export class DraggableComponentComponent implements OnInit {
     this.elementService.removeSelectedItems(index);
   }
 
-  onClickElement(item:ElementModel){
+  onClickElement(item:ElementModel, index:number){
+    this.index = index;
     var component = this.elementPropertyService.checkProperty(item);
   }
 }
