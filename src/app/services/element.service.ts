@@ -8,9 +8,9 @@ export class ElementService{
     elementChanged = new EventEmitter<ElementModel[]>();
 
     private elements:ElementModel[] = [
-       new ElementModel(DropdownComponent,''),
-       new ElementModel(ButtonComponent,''),
-       new ElementModel(TextfieldComponent,''),
+       new ElementModel(DropdownComponent,'', 'Button'),
+       new ElementModel(TextfieldComponent,'', 'DropDown'),
+       new ElementModel(ButtonComponent,'','Input Field'),
     ];
 
     public selectedElements: ElementModel[] = [];

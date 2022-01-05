@@ -47,6 +47,7 @@
 .item {
   width: 80%;
   margin-right: 5px;
+  text-align: start;
 }
 
 .close-container {

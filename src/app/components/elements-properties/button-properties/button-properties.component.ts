@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./button-properties.component.css']
 })
 export class ButtonPropertiesComponent implements OnInit {
+  buttonTitle: string = '';
+  
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    console.log(this.buttonTitle);
+    return this.buttonTitle;
   }
 
 }

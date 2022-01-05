@@ -1,11 +1,11 @@
 .example-viewport {
     height: 400px;
-    width: 200px;
+    width: 250px;
     border: 1px solid black;
+    overflow-x: hidden;
   }
   
   .example-item {
-    height: 50px;
     margin: 16px;
   }
 
@@ -13,5 +13,10 @@
     align-items: center;
     font-size: 18px;
     margin: 16px;
-    margin-left: 28px;
+    margin-left: 13%;
+    font-weight: 450;
+  }
+  hr.rounded {
+    border-top: 1px solid #bbb;
+    border-radius: 5px;
   }

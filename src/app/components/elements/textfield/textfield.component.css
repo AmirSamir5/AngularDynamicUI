@@ -4,5 +4,6 @@ a{
 input{
     pointer-events: none;
     height: 40px;
+    width: 100%;
     text-align: center;
 }

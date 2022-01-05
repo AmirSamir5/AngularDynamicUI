@@ -9,6 +9,7 @@ import { ElementService } from 'src/app/services/element.service';
 })
 export class ElementsComponent implements OnInit {
   items:ElementModel[] = [];
+  selectedElement?:ElementModel;
   constructor(private elementService:ElementService) { }
 
   ngOnInit(): void {
@@ -16,6 +17,7 @@ export class ElementsComponent implements OnInit {
   }
 
   elementOnClick(selectedElement:ElementModel){
+    this.selectedElement = selectedElement;
     this.elementService.addSelectedItems(selectedElement);
   }
 

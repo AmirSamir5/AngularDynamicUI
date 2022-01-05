@@ -1,3 +1,5 @@
-
-<div> <p> Button Properties </p> </div>
-<input type="text" placeholder="Enter Your Text...">
+<div class="col">
+    <p> Button Properties </p>
+    <input type="text" class="form-control" [(ngModel)]="buttonTitle" placeholder="Enter Button Title...">
+</div>
+<button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
