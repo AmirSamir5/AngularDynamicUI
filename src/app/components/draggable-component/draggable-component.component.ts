@@ -13,20 +13,27 @@ export class DraggableComponentComponent implements OnInit {
   height = 350;
   item = 'appbar title';
   index = 0;
-  selectedElements:ElementModel[] = [];
-  
-  constructor(private elementService:ElementService,
-     private elementPropertyService:ElementPropertyService) { }
-  
+  selectedElements: ElementModel[] = [];
+
+  constructor(
+    private elementService: ElementService,
+    private elementPropertyService: ElementPropertyService
+  ) {}
 
   ngOnInit(): void {
     this.elementService.elementChanged.subscribe((elements) => {
       this.selectedElements = elements;
     });
-    this.elementPropertyService.buttonSubmitEvent.subscribe((buttonTitle)=>{
+    this.elementPropertyService.buttonSubmitEvent.subscribe((buttonTitle) => {
       this.selectedElements[this.index].title = buttonTitle;
       console.log(this.selectedElements);
     });
+    this.elementPropertyService.dropdownSubmitEvent.subscribe(
+      (dropdownElement) => {
+        this.selectedElements[this.index] = dropdownElement;
+        console.log(this.selectedElements);
+      }
+    );
   }
 
   editItem(item: string) {
@@ -45,11 +52,11 @@ export class DraggableComponentComponent implements OnInit {
     }
   }
 
-  removeElement(index:number){
+  removeElement(index: number) {
     this.elementService.removeSelectedItems(index);
   }
 
-  onClickElement(item:ElementModel, index:number){
+  onClickElement(item: ElementModel, index: number) {
     this.index = index;
     var component = this.elementPropertyService.checkProperty(item);
   }

@@ -1,5 +1,32 @@
 <div class="col">
-    <p> Dropdown Properties </p>
-    <input type="text" class="form-control" placeholder="Enter Dropdown Title...">
+  <p>Dropdown Properties</p>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter Title"
+    [(ngModel)]="dropdownElementModel.title"
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter hint"
+    [(ngModel)]="dropdownElementModel.hintText"
+  />
+  <p>Lookup list key</p>
+  <select [(ngModel)]="dropdownElementModel.lookupListKey">
+    <option value="date">date</option>
+    <option value="numbers">numbers</option>
+    <option value="user-types">user types</option>
+  </select>
+  <label class="container-checkbox"
+    >Required
+    <input
+      type="checkbox"
+      checked="checked"
+      [(ngModel)]="dropdownElementModel.isMandetory"
+    />
+    <span class="checkmark"></span>
+  </label>
+  <hr class="rounded" />
 </div>
-<button class="btn btn-primary bottom">Save</button>
+<button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
