@@ -9,18 +9,19 @@ import { ElementPropertyService } from 'src/app/services/element-property.servic
   styleUrls: ['./elements-properties.component.css']
 })
 export class ElementsPropertiesComponent implements OnInit {
-  item?:ElementModel;
+  item:ElementModel = new ElementModel('','','','');
   dropdownItem?:DropdownElementModel;
-  // inputFieldItem?:DropdownElementModel;
+  // inputFieldItem?:InputFieldElementModel;
 
   constructor(private elementPropertyService:ElementPropertyService) { }
 
   ngOnInit(): void {
     this.elementPropertyService.elementPropertyEvent.subscribe((item)=>{
       this.item = item;
-      if(item instanceof DropdownElementModel){
-        this.dropdownItem = item;
-        console.log(this.dropdownItem);
+      if(item.type === 'Dropdown'){
+        this.dropdownItem = item as DropdownElementModel;
+      }else if (item.type === 'Textfield'){
+        
       }
     });
   }

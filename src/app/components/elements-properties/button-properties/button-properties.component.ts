@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { ElementPropertyService } from 'src/app/services/element-property.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { ElementPropertyService } from 'src/app/services/element-property.servic
   styleUrls: ['./button-properties.component.css']
 })
 export class ButtonPropertiesComponent implements OnInit {
-  buttonTitle: string = '';
+  @Input() buttonTitle: string = '';
   
 
   constructor(private elementPropertyService:ElementPropertyService) { }
