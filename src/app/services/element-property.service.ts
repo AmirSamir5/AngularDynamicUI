@@ -7,11 +7,13 @@ import { DropdownComponent } from '../components/elements/dropdown/dropdown.comp
 import { TextfieldComponent } from '../components/elements/textfield/textfield.component';
 import { DropdownElementModel } from '../models/dropdown-element.model';
 import { ElementModel } from '../models/element.model';
+import { InputFieldElementModel } from '../models/input-field.model';
 
 export class ElementPropertyService {
   elementPropertyEvent = new EventEmitter<ElementModel>();
   buttonSubmitEvent = new EventEmitter<string>();
   dropdownSubmitEvent = new EventEmitter<DropdownElementModel>();
+  inputFieldSubmitEvent = new EventEmitter<InputFieldElementModel>();
 
   checkProperty(item: ElementModel) {
     this.elementPropertyEvent.emit(item);
@@ -23,5 +25,9 @@ export class ElementPropertyService {
 
   dropdownSaveEvent(dropdownElementModel: DropdownElementModel) {
     this.dropdownSubmitEvent.emit(dropdownElementModel);
+  }
+
+  inputFieldSaveEvent(inputFieldElementModel: InputFieldElementModel) {
+    this.inputFieldSubmitEvent.emit(inputFieldElementModel);
   }
 }

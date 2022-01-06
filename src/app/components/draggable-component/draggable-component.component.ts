@@ -34,6 +34,12 @@ export class DraggableComponentComponent implements OnInit {
         console.log(this.selectedElements);
       }
     );
+    this.elementPropertyService.inputFieldSubmitEvent.subscribe(
+      (inputFieldElement) => {
+        this.selectedElements[this.index] = inputFieldElement;
+        console.log(this.selectedElements);
+      }
+    );
   }
 
   editItem(item: string) {
@@ -58,7 +64,7 @@ export class DraggableComponentComponent implements OnInit {
 
   onClickElement(item: ElementModel, index: number) {
     this.index = index;
-    console.log('item: ', item)
+    console.log('item: ', item);
     var component = this.elementPropertyService.checkProperty(item);
   }
 }

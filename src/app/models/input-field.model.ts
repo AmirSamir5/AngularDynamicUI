@@ -12,7 +12,6 @@ export class InputFieldElementModel extends ElementModel {
   constructor(
     title: string,
     hintText: string,
-    type: string,
     json: string,
     isMandetory: boolean,
     maxLength: number,
@@ -23,7 +22,7 @@ export class InputFieldElementModel extends ElementModel {
     parameterName: string,
     parameterOrder: number
   ) {
-    super(type, title, hintText, json);
+    super('Textfield', title, hintText, json);
     this.isMandetory = isMandetory;
     this.maxLength = maxLength;
     this.minLength = minLength;
