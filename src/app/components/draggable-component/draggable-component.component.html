@@ -23,7 +23,7 @@
             <app-button [title] = "item.title"></app-button>
           </div>
           <div *ngSwitchCase="'Dropdown'">
-            <app-dropdown [hintText] = "item.type"></app-dropdown>
+            <app-dropdown [hintText] = "item.hintText" [title]="item.title"></app-dropdown>
           </div>
           <div *ngSwitchCase="'Textfield'">
             <app-textfield [hintText] = "item.title"></app-textfield>

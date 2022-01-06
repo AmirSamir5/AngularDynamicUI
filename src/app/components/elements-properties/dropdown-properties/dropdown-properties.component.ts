@@ -20,15 +20,25 @@ export class DropdownPropertiesComponent implements OnInit {
 
   constructor(private elementPropertyService: ElementPropertyService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //Subscribe model
+  }
 
   onSubmit() {
-    console.log(
-      this.dropdownElementModel.title,
-      this.dropdownElementModel.hintText,
-      this.dropdownElementModel.lookupListKey,
-      this.dropdownElementModel.isMandetory
-    );
+    if((this.dropdownElementModel.title === '') ||
+    (this.dropdownElementModel.lookupListKey === '') ||
+    (this.dropdownElementModel.hintText === '')){
+      confirm('Please Fill All Fields');
+      return;
+    }
     this.elementPropertyService.dropdownSubmit(this.dropdownElementModel);
+    this.dropdownElementModel = new DropdownElementModel(
+      'Dropdown',
+      '',
+      '',
+      '',
+      false,
+      ''
+    );
   }
 }
