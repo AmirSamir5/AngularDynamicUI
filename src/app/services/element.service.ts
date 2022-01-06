@@ -8,6 +8,8 @@ export class ElementService {
     new ElementModel('Dropdown', 'Title', 'Dropdown', ''),
     new ElementModel('Textfield', 'Title', 'Textfield', ''),
     new ElementModel('Button', 'Button', '', ''),
+    new ElementModel('PaymentMethods', 'PaymentMethods', '', ''),
+    new ElementModel('Numeric', 'Numeric', '', ''),
   ];
 
   public selectedElements: ElementModel[] = [];

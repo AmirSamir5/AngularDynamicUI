@@ -1,18 +1,28 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-  <div> <p>Select screen elements </p> </div>
-    <div *cdkVirtualFor="let item of items" class="example-item" (click)="elementOnClick(item);">
-      <div [ngSwitch]="item.type">
-        <div *ngSwitchCase="'Button'">
-          <app-button></app-button>
-        </div>
-        <div *ngSwitchCase="'Dropdown'">
-          <app-dropdown></app-dropdown>
-        </div>
-        <div *ngSwitchCase="'Textfield'">
-          <app-textfield></app-textfield>
-        </div>
+  <div><p>Select screen elements</p></div>
+  <div
+    *cdkVirtualFor="let item of items"
+    class="example-item"
+    (click)="elementOnClick(item)"
+  >
+    <div [ngSwitch]="item.type">
+      <div *ngSwitchCase="'Button'">
+        <app-button></app-button>
       </div>
-      <!-- <ng-container *ngComponentOutlet="item.type" ></ng-container> -->
-      <hr class="rounded">
+      <div *ngSwitchCase="'Dropdown'">
+        <app-dropdown></app-dropdown>
+      </div>
+      <div *ngSwitchCase="'Textfield'">
+        <app-textfield></app-textfield>
+      </div>
+      <div *ngSwitchCase="'PaymentMethods'">
+        <app-payment-methods></app-payment-methods>
+      </div>
+      <div *ngSwitchCase="'Numeric'">
+        <app-numeric></app-numeric>
+      </div>
     </div>
+    <!-- <ng-container *ngComponentOutlet="item.type" ></ng-container> -->
+    <hr class="rounded" />
+  </div>
 </cdk-virtual-scroll-viewport>

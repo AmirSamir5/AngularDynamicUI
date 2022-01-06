@@ -1,13 +1,19 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-        <div [ngSwitch]="item!.type">
-          <div *ngSwitchCase="'Button'">
-            <app-button-properties [buttonTitle] = "item!.title"></app-button-properties>
-          </div>
-          <div *ngSwitchCase="'Dropdown'">
-            <app-dropdown-properties [dropdownElementModel] = "dropdownItem!"></app-dropdown-properties>
-          </div>
-          <div *ngSwitchCase="'Textfield'">
-            <app-textfield-properties ></app-textfield-properties>
-          </div>
-      </div>
+  <div [ngSwitch]="item!.type">
+    <div *ngSwitchCase="'Button'">
+      <app-button-properties
+        [buttonTitle]="item!.title"
+      ></app-button-properties>
+    </div>
+    <div *ngSwitchCase="'Dropdown'">
+      <app-dropdown-properties
+        [dropdownElementModel]="dropdownItem!"
+      ></app-dropdown-properties>
+    </div>
+    <div *ngSwitchCase="'Textfield'">
+      <app-textfield-properties></app-textfield-properties>
+    </div>
+    <div *ngSwitchCase="'PaymentMethods'">payment method</div>
+    <div *ngSwitchCase="'Numeric'">numeric</div>
+  </div>
 </cdk-virtual-scroll-viewport>

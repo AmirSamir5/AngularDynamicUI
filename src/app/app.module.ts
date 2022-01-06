@@ -20,6 +20,8 @@ import { TextfieldPropertiesComponent } from './components/elements-properties/t
 import { ButtonPropertiesComponent } from './components/elements-properties/button-properties/button-properties.component';
 import { ElementsPropertiesComponent } from './components/elements-properties/elements-properties.component';
 import { ElementPropertyService } from './services/element-property.service';
+import { PaymentMethodsComponent } from './components/elements/payment-methods/payment-methods.component';
+import { NumericComponent } from './components/elements/numeric/numeric.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ElementPropertyService } from './services/element-property.service';
     DropdownPropertiesComponent,
     TextfieldPropertiesComponent,
     ButtonPropertiesComponent,
-    ElementsPropertiesComponent
+    ElementsPropertiesComponent,
+    PaymentMethodsComponent,
+    NumericComponent
   ],
   imports: [
     BrowserModule,
