@@ -17,11 +17,11 @@ export class ElementPropertyService {
     this.elementPropertyEvent.emit(item);
   }
 
-  buttonSubmit(buttonTitle: string) {
+  buttonSaveEvent(buttonTitle: string) {
     this.buttonSubmitEvent.emit(buttonTitle);
   }
 
-  dropdownSubmit(dropdownElementModel: DropdownElementModel) {
+  dropdownSaveEvent(dropdownElementModel: DropdownElementModel) {
     this.dropdownSubmitEvent.emit(dropdownElementModel);
   }
 }

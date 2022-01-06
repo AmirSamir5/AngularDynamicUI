@@ -17,7 +17,6 @@ export class ElementService {
   }
 
   addSelectedItems(selectedElement: ElementModel) {
-    console.log('Elements ', this.elements);
     var newRefSelectedElement = new ElementModel(
       selectedElement.type,
       selectedElement.title,

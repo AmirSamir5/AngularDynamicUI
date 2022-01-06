@@ -1,3 +1,15 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-        <ng-container *ngComponentOutlet="type" ></ng-container>
+        <!-- <ng-container *ngComponentOutlet="type" ></ng-container> -->
+        <div [ngSwitch]="item!.type">
+          <div *ngSwitchCase="'Button'">
+            <app-button-properties [title] = "item!.title"></app-button-properties>
+          </div>
+          <div *ngSwitchCase="'Dropdown'">
+            <app-dropdown-properties [dropdownElementModel] = "dropdownItem!"></app-dropdown-properties>
+          </div>
+          <div *ngSwitchCase="'Textfield'">
+            <app-textfield-properties ></app-textfield-properties>
+          </div>
+        <!-- <ng-container *ngComponentOutlet="item.type" > </ng-container> -->
+      </div>
 </cdk-virtual-scroll-viewport>

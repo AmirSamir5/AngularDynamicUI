@@ -17,7 +17,6 @@ export class ElementsComponent implements OnInit {
   }
 
   elementOnClick(selectedElement:ElementModel){
-    console.log(selectedElement);
     this.selectedElement = selectedElement;
     this.elementService.addSelectedItems(selectedElement);
   }

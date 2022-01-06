@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DropdownElementModel } from 'src/app/models/dropdown-element.model';
 import { ElementPropertyService } from 'src/app/services/element-property.service';
 import { DropdownComponent } from '../../elements/dropdown/dropdown.component';
@@ -9,7 +9,7 @@ import { DropdownComponent } from '../../elements/dropdown/dropdown.component';
   styleUrls: ['./dropdown-properties.component.css'],
 })
 export class DropdownPropertiesComponent implements OnInit {
-  dropdownElementModel: DropdownElementModel = new DropdownElementModel(
+  @Input() dropdownElementModel: DropdownElementModel = new DropdownElementModel(
     'Dropdown',
     '',
     '',
@@ -21,7 +21,7 @@ export class DropdownPropertiesComponent implements OnInit {
   constructor(private elementPropertyService: ElementPropertyService) {}
 
   ngOnInit(): void {
-    //Subscribe model
+    this.clearDropDownModel();
   }
 
   onSubmit() {
@@ -31,7 +31,11 @@ export class DropdownPropertiesComponent implements OnInit {
       confirm('Please Fill All Fields');
       return;
     }
-    this.elementPropertyService.dropdownSubmit(this.dropdownElementModel);
+    this.elementPropertyService.dropdownSaveEvent(this.dropdownElementModel);
+    
+  }
+
+  clearDropDownModel(){
     this.dropdownElementModel = new DropdownElementModel(
       'Dropdown',
       '',

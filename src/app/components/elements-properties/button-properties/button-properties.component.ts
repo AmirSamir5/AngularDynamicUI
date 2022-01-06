@@ -16,7 +16,7 @@ export class ButtonPropertiesComponent implements OnInit {
   }
 
   onSubmit() {
-    this.elementPropertyService.buttonSubmit(this.buttonTitle);
+    this.elementPropertyService.buttonSaveEvent(this.buttonTitle);
     this.buttonTitle = '';
   }
 

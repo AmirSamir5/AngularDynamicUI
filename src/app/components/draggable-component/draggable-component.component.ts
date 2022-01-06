@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ElementModel } from 'src/app/models/element.model';
 import { ElementPropertyService } from 'src/app/services/element-property.service';
 import { ElementService } from 'src/app/services/element.service';
@@ -58,6 +58,7 @@ export class DraggableComponentComponent implements OnInit {
 
   onClickElement(item: ElementModel, index: number) {
     this.index = index;
+    console.log('item: ', item)
     var component = this.elementPropertyService.checkProperty(item);
   }
 }
