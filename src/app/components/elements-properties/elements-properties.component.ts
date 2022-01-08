@@ -9,14 +9,15 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./elements-properties.component.css']
 })
 export class ElementsPropertiesComponent implements OnInit {
-  item:ElementModel = new ElementModel('','','',new JSONModel());
-  // inputFieldItem?:InputFieldElementModel;
+  item:ElementModel = new ElementModel('',new JSONModel());
+  index:number = 0;
 
   constructor(private elementService:ElementService) { }
 
   ngOnInit(): void {
-    this.elementService.EditElementEvent.subscribe((item)=>{
+    this.elementService.EditElementEvent.subscribe(({make:item,name:index})=>{
       this.item = item;
+      this.index = index;
     });
   }
 

@@ -17,7 +17,7 @@ export class DraggableComponentComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    this.elementService.addOrRemoveElementEvent.subscribe((elements) => {
+    this.elementService.selectedElementsChangedEvent.subscribe((elements) => {
       this.selectedElements = elements;
     });
   }
@@ -44,6 +44,6 @@ export class DraggableComponentComponent implements OnInit {
 
   onClickElement(item: ElementModel, index: number) {
     this.index = index;
-    var component = this.elementService.editSelectedItem(item);
+    var component = this.elementService.editSelectedItem(item,index);
   }
 }
