@@ -19,7 +19,6 @@ import { DropdownPropertiesComponent } from './components/elements-properties/dr
 import { TextfieldPropertiesComponent } from './components/elements-properties/textfield-properties/textfield-properties.component';
 import { ButtonPropertiesComponent } from './components/elements-properties/button-properties/button-properties.component';
 import { ElementsPropertiesComponent } from './components/elements-properties/elements-properties.component';
-import { ElementPropertyService } from './services/element-property.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,7 @@ import { ElementPropertyService } from './services/element-property.service';
     MatButtonModule,
     CommonModule
   ],
-  providers: [ElementService,ElementPropertyService],
+  providers: [ElementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

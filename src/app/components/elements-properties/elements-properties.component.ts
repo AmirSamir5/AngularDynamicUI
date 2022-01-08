@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementModel } from 'src/app/models/element.model';
 import { JSONModel } from 'src/app/models/json.model';
-import { ElementPropertyService } from 'src/app/services/element-property.service';
+import { ElementService } from 'src/app/services/element.service';
 
 @Component({
   selector: 'app-elements-properties',
@@ -12,10 +12,10 @@ export class ElementsPropertiesComponent implements OnInit {
   item:ElementModel = new ElementModel('','','',new JSONModel());
   // inputFieldItem?:InputFieldElementModel;
 
-  constructor(private elementPropertyService:ElementPropertyService) { }
+  constructor(private elementService:ElementService) { }
 
   ngOnInit(): void {
-    this.elementPropertyService.elementPropertyEvent.subscribe((item)=>{
+    this.elementService.EditElementEvent.subscribe((item)=>{
       this.item = item;
     });
   }

@@ -3,7 +3,10 @@ import { ElementModel } from '../models/element.model';
 import { JSONModel } from '../models/json.model';
 
 export class ElementService {
-  elementChanged = new EventEmitter<ElementModel[]>();
+  addOrRemoveElementEvent = new EventEmitter<ElementModel[]>();
+  EditElementEvent = new EventEmitter<ElementModel>();
+
+  
 
   private elements: ElementModel[] = [
     new ElementModel('Dropdown', 'Title', 'Dropdown', new JSONModel()),
@@ -25,11 +28,15 @@ export class ElementService {
       selectedElement.json
     );
     this.selectedElements.push(newRefSelectedElement);
-    this.elementChanged.emit(this.selectedElements);
+    this.addOrRemoveElementEvent.emit(this.selectedElements);
   }
 
   removeSelectedItems(index: number) {
     this.selectedElements.splice(index, 1);
-    this.elementChanged.emit(this.selectedElements);
+    this.addOrRemoveElementEvent.emit(this.selectedElements);
+  }
+  
+  editSelectedItem(item: ElementModel) {
+    this.EditElementEvent.emit(item);
   }
 }

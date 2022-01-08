@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ElementModel } from 'src/app/models/element.model';
-import { ElementPropertyService } from 'src/app/services/element-property.service';
+import { ElementService } from 'src/app/services/element.service';
 
 @Component({
   selector: 'app-textfield-properties',
@@ -9,14 +9,14 @@ import { ElementPropertyService } from 'src/app/services/element-property.servic
 })
 export class TextfieldPropertiesComponent implements OnInit {
   @Input() inputFieldElementModel?: ElementModel;
-  constructor(private elementPropertyService: ElementPropertyService) {}
+  constructor(private elementService:ElementService) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
     console.log(this.inputFieldElementModel);
-    this.elementPropertyService.inputFieldSaveEvent(
-      this.inputFieldElementModel!
-    );
+    // this.elementPropertyService.inputFieldSaveEvent(
+    //   this.inputFieldElementModel!
+    // );
   }
 }

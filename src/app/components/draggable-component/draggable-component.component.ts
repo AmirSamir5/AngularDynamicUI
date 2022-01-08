@@ -1,7 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { ElementModel } from 'src/app/models/element.model';
-import { ElementPropertyService } from 'src/app/services/element-property.service';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -15,31 +14,12 @@ export class DraggableComponentComponent implements OnInit {
   index = 0;
   selectedElements: ElementModel[] = [];
 
-  constructor(
-    private elementService: ElementService,
-    private elementPropertyService: ElementPropertyService
-  ) {}
+  constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    this.elementService.elementChanged.subscribe((elements) => {
+    this.elementService.addOrRemoveElementEvent.subscribe((elements) => {
       this.selectedElements = elements;
     });
-    this.elementPropertyService.buttonSubmitEvent.subscribe((buttonTitle) => {
-      this.selectedElements[this.index].title = buttonTitle;
-      console.log(this.selectedElements);
-    });
-    this.elementPropertyService.dropdownSubmitEvent.subscribe(
-      (dropdownElement) => {
-        this.selectedElements[this.index] = dropdownElement;
-        console.log(this.selectedElements);
-      }
-    );
-    this.elementPropertyService.inputFieldSubmitEvent.subscribe(
-      (inputFieldElement) => {
-        this.selectedElements[this.index] = inputFieldElement;
-        console.log(this.selectedElements);
-      }
-    );
   }
 
   editItem(item: string) {
@@ -64,7 +44,6 @@ export class DraggableComponentComponent implements OnInit {
 
   onClickElement(item: ElementModel, index: number) {
     this.index = index;
-    console.log('item: ', item);
-    var component = this.elementPropertyService.checkProperty(item);
+    var component = this.elementService.editSelectedItem(item);
   }
 }

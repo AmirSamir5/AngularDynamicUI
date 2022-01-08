@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ElementModel } from 'src/app/models/element.model';
-import { ElementPropertyService } from 'src/app/services/element-property.service';
+import { ElementService } from 'src/app/services/element.service';
 
 @Component({
   selector: 'app-dropdown-properties',
@@ -10,7 +10,7 @@ import { ElementPropertyService } from 'src/app/services/element-property.servic
 export class DropdownPropertiesComponent implements OnInit {
   @Input() dropdownElementModel?: ElementModel
 
-  constructor(private elementPropertyService: ElementPropertyService) {}
+  constructor(private elementService:ElementService) {}
 
   ngOnInit(): void {
     
@@ -23,7 +23,7 @@ export class DropdownPropertiesComponent implements OnInit {
       confirm('Please Fill All Fields');
       return;
     }
-    this.elementPropertyService.dropdownSaveEvent(this.dropdownElementModel!);
+    // this.elementPropertyService.dropdownSaveEvent(this.dropdownElementModel!);
     
   }
 }
