@@ -9,8 +9,6 @@ export class ElementService {
     new ElementModel('Dropdown', 'Title', 'Dropdown', new JSONModel()),
     new ElementModel('Textfield', 'Title', 'Textfield', new JSONModel()),
     new ElementModel('Button', 'Button', '', new JSONModel()),
-    // new ElementModel('PaymentMethods', 'PaymentMethods', '', new JSONModel()),
-    // new ElementModel('Numeric', 'Numeric', '', new JSONModel()),
   ];
 
   public selectedElements: ElementModel[] = [];

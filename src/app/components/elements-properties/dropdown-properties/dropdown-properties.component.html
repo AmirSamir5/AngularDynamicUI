@@ -4,16 +4,18 @@
     type="text"
     class="form-control"
     placeholder="Enter Title"
-    [(ngModel)]="dropdownElementModel.title"
+    
   />
+  <!-- [(ngModel)]="dropdownElementModel.title" -->
   <input
     type="text"
     class="form-control"
     placeholder="Enter hint"
-    [(ngModel)]="dropdownElementModel.hintText"
+    
   />
   <p>Lookup list key</p>
-  <select [(ngModel)]="dropdownElementModel.lookupListKey">
+  <!-- [(ngModel)]="dropdownElementModel.lookupListKey" -->
+  <select >
     <option value="veiw.payment.methods.screens">view payment methods</option>
     <option value="numbers">numbers</option>
     <option value="user-types">user types</option>
@@ -23,7 +25,7 @@
     <input
       type="checkbox"
       checked="checked"
-      [(ngModel)]="dropdownElementModel.isMandetory"
+      
     />
     <span class="checkmark"></span>
   </label>

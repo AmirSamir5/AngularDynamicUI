@@ -5,15 +5,13 @@ import { TextfieldPropertiesComponent } from '../components/elements-properties/
 import { ButtonComponent } from '../components/elements/button/button.component';
 import { DropdownComponent } from '../components/elements/dropdown/dropdown.component';
 import { TextfieldComponent } from '../components/elements/textfield/textfield.component';
-import { DropdownElementModel } from '../models/dropdown-element.model';
 import { ElementModel } from '../models/element.model';
-import { InputFieldElementModel } from '../models/input-field.model';
 
 export class ElementPropertyService {
   elementPropertyEvent = new EventEmitter<ElementModel>();
   buttonSubmitEvent = new EventEmitter<string>();
-  dropdownSubmitEvent = new EventEmitter<DropdownElementModel>();
-  inputFieldSubmitEvent = new EventEmitter<InputFieldElementModel>();
+  dropdownSubmitEvent = new EventEmitter<ElementModel>();
+  inputFieldSubmitEvent = new EventEmitter<ElementModel>();
 
   checkProperty(item: ElementModel) {
     this.elementPropertyEvent.emit(item);
@@ -23,11 +21,11 @@ export class ElementPropertyService {
     this.buttonSubmitEvent.emit(buttonTitle);
   }
 
-  dropdownSaveEvent(dropdownElementModel: DropdownElementModel) {
+  dropdownSaveEvent(dropdownElementModel: ElementModel) {
     this.dropdownSubmitEvent.emit(dropdownElementModel);
   }
 
-  inputFieldSaveEvent(inputFieldElementModel: InputFieldElementModel) {
+  inputFieldSaveEvent(inputFieldElementModel: ElementModel) {
     this.inputFieldSubmitEvent.emit(inputFieldElementModel);
   }
 }
