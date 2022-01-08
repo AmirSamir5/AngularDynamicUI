@@ -1,3 +1,5 @@
+import { JSONModel } from "./json.model";
+
 export class ElementModel{
     
 
@@ -5,6 +7,6 @@ export class ElementModel{
         public type:string,
         public title:string,
         public hintText:string,
-        public json:string,){
+        public json:JSONModel,){
     }
 }

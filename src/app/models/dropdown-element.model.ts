@@ -1,4 +1,5 @@
 import { ElementModel } from './element.model';
+import { JSONModel } from './json.model';
 
 export class DropdownElementModel extends ElementModel {
   public lookupListKey: string;
@@ -9,7 +10,7 @@ export class DropdownElementModel extends ElementModel {
     hint: string,
     lookupListKey: string,
     isMandetory: boolean,
-    json: string
+    json: JSONModel
   ) {
     super(type, title, hint, json);
     this.lookupListKey = lookupListKey;

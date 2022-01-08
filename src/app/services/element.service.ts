@@ -1,15 +1,16 @@
 import { EventEmitter } from '@angular/core';
 import { ElementModel } from '../models/element.model';
+import { JSONModel } from '../models/json.model';
 
 export class ElementService {
   elementChanged = new EventEmitter<ElementModel[]>();
 
   private elements: ElementModel[] = [
-    new ElementModel('Dropdown', 'Title', 'Dropdown', ''),
-    new ElementModel('Textfield', 'Title', 'Textfield', ''),
-    new ElementModel('Button', 'Button', '', ''),
-    new ElementModel('PaymentMethods', 'PaymentMethods', '', ''),
-    new ElementModel('Numeric', 'Numeric', '', ''),
+    new ElementModel('Dropdown', 'Title', 'Dropdown', new JSONModel()),
+    new ElementModel('Textfield', 'Title', 'Textfield', new JSONModel()),
+    new ElementModel('Button', 'Button', '', new JSONModel()),
+    // new ElementModel('PaymentMethods', 'PaymentMethods', '', new JSONModel()),
+    // new ElementModel('Numeric', 'Numeric', '', new JSONModel()),
   ];
 
   public selectedElements: ElementModel[] = [];
