@@ -22,10 +22,6 @@ export class DraggableComponentComponent implements OnInit {
     });
   }
 
-  editItem(item: string) {
-    this.item = item;
-  }
-
   drag(event: CdkDragDrop<ElementModel[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(

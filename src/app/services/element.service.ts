@@ -20,7 +20,8 @@ export class ElementService {
   }
 
   addSelectedItems(selectedElement: ElementModel) {
-    this.selectedElements.push(selectedElement);
+    var element = new ElementModel(selectedElement.type,new JSONModel());
+    this.selectedElements.push(element);
     this.selectedElementsChangedEvent.emit(this.selectedElements);
   }
 

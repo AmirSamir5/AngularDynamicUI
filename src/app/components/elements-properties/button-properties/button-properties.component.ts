@@ -11,6 +11,7 @@ import { ElementService } from 'src/app/services/element.service';
 export class ButtonPropertiesComponent implements OnInit {
   @Input() buttonItem?: ElementModel;
   @Input() index:number = 0;
+  @Input() buttonText:string = '';
   
 
   constructor(private elementService:ElementService) { }
@@ -20,8 +21,10 @@ export class ButtonPropertiesComponent implements OnInit {
   }
 
   onSubmit() {
+    this.buttonItem!.json.fieldTitle = this.buttonText;
     this.elementService.onSaveItem(this.buttonItem!,this.index);
     this.buttonItem = undefined;
+    this.buttonText = '';
   }
 
 }
