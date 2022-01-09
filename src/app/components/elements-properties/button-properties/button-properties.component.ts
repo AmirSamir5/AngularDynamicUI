@@ -17,10 +17,11 @@ export class ButtonPropertiesComponent implements OnInit {
   constructor(private elementService:ElementService) { }
 
   ngOnInit(): void {
-    this.buttonItem!.json.widget_type = AppConstants.WIDGET_SUBMIT_BUTTON;
+    
   }
 
   onSubmit() {
+    this.buttonItem!.json.widget_type = AppConstants.WIDGET_SUBMIT_BUTTON;
     this.buttonItem!.json.fieldTitle = this.buttonText;
     this.elementService.onSaveItem(this.buttonItem!,this.index);
     this.buttonItem = undefined;
