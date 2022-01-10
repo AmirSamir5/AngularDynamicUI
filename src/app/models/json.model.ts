@@ -29,7 +29,7 @@ export class Validations {
   error_msg?: string;
 }
 
-export interface WidgetConfiguration {
+export class WidgetConfiguration {
   valueType?: string;
   formRendering?: string;
   lookupListKey?: string;
