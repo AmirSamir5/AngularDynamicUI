@@ -21,7 +21,7 @@ export class ElementsPropertiesComponent implements OnInit {
         this.index = index;
       }
     );
-    this.elementService.selectedElementsChangedEvent.subscribe((elements) => {
+    this.elementService.onRemoveElementEvent.subscribe((elements) => {
       this.item = undefined;
     });
   }

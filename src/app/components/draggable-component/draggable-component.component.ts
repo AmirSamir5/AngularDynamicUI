@@ -20,6 +20,9 @@ export class DraggableComponentComponent implements OnInit {
     this.elementService.selectedElementsChangedEvent.subscribe((elements) => {
       this.selectedElements = elements;
     });
+    this.elementService.onRemoveElementEvent.subscribe((elements) => {
+      this.selectedElements = elements;
+    });
   }
 
   drag(event: CdkDragDrop<ElementModel[]>) {
