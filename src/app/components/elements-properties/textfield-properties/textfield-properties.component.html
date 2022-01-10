@@ -1,5 +1,18 @@
 <div class="col">
   <p>InputField Properties</p>
+  <div class="mb-5">
+    <label
+      >Input Field Type
+
+      <select [(ngModel)]="inputFieldElementModel!.json.widget_type">
+        <option value="WidgetType.textBox">Text</option>
+        <option value="WidgetType.numeric">Amount</option>
+        <option value="WidgetType.mobileNumber">Mobile Number</option>
+      </select>
+    </label>
+  </div>
+  <hr />
+
   <input
     type="text"
     class="form-control"

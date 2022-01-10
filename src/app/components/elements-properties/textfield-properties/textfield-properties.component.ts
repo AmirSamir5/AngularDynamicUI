@@ -44,8 +44,8 @@ export class TextfieldPropertiesComponent implements OnInit {
   }
 
   onSubmit() {
-    this.inputFieldElementModel!.json.widget_type =
-      AppConstants.WIDGET_INPUT_FIELD;
+    // this.inputFieldElementModel!.json.widget_type =
+    //   AppConstants.WIDGET_INPUT_FIELD;
     if (this.isRequired) {
       this.inputFieldElementModel!.json.validations!.isMandatory = 1;
     } else {
