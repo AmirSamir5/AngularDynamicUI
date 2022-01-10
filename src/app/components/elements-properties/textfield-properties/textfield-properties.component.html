@@ -18,7 +18,7 @@
       type="number"
       class="form-control"
       placeholder="Enter max length"
-      
+      [(ngModel)]="maxLength"
     />
   </label>
   <label>
@@ -27,32 +27,32 @@
       type="number"
       class="form-control"
       placeholder="Enter min length"
-      
+      [(ngModel)]="minLength"
     />
   </label>
   <input
     type="text"
     class="form-control"
     placeholder="Enter Regex"
-    
+    [(ngModel)]="inputFieldElementModel!.json.validations!.regex"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Error Message"
-    
+    [(ngModel)]="inputFieldElementModel!.json.validations!.error_msg"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Default Value"
-    
+    [(ngModel)]="inputFieldElementModel!.json.parameterDefaultValue"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Parameter Name"
-    
+    [(ngModel)]="inputFieldElementModel!.json.parameterName"
   />
   <label>
     Parameter Order
@@ -60,16 +60,12 @@
       type="number"
       class="form-control"
       placeholder="Enter Parameter Order"
-     
+      [(ngModel)]="inputFieldElementModel!.json.validations!.parameterOrder"
     />
   </label>
   <label class="container-checkbox"
     >Required
-    <input
-      type="checkbox"
-      checked="checked"
-      
-    />
+    <input type="checkbox" checked="checked" [(ngModel)]="isRequired" />
     <span class="checkmark"></span>
   </label>
   <hr class="rounded" />

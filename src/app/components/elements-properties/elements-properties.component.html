@@ -1,9 +1,9 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-  <div [ngSwitch]="item!.type">
+  <div [ngSwitch]="item!.type" *ngIf="item">
     <div *ngSwitchCase="'Button'">
       <app-button-properties
         [buttonItem]="item!"
-        [index]= "index"
+        [index]="index"
       ></app-button-properties>
     </div>
     <div *ngSwitchCase="'Dropdown'">
@@ -12,7 +12,10 @@
       ></app-dropdown-properties>
     </div>
     <div *ngSwitchCase="'Textfield'">
-      <app-textfield-properties></app-textfield-properties>
+      <app-textfield-properties
+        [inputFieldElementModel]="item!"
+        [index]="index"
+      ></app-textfield-properties>
     </div>
   </div>
 </cdk-virtual-scroll-viewport>
