@@ -9,7 +9,7 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./elements-properties.component.css'],
 })
 export class ElementsPropertiesComponent implements OnInit {
-  item?: ElementModel = new ElementModel('', new JSONModel());
+  item: ElementModel = new ElementModel('', new JSONModel());
   index: number = 0;
 
   constructor(private elementService: ElementService) {}
@@ -21,8 +21,5 @@ export class ElementsPropertiesComponent implements OnInit {
         this.index = index;
       }
     );
-    this.elementService.selectedElementsChangedEvent.subscribe((elements) => {
-      this.item = undefined;
-    });
   }
 }
