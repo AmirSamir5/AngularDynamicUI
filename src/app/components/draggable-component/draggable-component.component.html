@@ -11,22 +11,21 @@
     (cdkDropListDropped)="drag($event)"
   >
     <div
-      (click)="onClickElement(item, index)"
+      (click)="onClickElement(element, index)"
       class="example-box"
       cdkDrag
       cdkDragBoundary=".example-boundary"
-      *ngFor="let item of selectedElements; let index = index"
+      *ngFor="let element of selectedElements; let index = index"
     >
+      <span *ngIf="selectedElement === element">&#8594;</span>
       <div class="item">
-        <div [ngSwitch]="item.type">
+        <div [ngSwitch]="element.type">
           <div *ngSwitchCase="'Button'">
-            <app-button [title]="item.json.fieldTitle ?? 'Button'"></app-button>
+            <app-button [title]="element.json.fieldTitle ?? 'Button'"></app-button>
           </div>
           <div *ngSwitchCase="'Dropdown'">
             <app-dropdown></app-dropdown>
           </div>
-          <!-- [hintText]="item.hintText"
-              [title]="item.title" -->
           <div *ngSwitchCase="'Textfield'">
             <app-textfield
               [title]="item.json.fieldTitle!"
@@ -34,7 +33,6 @@
             ></app-textfield>
           </div>
         </div>
-        <!-- <ng-container *ngComponentOutlet="item.type" > </ng-container> -->
       </div>
       <span class="close" (click)="removeElement(index)">&times;</span>
     </div>
