@@ -21,15 +21,20 @@
       <div class="item">
         <div [ngSwitch]="element.type">
           <div *ngSwitchCase="'Button'">
-            <app-button [title]="element.json.fieldTitle ?? 'Button'"></app-button>
+            <app-button
+              [title]="element.json.fieldTitle ?? 'Button'"
+            ></app-button>
           </div>
           <div *ngSwitchCase="'Dropdown'">
-            <app-dropdown></app-dropdown>
+            <app-dropdown
+              [title]="element.json.fieldTitle"
+              [hintText]="element.json.hint"
+            ></app-dropdown>
           </div>
           <div *ngSwitchCase="'Textfield'">
             <app-textfield
-              [title]="item.json.fieldTitle!"
-              [hintText]="item.json.hint!"
+              [title]="element.json.fieldTitle"
+              [hintText]="element.json.hint"
             ></app-textfield>
           </div>
         </div>
