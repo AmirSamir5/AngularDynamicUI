@@ -23,15 +23,14 @@
             <app-button [title]="item.json.fieldTitle ?? 'Button'"></app-button>
           </div>
           <div *ngSwitchCase="'Dropdown'">
-            <app-dropdown
-              
-            ></app-dropdown>
+            <app-dropdown></app-dropdown>
           </div>
           <!-- [hintText]="item.hintText"
               [title]="item.title" -->
           <div *ngSwitchCase="'Textfield'">
             <app-textfield
-              
+              [title]="item.json.fieldTitle!"
+              [hintText]="item.json.hint!"
             ></app-textfield>
           </div>
         </div>

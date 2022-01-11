@@ -6,9 +6,16 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./textfield.component.css'],
 })
 export class TextfieldComponent implements OnInit {
-  @Input() public hintText: string = 'Input Field';
-  @Input() public title: string = 'Title';
+  @Input() public hintText?: string;
+  @Input() public title?: string;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.hintText === undefined) {
+      this.hintText = 'Input Field';
+    }
+    if (this.title === undefined) {
+      this.title = 'Title';
+    }
+  }
 }
