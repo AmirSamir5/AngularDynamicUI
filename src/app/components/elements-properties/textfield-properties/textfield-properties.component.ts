@@ -56,6 +56,9 @@ export class TextfieldPropertiesComponent implements OnInit {
   onSubmit() {
     // this.inputFieldElementModel!.json.widget_type =
     //   AppConstants.WIDGET_INPUT_FIELD;
+    if (this.inputFieldElementModel!.json.validations === undefined) {
+      this.inputFieldElementModel!.json.validations = new Validations();
+    }
 
     this.inputFieldElementModel!.json.validations!.maxLength =
       this.maxLength.toString();

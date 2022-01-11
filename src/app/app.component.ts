@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { JSONModel } from './models/json.model';
 import { ElementService } from './services/element.service';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { JsonResultDialogComponent } from './components/json-result-dialog/json-result-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +16,10 @@ import { ElementService } from './services/element.service';
 export class AppComponent {
   title = 'Vericash-angular-tool';
 
-  constructor(private elementService: ElementService) {}
+  constructor(
+    private elementService: ElementService,
+    private dialog: MatDialog
+  ) {}
 
   onGenerateJSON() {
     var valid: Boolean = true;
@@ -32,7 +41,12 @@ export class AppComponent {
         window.alert('Screen Has No Elements!');
         return;
       }
-      window.alert(JSON.stringify(jsonArray));
+      // window.alert(JSON.stringify(jsonArray));
+      console.log(JSON.stringify(jsonArray));
+      const dialogRef = this.dialog.open(JsonResultDialogComponent, {
+        width: '50%',
+        data: { json: JSON.stringify(jsonArray) },
+      });
     }
   }
 }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
@@ -19,6 +19,9 @@ import { DropdownPropertiesComponent } from './components/elements-properties/dr
 import { TextfieldPropertiesComponent } from './components/elements-properties/textfield-properties/textfield-properties.component';
 import { ButtonPropertiesComponent } from './components/elements-properties/button-properties/button-properties.component';
 import { ElementsPropertiesComponent } from './components/elements-properties/elements-properties.component';
+import { JsonResultDialogComponent } from './components/json-result-dialog/json-result-dialog.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { ElementsPropertiesComponent } from './components/elements-properties/el
     DropdownPropertiesComponent,
     TextfieldPropertiesComponent,
     ButtonPropertiesComponent,
-    ElementsPropertiesComponent
+    ElementsPropertiesComponent,
+    JsonResultDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,9 +45,11 @@ import { ElementsPropertiesComponent } from './components/elements-properties/el
     ScrollingModule,
     FormsModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    NoopAnimationsModule,
+    MatDialogModule,
   ],
   providers: [ElementService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
