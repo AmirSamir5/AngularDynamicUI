@@ -4,27 +4,25 @@
     type="text"
     class="form-control"
     placeholder="Enter Title"
-    [(ngModel)]="dropdownElementModel!.json.fieldTitle"
+    [(ngModel)]="title"
   />
   <!-- [(ngModel)]="dropdownElementModel.title" -->
   <input
     type="text"
     class="form-control"
     placeholder="Enter hint"
-    [(ngModel)]="dropdownElementModel!.json.hint"
+    [(ngModel)]="hint"
   />
   <p>Lookup list key</p>
   <!-- [(ngModel)]="dropdownElementModel.lookupListKey" -->
-  <select
-    [(ngModel)]="dropdownElementModel!.json.widgetConfiguration!.lookupListKey"
-  >
+  <select [(ngModel)]="lookupListKey">
     <option value="veiw.payment.methods.screens">view payment methods</option>
     <option value="numbers">numbers</option>
     <option value="user-types">user types</option>
   </select>
   <label class="container-checkbox"
     >Required
-    <input type="checkbox" checked="checked" />
+    <input type="checkbox" checked="checked" [(ngModel)]="isRequired" />
     <span class="checkmark"></span>
   </label>
   <hr class="rounded" />

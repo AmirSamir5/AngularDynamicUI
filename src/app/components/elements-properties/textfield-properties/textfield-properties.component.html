@@ -17,13 +17,13 @@
     type="text"
     class="form-control"
     placeholder="Enter Title"
-    [(ngModel)]="inputFieldElementModel!.json.fieldTitle"
+    [(ngModel)]="title"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Hint"
-    [(ngModel)]="inputFieldElementModel!.json.hint"
+    [(ngModel)]="hint"
   />
   <label>
     Max Length
@@ -47,25 +47,25 @@
     type="text"
     class="form-control"
     placeholder="Enter Regex"
-    [(ngModel)]="inputFieldElementModel!.json.validations!.regex"
+    [(ngModel)]="regex"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Error Message"
-    [(ngModel)]="inputFieldElementModel!.json.validations!.error_msg"
+    [(ngModel)]="error_msg"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Default Value"
-    [(ngModel)]="inputFieldElementModel!.json.parameterDefaultValue"
+    [(ngModel)]="default_value"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Parameter Name"
-    [(ngModel)]="inputFieldElementModel!.json.parameterName"
+    [(ngModel)]="parameter_name"
   />
   <label>
     Parameter Order
@@ -73,7 +73,7 @@
       type="number"
       class="form-control"
       placeholder="Enter Parameter Order"
-      [(ngModel)]="inputFieldElementModel!.json.validations!.parameterOrder"
+      [(ngModel)]="parameter_order"
     />
   </label>
   <label class="container-checkbox"
