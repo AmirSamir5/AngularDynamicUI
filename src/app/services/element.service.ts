@@ -4,7 +4,7 @@ import { JSONModel } from '../models/json.model';
 
 export class ElementService {
   selectedElementsChangedEvent = new EventEmitter<ElementModel[]>();
-  onRemoveElementEvent = new EventEmitter<ElementModel[]>();
+  onRemoveElementEvent = new EventEmitter<{make:ElementModel[],name:ElementModel}>();
   EditElementEvent = new EventEmitter<{make:ElementModel,name:number}>();
   
 
@@ -27,8 +27,9 @@ export class ElementService {
   }
 
   removeSelectedItems(index: number) {
+    var element:ElementModel = this.selectedElements[index];
     this.selectedElements.splice(index, 1);
-    this.onRemoveElementEvent.emit(this.selectedElements);
+    this.onRemoveElementEvent.emit({make:this.selectedElements,name:element});
   }
 
   editSelectedItem(item: ElementModel,index:number) {

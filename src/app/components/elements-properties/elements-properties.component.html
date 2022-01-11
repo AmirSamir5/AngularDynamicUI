@@ -1,5 +1,5 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-  <div [ngSwitch]="item!.type">
+  <div [ngSwitch]="item!.type" *ngIf="item">
     <div *ngSwitchCase="'Button'">
       <app-button-properties
         [buttonItem]="item!"
