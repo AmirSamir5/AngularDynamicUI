@@ -15,10 +15,13 @@
   />
   <p>Lookup list key</p>
   <!-- [(ngModel)]="dropdownElementModel.lookupListKey" -->
-  <select [(ngModel)]="lookupListKey">
-    <option value="veiw.payment.methods.screens">view payment methods</option>
+  <select [(ngModel)]="lookupsIndex">
+    <option [value]="index" *ngFor="let item of lookups; let index = index">
+      {{ item.displayValue }}
+    </option>
+    <!-- <option value="veiw.payment.methods.screens">view payment methods</option>
     <option value="numbers">numbers</option>
-    <option value="user-types">user types</option>
+    <option value="user-types">user types</option> -->
   </select>
   <label class="container-checkbox"
     >Required

@@ -29,6 +29,10 @@ hr.rounded {
   border-radius: 5px;
 }
 
+select {
+  width: 165px;
+}
+
 /* The container-checkbox */
 .container-checkbox {
   display: block;
