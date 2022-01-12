@@ -1,4 +1,5 @@
 <div class="col">
+  <h2>Screen JSON Result:</h2>
   <textarea
     [value]="data.json"
     disabled
@@ -7,8 +8,13 @@
   ></textarea>
   <div class="text-right py-3">
     <button class="btn btn-primary px-2" (click)="onClose()">Ok</button>
+    <a [href]="fileUrl" download="file.txt">
+      <button class="btn btn-primary px-2" style="background-color: green;" (click)="onDownload()">
+        Download JSON Text
+      </button>
+    </a>
     <button class="btn btn-primary px-2" (click)="onCopy(userinput)">
-      copy
+      Copy
     </button>
   </div>
 </div>
