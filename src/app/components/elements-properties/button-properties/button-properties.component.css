@@ -22,6 +22,7 @@ input{
   }
 
 button{
-    width: 164px;
-    margin: 16px;
+    height: 40px;
+    width: 88%;
+    margin: 6%;
 }
