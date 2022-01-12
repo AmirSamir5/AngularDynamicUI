@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import { ElementModel } from 'src/app/models/element.model';
-import { Validations, WidgetConfiguration } from 'src/app/models/json.model';
+import {
+  DropDownConfiguration,
+  Validations,
+  WidgetConfiguration,
+} from 'src/app/models/json.model';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -17,6 +21,9 @@ export class DropdownPropertiesComponent implements OnInit {
   hint: string = '';
   isRequired: boolean = false;
   lookupListKey: string = '';
+
+  lookups = AppConstants.LOOKUP_LISTS;
+  lookupsIndex: number = -1;
 
   constructor(private elementService: ElementService) {}
 
@@ -38,8 +45,20 @@ export class DropdownPropertiesComponent implements OnInit {
   onSubmit() {
     this.dropdownElementModel!.json.fieldTitle = this.title;
     this.dropdownElementModel!.json.hint = this.hint;
-    this.dropdownElementModel!.json.widgetConfiguration!.lookupListKey =
-      this.lookupListKey;
+    if (
+      this.dropdownElementModel!.json.widgetConfiguration!
+        .dropDownConfiguration === undefined
+    ) {
+      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration =
+        new DropDownConfiguration();
+    }
+    this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupListKey =
+      this.lookups[this.lookupsIndex].lookupListKey;
+    this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
+      this.lookups[this.lookupsIndex].lookupIdKey;
+    this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
+      this.lookups[this.lookupsIndex].lookupTextKey;
+
     if (this.dropdownElementModel!.json.validations === undefined) {
       this.dropdownElementModel!.json.validations = new Validations();
     }

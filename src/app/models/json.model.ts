@@ -40,7 +40,7 @@ export class WidgetConfiguration {
   fieldConditions?: FieldCondition[];
 }
 
-export interface DropDownConfiguration {
+export class DropDownConfiguration {
   lookupListKey?: string;
   lookupIdKey?: string;
   lookupTextKey?: string;
