@@ -19,9 +19,10 @@ input {
   bottom: 0;
 }
 
-button {
-  width: 164px;
-  margin: 16px;
+button{
+  height: 40px;
+  width: 88%;
+  margin: 6%;
 }
 .container-checkbox {
   display: block;
@@ -35,6 +36,10 @@ button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+select{
+  width: 100%;
 }
 
 /* Hide the browser's default checkbox */

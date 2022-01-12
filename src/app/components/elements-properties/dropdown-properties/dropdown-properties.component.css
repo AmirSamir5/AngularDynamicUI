@@ -19,9 +19,10 @@ input {
   bottom: 0;
 }
 
-button {
-  width: 164px;
-  margin: 16px;
+button{
+  height: 40px;
+  width: 88%;
+  margin: 6%;
 }
 
 hr.rounded {
@@ -30,7 +31,7 @@ hr.rounded {
 }
 
 select {
-  width: 165px;
+  width: 100%;
 }
 
 /* The container-checkbox */
