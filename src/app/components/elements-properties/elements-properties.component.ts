@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementModel } from 'src/app/models/element.model';
-import { JSONModel } from 'src/app/models/json.model';
+import { WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({

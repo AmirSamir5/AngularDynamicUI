@@ -1,4 +1,4 @@
-export class JSONModel {
+export class WidgetModel {
   public validations?: Validations;
   fieldTitle?: string;
   linked_fields?: string[];
@@ -37,6 +37,7 @@ export class WidgetConfiguration {
   paymentMethodCode?: string;
   parentDropDwonId?: string;
   dropDownConfiguration?: DropDownConfiguration;
+  listConfiguration?:string; //List Configuration
   fieldConditions?: FieldCondition[];
 }
 

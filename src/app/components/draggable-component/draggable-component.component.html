@@ -37,6 +37,9 @@
               [hintText]="element.json.hint"
             ></app-textfield>
           </div>
+          <div *ngSwitchCase="'List'">
+            <app-list></app-list>
+          </div>
         </div>
       </div>
       <span class="close" (click)="removeElement(index)">&times;</span>

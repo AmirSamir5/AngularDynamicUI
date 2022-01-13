@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { JSONModel } from './models/json.model';
+import { WidgetModel } from './models/widget.model';
 import { ElementService } from './services/element.service';
 import {
   MatDialog,
@@ -23,7 +23,7 @@ export class AppComponent {
 
   onGenerateJSON() {
     var valid: Boolean = true;
-    var jsonArray: Array<JSONModel> = [];
+    var jsonArray: Array<WidgetModel> = [];
     this.elementService.selectedElements.forEach((element) => {
       jsonArray.push(element.json);
       console.log(element);

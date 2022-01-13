@@ -5,7 +5,7 @@ import {
   DropDownConfiguration,
   Validations,
   WidgetConfiguration,
-} from 'src/app/models/json.model';
+} from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({

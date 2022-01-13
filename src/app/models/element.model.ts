@@ -1,10 +1,8 @@
-import { JSONModel } from "./json.model";
+import { WidgetModel } from "./widget.model";
 
 export class ElementModel{
-    
-
     constructor(
         public type:string,
-        public json:JSONModel,){
+        public json:WidgetModel,){
     }
 }

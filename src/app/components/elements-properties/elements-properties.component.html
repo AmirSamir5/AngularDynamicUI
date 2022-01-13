@@ -18,5 +18,11 @@
         [index]="index"
       ></app-textfield-properties>
     </div>
+    <div *ngSwitchCase="'List'">
+      <app-list-properties
+        [listElementModel]="item!"
+        [index]="index"
+      ></app-list-properties>
+    </div>
   </div>
 </cdk-virtual-scroll-viewport>

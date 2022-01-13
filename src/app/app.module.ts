@@ -5,6 +5,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -22,6 +23,8 @@ import { ElementsPropertiesComponent } from './components/elements-properties/el
 import { JsonResultDialogComponent } from './components/json-result-dialog/json-result-dialog.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ListComponent } from './components/elements/list/list.component';
+import { ListPropertiesComponent } from './components/elements-properties/list-properties/list-properties.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ButtonPropertiesComponent,
     ElementsPropertiesComponent,
     JsonResultDialogComponent,
+    ListComponent,
+    ListPropertiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CommonModule,
     NoopAnimationsModule,
     MatDialogModule,
+    MatGridListModule
   ],
   providers: [ElementService],
   bootstrap: [AppComponent],

@@ -1,6 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { ElementModel } from '../models/element.model';
-import { JSONModel } from '../models/json.model';
+import { WidgetModel } from '../models/widget.model';
 
 export class ElementService {
   selectedElementsChangedEvent = new EventEmitter<ElementModel[]>();
@@ -9,9 +9,10 @@ export class ElementService {
   
 
   readonly elements: ElementModel[] = [
-    new ElementModel('Dropdown', new JSONModel()),
-    new ElementModel('Textfield', new JSONModel()),
-    new ElementModel('Button',  new JSONModel()),
+    new ElementModel('Dropdown', new WidgetModel()),
+    new ElementModel('Textfield', new WidgetModel()),
+    new ElementModel('Button',  new WidgetModel()),
+    new ElementModel('List',  new WidgetModel()),
   ];
 
   public selectedElements: ElementModel[] = [];
@@ -21,7 +22,7 @@ export class ElementService {
   }
 
   addSelectedItems(selectedElement: ElementModel) {
-    var element = new ElementModel(selectedElement.type,new JSONModel());
+    var element = new ElementModel(selectedElement.type,new WidgetModel());
     this.selectedElements.push(element);
     this.selectedElementsChangedEvent.emit(this.selectedElements);
   }
