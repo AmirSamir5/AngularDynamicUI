@@ -71,7 +71,8 @@ export class DropdownPropertiesComponent implements OnInit {
       this.dropdownElementModel?.json.widgetConfiguration?.dropDownConfiguration
         ?.lookupListKey === null ||
       this.dropdownElementModel?.json.hint === null ||
-      this.dropdownElementModel?.json.widgetConfiguration?.lookupListKey === ''
+      this.dropdownElementModel?.json.widgetConfiguration?.dropDownConfiguration
+        .lookupListKey === ''
     ) {
       confirm('Please Fill All Fields');
       return;
