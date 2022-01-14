@@ -1,6 +1,12 @@
 <div class="appbar">
   <p>9:00 am</p>
-  <span ng-dblclick="editItem(item)">{{ item }}</span>
+  <span (dblclick)="editItem()" [hidden]="show">{{ item }}</span>
+  <input
+    type="text"
+    [(ngModel)]="item"
+    [hidden]="!show"
+    (keyup.enter)="editItem()"
+  />
 </div>
 <div class="example-boundary">
   <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport"> -->

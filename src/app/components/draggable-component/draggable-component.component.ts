@@ -13,7 +13,8 @@ export class DraggableComponentComponent implements OnInit {
   item = 'appbar title';
   i = 0;
   selectedElements: ElementModel[] = [];
-  selectedElement?:ElementModel;
+  selectedElement?: ElementModel;
+  show: boolean = false;
 
   constructor(private elementService: ElementService) {}
 
@@ -21,12 +22,19 @@ export class DraggableComponentComponent implements OnInit {
     this.elementService.selectedElementsChangedEvent.subscribe((elements) => {
       this.selectedElements = elements;
     });
-    this.elementService.onRemoveElementEvent.subscribe(({ make: elementsArr, name: element }) => {
-      this.selectedElements = elementsArr;
-    });
+    this.elementService.onRemoveElementEvent.subscribe(
+      ({ make: elementsArr, name: element }) => {
+        this.selectedElements = elementsArr;
+      }
+    );
   }
 
   drag(event: CdkDragDrop<ElementModel[]>) {
+    console.log(
+      event.container,
+      event.previousContainer,
+      event.container === event.previousContainer
+    );
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -45,6 +53,9 @@ export class DraggableComponentComponent implements OnInit {
   onClickElement(item: ElementModel, index: number) {
     this.i = index;
     this.selectedElement = item;
-    var component = this.elementService.editSelectedItem(item,index);
+    var component = this.elementService.editSelectedItem(item, index);
+  }
+  editItem() {
+    this.show = !this.show;
   }
 }

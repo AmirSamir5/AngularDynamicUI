@@ -40,6 +40,12 @@
   font-size: 10px;
   color: white;
 }
+
+.appbar input {
+  color: black;
+  font-size: 16px;
+}
+
 .appbar span {
   font-size: 16px;
 }
