@@ -1,5 +1,48 @@
-<div class="col"> 
-    <p>Add Element</p>
-    <button class="btn btn-primary" (click)="onSelectText()"  >Text</button>
-    <button class="btn btn-success" (click)="onSelectButton()">Button</button>
-</div>    
+<div class="col">
+    <p>Add Elements To List</p>
+    <div class="buttons">
+        <button class="btn btn-info item-button" (click)="onSelectText()"  >Text</button>
+        <button class="btn btn-success item-button" (click)="onSelectButton()">Button</button>
+        <button class="btn btn-light item-button" (click)="onSelectEmpty()">Empty</button>
+    </div>
+    <div *ngIf="item !== undefined">
+        <div class="container">
+            <div class="line"><mat-divider></mat-divider></div>
+            <div class="text">Edit Element</div>
+            <div class="line"><mat-divider></mat-divider></div>
+        </div>
+        <label>
+            Element Flex
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Enter element flex"
+              [(ngModel)]="flex"
+              (input)="getFlexValue($event)"
+            />
+        </label>
+        <label>
+            Element Rowspan
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Enter element rowspan"
+              [(ngModel)]="span"
+              (input)="getRowSpan($event)"
+            />
+        </label>
+        <label>
+            Element Background Color
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter element color string"
+              [(ngModel)]="color"
+              (input)="getColorValue($event)"
+            />
+        </label>
+    </div>
+    <button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
+</div>
+
+

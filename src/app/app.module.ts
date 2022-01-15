@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -25,6 +26,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ListComponent } from './components/elements/list/list.component';
 import { ListPropertiesComponent } from './components/elements-properties/list-properties/list-properties.component';
+import { ListElementService } from './services/list-element.service';
 
 @NgModule({
   declarations: [
@@ -53,9 +55,10 @@ import { ListPropertiesComponent } from './components/elements-properties/list-p
     CommonModule,
     NoopAnimationsModule,
     MatDialogModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDividerModule
   ],
-  providers: [ElementService],
+  providers: [ElementService,ListElementService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -2,12 +2,16 @@
     <label>List</label>
   </div>
   <div class="example-boundary">
-    <mat-grid-list cols="6" rowHeight="100px">
+    <mat-grid-list cols="6" rowHeight="70px">
         <mat-grid-tile
-            *ngFor="let tile of tiles"
+            *ngFor="let tile of tiles;let index = index;"
             [colspan]="tile.flex"
-            [style.background]="tile.color">
-          {{tile.type}}
+            [rowspan]="tile.rowspan"
+            [style.background]="tile.color"
+            (click)="onElementClick(tile,index)">
+          {{tile.type}} <br>
+          {{tile.flex}}
+          <span class="close" (click)="removeElement(index)">&times;</span>
         </mat-grid-tile>
       </mat-grid-list>
   </div>
