@@ -6,7 +6,7 @@
 button{
     height: 40px;
     width: 88%;
-    margin: 6%;
+    margin: 8px;
 }
 .col{
     align-items: center;
@@ -17,4 +17,8 @@ p{
     align-items: center;
     font-size: 18px;
     font-weight: 450;
+}
+
+ul {
+    list-style-type: none;
 }

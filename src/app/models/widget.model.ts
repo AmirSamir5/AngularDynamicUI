@@ -1,3 +1,5 @@
+import { ListModel } from "./list.model";
+
 export class WidgetModel {
   public validations?: Validations;
   fieldTitle?: string;
@@ -37,8 +39,8 @@ export class WidgetConfiguration {
   paymentMethodCode?: string;
   parentDropDwonId?: string;
   dropDownConfiguration?: DropDownConfiguration;
-  listConfiguration?:string; //List Configuration
   fieldConditions?: FieldCondition[];
+  listConfiguration?: ListModel[];
 }
 
 export class DropDownConfiguration {

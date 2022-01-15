@@ -38,7 +38,7 @@
             ></app-textfield>
           </div>
           <div *ngSwitchCase="'List'">
-            <app-list></app-list>
+            <app-list [tiles] ="element.json.widgetConfiguration?.listConfiguration"></app-list>
           </div>
         </div>
       </div>
