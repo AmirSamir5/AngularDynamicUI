@@ -153,6 +153,18 @@ export class ListPropertiesComponent implements OnInit {
       this.listElementModel!.json.widgetConfiguration =
         new WidgetConfiguration();
       this.listElementModel!.json.widgetConfiguration!.listConfiguration = [];
+    } else {
+      var element =
+        this.listElementModel?.json.widgetConfiguration.listConfiguration![
+          this.listIndex
+        ];
+      this.fontFamily = element!.fontFamily;
+      this.fontSize = element!.fontSize;
+      this.fontWeight = element!.fontWeight;
+      this.color = element!.color;
+      this.backgroundColor = element!.backgroundColor;
+      this.flex = element!.flex;
+      this.span = element!.rowspan;
     }
   }
 }
