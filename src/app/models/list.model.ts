@@ -1,6 +1,6 @@
 export class ListModel {
     type?: string;
-    color?: string;
+    backgroundColor?: string;
     flex?: number;
     rowspan?:number;
   }

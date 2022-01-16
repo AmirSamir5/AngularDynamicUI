@@ -16,7 +16,7 @@ export class ListPropertiesComponent implements OnInit {
   @Input() index:number = 0;
   flex?:number;
   span?:number;
-  color?:string;
+  backgroundColor?:string;
   item?:ListModel;
   listIndex:number = 0;
 
@@ -28,7 +28,7 @@ export class ListPropertiesComponent implements OnInit {
       this.listIndex = index;
       this.flex = itemList.flex;
       this.span = itemList.rowspan;
-      this.color = itemList.color;
+      this.backgroundColor = itemList.backgroundColor;
     });
   }
 
@@ -42,15 +42,15 @@ export class ListPropertiesComponent implements OnInit {
     this.listService.onEditElementEvent.emit({make:this.item!,name:this.listIndex})
   }
 
-  getColorValue(event){
-    this.item!.color = event.target.value;
+  getBackgroundColorValue(event){
+    this.item!.backgroundColor = event.target.value;
     this.listService.onEditElementEvent.emit({make:this.item!,name:this.listIndex})
   }
 
   onSelectText(){
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push(
-      {type: 'Text', flex: 2, rowspan:1, color: 'lightblue'},
+      {type: 'Text', flex: 2, rowspan:1, backgroundColor: 'lightblue'},
     );
     this.elementService.onSaveItem(this.listElementModel!,this.index);
   }
@@ -58,7 +58,7 @@ export class ListPropertiesComponent implements OnInit {
   onSelectButton(){
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push(
-      {type: 'Button', flex: 2, rowspan:1, color: 'lightgreen'},
+      {type: 'Button', flex: 2, rowspan:1, backgroundColor: 'lightgreen'},
     );
     this.elementService.onSaveItem(this.listElementModel!,this.index);
   }
@@ -66,7 +66,7 @@ export class ListPropertiesComponent implements OnInit {
   onSelectEmpty(){
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push(
-      {type: 'Empty', flex: 2, rowspan:1, color: 'white'},
+      {type: 'Empty', flex: 2, rowspan:1, backgroundColor: 'white'},
     );
     this.elementService.onSaveItem(this.listElementModel!,this.index);
   }

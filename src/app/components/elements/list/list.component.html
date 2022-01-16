@@ -7,13 +7,14 @@
     rowHeight="70px"
     cdkDropList
     [cdkDropListData]="tiles!"
+    cdkDragBoundary=".example-boundary"
     (cdkDropListDropped)="drag($event)">
         <mat-grid-tile
         cdkDrag
             *ngFor="let tile of tiles;let index = index;"
             [colspan]="tile.flex"
             [rowspan]="tile.rowspan"
-            [style.background]="tile.color"
+            [style.background]="tile.backgroundColor"
             (click)="onElementClick(tile,index)">
           {{tile.type}} <br>
           {{tile.flex}}
