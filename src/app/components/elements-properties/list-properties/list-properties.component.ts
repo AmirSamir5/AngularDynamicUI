@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import { ElementModel } from 'src/app/models/element.model';
 import { ListModel } from 'src/app/models/list.model';
@@ -9,66 +9,137 @@ import { ListElementService } from 'src/app/services/list-element.service';
 @Component({
   selector: 'app-list-properties',
   templateUrl: './list-properties.component.html',
-  styleUrls: ['./list-properties.component.css']
+  styleUrls: ['./list-properties.component.css'],
 })
 export class ListPropertiesComponent implements OnInit {
   @Input() listElementModel?: ElementModel;
-  @Input() index:number = 0;
-  flex?:number;
-  span?:number;
-  backgroundColor?:string;
-  item?:ListModel;
-  listIndex:number = 0;
+  @Input() index: number = 0;
+  flex?: number;
+  span?: number;
+  backgroundColor?: string;
+  item?: ListModel;
+  listIndex: number = 0;
+  fontWeight?: string;
+  fontFamily?: string;
+  fontSize?: number;
+  color?: string;
 
-  constructor(private elementService: ElementService,private listService:ListElementService) {}
+  constructor(
+    private elementService: ElementService,
+    private listService: ListElementService
+  ) {}
 
   ngOnInit(): void {
-    this.listService.onElementClickEvent.subscribe(({make: itemList, name: index }) =>{
-      this.item = itemList;
-      this.listIndex = index;
-      this.flex = itemList.flex;
-      this.span = itemList.rowspan;
-      this.backgroundColor = itemList.backgroundColor;
+    this.listService.onElementClickEvent.subscribe(
+      ({ make: itemList, name: index }) => {
+        this.item = itemList;
+        this.listIndex = index;
+        this.flex = itemList.flex;
+        this.span = itemList.rowspan;
+        this.backgroundColor = itemList.backgroundColor;
+        this.color = 'white';
+        this.fontSize = 12;
+        this.fontWeight = 'normal';
+        this.fontFamily = 'Robota-Regular';
+      }
+    );
+  }
+
+  getFlexValue(event) {
+    this.item!.flex = event.target.value;
+    this.listService.onEditElementEvent.emit({
+      make: this.item!,
+      name: this.listIndex,
     });
   }
 
-  getFlexValue(event){
-    this.item!.flex = event.target.value;
-    this.listService.onEditElementEvent.emit({make:this.item!,name:this.listIndex})
-  }
-
-  getRowSpan(event){
+  getRowSpan(event) {
     this.item!.rowspan = event.target.value;
-    this.listService.onEditElementEvent.emit({make:this.item!,name:this.listIndex})
+    this.listService.onEditElementEvent.emit({
+      make: this.item!,
+      name: this.listIndex,
+    });
   }
 
-  getBackgroundColorValue(event){
+  getBackgroundColorValue(event) {
     this.item!.backgroundColor = event.target.value;
-    this.listService.onEditElementEvent.emit({make:this.item!,name:this.listIndex})
+    this.listService.onEditElementEvent.emit({
+      make: this.item!,
+      name: this.listIndex,
+    });
   }
 
-  onSelectText(){
-    this.checkConfiguration();
-    this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push(
-      {type: 'Text', flex: 2, rowspan:1, backgroundColor: 'lightblue'},
-    );
-    this.elementService.onSaveItem(this.listElementModel!,this.index);
+  getColorValue(event) {
+    this.item!.color = event.target.value;
+    this.listService.onEditElementEvent.emit({
+      make: this.item!,
+      name: this.listIndex,
+    });
   }
 
-  onSelectButton(){
-    this.checkConfiguration();
-    this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push(
-      {type: 'Button', flex: 2, rowspan:1, backgroundColor: 'lightgreen'},
-    );
-    this.elementService.onSaveItem(this.listElementModel!,this.index);
+  getFontSizeValue(event) {
+    this.item!.fontSize = event.target.value;
+    this.listService.onEditElementEvent.emit({
+      make: this.item!,
+      name: this.listIndex,
+    });
   }
 
-  onSelectEmpty(){
+  getFontFamilyValue(event) {
+    this.item!.fontFamily = event.target.value;
+    this.listService.onEditElementEvent.emit({
+      make: this.item!,
+      name: this.listIndex,
+    });
+  }
+
+  getFontWeightValue(event) {
+    this.item!.fontWeight = event.target.value;
+    this.listService.onEditElementEvent.emit({
+      make: this.item!,
+      name: this.listIndex,
+    });
+  }
+
+  onSelectText() {
     this.checkConfiguration();
-    this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push(
-      {type: 'Empty', flex: 2, rowspan:1, backgroundColor: 'white'},
-    );
-    this.elementService.onSaveItem(this.listElementModel!,this.index);
+    this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
+      type: 'Text',
+      flex: 2,
+      rowspan: 1,
+      backgroundColor: 'lightblue',
+      color: 'white',
+      fontFamily: 'Robota-Regular',
+      fontSize: 12,
+      fontWeight: 'normal',
+    });
+    this.elementService.onSaveItem(this.listElementModel!, this.index);
+  }
+
+  onSelectButton() {
+    this.checkConfiguration();
+    this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
+      type: 'Button',
+      flex: 2,
+      rowspan: 1,
+      backgroundColor: 'lightgreen',
+      color: 'black',
+      fontFamily: 'Robota-Regular',
+      fontSize: 12,
+      fontWeight: 'normal',
+    });
+    this.elementService.onSaveItem(this.listElementModel!, this.index);
+  }
+
+  onSelectEmpty() {
+    this.checkConfiguration();
+    this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
+      type: 'Empty',
+      flex: 2,
+      rowspan: 1,
+      backgroundColor: 'white',
+    });
+    this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSubmit() {
@@ -77,12 +148,11 @@ export class ListPropertiesComponent implements OnInit {
     // this.listElementModel!.json.widgetConfiguration!.listConfiguration = 'Add List Configration Object';
   }
 
-  checkConfiguration(){
-    if(this.listElementModel!.json.widgetConfiguration === undefined){
-      this.listElementModel!.json.widgetConfiguration = new WidgetConfiguration();
+  checkConfiguration() {
+    if (this.listElementModel!.json.widgetConfiguration === undefined) {
+      this.listElementModel!.json.widgetConfiguration =
+        new WidgetConfiguration();
       this.listElementModel!.json.widgetConfiguration!.listConfiguration = [];
     }
   }
-
-
 }

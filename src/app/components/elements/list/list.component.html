@@ -1,25 +1,30 @@
 <div class="col">
-    <label>List</label>
-  </div>
-  <div class="example-boundary">
-    <mat-grid-list 
-    cols="6" 
+  <label>List</label>
+</div>
+<div class="example-boundary">
+  <mat-grid-list
+    cols="6"
     rowHeight="70px"
     cdkDropList
     [cdkDropListData]="tiles!"
     cdkDragBoundary=".example-boundary"
-    (cdkDropListDropped)="drag($event)">
-        <mat-grid-tile
-        cdkDrag
-            *ngFor="let tile of tiles;let index = index;"
-            [colspan]="tile.flex"
-            [rowspan]="tile.rowspan"
-            [style.background]="tile.backgroundColor"
-            (click)="onElementClick(tile,index)">
-          {{tile.type}} <br>
-          {{tile.flex}}
-          <span class="close" (click)="removeElement(index)">&times;</span>
-        </mat-grid-tile>
-      </mat-grid-list>
-  </div>
-  
+    (cdkDropListDropped)="drag($event)"
+  >
+    <mat-grid-tile
+      cdkDrag
+      *ngFor="let tile of tiles; let index = index"
+      [colspan]="tile.flex"
+      [rowspan]="tile.rowspan"
+      [style.background]="tile.backgroundColor"
+      [style.color]="tile.color"
+      [style.font-size.px]="tile.fontSize"
+      [style.font-weight]="tile.fontWeight"
+      [style.font-family]="tile.fontFamily"
+      (click)="onElementClick(tile, index)"
+    >
+      {{ tile.type }} <br />
+      {{ tile.flex }}
+      <span class="close" (click)="removeElement(index)">&times;</span>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
