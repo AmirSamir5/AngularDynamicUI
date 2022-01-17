@@ -27,6 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ListComponent } from './components/elements/list/list.component';
 import { ListPropertiesComponent } from './components/elements-properties/list-properties/list-properties.component';
 import { ListElementService } from './services/list-element.service';
+import { RowComponent } from './components/elements/row/row.component';
+import { RowPropertiesComponent } from './components/elements-properties/row-properties/row-properties.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { ListElementService } from './services/list-element.service';
     JsonResultDialogComponent,
     ListComponent,
     ListPropertiesComponent,
+    RowComponent,
+    RowPropertiesComponent,
   ],
   imports: [
     BrowserModule,

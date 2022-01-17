@@ -13,17 +13,17 @@
     <mat-grid-tile
       cdkDrag
       *ngFor="let tile of tiles; let index = index"
-      [colspan]="tile.flex"
-      [rowspan]="tile.rowspan"
-      [style.background]="tile.backgroundColor"
-      [style.color]="tile.color"
-      [style.font-size.px]="tile.fontSize"
-      [style.font-weight]="tile.fontWeight"
-      [style.font-family]="tile.fontFamily"
+      [colspan]="tile.style.flex"
+      [rowspan]="tile.style.rowspan"
+      [style.background]="tile.style.backgroundColor"
+      [style.color]="tile.style.color"
+      [style.font-size.px]="tile.style.fontSize"
+      [style.font-weight]="tile.style.fontWeight"
+      [style.font-family]="tile.style.fontFamily"
       (click)="onElementClick(tile, index)"
     >
       {{ tile.type }} <br />
-      {{ tile.flex }}
+      {{ tile.style.flex }}
       <span class="close" (click)="removeElement(index)">&times;</span>
     </mat-grid-tile>
   </mat-grid-list>

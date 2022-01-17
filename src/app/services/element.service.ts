@@ -9,6 +9,7 @@ export class ElementService {
   
 
   readonly elements: ElementModel[] = [
+    new ElementModel('Row',  new WidgetModel()),
     new ElementModel('Dropdown', new WidgetModel()),
     new ElementModel('Textfield', new WidgetModel()),
     new ElementModel('Button',  new WidgetModel()),

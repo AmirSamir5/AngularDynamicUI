@@ -24,5 +24,11 @@
         [index]="index"
       ></app-list-properties>
     </div>
+    <div *ngSwitchCase="'Row'">
+      <app-row-properties
+        [listElementModel]="item!"
+        [index]="index"
+      ></app-row-properties>
+    </div>
   </div>
 </cdk-virtual-scroll-viewport>
