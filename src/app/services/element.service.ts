@@ -11,6 +11,7 @@ export class ElementService {
   EditElementEvent = new EventEmitter<{ make: ElementModel; name: number }>();
 
   readonly elements: ElementModel[] = [
+    new ElementModel('Row',  new WidgetModel()),
     new ElementModel('Dropdown', new WidgetModel()),
     new ElementModel('Textfield', new WidgetModel()),
     new ElementModel('Button', new WidgetModel()),

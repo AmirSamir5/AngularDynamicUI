@@ -31,6 +31,8 @@ import { CalendarComponent } from './components/elements/calendar/calendar.compo
 import { CalendarPropertiesComponent } from './components/elements-properties/calendar-properties/calendar-properties.component';
 import { CheckboxComponent } from './components/elements/checkbox/checkbox.component';
 import { CheckboxPropertiesComponent } from './components/elements-properties/checkbox-properties/checkbox-properties.component';
+import { RowComponent } from './components/elements/row/row.component';
+import { RowPropertiesComponent } from './components/elements-properties/row-properties/row-properties.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { CheckboxPropertiesComponent } from './components/elements-properties/ch
     CalendarPropertiesComponent,
     CheckboxComponent,
     CheckboxPropertiesComponent,
+    RowComponent,
+    RowPropertiesComponent,
   ],
   imports: [
     BrowserModule,

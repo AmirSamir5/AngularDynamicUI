@@ -1,0 +1,11 @@
+.example-boundary {
+  min-width: 200px;
+  border: dotted #ccc 2px;
+  min-height: 50px;
+}
+
+.row {
+    display: flex;
+    position: relative;
+    flex-flow: row;
+  }

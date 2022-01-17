@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import { ElementModel } from 'src/app/models/element.model';
 import { ListModel } from 'src/app/models/list.model';
@@ -8,11 +8,11 @@ import { ElementService } from 'src/app/services/element.service';
 import { ListElementService } from 'src/app/services/list-element.service';
 
 @Component({
-  selector: 'app-list-properties',
-  templateUrl: './list-properties.component.html',
-  styleUrls: ['./list-properties.component.css'],
+  selector: 'app-row-properties',
+  templateUrl: './row-properties.component.html',
+  styleUrls: ['./row-properties.component.css']
 })
-export class ListPropertiesComponent implements OnInit {
+export class RowPropertiesComponent implements OnInit {
   @Input() listElementModel?: ElementModel;
   @Input() index: number = 0;
   flex?: number;

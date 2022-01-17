@@ -1,4 +1,5 @@
 import { ListModel } from './list.model';
+import { StyleModel } from './style.model';
 
 export class WidgetModel {
   public validations?: Validations;
@@ -13,6 +14,7 @@ export class WidgetModel {
   widget_type?: string;
   parameterDefaultValue?: string;
   parameterName?: string;
+  style?: StyleModel;
 }
 
 export class Validations {
