@@ -1,0 +1,48 @@
+<div class="col">
+  <p>Calendar Properties</p>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter Title"
+    [(ngModel)]="title"
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter Hint"
+    [(ngModel)]="hint"
+  />
+  <label
+    >Initial Date
+    <input
+      type="date"
+      class="form-control"
+      placeholder="Enter Initial Date"
+      [(ngModel)]="initial"
+    />
+  </label>
+  <label
+    >From Date
+    <input
+      type="date"
+      class="form-control"
+      placeholder="Enter From Date"
+      [(ngModel)]="from"
+    />
+  </label>
+  <label
+    >To Date
+    <input
+      type="date"
+      class="form-control"
+      placeholder="Enter To Date"
+      [(ngModel)]="to"
+    />
+  </label>
+  <label class="container-checkbox"
+    >Required
+    <input type="checkbox" checked="checked" [(ngModel)]="isRequired" />
+    <span class="checkmark"></span>
+  </label>
+</div>
+<button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>

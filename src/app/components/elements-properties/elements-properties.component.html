@@ -24,5 +24,14 @@
         [index]="index"
       ></app-list-properties>
     </div>
+    <div *ngSwitchCase="'Calendar'">
+      <app-calendar-properties
+        [calendarElementModel]="item!"
+        [index]="index"
+      ></app-calendar-properties>
+    </div>
+    <div *ngSwitchCase="'Checkbox'">
+      <app-checkbox-properties></app-checkbox-properties>
+    </div>
   </div>
 </cdk-virtual-scroll-viewport>

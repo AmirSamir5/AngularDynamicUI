@@ -1,4 +1,4 @@
-import { ListModel } from "./list.model";
+import { ListModel } from './list.model';
 
 export class WidgetModel {
   public validations?: Validations;
@@ -29,6 +29,9 @@ export class Validations {
   valueList?: string;
   regex?: string;
   error_msg?: string;
+  inital_date?: string;
+  first_date?: string;
+  last_date?: string;
 }
 
 export class WidgetConfiguration {

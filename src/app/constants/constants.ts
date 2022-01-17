@@ -3,6 +3,7 @@ export class AppConstants {
   public static WIDGET_LIST = 'WidgetType.list';
   public static WIDGET_INPUT_FIELD = 'WidgetType.inputField';
   public static WIDGET_DROPDOWN = 'WidgetType.dropdown';
+  public static WIDGET_CALENDAR = 'WidgetType.calender';
 
   public static LOOKUP_LISTS = [
     {
