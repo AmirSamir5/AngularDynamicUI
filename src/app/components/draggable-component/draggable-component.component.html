@@ -52,9 +52,6 @@
             <app-calendar
               [title]="element.json.fieldTitle"
               [hintText]="element.json.hint"
-              [initial]="element.json.validations?.inital_date"
-              [from]="element.json.validations?.first_date"
-              [to]="element.json.validations?.last_date"
             ></app-calendar>
           </div>
           <div *ngSwitchCase="'Checkbox'"><app-checkbox></app-checkbox></div>

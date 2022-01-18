@@ -15,9 +15,6 @@ export class CalendarPropertiesComponent implements OnInit {
   title: string = '';
   hint: string = '';
   isRequired: boolean = false;
-  initial: string = '';
-  from: string = '';
-  to: string = '';
 
   constructor() {}
 
@@ -27,9 +24,6 @@ export class CalendarPropertiesComponent implements OnInit {
     } else {
       this.title = this.calendarElementModel!.json.fieldTitle!;
       this.hint = this.calendarElementModel!.json.hint!;
-      this.initial = this.calendarElementModel!.json.validations!.inital_date!;
-      this.from = this.calendarElementModel!.json.validations!.first_date!;
-      this.to = this.calendarElementModel!.json.validations!.last_date!;
       this.isRequired =
         this.calendarElementModel!.json.validations!.isMandatory === 1;
     }
@@ -41,9 +35,6 @@ export class CalendarPropertiesComponent implements OnInit {
     this.calendarElementModel!.json.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
-    this.calendarElementModel!.json.validations!.inital_date = this.initial;
-    this.calendarElementModel!.json.validations!.first_date = this.from;
-    this.calendarElementModel!.json.validations!.last_date = this.to;
     this.calendarElementModel!.json.widget_type = AppConstants.WIDGET_CALENDAR;
   }
 }

@@ -19,16 +19,7 @@ export class CalendarComponent implements OnInit {
       this.title = 'Title';
     }
     if (this.hintText === undefined) {
-      this.hintText = 'hint';
-    }
-    if (this.initial === undefined || this.initial === null) {
-      this.initial = '""';
-    }
-    if (this.from === undefined || this.from === null) {
-      this.from = '""';
-    }
-    if (this.to === undefined || this.to === null) {
-      this.to = '""';
+      this.hintText = 'Calendar';
     }
   }
 }
