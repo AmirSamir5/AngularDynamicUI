@@ -31,7 +31,10 @@
       ></app-calendar-properties>
     </div>
     <div *ngSwitchCase="'Checkbox'">
-      <app-checkbox-properties></app-checkbox-properties>
+      <app-checkbox-properties
+        [checkboxElementModel]="item!"
+        [index]="index"
+      ></app-checkbox-properties>
     </div>
     <div *ngSwitchCase="'Row'">
       <app-row-properties
