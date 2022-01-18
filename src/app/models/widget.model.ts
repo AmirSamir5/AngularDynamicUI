@@ -12,13 +12,13 @@ export class WidgetModel {
   widgetId?: number;
   widgetConfiguration?: WidgetConfiguration;
   widget_type?: string;
-  parameterDefaultValue?: string;
-  parameterName?: string;
   style?: StyleModel;
 }
 
 export class Validations {
   parameterFormat?: string;
+  parameterDefaultValue?: string;
+  parameterName?: string;
   isUnique?: number;
   parameterDataType?: number;
   isMandatory?: number;

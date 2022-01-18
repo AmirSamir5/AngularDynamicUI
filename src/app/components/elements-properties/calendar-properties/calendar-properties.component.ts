@@ -14,6 +14,7 @@ export class CalendarPropertiesComponent implements OnInit {
 
   title: string = '';
   hint: string = '';
+  parameterName: string = '';
   isRequired: boolean = false;
 
   constructor() {}
@@ -35,6 +36,10 @@ export class CalendarPropertiesComponent implements OnInit {
     this.calendarElementModel!.json.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
+    this.calendarElementModel!.json.validations!.parameterName =
+      this.parameterName;
+    this.calendarElementModel!.json.validations!.parameterDefaultValue =
+      this.parameterName;
     this.calendarElementModel!.json.widget_type = AppConstants.WIDGET_CALENDAR;
   }
 }
