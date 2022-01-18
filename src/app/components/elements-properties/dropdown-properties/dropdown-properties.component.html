@@ -15,14 +15,34 @@
   />
   <p>Lookup list key</p>
   <!-- [(ngModel)]="dropdownElementModel.lookupListKey" -->
-  <select [(ngModel)]="lookupsIndex">
+  <select [(ngModel)]="lookupsIndex" (change)="selectChange($event)">
     <option [value]="index" *ngFor="let item of lookups; let index = index">
       {{ item.displayValue }}
     </option>
+    <option value="other">Other ( please enter data )</option>
+
     <!-- <option value="veiw.payment.methods.screens">view payment methods</option>
-    <option value="numbers">numbers</option>
-    <option value="user-types">user types</option> -->
+    <option value="numbers">numbers</option> -->
   </select>
+  <input
+    type="text"
+    placeholder="Enter Lookup List Key"
+    style="margin-top: 16px"
+    [(ngModel)]="listKeyInput"
+    [hidden]="!showInputFields"
+  />
+  <input
+    type="text"
+    placeholder="Enter Lookup ID Key"
+    [(ngModel)]="lookupIdKey"
+    [hidden]="!showInputFields"
+  />
+  <input
+    type="text"
+    placeholder="Enter Lookup Text Key"
+    [(ngModel)]="lookupTextKey"
+    [hidden]="!showInputFields"
+  />
   <label class="container-checkbox"
     >Required
     <input type="checkbox" checked="checked" [(ngModel)]="isRequired" />
