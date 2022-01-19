@@ -1,0 +1,31 @@
+.col {
+  align-items: center;
+  padding: 16px;
+  /* height: 380px !important; */
+}
+p {
+  align-items: center;
+  font-size: 18px;
+  font-weight: 450;
+}
+input {
+  margin-bottom: 16px;
+  height: 40px;
+  width: 100%;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+button {
+  height: 40px;
+  width: 88%;
+  margin: 6%;
+}
+
+hr.rounded {
+  border-top: 1px solid #bbb;
+  border-radius: 5px;
+}

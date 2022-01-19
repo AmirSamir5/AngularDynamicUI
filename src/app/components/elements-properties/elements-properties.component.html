@@ -24,6 +24,18 @@
         [index]="index"
       ></app-list-properties>
     </div>
+    <div *ngSwitchCase="'Calendar'">
+      <app-calendar-properties
+        [calendarElementModel]="item!"
+        [index]="index"
+      ></app-calendar-properties>
+    </div>
+    <div *ngSwitchCase="'Checkbox'">
+      <app-checkbox-properties
+        [checkboxElementModel]="item!"
+        [index]="index"
+      ></app-checkbox-properties>
+    </div>
     <div *ngSwitchCase="'Row'">
       <app-row-properties
         [listElementModel]="item!"

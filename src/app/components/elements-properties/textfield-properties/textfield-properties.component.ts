@@ -43,11 +43,12 @@ export class TextfieldPropertiesComponent implements OnInit {
       this.isRequired =
         this.inputFieldElementModel!.json.validations.isMandatory === 1;
       this.regex = this.inputFieldElementModel!.json.validations.regex!;
-      this.parameter_name = this.inputFieldElementModel!.json.parameterName!;
+      this.parameter_name =
+        this.inputFieldElementModel!.json.validations!.parameterName!;
       this.parameter_order =
         this.inputFieldElementModel!.json.validations.parameterOrder!;
       this.default_value =
-        this.inputFieldElementModel!.json.parameterDefaultValue!;
+        this.inputFieldElementModel!.json.validations!.parameterDefaultValue!;
       this.title = this.inputFieldElementModel!.json.fieldTitle!;
       this.hint = this.inputFieldElementModel!.json.hint!;
     }
@@ -69,9 +70,10 @@ export class TextfieldPropertiesComponent implements OnInit {
       : 0;
     this.inputFieldElementModel!.json.validations!.regex = this.regex;
     this.inputFieldElementModel!.json.validations!.error_msg = this.error_msg;
-    this.inputFieldElementModel!.json.parameterDefaultValue =
+    this.inputFieldElementModel!.json.validations!.parameterDefaultValue =
       this.default_value;
-    this.inputFieldElementModel!.json.parameterName = this.parameter_name;
+    this.inputFieldElementModel!.json.validations!.parameterName =
+      this.parameter_name;
     this.inputFieldElementModel!.json.validations!.parameterOrder =
       this.parameter_order;
     this.inputFieldElementModel!.json.fieldTitle = this.title;

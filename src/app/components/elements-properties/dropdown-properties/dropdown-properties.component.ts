@@ -22,6 +22,11 @@ export class DropdownPropertiesComponent implements OnInit {
   isRequired: boolean = false;
   lookupListKey: string = '';
 
+  showInputFields: boolean = false;
+  listKeyInput: string = '';
+  lookupIdKey: string = '';
+  lookupTextKey: string = '';
+
   lookups = AppConstants.LOOKUP_LISTS;
   lookupsIndex: number = -1;
 
@@ -42,6 +47,15 @@ export class DropdownPropertiesComponent implements OnInit {
     }
   }
 
+  selectChange(event) {
+    var val = event.target.value;
+    if (val === 'other') {
+      this.showInputFields = true;
+    } else {
+      this.showInputFields = false;
+    }
+  }
+
   onSubmit() {
     this.dropdownElementModel!.json.fieldTitle = this.title;
     this.dropdownElementModel!.json.hint = this.hint;
@@ -52,12 +66,21 @@ export class DropdownPropertiesComponent implements OnInit {
       this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration =
         new DropDownConfiguration();
     }
-    this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupListKey =
-      this.lookups[this.lookupsIndex].lookupListKey;
-    this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
-      this.lookups[this.lookupsIndex].lookupIdKey;
-    this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
-      this.lookups[this.lookupsIndex].lookupTextKey;
+    if (this.showInputFields) {
+      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupListKey =
+        this.listKeyInput;
+      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
+        this.lookupIdKey;
+      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
+        this.lookupTextKey;
+    } else {
+      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupListKey =
+        this.lookups[this.lookupsIndex].lookupListKey;
+      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
+        this.lookups[this.lookupsIndex].lookupIdKey;
+      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
+        this.lookups[this.lookupsIndex].lookupTextKey;
+    }
 
     if (this.dropdownElementModel!.json.validations === undefined) {
       this.dropdownElementModel!.json.validations = new Validations();
@@ -66,17 +89,6 @@ export class DropdownPropertiesComponent implements OnInit {
       ? 1
       : 0;
     this.dropdownElementModel!.json.widget_type = AppConstants.WIDGET_DROPDOWN;
-    if (
-      this.dropdownElementModel?.json.fieldTitle === null ||
-      this.dropdownElementModel?.json.widgetConfiguration?.dropDownConfiguration
-        ?.lookupListKey === null ||
-      this.dropdownElementModel?.json.hint === null ||
-      this.dropdownElementModel?.json.widgetConfiguration?.dropDownConfiguration
-        .lookupListKey === ''
-    ) {
-      confirm('Please Fill All Fields');
-      return;
-    }
     console.log(this.dropdownElementModel);
     this.elementService.onSaveItem(this.dropdownElementModel!, this.index);
     // this.elementPropertyService.dropdownSaveEvent(this.dropdownElementModel!);

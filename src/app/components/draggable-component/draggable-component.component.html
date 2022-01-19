@@ -45,7 +45,18 @@
             ></app-textfield>
           </div>
           <div *ngSwitchCase="'List'">
-            <app-list [tiles] ="element.json.widgetConfiguration?.listConfiguration"></app-list>
+            <app-list
+              [tiles]="element.json.widgetConfiguration?.listConfiguration"
+            ></app-list>
+          </div>
+          <div *ngSwitchCase="'Calendar'">
+            <app-calendar
+              [title]="element.json.fieldTitle"
+              [hintText]="element.json.hint"
+            ></app-calendar>
+          </div>
+          <div *ngSwitchCase="'Checkbox'">
+            <app-checkbox [title]="element.json.fieldTitle"></app-checkbox>
           </div>
           <div *ngSwitchCase="'Row'">
             <app-row 

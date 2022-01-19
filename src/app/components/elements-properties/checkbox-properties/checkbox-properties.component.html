@@ -1,0 +1,18 @@
+<div class="col">
+  <p>Calendar Properties</p>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter Title"
+    [(ngModel)]="title"
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter Parameter Name"
+    [(ngModel)]="parameterName"
+  />
+  <br />
+  <hr class="rounded" />
+</div>
+<button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>

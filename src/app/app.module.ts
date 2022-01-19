@@ -5,8 +5,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -27,6 +27,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ListComponent } from './components/elements/list/list.component';
 import { ListPropertiesComponent } from './components/elements-properties/list-properties/list-properties.component';
 import { ListElementService } from './services/list-element.service';
+import { CalendarComponent } from './components/elements/calendar/calendar.component';
+import { CalendarPropertiesComponent } from './components/elements-properties/calendar-properties/calendar-properties.component';
+import { CheckboxComponent } from './components/elements/checkbox/checkbox.component';
+import { CheckboxPropertiesComponent } from './components/elements-properties/checkbox-properties/checkbox-properties.component';
 import { RowComponent } from './components/elements/row/row.component';
 import { RowPropertiesComponent } from './components/elements-properties/row-properties/row-properties.component';
 
@@ -47,6 +51,10 @@ import { RowPropertiesComponent } from './components/elements-properties/row-pro
     JsonResultDialogComponent,
     ListComponent,
     ListPropertiesComponent,
+    CalendarComponent,
+    CalendarPropertiesComponent,
+    CheckboxComponent,
+    CheckboxPropertiesComponent,
     RowComponent,
     RowPropertiesComponent,
   ],
@@ -60,9 +68,9 @@ import { RowPropertiesComponent } from './components/elements-properties/row-pro
     NoopAnimationsModule,
     MatDialogModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
   ],
-  providers: [ElementService,ListElementService],
+  providers: [ElementService, ListElementService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

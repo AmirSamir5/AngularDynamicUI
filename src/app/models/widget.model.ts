@@ -1,5 +1,5 @@
-import { ListModel } from "./list.model";
-import { StyleModel } from "./style.model";
+import { ListModel } from './list.model';
+import { StyleModel } from './style.model';
 
 export class WidgetModel {
   public validations?: Validations;
@@ -12,13 +12,13 @@ export class WidgetModel {
   widgetId?: number;
   widgetConfiguration?: WidgetConfiguration;
   widget_type?: string;
-  parameterDefaultValue?: string;
-  parameterName?: string;
   style?: StyleModel;
 }
 
 export class Validations {
   parameterFormat?: string;
+  parameterDefaultValue?: string;
+  parameterName?: string;
   isUnique?: number;
   parameterDataType?: number;
   isMandatory?: number;

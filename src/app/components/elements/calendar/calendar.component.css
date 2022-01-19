@@ -1,0 +1,14 @@
+.calendar {
+  border-color: black;
+  border-width: 1px;
+  color: black;
+}
+
+.calendar .calbtn {
+  cursor: pointer;
+  font-size: 16px;
+  font-family: inherit;
+  margin: 0;
+  /* height: 60px; */
+  width: 100%;
+}

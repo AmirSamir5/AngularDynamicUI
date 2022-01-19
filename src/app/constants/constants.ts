@@ -7,6 +7,8 @@ export class AppConstants {
   public static JUSTIFY_LIST = [
     'start', 'end', 'space-between', 'space-evenly', 'space-around',  
   ];
+  public static WIDGET_CALENDAR = 'WidgetType.calender';
+  public static WIDGET_CHECKBOX = 'WidgetType.checkbox';
 
   public static LOOKUP_LISTS = [
     {
