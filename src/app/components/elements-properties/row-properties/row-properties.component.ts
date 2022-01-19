@@ -10,7 +10,7 @@ import { ListElementService } from 'src/app/services/list-element.service';
 @Component({
   selector: 'app-row-properties',
   templateUrl: './row-properties.component.html',
-  styleUrls: ['./row-properties.component.css']
+  styleUrls: ['./row-properties.component.css'],
 })
 export class RowPropertiesComponent implements OnInit {
   @Input() listElementModel?: ElementModel;
@@ -106,16 +106,15 @@ export class RowPropertiesComponent implements OnInit {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
       type: 'Text',
-      style: new StyleModel(
-        {
-          flex: 2,
-          rowspan: 1,
-          backgroundColor: 'lightblue',
-          color: 'white',
-          fontFamily: 'Robota-Regular',
-          fontSize: 12,
-          fontWeight: 'normal',
-      })
+      style: new StyleModel({
+        flex: 2,
+        rowspan: 1,
+        backgroundColor: 'lightblue',
+        color: 'white',
+        fontFamily: 'Robota-Regular',
+        fontSize: 12,
+        fontWeight: 'normal',
+      }),
     });
     this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
@@ -124,17 +123,15 @@ export class RowPropertiesComponent implements OnInit {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
       type: 'Button',
-      style: new StyleModel(
-        {
-          flex: 2,
-          rowspan: 1,
-          backgroundColor: 'lightgreen',
-          color: 'black',
-          fontFamily: 'Robota-Regular',
-          fontSize: 12,
-          fontWeight: 'normal',
-      })
-      
+      style: new StyleModel({
+        flex: 2,
+        rowspan: 1,
+        backgroundColor: 'lightgreen',
+        color: 'black',
+        fontFamily: 'Robota-Regular',
+        fontSize: 12,
+        fontWeight: 'normal',
+      }),
     });
     this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
@@ -143,20 +140,18 @@ export class RowPropertiesComponent implements OnInit {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
       type: 'Empty',
-      style: new StyleModel(
-        {
-          flex: 2,
-          rowspan: 1,
-          backgroundColor: 'white',
-      })
-      
+      style: new StyleModel({
+        flex: 2,
+        rowspan: 1,
+        backgroundColor: 'white',
+      }),
     });
     this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSubmit() {
     this.checkConfiguration();
-    this.listElementModel!.json.widget_type = AppConstants.WIDGET_LIST;
+    this.listElementModel!.json.widget_type = AppConstants.WIDGET_ROW;
     // this.listElementModel!.json.widgetConfiguration!.listConfiguration = 'Add List Configration Object';
   }
 

@@ -1,16 +1,26 @@
 <div class="col">
-    <label>Row</label>
+  <label>Row</label>
 </div>
 
 <div class="example-boundary">
-    <div 
-    class="row" 
+  <div
+    class="row"
     [style.justify-content]="style.justify ?? 'space-between'"
-    [style.padding]= "style.padding ?? '16px'">
-        <div *ngFor="let rowContent of rows">
-            <p>
-            {{rowContent.type}}
-            </p>
-        </div>
+    [style.padding]="style.padding ?? '16px'"
+    cdkDropList
+    [cdkDropListData]="rows!"
+    cdkDragBoundary=".example-boundary"
+    (cdkDropListDropped)="drag($event)"
+  >
+    <div
+      *ngFor="let rowContent of rows; let index = index"
+      cdkDrag
+      class="item"
+      (click)="onElementClick(rowContent, index)"
+    >
+      {{ rowContent.type }}
+
+      <span class="close" (click)="removeElement(index)">&times;</span>
     </div>
+  </div>
 </div>

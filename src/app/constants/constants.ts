@@ -5,6 +5,7 @@ export class AppConstants {
   public static WIDGET_DROPDOWN = 'WidgetType.dropdown';
   public static WIDGET_CALENDAR = 'WidgetType.calender';
   public static WIDGET_CHECKBOX = 'WidgetType.checkbox';
+  public static WIDGET_ROW = 'WidgetType.row';
 
   public static LOOKUP_LISTS = [
     {

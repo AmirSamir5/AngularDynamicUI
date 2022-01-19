@@ -5,7 +5,21 @@
 }
 
 .row {
-    display: flex;
-    position: relative;
-    flex-flow: row;
-  }
+  display: flex;
+  position: relative;
+  flex-flow: row;
+}
+
+.item {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* position: absolute; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 12px;
+  margin: 0;
+}
