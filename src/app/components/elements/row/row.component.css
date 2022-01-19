@@ -9,3 +9,14 @@
     position: relative;
     flex-flow: row;
   }
+  .item{
+    display: flex;
+    position: relative;
+    flex-flow: row;
+    text-align: center;
+    justify-content: center;
+  }
+  .close {
+    top: 2px;
+    right: 2px;
+  }

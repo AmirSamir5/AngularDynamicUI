@@ -10,7 +10,7 @@ import { ElementService } from 'src/app/services/element.service';
 })
 export class DraggableComponentComponent implements OnInit {
   height = 350;
-  item = 'appbar title';
+  title = 'appbar title';
   i = 0;
   selectedElements: ElementModel[] = [];
   selectedElement?: ElementModel;
@@ -57,5 +57,8 @@ export class DraggableComponentComponent implements OnInit {
   }
   editItem() {
     this.show = !this.show;
+  }
+  onChangeAppbar(){
+    this.elementService.screenName = this.title;
   }
 }

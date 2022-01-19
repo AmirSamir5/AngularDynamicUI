@@ -31,14 +31,14 @@ export class DropdownPropertiesComponent implements OnInit {
     if (this.dropdownElementModel!.json.widgetConfiguration === undefined) {
       this.dropdownElementModel!.json.widgetConfiguration =
         new WidgetConfiguration();
-      this.dropdownElementModel!.json.widgetConfiguration.lookupListKey = '';
+      // this.dropdownElementModel!.json.widgetConfiguration.lookupListKey = '';
     } else {
       this.title = this.dropdownElementModel!.json.fieldTitle!;
       this.hint = this.dropdownElementModel!.json.hint!;
       this.isRequired =
         this.dropdownElementModel!.json.validations?.isMandatory === 1;
-      this.lookupListKey =
-        this.dropdownElementModel!.json.widgetConfiguration.lookupListKey!;
+      // this.lookupListKey =
+        // this.dropdownElementModel!.json.widgetConfiguration.lookupListKey!;
     }
   }
 

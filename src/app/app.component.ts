@@ -7,6 +7,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { JsonResultDialogComponent } from './components/json-result-dialog/json-result-dialog.component';
+import { JSONModel, ScreenPages } from './models/json.model';
 
 @Component({
   selector: 'app-root',
@@ -23,12 +24,13 @@ export class AppComponent {
 
   onGenerateJSON() {
     var valid: Boolean = true;
-    var jsonArray: Array<WidgetModel> = [];
+    var jsonModel:JSONModel;
+    var widgetArray: Array<WidgetModel> = [];
     this.elementService.selectedElements.forEach((element) => {
-      jsonArray.push(element.json);
+      widgetArray.push(element.json);
       console.log(element);
     });
-    jsonArray.forEach((element) => {
+    widgetArray.forEach((element) => {
       if (valid) {
         if (element.widget_type === undefined) {
           window.alert('Please Fill Elements Properties!');
@@ -41,11 +43,20 @@ export class AppComponent {
         window.alert('Screen Has No Elements!');
         return;
       }
-      // window.alert(JSON.stringify(jsonArray));
-      console.log(JSON.stringify(jsonArray));
+      if(this.elementService.screenName === ''){
+        window.alert('Please Enter Appbar Title!');
+        return;
+      }
+      jsonModel = new JSONModel(
+        this.elementService.screenName,
+        7,
+        [new ScreenPages(
+          this.elementService.screenName,
+          widgetArray)],
+          );
       const dialogRef = this.dialog.open(JsonResultDialogComponent, {
         width: '50%',
-        data: { json: JSON.stringify(jsonArray) },
+        data: { json: JSON.stringify(jsonModel, null, 4) },
       });
     }
   }
