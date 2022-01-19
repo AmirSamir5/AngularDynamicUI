@@ -24,6 +24,7 @@ export class ListPropertiesComponent implements OnInit {
   fontFamily?: string;
   fontSize?: number;
   color?: string;
+  listKey: string = '';
 
   constructor(
     private elementService: ElementService,
@@ -106,16 +107,15 @@ export class ListPropertiesComponent implements OnInit {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
       type: 'Text',
-      style: new StyleModel(
-        {
-          flex: 2,
-          rowspan: 1,
-          backgroundColor: 'lightblue',
-          color: 'white',
-          fontFamily: 'Robota-Regular',
-          fontSize: 12,
-          fontWeight: 'normal',
-      })
+      style: new StyleModel({
+        flex: 2,
+        rowspan: 1,
+        backgroundColor: 'lightblue',
+        color: 'white',
+        fontFamily: 'Robota-Regular',
+        fontSize: 12,
+        fontWeight: 'normal',
+      }),
     });
     this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
@@ -124,17 +124,15 @@ export class ListPropertiesComponent implements OnInit {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
       type: 'Button',
-      style: new StyleModel(
-        {
-          flex: 2,
-          rowspan: 1,
-          backgroundColor: 'lightgreen',
-          color: 'black',
-          fontFamily: 'Robota-Regular',
-          fontSize: 12,
-          fontWeight: 'normal',
-      })
-      
+      style: new StyleModel({
+        flex: 2,
+        rowspan: 1,
+        backgroundColor: 'lightgreen',
+        color: 'black',
+        fontFamily: 'Robota-Regular',
+        fontSize: 12,
+        fontWeight: 'normal',
+      }),
     });
     this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
@@ -143,13 +141,11 @@ export class ListPropertiesComponent implements OnInit {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
       type: 'Empty',
-      style: new StyleModel(
-        {
-          flex: 2,
-          rowspan: 1,
-          backgroundColor: 'white',
-      })
-      
+      style: new StyleModel({
+        flex: 2,
+        rowspan: 1,
+        backgroundColor: 'white',
+      }),
     });
     this.elementService.onSaveItem(this.listElementModel!, this.index);
   }

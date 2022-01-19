@@ -11,6 +11,12 @@
       Empty
     </button>
   </div>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter List ID"
+    [(ngModel)]="listElementModel!.json.dataArray"
+  />
   <div *ngIf="item !== undefined">
     <div class="container">
       <div class="line"><mat-divider></mat-divider></div>

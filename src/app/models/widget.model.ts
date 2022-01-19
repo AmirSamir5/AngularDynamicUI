@@ -13,6 +13,7 @@ export class WidgetModel {
   widgetConfiguration?: WidgetConfiguration;
   widget_type?: string;
   style?: StyleModel;
+  dataArray?: string;
 }
 
 export class Validations {
