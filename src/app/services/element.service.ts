@@ -1,5 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { ElementModel } from '../models/element.model';
+import { JSONModel } from '../models/json.model';
 import { WidgetModel } from '../models/widget.model';
 
 export class ElementService {
@@ -11,14 +12,17 @@ export class ElementService {
   EditElementEvent = new EventEmitter<{ make: ElementModel; name: number }>();
 
   readonly elements: ElementModel[] = [
-    new ElementModel('Row',  new WidgetModel()),
     new ElementModel('Dropdown', new WidgetModel()),
     new ElementModel('Textfield', new WidgetModel()),
+    new ElementModel('Button',  new WidgetModel()),
+    new ElementModel('List',  new WidgetModel()),
+    new ElementModel('Row',  new WidgetModel()),
     new ElementModel('Button', new WidgetModel()),
-    new ElementModel('List', new WidgetModel()),
     new ElementModel('Calendar', new WidgetModel()),
     new ElementModel('Checkbox', new WidgetModel()),
   ];
+
+  public screenName:string = '';
 
   public selectedElements: ElementModel[] = [];
 

@@ -9,17 +9,14 @@
   position: relative;
   flex-flow: row;
 }
-
 .item {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* position: absolute; */
   display: flex;
-  align-items: center;
+  position: relative;
+  flex-flow: row;
+  text-align: center;
   justify-content: center;
-  height: 100%;
-  padding: 12px;
-  margin: 0;
+}
+.close {
+  top: 2px;
+  right: 2px;
 }

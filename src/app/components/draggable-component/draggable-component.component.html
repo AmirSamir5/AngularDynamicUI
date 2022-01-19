@@ -1,11 +1,12 @@
 <div class="appbar">
   <p>9:00 am</p>
-  <span (dblclick)="editItem()" [hidden]="show">{{ item }}</span>
+  <span (dblclick)="editItem()" [hidden]="show">{{ title }}</span>
   <input
     type="text"
-    [(ngModel)]="item"
+    [(ngModel)]="title"
     [hidden]="!show"
     (keyup.enter)="editItem()"
+    (change)="onChangeAppbar()"
   />
 </div>
 <div class="example-boundary">
@@ -58,11 +59,9 @@
             <app-checkbox [title]="element.json.fieldTitle"></app-checkbox>
           </div>
           <div *ngSwitchCase="'Row'">
-            <app-row
-              [rows]="element.json.widgetConfiguration?.listConfiguration"
-              [style]="element.json.style"
-            >
-            </app-row>
+            <app-row 
+            [rows] ="element.json.widgetConfiguration?.listConfiguration">
+          </app-row>
           </div>
         </div>
       </div>

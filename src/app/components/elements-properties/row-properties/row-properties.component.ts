@@ -15,15 +15,10 @@ import { ListElementService } from 'src/app/services/list-element.service';
 export class RowPropertiesComponent implements OnInit {
   @Input() listElementModel?: ElementModel;
   @Input() index: number = 0;
-  flex?: number;
-  span?: number;
-  backgroundColor?: string;
   item?: ListModel;
   listIndex: number = 0;
-  fontWeight?: string;
-  fontFamily?: string;
-  fontSize?: number;
-  color?: string;
+  justifyArr = AppConstants.JUSTIFY_LIST;
+  selectedJustify: string = '';
 
   constructor(
     private elementService: ElementService,
@@ -35,13 +30,6 @@ export class RowPropertiesComponent implements OnInit {
       ({ make: itemList, name: index }) => {
         this.item = itemList;
         this.listIndex = index;
-        this.flex = itemList.style.flex;
-        this.span = itemList.style.rowspan;
-        this.backgroundColor = itemList.style.backgroundColor;
-        this.color = itemList.style.color;
-        this.fontSize = itemList.style.fontSize;
-        this.fontWeight = itemList.style.fontWeight;
-        this.fontFamily = itemList.style.fontFamily;
       }
     );
   }
@@ -100,6 +88,11 @@ export class RowPropertiesComponent implements OnInit {
       make: this.item!,
       name: this.listIndex,
     });
+  }
+
+  onSelectRowJustify(){
+    var style = new StyleModel({justify: this.selectedJustify});
+    this.listService.onSetRowStyle(style);
   }
 
   onSelectText() {

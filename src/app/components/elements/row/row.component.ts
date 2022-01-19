@@ -10,14 +10,8 @@ import { ListElementService } from 'src/app/services/list-element.service';
   styleUrls: ['./row.component.css'],
 })
 export class RowComponent implements OnInit {
-  justify = 'space-between';
-  padding = '24px';
-  style: StyleModel = new StyleModel({});
+  @Input() style: StyleModel = new StyleModel({});
   @Input() rows?: ListModel[];
-
-  constructor(private listService: ListElementService) {}
-
-  ngOnInit(): void {}
 
   onElementClick(item: ListModel, index: number) {
     this.listService.onElementClick(item, index);
@@ -25,6 +19,14 @@ export class RowComponent implements OnInit {
 
   removeElement(index: number) {
     this.rows?.splice(index, 1);
+  }
+
+  constructor(private listService: ListElementService) {}
+
+  ngOnInit(): void {
+    this.listService.onSetStyleEvent.subscribe((style) => {
+      this.style = style;
+    });
   }
 
   drag(event: CdkDragDrop<ListModel[]>) {
