@@ -3,7 +3,7 @@ import { AppConstants } from 'src/app/constants/constants';
 import { ElementModel } from 'src/app/models/element.model';
 import { ListModel } from 'src/app/models/list.model';
 import { StyleModel } from 'src/app/models/style.model';
-import { WidgetConfiguration } from 'src/app/models/widget.model';
+import { WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 import { ListElementService } from 'src/app/services/list-element.service';
 
@@ -18,7 +18,7 @@ export class ListPropertiesComponent implements OnInit {
   flex?: number;
   span?: number;
   backgroundColor?: string;
-  item?: ListModel;
+  item?: WidgetModel;
   listIndex: number = 0;
   fontWeight?: string;
   fontFamily?: string;
@@ -106,7 +106,7 @@ export class ListPropertiesComponent implements OnInit {
   onSelectText() {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
-      type: 'Text',
+      widget_type: 'Text',
       style: new StyleModel({
         flex: 2,
         rowspan: 1,
@@ -123,7 +123,7 @@ export class ListPropertiesComponent implements OnInit {
   onSelectButton() {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
-      type: 'Button',
+      widget_type: 'Button',
       style: new StyleModel({
         flex: 2,
         rowspan: 1,
@@ -140,9 +140,22 @@ export class ListPropertiesComponent implements OnInit {
   onSelectEmpty() {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
-      type: 'Empty',
+      widget_type: 'Empty',
       style: new StyleModel({
         flex: 2,
+        rowspan: 1,
+        backgroundColor: 'white',
+      }),
+    });
+    this.elementService.onSaveItem(this.listElementModel!, this.index);
+  }
+
+  onSelectRow() {
+    this.checkConfiguration();
+    this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
+      widget_type: 'WidgetType.row',
+      style: new StyleModel({
+        flex: 6,
         rowspan: 1,
         backgroundColor: 'white',
       }),

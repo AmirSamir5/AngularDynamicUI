@@ -3,7 +3,7 @@ import { AppConstants } from 'src/app/constants/constants';
 import { ElementModel } from 'src/app/models/element.model';
 import { ListModel } from 'src/app/models/list.model';
 import { StyleModel } from 'src/app/models/style.model';
-import { WidgetConfiguration } from 'src/app/models/widget.model';
+import { WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 import { ListElementService } from 'src/app/services/list-element.service';
 
@@ -15,7 +15,7 @@ import { ListElementService } from 'src/app/services/list-element.service';
 export class RowPropertiesComponent implements OnInit {
   @Input() listElementModel?: ElementModel;
   @Input() index: number = 0;
-  item?: ListModel;
+  item?: WidgetModel;
   listIndex: number = 0;
   justifyArr = AppConstants.JUSTIFY_LIST;
 
@@ -33,7 +33,7 @@ export class RowPropertiesComponent implements OnInit {
     );
   }
 
-  onExpandedChange(){
+  onExpandedChange() {
     this.item!.style.flex = undefined;
     this.listElementModel!.json.style.justify = '';
     this.listService.onEditElementEvent.emit({
@@ -99,14 +99,14 @@ export class RowPropertiesComponent implements OnInit {
     });
   }
 
-  onSelectRowJustify(){
+  onSelectRowJustify() {
     this.listService.onSetRowStyle(this.listElementModel!.json.style);
   }
 
   onSelectText() {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
-      type: 'Text',
+      widget_type: 'Text',
       style: new StyleModel({
         rowspan: 1,
         backgroundColor: 'lightblue',
@@ -116,13 +116,14 @@ export class RowPropertiesComponent implements OnInit {
         fontWeight: 'normal',
       }),
     });
-    this.elementService.onSaveItem(this.listElementModel!, this.index);
+    // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSelectButton() {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
-      type: 'Button',
+      widget_type: 'Button',
+
       style: new StyleModel({
         rowspan: 1,
         backgroundColor: 'lightgreen',
@@ -138,7 +139,7 @@ export class RowPropertiesComponent implements OnInit {
   onSelectEmpty() {
     this.checkConfiguration();
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
-      type: 'Empty',
+      widget_type: 'Empty',
       style: new StyleModel({
         rowspan: 1,
         backgroundColor: 'white',

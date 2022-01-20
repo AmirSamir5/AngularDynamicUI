@@ -1,7 +1,9 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
+import { ElementModel } from 'src/app/models/element.model';
 import { ListModel } from 'src/app/models/list.model';
 import { StyleModel } from 'src/app/models/style.model';
+import { WidgetModel } from 'src/app/models/widget.model';
 import { ListElementService } from 'src/app/services/list-element.service';
 
 @Component({
@@ -11,9 +13,9 @@ import { ListElementService } from 'src/app/services/list-element.service';
 })
 export class RowComponent implements OnInit {
   @Input() style: StyleModel = new StyleModel({});
-  @Input() rows?: ListModel[];
+  @Input() rows?: WidgetModel[];
 
-  onElementClick(item: ListModel, index: number) {
+  onElementClick(item: WidgetModel, index: number) {
     this.listService.onElementClick(item, index);
   }
 
@@ -29,14 +31,14 @@ export class RowComponent implements OnInit {
     });
   }
 
-  getItemFlex(item:ListModel):string{
-    if (item.style.flex !== undefined){
+  getItemFlex(item: WidgetModel): string {
+    if (item.style.flex !== undefined) {
       return 'item col-lg-' + item.style.flex;
     }
     return 'item';
   }
 
-  drag(event: CdkDragDrop<ListModel[]>) {
+  drag(event: CdkDragDrop<WidgetModel[]>) {
     console.log(
       event.container,
       event.previousContainer,

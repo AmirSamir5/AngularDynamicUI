@@ -1,6 +1,9 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
+import { ElementModel } from 'src/app/models/element.model';
 import { ListModel } from 'src/app/models/list.model';
+import { WidgetModel } from 'src/app/models/widget.model';
+import { ElementService } from 'src/app/services/element.service';
 import { ListElementService } from 'src/app/services/list-element.service';
 
 @Component({
@@ -9,21 +12,24 @@ import { ListElementService } from 'src/app/services/list-element.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  @Input() tiles?: ListModel[];
+  @Input() tiles?: WidgetModel[];
 
-  constructor(private listService:ListElementService) { }
+  constructor(
+    private listService: ListElementService,
+    private elementService: ElementService
+  ) {}
 
   ngOnInit(): void {}
 
-  onElementClick(item:ListModel,index:number){
-    this.listService.onElementClick(item,index);
+  onElementClick(item: WidgetModel, index: number) {
+    this.listService.onElementClick(item, index);
   }
 
-  removeElement(index:number){
-    this.tiles?.splice(index,1);
+  removeElement(index: number) {
+    this.tiles?.splice(index, 1);
   }
 
-  drag(event: CdkDragDrop<ListModel[]>) {
+  drag(event: CdkDragDrop<WidgetModel[]>) {
     console.log(
       event.container,
       event.previousContainer,

@@ -1,3 +1,4 @@
+import { ElementModel } from './element.model';
 import { ListModel } from './list.model';
 import { StyleModel } from './style.model';
 
@@ -43,7 +44,7 @@ export class WidgetConfiguration {
   parentDropDwonId?: string;
   dropDownConfiguration?: DropDownConfiguration;
   fieldConditions?: FieldCondition[];
-  listConfiguration?: ListModel[];
+  listConfiguration?: WidgetModel[];
 }
 
 export class DropDownConfiguration {

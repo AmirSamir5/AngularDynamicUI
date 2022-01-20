@@ -21,10 +21,12 @@ export class ElementsPropertiesComponent implements OnInit {
         this.index = index;
       }
     );
-    this.elementService.onRemoveElementEvent.subscribe(({ make: elementsArr, name: element }) => {
-      if (this.item === element){
-        this.item = undefined;
+    this.elementService.onRemoveElementEvent.subscribe(
+      ({ make: elementsArr, name: element }) => {
+        if (this.item === element) {
+          this.item = undefined;
+        }
       }
-    });
+    );
   }
 }

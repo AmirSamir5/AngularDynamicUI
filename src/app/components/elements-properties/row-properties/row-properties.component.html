@@ -12,7 +12,10 @@
     </button>
   </div>
   <p>Row Justify</p>
-  <select [(ngModel)]="listElementModel!.json.style.justify" (change)="onSelectRowJustify()">
+  <select
+    [(ngModel)]="listElementModel!.json.style.justify"
+    (change)="onSelectRowJustify()"
+  >
     <option [value]="item" *ngFor="let item of justifyArr">
       {{ item }}
     </option>
@@ -24,10 +27,15 @@
       <div class="line"><mat-divider></mat-divider></div>
     </div>
     <label class="container-checkbox"
-    >Expanded
-    <input type="checkbox" checked="checked" [(ngModel)]="item.style.expanded" (change)="onExpandedChange()" />
-    <span class="checkmark"></span>
-  </label>
+      >Expanded
+      <input
+        type="checkbox"
+        checked="checked"
+        [(ngModel)]="item.style.expanded"
+        (change)="onExpandedChange()"
+      />
+      <span class="checkmark"></span>
+    </label>
     <label>
       Element Flex
       <input

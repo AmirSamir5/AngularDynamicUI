@@ -10,6 +10,9 @@
     <button class="btn btn-light item-button" (click)="onSelectEmpty()">
       Empty
     </button>
+    <button class="btn btn-light item-button" (click)="onSelectRow()">
+      Row
+    </button>
   </div>
   <input
     type="text"
@@ -17,7 +20,7 @@
     placeholder="Enter List ID"
     [(ngModel)]="listElementModel!.json.dataArray"
   />
-  <div *ngIf="item !== undefined">
+  <div *ngIf="item && item.widget_type !== 'WidgetType.row'">
     <div class="container">
       <div class="line"><mat-divider></mat-divider></div>
       <div class="text">Edit Element</div>
@@ -93,6 +96,11 @@
         (input)="getFontFamilyValue($event)"
       />
     </label>
+  </div>
+  <div *ngIf="item && item.widget_type === 'WidgetType.row'">
+    <app-row-properties
+      [listElementModel]="{ type: 'WidgetType.row', json: item }"
+    ></app-row-properties>
   </div>
   <button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
 </div>

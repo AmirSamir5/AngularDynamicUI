@@ -4,7 +4,7 @@
 <div class="example-boundary">
   <mat-grid-list
     cols="6"
-    rowHeight="70px"
+    rowHeight="80px"
     cdkDropList
     [cdkDropListData]="tiles!"
     cdkDragBoundary=".example-boundary"
@@ -22,8 +22,14 @@
       [style.font-family]="tile.style.fontFamily"
       (click)="onElementClick(tile, index)"
     >
-      {{ tile.type }} <br />
-      {{ tile.style.flex }}
+      <div *ngIf="tile.widget_type !== 'WidgetType.row'">
+        {{ tile.widget_type }} <br />
+        {{ tile.style.flex }}
+      </div>
+      <div *ngIf="tile.widget_type === 'WidgetType.row'">
+        <app-row [rows]="tile.widgetConfiguration?.listConfiguration"></app-row>
+      </div>
+
       <span class="close" (click)="removeElement(index)">&times;</span>
     </mat-grid-tile>
   </mat-grid-list>
