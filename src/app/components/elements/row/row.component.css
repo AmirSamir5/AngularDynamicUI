@@ -8,6 +8,8 @@
   display: flex;
   position: relative;
   flex-flow: row;
+  min-height: 50px;
+  margin: inherit;
 }
 .item {
   display: flex;
@@ -15,6 +17,8 @@
   flex-flow: row;
   text-align: center;
   justify-content: center;
+  align-items: center;
+  min-width: 55px;
 }
 .close {
   top: 2px;

@@ -29,6 +29,13 @@ export class RowComponent implements OnInit {
     });
   }
 
+  getItemFlex(item:ListModel):string{
+    if (item.style.flex !== undefined){
+      return 'item col-lg-' + item.style.flex;
+    }
+    return 'item';
+  }
+
   drag(event: CdkDragDrop<ListModel[]>) {
     console.log(
       event.container,

@@ -12,7 +12,7 @@ export class WidgetModel {
   widgetId?: number;
   widgetConfiguration?: WidgetConfiguration;
   widget_type?: string;
-  style?: StyleModel;
+  style: StyleModel = new StyleModel({});
   dataArray?: string;
 }
 

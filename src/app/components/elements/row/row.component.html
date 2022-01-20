@@ -5,8 +5,7 @@
 <div class="example-boundary">
   <div
     class="row"
-    [style.justify-content]="style.justify ?? 'space-between'"
-    [style.padding]="style.padding ?? '16px'"
+    [style.justify-content]="style.justify"
     cdkDropList
     [cdkDropListData]="rows!"
     cdkDragBoundary=".example-boundary"
@@ -15,7 +14,13 @@
     <div
       *ngFor="let rowContent of rows; let index = index"
       cdkDrag
-      class="item"
+      [ngClass]="getItemFlex(rowContent)"
+      [style.backgroundColor]="rowContent.style.backgroundColor ?? 'white'"
+      [style.color]="rowContent.style.color ?? 'black'"
+      [style.width]="rowContent.style.expanded ? '100%':undefined"
+      [style.font-size.px]="rowContent.style.fontSize"
+      [style.font-weight]="rowContent.style.fontWeight"
+      [style.font-family]="rowContent.style.fontFamily"
       (click)="onElementClick(rowContent, index)"
     >
       {{ rowContent.type }}

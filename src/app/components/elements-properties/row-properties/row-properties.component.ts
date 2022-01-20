@@ -18,7 +18,6 @@ export class RowPropertiesComponent implements OnInit {
   item?: ListModel;
   listIndex: number = 0;
   justifyArr = AppConstants.JUSTIFY_LIST;
-  selectedJustify: string = '';
 
   constructor(
     private elementService: ElementService,
@@ -34,7 +33,17 @@ export class RowPropertiesComponent implements OnInit {
     );
   }
 
+  onExpandedChange(){
+    this.item!.style.flex = undefined;
+    this.listElementModel!.json.style.justify = '';
+    this.listService.onEditElementEvent.emit({
+      make: this.item!,
+      name: this.listIndex,
+    });
+  }
+
   getFlexValue(event) {
+    this.item!.style.expanded = false;
     this.item!.style.flex = event.target.value;
     this.listService.onEditElementEvent.emit({
       make: this.item!,
@@ -91,8 +100,7 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   onSelectRowJustify(){
-    var style = new StyleModel({justify: this.selectedJustify});
-    this.listService.onSetRowStyle(style);
+    this.listService.onSetRowStyle(this.listElementModel!.json.style);
   }
 
   onSelectText() {
@@ -100,7 +108,6 @@ export class RowPropertiesComponent implements OnInit {
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
       type: 'Text',
       style: new StyleModel({
-        flex: 2,
         rowspan: 1,
         backgroundColor: 'lightblue',
         color: 'white',
@@ -117,7 +124,6 @@ export class RowPropertiesComponent implements OnInit {
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
       type: 'Button',
       style: new StyleModel({
-        flex: 2,
         rowspan: 1,
         backgroundColor: 'lightgreen',
         color: 'black',
@@ -134,7 +140,6 @@ export class RowPropertiesComponent implements OnInit {
     this.listElementModel!.json.widgetConfiguration?.listConfiguration?.push({
       type: 'Empty',
       style: new StyleModel({
-        flex: 2,
         rowspan: 1,
         backgroundColor: 'white',
       }),

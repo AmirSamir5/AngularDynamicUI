@@ -17,7 +17,6 @@ export class ElementService {
     new ElementModel('Button',  new WidgetModel()),
     new ElementModel('List',  new WidgetModel()),
     new ElementModel('Row',  new WidgetModel()),
-    new ElementModel('Button', new WidgetModel()),
     new ElementModel('Calendar', new WidgetModel()),
     new ElementModel('Checkbox', new WidgetModel()),
   ];

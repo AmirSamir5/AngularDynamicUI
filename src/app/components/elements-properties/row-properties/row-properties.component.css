@@ -45,6 +45,16 @@ ul {
     padding-left: 10px;
     padding-right: 10px;
   }
+  .container-checkbox {
+    display: block;
+    position: relative;
+    margin-bottom: 16px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
   select {
     width: 100%;
   }

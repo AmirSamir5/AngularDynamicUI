@@ -9,6 +9,7 @@ export class StyleModel {
     justify?: string;
     padding?: string;
     margin?: string;
+    expanded: boolean = false;
 
     constructor(
     {
@@ -22,6 +23,7 @@ export class StyleModel {
         justify,
         padding,
         margin,
+        expanded,
     }:
     {
         backgroundColor?: string,
@@ -34,6 +36,7 @@ export class StyleModel {
         justify?: string,
         padding?: string,
         margin?: string,
+        expanded?:boolean
     }
     ){
         this.backgroundColor = backgroundColor;
@@ -46,5 +49,6 @@ export class StyleModel {
         this.justify = justify;
         this.padding = padding;
         this.margin = margin;
+        this.expanded = expanded ?? false;
     }
   }
