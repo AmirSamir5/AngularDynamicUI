@@ -133,7 +133,7 @@ export class RowPropertiesComponent implements OnInit {
         fontWeight: 'normal',
       }),
     });
-    this.elementService.onSaveItem(this.listElementModel!, this.index);
+    // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSelectEmpty() {
@@ -145,7 +145,7 @@ export class RowPropertiesComponent implements OnInit {
         backgroundColor: 'white',
       }),
     });
-    this.elementService.onSaveItem(this.listElementModel!, this.index);
+    // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSubmit() {
