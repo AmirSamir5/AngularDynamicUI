@@ -20,26 +20,26 @@ export class CalendarPropertiesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if (this.calendarElementModel!.json.validations === undefined) {
-      this.calendarElementModel!.json.validations = new Validations();
+    if (this.calendarElementModel!.widget.validations === undefined) {
+      this.calendarElementModel!.widget.validations = new Validations();
     } else {
-      this.title = this.calendarElementModel!.json.fieldTitle!;
-      this.hint = this.calendarElementModel!.json.hint!;
+      this.title = this.calendarElementModel!.widget.fieldTitle!;
+      this.hint = this.calendarElementModel!.widget.hint!;
       this.isRequired =
-        this.calendarElementModel!.json.validations!.isMandatory === 1;
+        this.calendarElementModel!.widget.validations!.isMandatory === 1;
     }
   }
 
   onSubmit() {
-    this.calendarElementModel!.json.fieldTitle = this.title;
-    this.calendarElementModel!.json.hint = this.hint;
-    this.calendarElementModel!.json.validations!.isMandatory = this.isRequired
+    this.calendarElementModel!.widget.fieldTitle = this.title;
+    this.calendarElementModel!.widget.hint = this.hint;
+    this.calendarElementModel!.widget.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
-    this.calendarElementModel!.json.validations!.parameterName =
+    this.calendarElementModel!.widget.validations!.parameterName =
       this.parameterName;
-    this.calendarElementModel!.json.validations!.parameterDefaultValue =
+    this.calendarElementModel!.widget.validations!.parameterDefaultValue =
       this.parameterName;
-    this.calendarElementModel!.json.widget_type = AppConstants.WIDGET_CALENDAR;
+    this.calendarElementModel!.widget.widget_type = AppConstants.WIDGET_CALENDAR;
   }
 }

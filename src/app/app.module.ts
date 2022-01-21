@@ -26,7 +26,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ListComponent } from './components/elements/list/list.component';
 import { ListPropertiesComponent } from './components/elements-properties/list-properties/list-properties.component';
-import { ListElementService } from './services/list-element.service';
 import { CalendarComponent } from './components/elements/calendar/calendar.component';
 import { CalendarPropertiesComponent } from './components/elements-properties/calendar-properties/calendar-properties.component';
 import { CheckboxComponent } from './components/elements/checkbox/checkbox.component';
@@ -70,7 +69,7 @@ import { RowPropertiesComponent } from './components/elements-properties/row-pro
     MatGridListModule,
     MatDividerModule,
   ],
-  providers: [ElementService, ListElementService],
+  providers: [ElementService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

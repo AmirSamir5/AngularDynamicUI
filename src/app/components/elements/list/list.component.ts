@@ -4,7 +4,6 @@ import { ElementModel } from 'src/app/models/element.model';
 import { ListModel } from 'src/app/models/list.model';
 import { WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
-import { ListElementService } from 'src/app/services/list-element.service';
 
 @Component({
   selector: 'app-list',
@@ -12,24 +11,23 @@ import { ListElementService } from 'src/app/services/list-element.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  @Input() tiles?: WidgetModel[];
+  @Input() listModel: ElementModel = new ElementModel('List',new WidgetModel());
 
-  constructor(
-    private listService: ListElementService,
-    private elementService: ElementService
-  ) {}
+  constructor(private elementService: ElementService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
-  onElementClick(item: WidgetModel, index: number) {
-    this.listService.onElementClick(item, index);
+  onRowSelected(item: ElementModel, index: number) {
+    this.elementService.editSelectedItem(item, index);
   }
 
   removeElement(index: number) {
-    this.tiles?.splice(index, 1);
+    this.listModel!.widget.widgetConfiguration?.listConfiguration?.splice(index, 1);
   }
 
-  drag(event: CdkDragDrop<WidgetModel[]>) {
+  drag(event: CdkDragDrop<ElementModel[]>) {
     console.log(
       event.container,
       event.previousContainer,

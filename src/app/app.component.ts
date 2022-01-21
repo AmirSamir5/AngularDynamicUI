@@ -27,7 +27,7 @@ export class AppComponent {
     var jsonModel:JSONModel;
     var widgetArray: Array<WidgetModel> = [];
     this.elementService.selectedElements.forEach((element) => {
-      widgetArray.push(element.json);
+      widgetArray.push(element.widget);
       console.log(element);
     });
     widgetArray.forEach((element) => {

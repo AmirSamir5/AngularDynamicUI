@@ -44,7 +44,8 @@ export class WidgetConfiguration {
   parentDropDwonId?: string;
   dropDownConfiguration?: DropDownConfiguration;
   fieldConditions?: FieldCondition[];
-  listConfiguration?: WidgetModel[];
+  listConfiguration?: ElementModel[];
+  rowConfiguration?: ElementModel[];
 }
 
 export class DropDownConfiguration {

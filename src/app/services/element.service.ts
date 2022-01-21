@@ -10,6 +10,8 @@ export class ElementService {
     name: ElementModel;
   }>();
   EditElementEvent = new EventEmitter<{ make: ElementModel; name: number }>();
+  EditRowElementEvent = new EventEmitter<{ make: ElementModel; name: number }>();
+  RemoveRowElementEvent = new EventEmitter();
 
   readonly elements: ElementModel[] = [
     new ElementModel('Dropdown', new WidgetModel()),
@@ -52,5 +54,13 @@ export class ElementService {
     this.selectedElements[index] = item;
     this.selectedElementsChangedEvent.emit(this.selectedElements);
     console.log(this.selectedElements);
+  }
+
+  editRowElementItem(item: ElementModel, index: number) {
+    this.EditRowElementEvent.emit({ make: item, name: index });
+  }
+
+  removeRowElementItem(){
+    this.RemoveRowElementEvent.emit();
   }
 }

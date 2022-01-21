@@ -33,17 +33,17 @@ export class DropdownPropertiesComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    if (this.dropdownElementModel!.json.widgetConfiguration === undefined) {
-      this.dropdownElementModel!.json.widgetConfiguration =
+    if (this.dropdownElementModel!.widget.widgetConfiguration === undefined) {
+      this.dropdownElementModel!.widget.widgetConfiguration =
         new WidgetConfiguration();
-      // this.dropdownElementModel!.json.widgetConfiguration.lookupListKey = '';
+      // this.dropdownElementModel!.widget.widgetConfiguration.lookupListKey = '';
     } else {
-      this.title = this.dropdownElementModel!.json.fieldTitle!;
-      this.hint = this.dropdownElementModel!.json.hint!;
+      this.title = this.dropdownElementModel!.widget.fieldTitle!;
+      this.hint = this.dropdownElementModel!.widget.hint!;
       this.isRequired =
-        this.dropdownElementModel!.json.validations?.isMandatory === 1;
+        this.dropdownElementModel!.widget.validations?.isMandatory === 1;
       // this.lookupListKey =
-        // this.dropdownElementModel!.json.widgetConfiguration.lookupListKey!;
+        // this.dropdownElementModel!.widget.widgetConfiguration.lookupListKey!;
     }
   }
 
@@ -57,38 +57,38 @@ export class DropdownPropertiesComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dropdownElementModel!.json.fieldTitle = this.title;
-    this.dropdownElementModel!.json.hint = this.hint;
+    this.dropdownElementModel!.widget.fieldTitle = this.title;
+    this.dropdownElementModel!.widget.hint = this.hint;
     if (
-      this.dropdownElementModel!.json.widgetConfiguration!
+      this.dropdownElementModel!.widget.widgetConfiguration!
         .dropDownConfiguration === undefined
     ) {
-      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration =
+      this.dropdownElementModel!.widget.widgetConfiguration!.dropDownConfiguration =
         new DropDownConfiguration();
     }
     if (this.showInputFields) {
-      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupListKey =
+      this.dropdownElementModel!.widget.widgetConfiguration!.dropDownConfiguration.lookupListKey =
         this.listKeyInput;
-      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
+      this.dropdownElementModel!.widget.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
         this.lookupIdKey;
-      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
+      this.dropdownElementModel!.widget.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
         this.lookupTextKey;
     } else {
-      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupListKey =
+      this.dropdownElementModel!.widget.widgetConfiguration!.dropDownConfiguration.lookupListKey =
         this.lookups[this.lookupsIndex].lookupListKey;
-      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
+      this.dropdownElementModel!.widget.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
         this.lookups[this.lookupsIndex].lookupIdKey;
-      this.dropdownElementModel!.json.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
+      this.dropdownElementModel!.widget.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
         this.lookups[this.lookupsIndex].lookupTextKey;
     }
 
-    if (this.dropdownElementModel!.json.validations === undefined) {
-      this.dropdownElementModel!.json.validations = new Validations();
+    if (this.dropdownElementModel!.widget.validations === undefined) {
+      this.dropdownElementModel!.widget.validations = new Validations();
     }
-    this.dropdownElementModel!.json.validations!.isMandatory = this.isRequired
+    this.dropdownElementModel!.widget.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
-    this.dropdownElementModel!.json.widget_type = AppConstants.WIDGET_DROPDOWN;
+    this.dropdownElementModel!.widget.widget_type = AppConstants.WIDGET_DROPDOWN;
     console.log(this.dropdownElementModel);
     this.elementService.onSaveItem(this.dropdownElementModel!, this.index);
     // this.elementPropertyService.dropdownSaveEvent(this.dropdownElementModel!);

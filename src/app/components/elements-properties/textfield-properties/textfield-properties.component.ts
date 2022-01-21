@@ -26,58 +26,58 @@ export class TextfieldPropertiesComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('ngOnInit', this.inputFieldElementModel);
-    if (this.inputFieldElementModel!.json.validations === undefined) {
-      this.inputFieldElementModel!.json.validations = new Validations();
-      this.inputFieldElementModel!.json.validations.isMandatory = 0;
-      this.inputFieldElementModel!.json.validations.maxLength = '';
-      this.inputFieldElementModel!.json.validations.minLength = '';
-      this.inputFieldElementModel!.json.validations.regex = '';
-      this.inputFieldElementModel!.json.validations.error_msg = '';
+    if (this.inputFieldElementModel!.widget.validations === undefined) {
+      this.inputFieldElementModel!.widget.validations = new Validations();
+      this.inputFieldElementModel!.widget.validations.isMandatory = 0;
+      this.inputFieldElementModel!.widget.validations.maxLength = '';
+      this.inputFieldElementModel!.widget.validations.minLength = '';
+      this.inputFieldElementModel!.widget.validations.regex = '';
+      this.inputFieldElementModel!.widget.validations.error_msg = '';
     } else {
       this.minLength = Number.parseInt(
-        this.inputFieldElementModel!.json.validations.minLength!
+        this.inputFieldElementModel!.widget.validations.minLength!
       );
       this.maxLength = Number.parseInt(
-        this.inputFieldElementModel?.json.validations.maxLength!
+        this.inputFieldElementModel?.widget.validations.maxLength!
       );
       this.isRequired =
-        this.inputFieldElementModel!.json.validations.isMandatory === 1;
-      this.regex = this.inputFieldElementModel!.json.validations.regex!;
+        this.inputFieldElementModel!.widget.validations.isMandatory === 1;
+      this.regex = this.inputFieldElementModel!.widget.validations.regex!;
       this.parameter_name =
-        this.inputFieldElementModel!.json.validations!.parameterName!;
+        this.inputFieldElementModel!.widget.validations!.parameterName!;
       this.parameter_order =
-        this.inputFieldElementModel!.json.validations.parameterOrder!;
+        this.inputFieldElementModel!.widget.validations.parameterOrder!;
       this.default_value =
-        this.inputFieldElementModel!.json.validations!.parameterDefaultValue!;
-      this.title = this.inputFieldElementModel!.json.fieldTitle!;
-      this.hint = this.inputFieldElementModel!.json.hint!;
+        this.inputFieldElementModel!.widget.validations!.parameterDefaultValue!;
+      this.title = this.inputFieldElementModel!.widget.fieldTitle!;
+      this.hint = this.inputFieldElementModel!.widget.hint!;
     }
   }
 
   onSubmit() {
-    // this.inputFieldElementModel!.json.widget_type =
+    // this.inputFieldElementModel!.widget.widget_type =
     //   AppConstants.WIDGET_INPUT_FIELD;
-    if (this.inputFieldElementModel!.json.validations === undefined) {
-      this.inputFieldElementModel!.json.validations = new Validations();
+    if (this.inputFieldElementModel!.widget.validations === undefined) {
+      this.inputFieldElementModel!.widget.validations = new Validations();
     }
 
-    this.inputFieldElementModel!.json.validations!.maxLength =
+    this.inputFieldElementModel!.widget.validations!.maxLength =
       this.maxLength.toString();
-    this.inputFieldElementModel!.json.validations!.minLength =
+    this.inputFieldElementModel!.widget.validations!.minLength =
       this.minLength.toString();
-    this.inputFieldElementModel!.json.validations!.isMandatory = this.isRequired
+    this.inputFieldElementModel!.widget.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
-    this.inputFieldElementModel!.json.validations!.regex = this.regex;
-    this.inputFieldElementModel!.json.validations!.error_msg = this.error_msg;
-    this.inputFieldElementModel!.json.validations!.parameterDefaultValue =
+    this.inputFieldElementModel!.widget.validations!.regex = this.regex;
+    this.inputFieldElementModel!.widget.validations!.error_msg = this.error_msg;
+    this.inputFieldElementModel!.widget.validations!.parameterDefaultValue =
       this.default_value;
-    this.inputFieldElementModel!.json.validations!.parameterName =
+    this.inputFieldElementModel!.widget.validations!.parameterName =
       this.parameter_name;
-    this.inputFieldElementModel!.json.validations!.parameterOrder =
+    this.inputFieldElementModel!.widget.validations!.parameterOrder =
       this.parameter_order;
-    this.inputFieldElementModel!.json.fieldTitle = this.title;
-    this.inputFieldElementModel!.json.hint = this.hint;
+    this.inputFieldElementModel!.widget.fieldTitle = this.title;
+    this.inputFieldElementModel!.widget.hint = this.hint;
     console.log(this.inputFieldElementModel);
 
     this.elementService.onSaveItem(this.inputFieldElementModel!, this.index);
