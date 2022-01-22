@@ -14,11 +14,11 @@ export class RowComponent implements OnInit {
   @Input() row?: WidgetModel = new WidgetModel({widget_type:AppConstants.WIDGET_ROW,name:'Row'});
 
   onElementClick(item: WidgetModel, index: number) {
-    this.elementService.editRowElementItem(this.row!.widgetConfiguration!.rowConfiguration![index], index);
+    this.elementService.editRowElementItem(this.row!.children![index], index);
   }
 
   removeElement(index: number) {
-    this.row?.widgetConfiguration?.rowConfiguration!.splice(index, 1);
+    this.row?.children!.splice(index, 1);
     this.elementService.removeRowElementItem();
   }
 

@@ -24,7 +24,7 @@ export class ListPropertiesComponent implements OnInit {
 
   onAddRow() {
     this.checkConfiguration();
-    this.listElementModel!.widgetConfiguration?.listConfiguration?.push(
+    this.listElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_ROW,
         name:'Row',
@@ -43,10 +43,8 @@ export class ListPropertiesComponent implements OnInit {
   }
 
   checkConfiguration() {
-    if (this.listElementModel!.widgetConfiguration === undefined) {
-      this.listElementModel!.widgetConfiguration =
-        new WidgetConfiguration();
-      this.listElementModel!.widgetConfiguration!.listConfiguration = [];
+    if (this.listElementModel!.children === undefined) {
+      this.listElementModel!.children = [];
     }
   }
 }

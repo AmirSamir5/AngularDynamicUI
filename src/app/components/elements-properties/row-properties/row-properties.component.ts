@@ -67,7 +67,7 @@ export class RowPropertiesComponent implements OnInit {
 
   onSelectText() {
     this.checkConfiguration();
-    this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
+    this.rowElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_TEXT,
         name:'Text',
@@ -85,7 +85,7 @@ export class RowPropertiesComponent implements OnInit {
 
   onSelectButton() {
     this.checkConfiguration();
-    this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
+    this.rowElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_BUTTON,
         name:'Button',
@@ -103,7 +103,7 @@ export class RowPropertiesComponent implements OnInit {
 
   onSelectIcon() {
     this.checkConfiguration();
-    this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
+    this.rowElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_ICON,
         name:'Icon',
@@ -121,7 +121,7 @@ export class RowPropertiesComponent implements OnInit {
 
   onSelectEmpty() {
     this.checkConfiguration();
-    this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
+    this.rowElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         name:'Empty',
@@ -137,14 +137,11 @@ export class RowPropertiesComponent implements OnInit {
   onSubmit() {
     this.checkConfiguration();
     this.rowElementModel!.widget_type = AppConstants.WIDGET_ROW;
-    // this.listElementModel!.widget.widgetConfiguration!.listConfiguration = 'Add List Configration Object';
   }
 
   checkConfiguration() {
-    if (this.rowElementModel!.widgetConfiguration === undefined) {
-      this.rowElementModel!.widgetConfiguration =
-        new WidgetConfiguration();
-      this.rowElementModel!.widgetConfiguration!.rowConfiguration = [];
+    if (this.rowElementModel!.children === undefined) {
+      this.rowElementModel!.children = [];
     }
   }
 }
