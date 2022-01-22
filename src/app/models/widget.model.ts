@@ -1,5 +1,3 @@
-import { ElementModel } from './element.model';
-import { ListModel } from './list.model';
 import { StyleModel } from './style.model';
 
 export class WidgetModel {
@@ -13,8 +11,56 @@ export class WidgetModel {
   widgetId?: number;
   widgetConfiguration?: WidgetConfiguration;
   widget_type?: string;
-  style: StyleModel = new StyleModel({});
+  name?:string;
+  style: StyleModel;
   dataArray?: string;
+
+  constructor(
+    {
+      validations,
+      fieldTitle,
+      linked_fields,
+      groupName,
+      groupId,
+      fieldId,
+      hint,
+      widgetId,
+      widgetConfiguration,
+      widget_type,
+      name,
+      style,
+      dataArray,
+    }:
+    {
+      validations?: Validations,
+      fieldTitle?: string,
+      linked_fields?: string[],
+      groupName?: string,
+      groupId?: number,
+      fieldId?: number,
+      hint?: string,
+      widgetId?: number,
+      widgetConfiguration?: WidgetConfiguration,
+      widget_type?: string,
+      name?:string,
+      style?:StyleModel,
+      dataArray?:string
+    }
+    ){
+        this.validations = validations;
+        this.fieldTitle = fieldTitle;
+        this.linked_fields = linked_fields;
+        this.groupName = groupName;
+        this.groupId = groupId;
+        this.fieldId = fieldId;
+        this.hint = hint;
+        this.widgetId = widgetId;
+        this.widgetConfiguration = widgetConfiguration;
+        this.widget_type = widget_type;
+        this.name = name;
+        this.style = style ?? new StyleModel({});
+        this.dataArray = dataArray;
+    }
 }
 
 export class Validations {
@@ -44,8 +90,8 @@ export class WidgetConfiguration {
   parentDropDwonId?: string;
   dropDownConfiguration?: DropDownConfiguration;
   fieldConditions?: FieldCondition[];
-  listConfiguration?: ElementModel[];
-  rowConfiguration?: ElementModel[];
+  listConfiguration?: WidgetModel[];
+  rowConfiguration?: WidgetModel[];
 }
 
 export class DropDownConfiguration {

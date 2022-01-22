@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { ElementModel } from 'src/app/models/element.model';
-import { Validations } from 'src/app/models/widget.model';
+import { Validations, WidgetModel } from 'src/app/models/widget.model';
 
 @Component({
   selector: 'app-calendar-properties',
@@ -9,7 +8,7 @@ import { Validations } from 'src/app/models/widget.model';
   styleUrls: ['./calendar-properties.component.css'],
 })
 export class CalendarPropertiesComponent implements OnInit {
-  @Input() calendarElementModel?: ElementModel;
+  @Input() calendarElementModel?: WidgetModel;
   @Input() index: number = 0;
 
   title: string = '';
@@ -20,26 +19,26 @@ export class CalendarPropertiesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if (this.calendarElementModel!.widget.validations === undefined) {
-      this.calendarElementModel!.widget.validations = new Validations();
+    if (this.calendarElementModel!.validations === undefined) {
+      this.calendarElementModel!.validations = new Validations();
     } else {
-      this.title = this.calendarElementModel!.widget.fieldTitle!;
-      this.hint = this.calendarElementModel!.widget.hint!;
+      this.title = this.calendarElementModel!.fieldTitle!;
+      this.hint = this.calendarElementModel!.hint!;
       this.isRequired =
-        this.calendarElementModel!.widget.validations!.isMandatory === 1;
+        this.calendarElementModel!.validations!.isMandatory === 1;
     }
   }
 
   onSubmit() {
-    this.calendarElementModel!.widget.fieldTitle = this.title;
-    this.calendarElementModel!.widget.hint = this.hint;
-    this.calendarElementModel!.widget.validations!.isMandatory = this.isRequired
+    this.calendarElementModel!.fieldTitle = this.title;
+    this.calendarElementModel!.hint = this.hint;
+    this.calendarElementModel!.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
-    this.calendarElementModel!.widget.validations!.parameterName =
+    this.calendarElementModel!.validations!.parameterName =
       this.parameterName;
-    this.calendarElementModel!.widget.validations!.parameterDefaultValue =
+    this.calendarElementModel!.validations!.parameterDefaultValue =
       this.parameterName;
-    this.calendarElementModel!.widget.widget_type = AppConstants.WIDGET_CALENDAR;
+    this.calendarElementModel!.widget_type = AppConstants.WIDGET_CALENDAR;
   }
 }

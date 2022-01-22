@@ -13,7 +13,7 @@
   </div>
   <p>Row Justify</p>
   <select
-    [(ngModel)]="rowElementModel!.widget.style.justify"
+    [(ngModel)]="rowElementModel!.style.justify"
     (change)="onSelectRowJustify()"
   >
     <option [value]="item" *ngFor="let item of justifyArr">
@@ -31,7 +31,7 @@
       <input
         type="checkbox"
         checked="checked"
-        [(ngModel)]="selectedElement.widget.style.expanded"
+        [(ngModel)]="selectedElement.style.expanded"
         (change)="onExpandedChange()"
       />
       <span class="checkmark"></span>
@@ -42,7 +42,7 @@
         type="number"
         class="form-control"
         placeholder="Enter element flex"
-        [(ngModel)]="selectedElement.widget.style.flex"
+        [(ngModel)]="selectedElement.style.flex"
         (input)="getFlexValue($event)"
       />
     </label>
@@ -52,7 +52,7 @@
         type="number"
         class="form-control"
         placeholder="Enter element rowspan"
-        [(ngModel)]="selectedElement.widget.style.rowspan"
+        [(ngModel)]="selectedElement.style.rowspan"
         (input)="getRowSpan($event)"
       />
     </label>
@@ -62,7 +62,7 @@
         type="text"
         class="form-control"
         placeholder="Enter element color string"
-        [(ngModel)]="selectedElement.widget.style.backgroundColor"
+        [(ngModel)]="selectedElement.style.backgroundColor"
         (input)="getBackgroundColorValue($event)"
       />
     </label>
@@ -72,7 +72,7 @@
         type="text"
         class="form-control"
         placeholder="Enter element color"
-        [(ngModel)]="selectedElement.widget.style.color"
+        [(ngModel)]="selectedElement.style.color"
         (input)="getColorValue($event)"
       />
     </label>
@@ -82,7 +82,7 @@
         type="number"
         class="form-control"
         placeholder="Enter element font size"
-        [(ngModel)]="selectedElement.widget.style.fontSize"
+        [(ngModel)]="selectedElement.style.fontSize"
         (input)="getFontSizeValue($event)"
       />
     </label>
@@ -92,7 +92,7 @@
         type="text"
         class="form-control"
         placeholder="Enter element font weight"
-        [(ngModel)]="selectedElement.widget.style.fontWeight"
+        [(ngModel)]="selectedElement.style.fontWeight"
         (input)="getFontWeightValue($event)"
       />
     </label>
@@ -102,7 +102,7 @@
         type="text"
         class="form-control"
         placeholder="Enter element font family"
-        [(ngModel)]="selectedElement.widget.style.fontFamily"
+        [(ngModel)]="selectedElement.style.fontFamily"
         (input)="getFontFamilyValue($event)"
       />
     </label>

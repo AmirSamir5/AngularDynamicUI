@@ -1,44 +1,44 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-  <div [ngSwitch]="item!.type" *ngIf="item">
+  <div [ngSwitch]="item.name" *ngIf="item">
     <div *ngSwitchCase="'Button'">
       <app-button-properties
-        [buttonItem]="item!"
+        [buttonItem]="item"
         [index]="index"
       ></app-button-properties>
     </div>
     <div *ngSwitchCase="'Dropdown'">
       <app-dropdown-properties
-        [dropdownElementModel]="item!"
+        [dropdownElementModel]="item"
         [index]="index"
       ></app-dropdown-properties>
     </div>
-    <div *ngSwitchCase="'Textfield'">
+    <div *ngSwitchCase="'Input Field'">
       <app-textfield-properties
-        [inputFieldElementModel]="item!"
+        [inputFieldElementModel]="item"
         [index]="index"
       ></app-textfield-properties>
     </div>
     <div *ngSwitchCase="'List'">
       <app-list-properties
-        [listElementModel]="item!"
+        [listElementModel]="item"
         [index]="index"
       ></app-list-properties>
     </div>
     <div *ngSwitchCase="'Calendar'">
       <app-calendar-properties
-        [calendarElementModel]="item!"
+        [calendarElementModel]="item"
         [index]="index"
       ></app-calendar-properties>
     </div>
     <div *ngSwitchCase="'Checkbox'">
       <app-checkbox-properties
-        [checkboxElementModel]="item!"
+        [checkboxElementModel]="item"
         [index]="index"
       ></app-checkbox-properties>
     </div>
     <div *ngSwitchCase="'Row'">
       <app-row-properties
-        [rowElementModel]="item!"
+        [rowElementModel]="item"
         [index]="index"
       ></app-row-properties>
     </div>

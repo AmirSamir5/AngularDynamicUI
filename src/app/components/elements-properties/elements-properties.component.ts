@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementModel } from 'src/app/models/element.model';
 import { WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
@@ -9,7 +8,7 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./elements-properties.component.css'],
 })
 export class ElementsPropertiesComponent implements OnInit {
-  item?: ElementModel;
+  item?: WidgetModel;
   index: number = 0;
 
   constructor(private elementService: ElementService) {}

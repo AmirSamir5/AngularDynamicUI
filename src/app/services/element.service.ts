@@ -1,44 +1,43 @@
 import { EventEmitter } from '@angular/core';
-import { ElementModel } from '../models/element.model';
+import { AppConstants } from '../constants/constants';
 import { JSONModel } from '../models/json.model';
 import { WidgetModel } from '../models/widget.model';
 
 export class ElementService {
-  selectedElementsChangedEvent = new EventEmitter<ElementModel[]>();
+  selectedElementsChangedEvent = new EventEmitter<WidgetModel[]>();
   onRemoveElementEvent = new EventEmitter<{
-    make: ElementModel[];
-    name: ElementModel;
+    make: WidgetModel[];
+    name: WidgetModel;
   }>();
-  EditElementEvent = new EventEmitter<{ make: ElementModel; name: number }>();
-  EditRowElementEvent = new EventEmitter<{ make: ElementModel; name: number }>();
+  EditElementEvent = new EventEmitter<{ make: WidgetModel; name: number }>();
+  EditRowElementEvent = new EventEmitter<{ make: WidgetModel; name: number }>();
   RemoveRowElementEvent = new EventEmitter();
 
-  readonly elements: ElementModel[] = [
-    new ElementModel('Dropdown', new WidgetModel()),
-    new ElementModel('Textfield', new WidgetModel()),
-    new ElementModel('Button',  new WidgetModel()),
-    new ElementModel('List',  new WidgetModel()),
-    new ElementModel('Row',  new WidgetModel()),
-    new ElementModel('Calendar', new WidgetModel()),
-    new ElementModel('Checkbox', new WidgetModel()),
+  readonly elements: WidgetModel[] = [
+    new WidgetModel({widget_type:AppConstants.WIDGET_DROPDOWN,name:'Dropdown'}),
+    new WidgetModel({widget_type:AppConstants.WIDGET_INPUT_FIELD,name:'Input Field'}),
+    new WidgetModel({widget_type:AppConstants.WIDGET_SUBMIT_BUTTON,name:'Button'}),
+    new WidgetModel({widget_type:AppConstants.WIDGET_LIST,name:'List'}),
+    new WidgetModel({widget_type:AppConstants.WIDGET_ROW,name:'Row'}),
+    new WidgetModel({widget_type:AppConstants.WIDGET_CALENDAR,name:'Calendar'}),
+    new WidgetModel({widget_type:AppConstants.WIDGET_CHECKBOX,name:'Checkbox'}),
   ];
 
   public screenName:string = '';
 
-  public selectedElements: ElementModel[] = [];
+  public selectedElements: WidgetModel[] = [];
 
   getElements() {
     return this.elements.slice();
   }
 
-  addSelectedItems(selectedElement: ElementModel) {
-    var element = new ElementModel(selectedElement.type, new WidgetModel());
-    this.selectedElements.push(element);
+  addSelectedItems(selectedElement: WidgetModel) {
+    this.selectedElements.push(selectedElement);
     this.selectedElementsChangedEvent.emit(this.selectedElements);
   }
 
   removeSelectedItems(index: number) {
-    var element: ElementModel = this.selectedElements[index];
+    var element: WidgetModel = this.selectedElements[index];
     this.selectedElements.splice(index, 1);
     this.onRemoveElementEvent.emit({
       make: this.selectedElements,
@@ -46,17 +45,17 @@ export class ElementService {
     });
   }
 
-  editSelectedItem(item: ElementModel, index: number) {
+  editSelectedItem(item: WidgetModel, index: number) {
     this.EditElementEvent.emit({ make: item, name: index });
   }
 
-  onSaveItem(item: ElementModel, index: number) {
+  onSaveItem(item: WidgetModel, index: number) {
     this.selectedElements[index] = item;
     this.selectedElementsChangedEvent.emit(this.selectedElements);
     console.log(this.selectedElements);
   }
 
-  editRowElementItem(item: ElementModel, index: number) {
+  editRowElementItem(item: WidgetModel, index: number) {
     this.EditRowElementEvent.emit({ make: item, name: index });
   }
 

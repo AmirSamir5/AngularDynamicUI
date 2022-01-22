@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementModel } from 'src/app/models/element.model';
+import { WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -8,15 +8,15 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./elements.component.css']
 })
 export class ElementsComponent implements OnInit {
-  items:ElementModel[] = [];
-  selectedElement?:ElementModel;
+  items:WidgetModel[] = [];
+  selectedElement?:WidgetModel;
   constructor(private elementService:ElementService) { }
 
   ngOnInit(): void {
     this.items = this.elementService.getElements();
   }
 
-  elementOnClick(selectedElement:ElementModel){
+  elementOnClick(selectedElement:WidgetModel){
     this.selectedElement = selectedElement;
     this.elementService.addSelectedItems(selectedElement);
   }

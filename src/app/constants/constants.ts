@@ -1,15 +1,18 @@
 export class AppConstants {
+  public static JUSTIFY_LIST = [
+    'start', 'end', 'space-between', 'space-evenly', 'space-around',  
+  ];
   public static WIDGET_SUBMIT_BUTTON = 'WidgetType.submitButton';
   public static WIDGET_LIST = 'WidgetType.list';
   public static WIDGET_INPUT_FIELD = 'WidgetType.inputField';
   public static WIDGET_DROPDOWN = 'WidgetType.Dropdown';
-
-  public static JUSTIFY_LIST = [
-    'start', 'end', 'space-between', 'space-evenly', 'space-around',  
-  ];
   public static WIDGET_CALENDAR = 'WidgetType.calender';
   public static WIDGET_CHECKBOX = 'WidgetType.checkbox';
   public static WIDGET_ROW = 'WidgetType.row';
+  public static WIDGET_BUTTON = 'WidgetType.button';
+  public static WIDGET_TEXT = 'WidgetType.text';
+  public static WIDGET_CONTAINER = 'WidgetType.container';
+
 
   public static LOOKUP_LISTS = [
     {

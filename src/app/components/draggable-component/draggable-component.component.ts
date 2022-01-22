@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { ElementModel } from 'src/app/models/element.model';
+import { WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -12,8 +12,8 @@ export class DraggableComponentComponent implements OnInit {
   height = 350;
   title = 'appbar title';
   i = 0;
-  selectedElements: ElementModel[] = [];
-  selectedElement?: ElementModel;
+  selectedElements: WidgetModel[] = [];
+  selectedElement?: WidgetModel;
   show: boolean = false;
 
   constructor(private elementService: ElementService) {}
@@ -29,7 +29,7 @@ export class DraggableComponentComponent implements OnInit {
     );
   }
 
-  drag(event: CdkDragDrop<ElementModel[]>) {
+  drag(event: CdkDragDrop<WidgetModel[]>) {
     console.log(
       event.container,
       event.previousContainer,
@@ -50,7 +50,7 @@ export class DraggableComponentComponent implements OnInit {
     this.elementService.removeSelectedItems(index);
   }
 
-  onClickElement(item: ElementModel, index: number) {
+  onClickElement(item: WidgetModel, index: number) {
     this.i = index;
     this.selectedElement = item;
     var component = this.elementService.editSelectedItem(item, index);

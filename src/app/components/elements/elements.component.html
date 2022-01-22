@@ -5,14 +5,14 @@
     class="example-item"
     (click)="elementOnClick(item)"
   >
-    <div [ngSwitch]="item.type">
+    <div [ngSwitch]="item.name">
       <div *ngSwitchCase="'Button'">
         <app-button></app-button>
       </div>
       <div *ngSwitchCase="'Dropdown'">
         <app-dropdown></app-dropdown>
       </div>
-      <div *ngSwitchCase="'Textfield'">
+      <div *ngSwitchCase="'Input Field'">
         <app-textfield></app-textfield>
       </div>
       <div *ngSwitchCase="'List'">

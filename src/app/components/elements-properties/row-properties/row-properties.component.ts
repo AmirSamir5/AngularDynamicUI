@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { ElementModel } from 'src/app/models/element.model';
 import { ListModel } from 'src/app/models/list.model';
 import { StyleModel } from 'src/app/models/style.model';
 import { WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
@@ -12,9 +11,9 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./row-properties.component.css'],
 })
 export class RowPropertiesComponent implements OnInit {
-  @Input() rowElementModel?: ElementModel;
+  @Input() rowElementModel?: WidgetModel;
   @Input() index: number = 0;
-  selectedElement?:ElementModel;
+  selectedElement?:WidgetModel;
   listIndex: number = 0;
   justifyArr = AppConstants.JUSTIFY_LIST;
 
@@ -25,7 +24,7 @@ export class RowPropertiesComponent implements OnInit {
   ngOnInit(): void {
     this.elementService.EditRowElementEvent.subscribe(
       ({ make: itemList, name: index }) => {
-        this.rowElementModel!.widget.widgetConfiguration!.rowConfiguration![index] = itemList;
+        this.rowElementModel!.widgetConfiguration!.rowConfiguration![index] = itemList;
         this.listIndex = index;
         this.selectedElement = itemList;
       }
@@ -36,8 +35,8 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   onExpandedChange() {
-    this.selectedElement!.widget.style.flex = undefined;
-    this.rowElementModel!.widget.style.justify = '';
+    this.selectedElement!.style.flex = undefined;
+    this.rowElementModel!.style.justify = '';
     // this.listService.onEditElementEvent.emit({
     //   make: this.selectedElement!,
     //   name: this.listIndex,
@@ -45,8 +44,8 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   getFlexValue(event) {
-    this.selectedElement!.widget.style.expanded = false;
-    this.selectedElement!.widget!.style.flex = event.target.value;
+    this.selectedElement!.style.expanded = false;
+    this.selectedElement!.style.flex = event.target.value;
     // this.listService.onEditElementEvent.emit({
     //   make: this.selectedElement!,
     //   name: this.listIndex,
@@ -54,7 +53,7 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   getRowSpan(event) {
-    this.selectedElement!.widget.style.rowspan = event.target.value;
+    this.selectedElement!.style.rowspan = event.target.value;
     // this.listService.onEditElementEvent.emit({
     //   make: this.selectedElement!,
     //   name: this.listIndex,
@@ -62,7 +61,7 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   getBackgroundColorValue(event) {
-    this.selectedElement!.widget!.style.backgroundColor = event.target.value;
+    this.selectedElement!.style.backgroundColor = event.target.value;
     // this.listService.onEditElementEvent.emit({
     //   make: this.selectedElement!,
     //   name: this.listIndex,
@@ -70,7 +69,7 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   getColorValue(event) {
-    this.selectedElement!.widget.style.color = event.target.value;
+    this.selectedElement!.style.color = event.target.value;
     // this.listService.onEditElementEvent.emit({
     //   make: this.selectedElement!,
     //   name: this.listIndex,
@@ -78,7 +77,7 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   getFontSizeValue(event) {
-    this.selectedElement!.widget.style.fontSize = event.target.value;
+    this.selectedElement!.style.fontSize = event.target.value;
     // this.listService.onEditElementEvent.emit({
     //   make: this.selectedElement!,
     //   name: this.listIndex,
@@ -86,7 +85,7 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   getFontFamilyValue(event) {
-    this.selectedElement!.widget.style.fontFamily = event.target.value;
+    this.selectedElement!.style.fontFamily = event.target.value;
     // this.listService.onEditElementEvent.emit({
     //   make: this.selectedElement!,
     //   name: this.listIndex,
@@ -94,7 +93,7 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   getFontWeightValue(event) {
-    this.selectedElement!.widget.style.fontWeight = event.target.value;
+    this.selectedElement!.style.fontWeight = event.target.value;
     // this.listService.onEditElementEvent.emit({
     //   make: this.selectedElement!,
     //   name: this.listIndex,
@@ -107,9 +106,9 @@ export class RowPropertiesComponent implements OnInit {
 
   onSelectText() {
     this.checkConfiguration();
-    this.rowElementModel!.widget.widgetConfiguration?.rowConfiguration?.push(
-      new ElementModel('Text',{
-        widget_type: 'Text',
+    this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
+      new WidgetModel({
+        widget_type: AppConstants.WIDGET_TEXT,
         style: new StyleModel({
           rowspan: 1,
           backgroundColor: 'lightblue',
@@ -124,27 +123,26 @@ export class RowPropertiesComponent implements OnInit {
 
   onSelectButton() {
     this.checkConfiguration();
-    this.rowElementModel!.widget.widgetConfiguration?.rowConfiguration?.push(
-      new ElementModel('Button',{
-        widget_type: 'Button',
-
-      style: new StyleModel({
-        rowspan: 1,
-        backgroundColor: 'lightgreen',
-        color: 'black',
-        fontFamily: 'Robota-Regular',
-        fontSize: 12,
-        fontWeight: 'normal',
-      }),
+    this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
+      new WidgetModel({
+        widget_type: AppConstants.WIDGET_BUTTON,
+        style: new StyleModel({
+          rowspan: 1,
+          backgroundColor: 'lightgreen',
+          color: 'black',
+          fontFamily: 'Robota-Regular',
+          fontSize: 12,
+          fontWeight: 'normal',
+        }),
     }));
     // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSelectEmpty() {
     this.checkConfiguration();
-    this.rowElementModel!.widget.widgetConfiguration?.rowConfiguration?.push(
-      new ElementModel('Container',{
-        widget_type: 'Container',
+    this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
+      new WidgetModel({
+        widget_type: AppConstants.WIDGET_CONTAINER,
       style: new StyleModel({
         rowspan: 1,
         backgroundColor: 'white',
@@ -156,15 +154,15 @@ export class RowPropertiesComponent implements OnInit {
 
   onSubmit() {
     this.checkConfiguration();
-    this.rowElementModel!.widget.widget_type = AppConstants.WIDGET_ROW;
+    this.rowElementModel!.widget_type = AppConstants.WIDGET_ROW;
     // this.listElementModel!.widget.widgetConfiguration!.listConfiguration = 'Add List Configration Object';
   }
 
   checkConfiguration() {
-    if (this.rowElementModel!.widget.widgetConfiguration === undefined) {
-      this.rowElementModel!.widget.widgetConfiguration =
+    if (this.rowElementModel!.widgetConfiguration === undefined) {
+      this.rowElementModel!.widgetConfiguration =
         new WidgetConfiguration();
-      this.rowElementModel!.widget.widgetConfiguration!.rowConfiguration = [];
+      this.rowElementModel!.widgetConfiguration!.rowConfiguration = [];
     }
   }
 }

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { ElementModel } from 'src/app/models/element.model';
 import { WidgetModel, Validations } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
@@ -20,64 +19,64 @@ export class TextfieldPropertiesComponent implements OnInit {
   parameter_name: string = '';
   parameter_order: number = 0;
   default_value: string = '';
-  @Input() inputFieldElementModel?: ElementModel;
+  @Input() inputFieldElementModel?: WidgetModel;
   @Input() index: number = 0;
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
     console.log('ngOnInit', this.inputFieldElementModel);
-    if (this.inputFieldElementModel!.widget.validations === undefined) {
-      this.inputFieldElementModel!.widget.validations = new Validations();
-      this.inputFieldElementModel!.widget.validations.isMandatory = 0;
-      this.inputFieldElementModel!.widget.validations.maxLength = '';
-      this.inputFieldElementModel!.widget.validations.minLength = '';
-      this.inputFieldElementModel!.widget.validations.regex = '';
-      this.inputFieldElementModel!.widget.validations.error_msg = '';
+    if (this.inputFieldElementModel!.validations === undefined) {
+      this.inputFieldElementModel!.validations = new Validations();
+      this.inputFieldElementModel!.validations.isMandatory = 0;
+      this.inputFieldElementModel!.validations.maxLength = '';
+      this.inputFieldElementModel!.validations.minLength = '';
+      this.inputFieldElementModel!.validations.regex = '';
+      this.inputFieldElementModel!.validations.error_msg = '';
     } else {
       this.minLength = Number.parseInt(
-        this.inputFieldElementModel!.widget.validations.minLength!
+        this.inputFieldElementModel!.validations.minLength!
       );
       this.maxLength = Number.parseInt(
-        this.inputFieldElementModel?.widget.validations.maxLength!
+        this.inputFieldElementModel?.validations.maxLength!
       );
       this.isRequired =
-        this.inputFieldElementModel!.widget.validations.isMandatory === 1;
-      this.regex = this.inputFieldElementModel!.widget.validations.regex!;
+        this.inputFieldElementModel!.validations.isMandatory === 1;
+      this.regex = this.inputFieldElementModel!.validations.regex!;
       this.parameter_name =
-        this.inputFieldElementModel!.widget.validations!.parameterName!;
+        this.inputFieldElementModel!.validations!.parameterName!;
       this.parameter_order =
-        this.inputFieldElementModel!.widget.validations.parameterOrder!;
+        this.inputFieldElementModel!.validations.parameterOrder!;
       this.default_value =
-        this.inputFieldElementModel!.widget.validations!.parameterDefaultValue!;
-      this.title = this.inputFieldElementModel!.widget.fieldTitle!;
-      this.hint = this.inputFieldElementModel!.widget.hint!;
+        this.inputFieldElementModel!.validations!.parameterDefaultValue!;
+      this.title = this.inputFieldElementModel!.fieldTitle!;
+      this.hint = this.inputFieldElementModel!.hint!;
     }
   }
 
   onSubmit() {
-    // this.inputFieldElementModel!.widget.widget_type =
+    // this.inputFieldElementModel!_type =
     //   AppConstants.WIDGET_INPUT_FIELD;
-    if (this.inputFieldElementModel!.widget.validations === undefined) {
-      this.inputFieldElementModel!.widget.validations = new Validations();
+    if (this.inputFieldElementModel!.validations === undefined) {
+      this.inputFieldElementModel!.validations = new Validations();
     }
 
-    this.inputFieldElementModel!.widget.validations!.maxLength =
+    this.inputFieldElementModel!.validations!.maxLength =
       this.maxLength.toString();
-    this.inputFieldElementModel!.widget.validations!.minLength =
+    this.inputFieldElementModel!.validations!.minLength =
       this.minLength.toString();
-    this.inputFieldElementModel!.widget.validations!.isMandatory = this.isRequired
+    this.inputFieldElementModel!.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
-    this.inputFieldElementModel!.widget.validations!.regex = this.regex;
-    this.inputFieldElementModel!.widget.validations!.error_msg = this.error_msg;
-    this.inputFieldElementModel!.widget.validations!.parameterDefaultValue =
+    this.inputFieldElementModel!.validations!.regex = this.regex;
+    this.inputFieldElementModel!.validations!.error_msg = this.error_msg;
+    this.inputFieldElementModel!.validations!.parameterDefaultValue =
       this.default_value;
-    this.inputFieldElementModel!.widget.validations!.parameterName =
+    this.inputFieldElementModel!.validations!.parameterName =
       this.parameter_name;
-    this.inputFieldElementModel!.widget.validations!.parameterOrder =
+    this.inputFieldElementModel!.validations!.parameterOrder =
       this.parameter_order;
-    this.inputFieldElementModel!.widget.fieldTitle = this.title;
-    this.inputFieldElementModel!.widget.hint = this.hint;
+    this.inputFieldElementModel!.fieldTitle = this.title;
+    this.inputFieldElementModel!.hint = this.hint;
     console.log(this.inputFieldElementModel);
 
     this.elementService.onSaveItem(this.inputFieldElementModel!, this.index);

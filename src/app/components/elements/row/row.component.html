@@ -1,25 +1,25 @@
 <div class="example-boundary">
   <div
     class="row"
-    [style.justify-content]="row!.widget.style.justify"
+    [style.justify-content]="row!.style.justify"
     cdkDropList
-    [cdkDropListData]="row!.widget.widgetConfiguration?.rowConfiguration!"
+    [cdkDropListData]="row!.widgetConfiguration?.rowConfiguration!"
     cdkDragBoundary=".example-boundary"
     (cdkDropListDropped)="drag($event)"
   >
     <div
-      *ngFor="let rowContent of row!.widget.widgetConfiguration?.rowConfiguration!; let index = index"
+      *ngFor="let rowContent of row!.widgetConfiguration?.rowConfiguration!; let index = index"
       cdkDrag
-      [ngClass]="getItemFlex(rowContent.widget)"
-      [style.backgroundColor]="rowContent.widget.style.backgroundColor ?? 'white'"
-      [style.color]="rowContent.widget.style.color ?? 'black'"
-      [style.width]="rowContent.widget.style.expanded ? '100%' : undefined"
-      [style.font-size.px]="rowContent.widget.style.fontSize"
-      [style.font-weight]="rowContent.widget.style.fontWeight"
-      [style.font-family]="rowContent.widget.style.fontFamily"
+      [ngClass]="getItemFlex(rowContent)"
+      [style.backgroundColor]="rowContent.style.backgroundColor ?? 'white'"
+      [style.color]="rowContent.style.color ?? 'black'"
+      [style.width]="rowContent.style.expanded ? '100%' : undefined"
+      [style.font-size.px]="rowContent.style.fontSize"
+      [style.font-weight]="rowContent.style.fontWeight"
+      [style.font-family]="rowContent.style.fontFamily"
       (click)="onElementClick(rowContent, index)"
     >
-      {{ rowContent.widget.widget_type }}
+      {{ rowContent.widget_type }}
 
       <span class="close" (click)="removeElement(index)">&times;</span>
     </div>

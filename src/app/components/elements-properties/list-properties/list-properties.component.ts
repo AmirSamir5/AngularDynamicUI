@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { ElementModel } from 'src/app/models/element.model';
 import { ListModel } from 'src/app/models/list.model';
 import { StyleModel } from 'src/app/models/style.model';
 import { WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
@@ -12,9 +11,9 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./list-properties.component.css'],
 })
 export class ListPropertiesComponent implements OnInit {
-  @Input() listElementModel?: ElementModel;
+  @Input() listElementModel?: WidgetModel;
   @Input() index: number = 0;
-  item?: ElementModel;
+  item?: WidgetModel;
   listIndex: number = 0;
 
   constructor(
@@ -26,10 +25,9 @@ export class ListPropertiesComponent implements OnInit {
 
   onAddRow() {
     this.checkConfiguration();
-    this.listElementModel!.widget.widgetConfiguration?.listConfiguration?.push(
-      new ElementModel(
-        'Row',{
-        widget_type: '',
+    this.listElementModel!.widgetConfiguration?.listConfiguration?.push(
+      new WidgetModel({
+        widget_type: AppConstants.WIDGET_ROW,
         style: new StyleModel({
           flex: 6,
           rowspan: 1,
@@ -41,14 +39,14 @@ export class ListPropertiesComponent implements OnInit {
 
   onSubmit() {
     this.checkConfiguration();
-    this.listElementModel!.widget.widget_type = AppConstants.WIDGET_LIST;
+    this.listElementModel!.widget_type = AppConstants.WIDGET_LIST;
   }
 
   checkConfiguration() {
-    if (this.listElementModel!.widget.widgetConfiguration === undefined) {
-      this.listElementModel!.widget.widgetConfiguration =
+    if (this.listElementModel!.widgetConfiguration === undefined) {
+      this.listElementModel!.widgetConfiguration =
         new WidgetConfiguration();
-      this.listElementModel!.widget.widgetConfiguration!.listConfiguration = [];
+      this.listElementModel!.widgetConfiguration!.listConfiguration = [];
     }
   }
 }
