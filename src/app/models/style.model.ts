@@ -7,9 +7,16 @@ export class StyleModel {
     fontWeight?: string;
     fontFamily?: string;
     justify?: string;
-    padding?: string;
-    margin?: string;
+    padding?: EdgeInsetsModel;
+    margin?: EdgeInsetsModel;
     expanded: boolean = false;
+    mainAxisAlignment?:string;
+    mainAxisSize?:string;
+    crossAxisAlignment?:string;
+    textDirection?:string;
+    verticalDirection?:string;
+    height?:number;
+    width?:number;
 
     constructor(
     {
@@ -34,8 +41,8 @@ export class StyleModel {
         fontWeight?: string,
         fontFamily?: string,
         justify?: string,
-        padding?: string,
-        margin?: string,
+        padding?: EdgeInsetsModel,
+        margin?: EdgeInsetsModel,
         expanded?:boolean
     }
     ){
@@ -51,4 +58,11 @@ export class StyleModel {
         this.margin = margin;
         this.expanded = expanded ?? false;
     }
+  }
+
+  export class EdgeInsetsModel{
+      top?:number;
+      bottom?:number;
+      left?:number;
+      right?:number;
   }

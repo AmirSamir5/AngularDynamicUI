@@ -14,6 +14,13 @@ export class WidgetModel {
   name?:string;
   style: StyleModel;
   dataArray?: string;
+  dataMapId?:string;
+  dataIdInMap?:number;
+  parameterDefaultValue?:string;
+  parameterName?:string;
+  parameterOrder?:string;
+  child?:WidgetModel;
+  children?:WidgetModel[];
 
   constructor(
     {
@@ -92,6 +99,18 @@ export class WidgetConfiguration {
   fieldConditions?: FieldCondition[];
   listConfiguration?: WidgetModel[];
   rowConfiguration?: WidgetModel[];
+  clickableConfiguration?:ClickableConfiguration;
+}
+
+export class ClickableConfiguration{
+  type?:string;
+  passedKeys?:number[];
+  destination_screen_lookUp?:DestinationScreenLookup;
+}
+
+export class DestinationScreenLookup{
+  name?:string;
+  type?:string;
 }
 
 export class DropDownConfiguration {

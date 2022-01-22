@@ -13,6 +13,8 @@ export class AppConstants {
   public static WIDGET_ICON = 'WidgetType.icon';
   public static WIDGET_TEXT = 'WidgetType.text';
   public static WIDGET_CONTAINER = 'WidgetType.container';
+  public static WIDGET_TEXT_VIEW = 'WidgetType.textView';
+  public static WIDGET_CENTER = 'WidgetType.center';
 
 
   public static LOOKUP_LISTS = [
