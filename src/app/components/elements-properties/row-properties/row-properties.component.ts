@@ -12,13 +12,14 @@ import { ElementService } from 'src/app/services/element.service';
 export class RowPropertiesComponent implements OnInit {
   @Input() rowElementModel?: WidgetModel;
   @Input() index: number = 0;
-  selectedElement?:WidgetModel;
+  selectedElement?: WidgetModel;
   listIndex: number = 0;
   justifyArr = AppConstants.JUSTIFY_LIST;
+  mainAxisSizeArr = AppConstants.MAIN_AXIS_SIZE_LIST;
+  textDirectionArr = AppConstants.TEXT_DIRECTION_LIST;
+  varticalDirectionArr = AppConstants.VERTICAL_DIRECTION_LIST;
 
-  constructor(
-    private elementService: ElementService,
-  ) {}
+  constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
     this.elementService.EditRowElementEvent.subscribe(
@@ -26,9 +27,9 @@ export class RowPropertiesComponent implements OnInit {
         this.selectedElement = itemList;
       }
     );
-    this.elementService.RemoveRowElementEvent.subscribe(()=>{
+    this.elementService.RemoveRowElementEvent.subscribe(() => {
       this.selectedElement = undefined;
-    })
+    });
   }
 
   onExpandedChange() {
@@ -70,7 +71,7 @@ export class RowPropertiesComponent implements OnInit {
     this.rowElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_TEXT,
-        name:'Text',
+        name: 'Text',
         style: new StyleModel({
           rowspan: 1,
           backgroundColor: 'white',
@@ -79,7 +80,8 @@ export class RowPropertiesComponent implements OnInit {
           fontSize: 12,
           fontWeight: 'normal',
         }),
-      }));
+      })
+    );
     // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
@@ -88,7 +90,7 @@ export class RowPropertiesComponent implements OnInit {
     this.rowElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_BUTTON,
-        name:'Button',
+        name: 'Button',
         style: new StyleModel({
           rowspan: 1,
           backgroundColor: 'deeppink',
@@ -97,7 +99,8 @@ export class RowPropertiesComponent implements OnInit {
           fontSize: 12,
           fontWeight: 'normal',
         }),
-    }));
+      })
+    );
     // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
@@ -106,7 +109,7 @@ export class RowPropertiesComponent implements OnInit {
     this.rowElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_ICON,
-        name:'Icon',
+        name: 'Icon',
         style: new StyleModel({
           rowspan: 1,
           backgroundColor: 'deeppink',
@@ -115,7 +118,8 @@ export class RowPropertiesComponent implements OnInit {
           fontSize: 12,
           fontWeight: 'normal',
         }),
-    }));
+      })
+    );
     // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
@@ -124,13 +128,14 @@ export class RowPropertiesComponent implements OnInit {
     this.rowElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
-        name:'Empty',
+        name: 'Empty',
         style: new StyleModel({
           rowspan: 1,
           backgroundColor: 'white',
         }),
-    }));
-      
+      })
+    );
+
     // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 

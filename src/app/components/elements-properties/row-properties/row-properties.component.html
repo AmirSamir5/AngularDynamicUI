@@ -14,11 +14,35 @@
       Empty
     </button>
   </div>
-  <p>Row Justify</p>
+  <p>Row Main Axis Alignment</p>
   <select
-    [(ngModel)]="rowElementModel!.style.justify"
+    [(ngModel)]="rowElementModel!.style.mainAxisAlignment"
   >
     <option [value]="item" *ngFor="let item of justifyArr">
+      {{ item }}
+    </option>
+  </select>
+  <p>Row Main Axis Size</p>
+  <select
+    [(ngModel)]="rowElementModel!.style.mainAxisSize"
+  >
+    <option [value]="item" *ngFor="let item of mainAxisSizeArr">
+      {{ item }}
+    </option>
+  </select>
+  <p>Row Text Direction</p>
+  <select
+    [(ngModel)]="rowElementModel!.style.textDirection"
+  >
+    <option [value]="item" *ngFor="let item of textDirectionArr">
+      {{ item }}
+    </option>
+  </select>
+  <p>Row Vertical Direction</p>
+  <select
+    [(ngModel)]="rowElementModel!.style.verticalDirection"
+  >
+    <option [value]="item" *ngFor="let item of varticalDirectionArr">
       {{ item }}
     </option>
   </select>

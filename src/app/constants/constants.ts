@@ -1,7 +1,14 @@
 export class AppConstants {
   public static JUSTIFY_LIST = [
-    'start', 'end', 'space-between', 'space-evenly', 'space-around',  
+    'start',
+    'end',
+    'space-between',
+    'space-evenly',
+    'space-around',
   ];
+  public static MAIN_AXIS_SIZE_LIST = ['max', 'min'];
+  public static TEXT_DIRECTION_LIST = ['ltr', 'rtl'];
+  public static VERTICAL_DIRECTION_LIST = ['up', 'down'];
   public static WIDGET_SUBMIT_BUTTON = 'WidgetType.submitButton';
   public static WIDGET_LIST = 'WidgetType.list';
   public static WIDGET_INPUT_FIELD = 'WidgetType.inputField';
@@ -15,7 +22,6 @@ export class AppConstants {
   public static WIDGET_CONTAINER = 'WidgetType.container';
   public static WIDGET_TEXT_VIEW = 'WidgetType.textView';
   public static WIDGET_CENTER = 'WidgetType.center';
-
 
   public static LOOKUP_LISTS = [
     {
