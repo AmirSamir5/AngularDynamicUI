@@ -17,9 +17,9 @@
       [style.font-size.px]="rowContent.style.fontSize"
       [style.font-weight]="rowContent.style.fontWeight"
       [style.font-family]="rowContent.style.fontFamily"
-      (click)="onElementClick(rowContent, index)"
+      (click)="onElementClick(rowContent, index);$event.stopPropagation()"
     >
-      {{ rowContent.widget_type }}
+      {{ rowContent.name }}
 
       <span class="close" (click)="removeElement(index)">&times;</span>
     </div>

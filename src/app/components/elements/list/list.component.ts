@@ -1,7 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { ListModel } from 'src/app/models/list.model';
 import { WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
@@ -21,6 +20,7 @@ export class ListComponent implements OnInit {
 
   onRowSelected(item: WidgetModel, index: number) {
     this.elementService.editSelectedItem(item, index);
+    this.elementService.removeRowElementItem();
   }
 
   removeElement(index: number) {

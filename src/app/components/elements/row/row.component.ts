@@ -11,7 +11,7 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./row.component.css'],
 })
 export class RowComponent implements OnInit {
-  @Input() row?: WidgetModel = new WidgetModel({widget_type:AppConstants.WIDGET_ROW});
+  @Input() row?: WidgetModel = new WidgetModel({widget_type:AppConstants.WIDGET_ROW,name:'Row'});
 
   onElementClick(item: WidgetModel, index: number) {
     this.elementService.editRowElementItem(this.row!.widgetConfiguration!.rowConfiguration![index], index);

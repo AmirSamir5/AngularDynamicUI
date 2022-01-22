@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { ListModel } from 'src/app/models/list.model';
 import { StyleModel } from 'src/app/models/style.model';
 import { WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
@@ -28,6 +27,7 @@ export class ListPropertiesComponent implements OnInit {
     this.listElementModel!.widgetConfiguration?.listConfiguration?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_ROW,
+        name:'Row',
         style: new StyleModel({
           flex: 6,
           rowspan: 1,

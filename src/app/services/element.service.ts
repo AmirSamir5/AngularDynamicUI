@@ -32,7 +32,8 @@ export class ElementService {
   }
 
   addSelectedItems(selectedElement: WidgetModel) {
-    this.selectedElements.push(selectedElement);
+    var element = new WidgetModel({widget_type:selectedElement.widget_type,name:selectedElement.name});
+    this.selectedElements.push(element);
     this.selectedElementsChangedEvent.emit(this.selectedElements);
   }
 

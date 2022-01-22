@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { ListModel } from 'src/app/models/list.model';
 import { StyleModel } from 'src/app/models/style.model';
 import { WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
@@ -24,8 +23,6 @@ export class RowPropertiesComponent implements OnInit {
   ngOnInit(): void {
     this.elementService.EditRowElementEvent.subscribe(
       ({ make: itemList, name: index }) => {
-        this.rowElementModel!.widgetConfiguration!.rowConfiguration![index] = itemList;
-        this.listIndex = index;
         this.selectedElement = itemList;
       }
     );
@@ -37,71 +34,35 @@ export class RowPropertiesComponent implements OnInit {
   onExpandedChange() {
     this.selectedElement!.style.flex = undefined;
     this.rowElementModel!.style.justify = '';
-    // this.listService.onEditElementEvent.emit({
-    //   make: this.selectedElement!,
-    //   name: this.listIndex,
-    // });
   }
 
   getFlexValue(event) {
     this.selectedElement!.style.expanded = false;
     this.selectedElement!.style.flex = event.target.value;
-    // this.listService.onEditElementEvent.emit({
-    //   make: this.selectedElement!,
-    //   name: this.listIndex,
-    // });
   }
 
   getRowSpan(event) {
     this.selectedElement!.style.rowspan = event.target.value;
-    // this.listService.onEditElementEvent.emit({
-    //   make: this.selectedElement!,
-    //   name: this.listIndex,
-    // });
   }
 
   getBackgroundColorValue(event) {
     this.selectedElement!.style.backgroundColor = event.target.value;
-    // this.listService.onEditElementEvent.emit({
-    //   make: this.selectedElement!,
-    //   name: this.listIndex,
-    // });
   }
 
   getColorValue(event) {
     this.selectedElement!.style.color = event.target.value;
-    // this.listService.onEditElementEvent.emit({
-    //   make: this.selectedElement!,
-    //   name: this.listIndex,
-    // });
   }
 
   getFontSizeValue(event) {
     this.selectedElement!.style.fontSize = event.target.value;
-    // this.listService.onEditElementEvent.emit({
-    //   make: this.selectedElement!,
-    //   name: this.listIndex,
-    // });
   }
 
   getFontFamilyValue(event) {
     this.selectedElement!.style.fontFamily = event.target.value;
-    // this.listService.onEditElementEvent.emit({
-    //   make: this.selectedElement!,
-    //   name: this.listIndex,
-    // });
   }
 
   getFontWeightValue(event) {
     this.selectedElement!.style.fontWeight = event.target.value;
-    // this.listService.onEditElementEvent.emit({
-    //   make: this.selectedElement!,
-    //   name: this.listIndex,
-    // });
-  }
-
-  onSelectRowJustify() {
-    // this.listService.onSetRowStyle(this.rowElementModel!.widget.style);
   }
 
   onSelectText() {
@@ -109,10 +70,11 @@ export class RowPropertiesComponent implements OnInit {
     this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_TEXT,
+        name:'Text',
         style: new StyleModel({
           rowspan: 1,
-          backgroundColor: 'lightblue',
-          color: 'white',
+          backgroundColor: 'white',
+          color: 'black',
           fontFamily: 'Robota-Regular',
           fontSize: 12,
           fontWeight: 'normal',
@@ -126,10 +88,29 @@ export class RowPropertiesComponent implements OnInit {
     this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_BUTTON,
+        name:'Button',
         style: new StyleModel({
           rowspan: 1,
-          backgroundColor: 'lightgreen',
-          color: 'black',
+          backgroundColor: 'deeppink',
+          color: 'white',
+          fontFamily: 'Robota-Regular',
+          fontSize: 12,
+          fontWeight: 'normal',
+        }),
+    }));
+    // this.elementService.onSaveItem(this.listElementModel!, this.index);
+  }
+
+  onSelectIcon() {
+    this.checkConfiguration();
+    this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
+      new WidgetModel({
+        widget_type: AppConstants.WIDGET_ICON,
+        name:'Icon',
+        style: new StyleModel({
+          rowspan: 1,
+          backgroundColor: 'deeppink',
+          color: 'white',
           fontFamily: 'Robota-Regular',
           fontSize: 12,
           fontWeight: 'normal',
@@ -143,10 +124,11 @@ export class RowPropertiesComponent implements OnInit {
     this.rowElementModel!.widgetConfiguration?.rowConfiguration?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
-      style: new StyleModel({
-        rowspan: 1,
-        backgroundColor: 'white',
-      }),
+        name:'Empty',
+        style: new StyleModel({
+          rowspan: 1,
+          backgroundColor: 'white',
+        }),
     }));
       
     // this.elementService.onSaveItem(this.listElementModel!, this.index);

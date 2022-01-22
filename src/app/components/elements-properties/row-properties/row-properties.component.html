@@ -7,6 +7,9 @@
     <button class="btn btn-success item-button" (click)="onSelectButton()">
       Button
     </button>
+    <button class="btn btn-warning item-button" (click)="onSelectIcon()">
+      Icon
+    </button>
     <button class="btn btn-light item-button" (click)="onSelectEmpty()">
       Empty
     </button>
@@ -14,7 +17,6 @@
   <p>Row Justify</p>
   <select
     [(ngModel)]="rowElementModel!.style.justify"
-    (change)="onSelectRowJustify()"
   >
     <option [value]="item" *ngFor="let item of justifyArr">
       {{ item }}
