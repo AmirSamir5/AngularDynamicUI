@@ -19,6 +19,7 @@ export class ElementsComponent implements OnInit {
   elementOnClick(selectedElement:WidgetModel){
     this.selectedElement = selectedElement;
     this.elementService.addSelectedItems(selectedElement);
+    this.elementService.removeRowElementItem();
   }
 
 }
