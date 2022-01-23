@@ -15,33 +15,31 @@
     </button>
   </div>
   <p>Row Main Axis Alignment</p>
-  <select
-    [(ngModel)]="rowElementModel!.style.mainAxisAlignment"
-  >
+  <select [(ngModel)]="rowElementModel!.style.mainAxisAlignment">
     <option [value]="item" *ngFor="let item of justifyArr">
       {{ item }}
     </option>
   </select>
+  <p>Row Cross Axis Alignment</p>
+  <select [(ngModel)]="rowElementModel!.style.crossAxisAlignment">
+    <option [value]="item" *ngFor="let item of crossAxisArr">
+      {{ item }}
+    </option>
+  </select>
   <p>Row Main Axis Size</p>
-  <select
-    [(ngModel)]="rowElementModel!.style.mainAxisSize"
-  >
+  <select [(ngModel)]="rowElementModel!.style.mainAxisSize">
     <option [value]="item" *ngFor="let item of mainAxisSizeArr">
       {{ item }}
     </option>
   </select>
   <p>Row Text Direction</p>
-  <select
-    [(ngModel)]="rowElementModel!.style.textDirection"
-  >
+  <select [(ngModel)]="rowElementModel!.style.textDirection">
     <option [value]="item" *ngFor="let item of textDirectionArr">
       {{ item }}
     </option>
   </select>
   <p>Row Vertical Direction</p>
-  <select
-    [(ngModel)]="rowElementModel!.style.verticalDirection"
-  >
+  <select [(ngModel)]="rowElementModel!.style.verticalDirection">
     <option [value]="item" *ngFor="let item of varticalDirectionArr">
       {{ item }}
     </option>
@@ -52,6 +50,7 @@
       <div class="text">Edit Element</div>
       <div class="line"><mat-divider></mat-divider></div>
     </div>
+
     <label class="container-checkbox"
       >Expanded
       <input
@@ -61,6 +60,24 @@
         (change)="onExpandedChange()"
       />
       <span class="checkmark"></span>
+    </label>
+    <label>
+      Element Data Map ID
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter element data map ID"
+        [(ngModel)]="selectedElement.dataMapId"
+      />
+    </label>
+    <label>
+      Element Data ID In Map
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter element data ID in map"
+        [(ngModel)]="selectedElement.dataIdInMap"
+      />
     </label>
     <label>
       Element Flex

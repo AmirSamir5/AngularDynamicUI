@@ -15,6 +15,7 @@ export class RowPropertiesComponent implements OnInit {
   selectedElement?: WidgetModel;
   listIndex: number = 0;
   justifyArr = AppConstants.JUSTIFY_LIST;
+  crossAxisArr = AppConstants.CROSS_AXIS_ALIGNMENT_LIST;
   mainAxisSizeArr = AppConstants.MAIN_AXIS_SIZE_LIST;
   textDirectionArr = AppConstants.TEXT_DIRECTION_LIST;
   varticalDirectionArr = AppConstants.VERTICAL_DIRECTION_LIST;

@@ -1,10 +1,18 @@
 export class AppConstants {
   public static JUSTIFY_LIST = [
     'start',
+    'center',
     'end',
-    'space-between',
-    'space-evenly',
-    'space-around',
+    'spaceBetween',
+    'spaceEvenly',
+    'spaceAround',
+  ];
+  public static CROSS_AXIS_ALIGNMENT_LIST = [
+    'start',
+    'end',
+    'center',
+    'stretch',
+    'baseline',
   ];
   public static MAIN_AXIS_SIZE_LIST = ['max', 'min'];
   public static TEXT_DIRECTION_LIST = ['ltr', 'rtl'];
@@ -18,7 +26,7 @@ export class AppConstants {
   public static WIDGET_ROW = 'WidgetType.row';
   public static WIDGET_BUTTON = 'WidgetType.button';
   public static WIDGET_ICON = 'WidgetType.icon';
-  public static WIDGET_TEXT = 'WidgetType.text';
+  public static WIDGET_TEXT = 'WidgetType.textView';
   public static WIDGET_CONTAINER = 'WidgetType.container';
   public static WIDGET_TEXT_VIEW = 'WidgetType.textView';
   public static WIDGET_CENTER = 'WidgetType.center';
