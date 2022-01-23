@@ -22,6 +22,7 @@ export class WidgetModel {
   child?: WidgetModel;
   children?: WidgetModel[];
   cell?: WidgetModel;
+  cellProtoType?: string;
 
   constructor({
     validations,

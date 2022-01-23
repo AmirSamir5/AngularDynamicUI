@@ -1,7 +1,32 @@
 <div class="col">
   <p>Add Elements To List</p>
-  <button class="btn btn-danger bottom" (click)="onAddRow()">
-   + Add Row
-  </button>
+  <button class="btn btn-danger bottom" (click)="onAddRow()">+ Add Row</button>
+  <label>
+    List Cell Prototype
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter list cell prototype"
+      [(ngModel)]="listElementModel!.cellProtoType"
+    />
+  </label>
+  <label>
+    List Data Array
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter list data array"
+      [(ngModel)]="listElementModel!.dataArray"
+    />
+  </label>
+  <label>
+    List Data ID In Map
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter list data array"
+      [(ngModel)]="listElementModel!.dataIdInMap"
+    />
+  </label>
   <button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
 </div>
