@@ -6,13 +6,13 @@
     cols="6"
     rowHeight="80px"
     cdkDropList
-    [cdkDropListData]="listModel!.children!"
+    [cdkDropListData]="listModel!.cell!.child!.children!"
     cdkDragBoundary=".example-boundary"
     (cdkDropListDropped)="drag($event)"
   >
     <mat-grid-tile
       cdkDrag
-      *ngFor="let tile of listModel!.children; let index = index"
+      *ngFor="let tile of listModel!.cell!.child!.children!; let index = index"
       [colspan]="tile.style.flex"
       [rowspan]="tile.style.rowspan"
       [style.background]="tile.style.backgroundColor"
@@ -20,7 +20,7 @@
       [style.font-size.px]="tile.style.fontSize"
       [style.font-weight]="tile.style.fontWeight"
       [style.font-family]="tile.style.fontFamily"
-      (click)="onRowSelected(tile, index);$event.stopPropagation()"
+      (click)="onRowSelected(tile, index); $event.stopPropagation()"
     >
       <app-row class="row" [row]="tile"></app-row>
       <span class="close" (click)="removeElement(index)">&times;</span>

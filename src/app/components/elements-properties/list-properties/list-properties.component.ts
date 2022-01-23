@@ -15,25 +15,23 @@ export class ListPropertiesComponent implements OnInit {
   item?: WidgetModel;
   listIndex: number = 0;
 
-  constructor(
-    private elementService: ElementService,
-  ) {}
+  constructor(private elementService: ElementService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onAddRow() {
     this.checkConfiguration();
-    this.listElementModel!.children?.push(
+    this.listElementModel!.cell!.child!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_ROW,
-        name:'Row',
+        name: 'Row',
         style: new StyleModel({
           flex: 6,
           rowspan: 1,
           backgroundColor: 'white',
         }),
-      }));
+      })
+    );
     this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
@@ -43,8 +41,8 @@ export class ListPropertiesComponent implements OnInit {
   }
 
   checkConfiguration() {
-    if (this.listElementModel!.children === undefined) {
-      this.listElementModel!.children = [];
+    if (this.listElementModel!.cell!.child!.children === undefined) {
+      this.listElementModel!.cell!.child!.children = [];
     }
   }
 }

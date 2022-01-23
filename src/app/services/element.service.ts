@@ -14,16 +14,41 @@ export class ElementService {
   RemoveRowElementEvent = new EventEmitter();
 
   readonly elements: WidgetModel[] = [
-    new WidgetModel({widget_type:AppConstants.WIDGET_DROPDOWN,name:'Dropdown'}),
-    new WidgetModel({widget_type:AppConstants.WIDGET_INPUT_FIELD,name:'Input Field'}),
-    new WidgetModel({widget_type:AppConstants.WIDGET_SUBMIT_BUTTON,name:'Button'}),
-    new WidgetModel({widget_type:AppConstants.WIDGET_LIST,name:'List'}),
-    new WidgetModel({widget_type:AppConstants.WIDGET_ROW,name:'Row'}),
-    new WidgetModel({widget_type:AppConstants.WIDGET_CALENDAR,name:'Calendar'}),
-    new WidgetModel({widget_type:AppConstants.WIDGET_CHECKBOX,name:'Checkbox'}),
+    new WidgetModel({
+      widget_type: AppConstants.WIDGET_DROPDOWN,
+      name: 'Dropdown',
+    }),
+    new WidgetModel({
+      widget_type: AppConstants.WIDGET_INPUT_FIELD,
+      name: 'Input Field',
+    }),
+    new WidgetModel({
+      widget_type: AppConstants.WIDGET_SUBMIT_BUTTON,
+      name: 'Button',
+    }),
+    new WidgetModel({
+      widget_type: AppConstants.WIDGET_LIST,
+      name: 'List',
+      cell: new WidgetModel({
+        widget_type: AppConstants.WIDGET_CONTAINER,
+        child: new WidgetModel({
+          widget_type: AppConstants.WIDGET_COLUMN,
+          children: [],
+        }),
+      }),
+    }),
+    new WidgetModel({ widget_type: AppConstants.WIDGET_ROW, name: 'Row' }),
+    new WidgetModel({
+      widget_type: AppConstants.WIDGET_CALENDAR,
+      name: 'Calendar',
+    }),
+    new WidgetModel({
+      widget_type: AppConstants.WIDGET_CHECKBOX,
+      name: 'Checkbox',
+    }),
   ];
 
-  public screenName:string = '';
+  public screenName: string = '';
 
   public selectedElements: WidgetModel[] = [];
 
@@ -32,7 +57,10 @@ export class ElementService {
   }
 
   addSelectedItems(selectedElement: WidgetModel) {
-    var element = new WidgetModel({widget_type:selectedElement.widget_type,name:selectedElement.name});
+    var element = new WidgetModel({
+      widget_type: selectedElement.widget_type,
+      name: selectedElement.name,
+    });
     this.selectedElements.push(element);
     this.selectedElementsChangedEvent.emit(this.selectedElements);
   }
@@ -60,7 +88,7 @@ export class ElementService {
     this.EditRowElementEvent.emit({ make: item, name: index });
   }
 
-  removeRowElementItem(){
+  removeRowElementItem() {
     this.RemoveRowElementEvent.emit();
   }
 }

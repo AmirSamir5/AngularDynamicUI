@@ -21,6 +21,7 @@ export class WidgetModel {
   parameterOrder?: string;
   child?: WidgetModel;
   children?: WidgetModel[];
+  cell?: WidgetModel;
 
   constructor({
     validations,
@@ -36,6 +37,9 @@ export class WidgetModel {
     name,
     style,
     dataArray,
+    cell,
+    child,
+    children,
   }: {
     validations?: Validations;
     fieldTitle?: string;
@@ -50,6 +54,9 @@ export class WidgetModel {
     name?: string;
     style?: StyleModel;
     dataArray?: string;
+    cell?: WidgetModel;
+    child?: WidgetModel;
+    children?: WidgetModel[];
   }) {
     this.validations = validations;
     this.fieldTitle = fieldTitle;
@@ -64,6 +71,9 @@ export class WidgetModel {
     this.name = name;
     this.style = style ?? new StyleModel({});
     this.dataArray = dataArray;
+    this.cell = cell;
+    this.child = child;
+    this.children = children;
   }
 }
 

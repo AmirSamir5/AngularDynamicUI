@@ -10,12 +10,36 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  @Input() listModel: WidgetModel = new WidgetModel({widget_type:AppConstants.WIDGET_LIST});
+  @Input() listModel: WidgetModel = new WidgetModel({
+    widget_type: AppConstants.WIDGET_LIST,
+    cell: new WidgetModel({
+      widget_type: AppConstants.WIDGET_CONTAINER,
+      child: new WidgetModel({
+        widget_type: AppConstants.WIDGET_COLUMN,
+        children: [],
+      }),
+    }),
+  });
 
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    
+    console.log(this.listModel);
+    if (this.listModel.cell === undefined) {
+      this.listModel.cell = new WidgetModel({
+        widget_type: AppConstants.WIDGET_CONTAINER,
+        child: new WidgetModel({
+          widget_type: AppConstants.WIDGET_COLUMN,
+          children: [],
+        }),
+      });
+    }
+    if (this.listModel.cell.child === undefined) {
+      this.listModel.cell.child = new WidgetModel({
+        widget_type: AppConstants.WIDGET_COLUMN,
+        children: [],
+      });
+    }
   }
 
   onRowSelected(item: WidgetModel, index: number) {
