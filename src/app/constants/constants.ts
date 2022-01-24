@@ -3,9 +3,9 @@ export class AppConstants {
     'start',
     'center',
     'end',
-    'spaceBetween',
-    'spaceEvenly',
-    'spaceAround',
+    'space-between',
+    'space-evenly',
+    'space-around',
   ];
   public static CROSS_AXIS_ALIGNMENT_LIST = [
     'start',

@@ -35,12 +35,12 @@ export class RowPropertiesComponent implements OnInit {
 
   onExpandedChange() {
     this.selectedElement!.style.flex = undefined;
-    this.rowElementModel!.style.justify = '';
+    this.rowElementModel!.style.mainAxisAlignment = '';
   }
 
   getFlexValue(event) {
     this.selectedElement!.style.expanded = false;
-    this.selectedElement!.style.flex = event.target.value;
+    this.selectedElement!.style.mainAxisAlignment = event.target.value;
   }
 
   getRowSpan(event) {

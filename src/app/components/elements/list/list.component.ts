@@ -48,7 +48,7 @@ export class ListComponent implements OnInit {
   }
 
   removeElement(index: number) {
-    this.listModel!.children?.splice(index, 1);
+    this.listModel!.cell!.child!.children?.splice(index, 1);
   }
 
   drag(event: CdkDragDrop<WidgetModel[]>) {
