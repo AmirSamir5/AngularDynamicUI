@@ -26,7 +26,12 @@ export class AppComponent {
     var valid: Boolean = true;
     var jsonModel:JSONModel;
     var widgetArray: Array<WidgetModel> = [];
+    var cells: Array<WidgetModel> = [];
     this.elementService.selectedElements.forEach((element) => {
+      if(element.widget_type === 'List'){
+        cells.push(element.cell!);
+        element.cell = undefined;
+      }
       widgetArray.push(element);
       console.log(element);
     });
