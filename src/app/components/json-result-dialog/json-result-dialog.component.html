@@ -15,7 +15,7 @@
   ></textarea>
   <div class="text-right py-3">
     <button class="btn btn-primary px-2" (click)="onClose()">Ok</button>
-    <a [href]="fileUrl" download="file.json">
+    <a [href]="fileUrl" [download]="file + extension">
       <button
         class="btn btn-primary px-2"
         style="background-color: green"

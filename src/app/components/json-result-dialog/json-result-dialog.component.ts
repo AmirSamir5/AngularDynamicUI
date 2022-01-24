@@ -13,6 +13,8 @@ export class JsonResultDialogComponent implements OnInit {
   fileUrl: any;
 
   selectedData: string = this.data.json;
+  file: string = 'Screen';
+  extension: string = '.json';
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -21,7 +23,9 @@ export class JsonResultDialogComponent implements OnInit {
     private clipboard: Clipboard
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.file = this.data.screenName;
+  }
 
   onClose() {
     this.dialogRef.close();
@@ -45,10 +49,12 @@ export class JsonResultDialogComponent implements OnInit {
   onTabChanged(event) {
     console.log(event.index);
     if (event.index === 0) {
+      this.file = this.data.screenName;
       this.selectedData = this.data.json;
     } else {
+      this.file = this.data.cells[event.index - 1].cellName;
       this.selectedData = JSON.stringify(
-        this.data.cells[event.index - 1],
+        this.data.cells[event.index - 1].cell,
         null,
         4
       );
@@ -59,4 +65,5 @@ export class JsonResultDialogComponent implements OnInit {
 export interface DialogData {
   json: string;
   cells: any[];
+  screenName: string;
 }

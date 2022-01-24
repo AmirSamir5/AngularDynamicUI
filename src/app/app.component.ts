@@ -64,6 +64,7 @@ export class AppComponent {
         data: {
           json: JSON.stringify(jsonModel, null, 4),
           cells: cells,
+          screenName: this.elementService.screenName,
         },
       });
     }
