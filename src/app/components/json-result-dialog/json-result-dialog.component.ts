@@ -2,6 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { DomSanitizer } from '@angular/platform-browser';
+import { WidgetModel } from 'src/app/models/widget.model';
 
 @Component({
   selector: 'app-json-result-dialog',
@@ -9,7 +10,9 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./json-result-dialog.component.css'],
 })
 export class JsonResultDialogComponent implements OnInit {
-  fileUrl:any;
+  fileUrl: any;
+
+  selectedData: string = this.data.json;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -25,17 +28,35 @@ export class JsonResultDialogComponent implements OnInit {
   }
 
   onCopy(inputElement: any) {
-    this.clipboard.copy(this.data.json);
+    this.clipboard.copy(this.selectedData);
   }
-  onDownload(){
-    const blob = new Blob([this.data.json], { type: 'application/octet-stream' });
+  onDownload() {
+    const blob = new Blob([this.selectedData], {
+      type: 'application/octet-stream',
+    });
 
-    this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
-    (window.URL.createObjectURL(blob));
+    this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      window.URL.createObjectURL(blob)
+    );
+    window.URL.createObjectURL(blob);
     this.dialogRef.close();
+  }
+
+  onTabChanged(event) {
+    console.log(event.index);
+    if (event.index === 0) {
+      this.selectedData = this.data.json;
+    } else {
+      this.selectedData = JSON.stringify(
+        this.data.cells[event.index - 1],
+        null,
+        4
+      );
+    }
   }
 }
 
 export interface DialogData {
   json: string;
+  cells: any[];
 }

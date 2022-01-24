@@ -1,15 +1,26 @@
 <div class="col">
   <h2>Screen JSON Result:</h2>
+  <mat-tab-group (selectedTabChange)="onTabChanged($event)">
+    <mat-tab label="Screen"></mat-tab>
+    <mat-tab
+      *ngFor="let cell of data.cells; let index = index"
+      [label]="cell.cellName"
+    ></mat-tab>
+  </mat-tab-group>
   <textarea
-    [value]="data.json"
+    [value]="selectedData"
     disabled
     class="json-output"
     #userinput
   ></textarea>
   <div class="text-right py-3">
     <button class="btn btn-primary px-2" (click)="onClose()">Ok</button>
-    <a [href]="fileUrl" download="file.txt">
-      <button class="btn btn-primary px-2" style="background-color: green;" (click)="onDownload()">
+    <a [href]="fileUrl" download="file.json">
+      <button
+        class="btn btn-primary px-2"
+        style="background-color: green"
+        (click)="onDownload()"
+      >
         Download JSON Text
       </button>
     </a>

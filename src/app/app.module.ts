@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -68,6 +69,7 @@ import { RowPropertiesComponent } from './components/elements-properties/row-pro
     MatDialogModule,
     MatGridListModule,
     MatDividerModule,
+    MatTabsModule,
   ],
   providers: [ElementService],
   bootstrap: [AppComponent],
