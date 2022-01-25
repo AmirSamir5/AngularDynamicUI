@@ -92,7 +92,7 @@
     <label *ngIf="selectedElement.name !== 'Empty'">
       Margin
       <input
-        type="number"
+        type="text"
         class="form-control"
         placeholder="top bottom left right"
         (input)="getMarginValue($event)"
@@ -101,7 +101,7 @@
     <label *ngIf="selectedElement.name !== 'Empty'">
       Padding
       <input
-        type="number"
+        type="text"
         class="form-control"
         placeholder="top bottom left right"
         (input)="getPaddingValue($event)"
