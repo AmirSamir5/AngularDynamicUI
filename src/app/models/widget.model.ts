@@ -113,12 +113,30 @@ export class WidgetConfiguration {
 export class ClickableConfiguration {
   type?: string;
   passedKeys?: string[];
+  apiCode?: string;
   destination_screen_lookUp?: DestinationScreenLookup;
+  constructor({
+    type,
+    passedKeys,
+    destination_screen_lookUp,
+  }: {
+    type: string;
+    passedKeys: string[];
+    destination_screen_lookUp: DestinationScreenLookup;
+  }) {
+    this.type = type;
+    this.passedKeys = passedKeys;
+    this.destination_screen_lookUp = destination_screen_lookUp;
+  }
 }
 
 export class DestinationScreenLookup {
   name?: string;
   type?: string;
+  constructor({ name, type }: { name: string; type: string }) {
+    this.name = name;
+    this.type = type;
+  }
 }
 
 export class DropDownConfiguration {
