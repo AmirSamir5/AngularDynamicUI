@@ -56,51 +56,59 @@
       <input
         type="checkbox"
         checked="checked"
-        [(ngModel)]="selectedElement.style.expanded"
+        [(ngModel)]="(selectedElement.child ?? selectedElement).style.expanded"
         (change)="onExpandedChange()"
       />
       <span class="checkmark"></span>
     </label>
-    <label>
+    <label *ngIf="selectedElement.name !== 'Empty'">
       Element Data Map ID
       <input
         type="text"
         class="form-control"
         placeholder="Enter element data map ID"
-        [(ngModel)]="selectedElement.dataMapId"
+        [(ngModel)]="selectedElement.child!.dataMapId"
       />
     </label>
-    <label>
+    <label *ngIf="selectedElement.name !== 'Empty'">
       Element Data ID In Map
       <input
         type="text"
         class="form-control"
         placeholder="Enter element data ID in map"
-        [(ngModel)]="selectedElement.dataIdInMap"
+        [(ngModel)]="selectedElement.child!.dataIdInMap"
       />
     </label>
     <label>
-      Element Flex
+      Flex
       <input
         type="number"
         class="form-control"
         placeholder="Enter element flex"
-        [(ngModel)]="selectedElement.style.flex"
+        [(ngModel)]="selectedElement.child!.style.flex"
         (input)="getFlexValue($event)"
       />
     </label>
-    <label>
-      Element Rowspan
+    <label *ngIf="selectedElement.name !== 'Empty'">
+      Margin
       <input
         type="number"
         class="form-control"
-        placeholder="Enter element rowspan"
-        [(ngModel)]="selectedElement.style.rowspan"
-        (input)="getRowSpan($event)"
+        placeholder="Enter element margin"
+        (input)="getMarginValue($event)"
+      />
+    </label>
+    <label *ngIf="selectedElement.name !== 'Empty'">
+      Padding
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Enter element padding"
+        (input)="getPaddingValue($event)"
       />
     </label>
     <label>
-      Element Background Color
+      Background Color
       <input
         type="text"
         class="form-control"
@@ -109,46 +117,45 @@
         (input)="getBackgroundColorValue($event)"
       />
     </label>
-    <label>
-      Element Color
+    <label *ngIf="selectedElement.name !== 'Empty'">
+      Color
       <input
         type="text"
         class="form-control"
         placeholder="Enter element color"
-        [(ngModel)]="selectedElement.style.color"
+        [(ngModel)]="selectedElement.child!.style.color"
         (input)="getColorValue($event)"
       />
     </label>
-    <label>
-      Element Font Size
+    <label *ngIf="selectedElement.name !== 'Empty'">
+      Font Size
       <input
         type="number"
         class="form-control"
         placeholder="Enter element font size"
-        [(ngModel)]="selectedElement.style.fontSize"
+        [(ngModel)]="selectedElement.child!.style.fontSize"
         (input)="getFontSizeValue($event)"
       />
     </label>
-    <label
-      >Element Font Weight
+    <label *ngIf="selectedElement.name !== 'Empty'">
+      Font Weight
       <input
         type="text"
         class="form-control"
         placeholder="Enter element font weight"
-        [(ngModel)]="selectedElement.style.fontWeight"
+        [(ngModel)]="selectedElement.child!.style.fontWeight"
         (input)="getFontWeightValue($event)"
       />
     </label>
-    <label>
-      Element Font Family
+    <label *ngIf="selectedElement.name !== 'Empty'">
+      Font Family
       <input
         type="text"
         class="form-control"
         placeholder="Enter element font family"
-        [(ngModel)]="selectedElement.style.fontFamily"
+        [(ngModel)]="selectedElement.child!.style.fontFamily"
         (input)="getFontFamilyValue($event)"
       />
     </label>
   </div>
-  <button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
 </div>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { StyleModel } from 'src/app/models/style.model';
+import { EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
 import { WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
@@ -34,37 +34,50 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   onExpandedChange() {
-    this.selectedElement!.style.flex = undefined;
-    this.rowElementModel!.style.mainAxisAlignment = '';
+    (this.selectedElement!.child ?? this.selectedElement)!.style.flex = undefined;
+    (this.selectedElement!.child ?? this.selectedElement)!.style.mainAxisAlignment = '';
   }
 
   getFlexValue(event) {
-    this.selectedElement!.style.expanded = false;
-    this.selectedElement!.style.mainAxisAlignment = event.target.value;
+    (this.selectedElement!.child ?? this.selectedElement)!.style.expanded = false;
+    (this.selectedElement!.child ?? this.selectedElement)!.style.mainAxisAlignment = event.target.value;
   }
 
+  getMarginValue(event) {
+    this.selectedElement!.style.margin = new EdgeInsetsModel({
+      top: event.target.value,left:event.target.value,right:event.target.value,bottom:event.target.value
+    });
+  }
+
+  getPaddingValue(event) {
+    this.selectedElement!.style.padding = new EdgeInsetsModel({
+      top: event.target.value,left:event.target.value,right:event.target.value,bottom:event.target.value
+    });
+  }
+
+
   getRowSpan(event) {
-    this.selectedElement!.style.rowspan = event.target.value;
+    (this.selectedElement!.child ?? this.selectedElement)!.style.rowspan = event.target.value;
   }
 
   getBackgroundColorValue(event) {
-    this.selectedElement!.style.backgroundColor = event.target.value;
+    (this.selectedElement!.child ?? this.selectedElement)!.style.backgroundColor = event.target.value;
   }
 
   getColorValue(event) {
-    this.selectedElement!.style.color = event.target.value;
+    (this.selectedElement!.child ?? this.selectedElement)!.style.color = event.target.value;
   }
 
   getFontSizeValue(event) {
-    this.selectedElement!.style.fontSize = event.target.value;
+    (this.selectedElement!.child ?? this.selectedElement)!.style.fontSize = event.target.value;
   }
 
   getFontFamilyValue(event) {
-    this.selectedElement!.style.fontFamily = event.target.value;
+    (this.selectedElement!.child ?? this.selectedElement)!.style.fontFamily = event.target.value;
   }
 
   getFontWeightValue(event) {
-    this.selectedElement!.style.fontWeight = event.target.value;
+    (this.selectedElement!.child ?? this.selectedElement)!.style.fontWeight = event.target.value;
   }
 
   onSelectText() {

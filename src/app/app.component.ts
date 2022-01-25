@@ -32,11 +32,19 @@ export class AppComponent {
     this.elementService.selectedElements.forEach((element) => {
       console.log(element);
       var tmp = { ...element };
-      if (tmp.widget_type === AppConstants.WIDGET_LIST) {
-        cells.push({ cell: element.cell!, cellName: element.cellProtoType });
-        tmp.cell = undefined;
+      if(valid){
+        if (tmp.widget_type === AppConstants.WIDGET_LIST) {
+          if(element.cellProtoType === undefined){
+            valid = false;
+            window.alert('Please Enter List Cell Prototype!');
+            return;
+          }
+          cells.push({ cell: element.cell!, cellName: element.cellProtoType });
+          tmp.cell = undefined;
+        }
+        widgetArray.push(tmp);
       }
-      widgetArray.push(tmp);
+      
     });
     widgetArray.forEach((element) => {
       if (valid) {

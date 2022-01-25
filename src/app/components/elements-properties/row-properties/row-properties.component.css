@@ -22,6 +22,21 @@
   font-size: 18px;
   font-weight: 450;
 }
+.row {
+  display: flex;
+  position: relative;
+  flex-flow: row;
+  min-height: 50px;
+}
+.item::-webkit-outer-spin-button,
+.item::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
+
+.item{
+  margin-left: 2px;
+  margin-right: 2px;
+}
 
 p{
   font-size: 14px;

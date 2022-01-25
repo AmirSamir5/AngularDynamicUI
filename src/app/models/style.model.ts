@@ -65,4 +65,21 @@ export class StyleModel {
       bottom?:number;
       left?:number;
       right?:number;
+
+      constructor({
+        top,
+        bottom,
+        left,
+        right
+      }: {
+        top?:number;
+        bottom?:number;
+        left?:number;
+        right?:number;
+      }) {
+        this.top = top;
+        this.right = right;
+        this.bottom = bottom;
+        this.left = left;
+      }
   }
