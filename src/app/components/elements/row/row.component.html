@@ -10,16 +10,16 @@
     <div
       *ngFor="let rowContent of row!.children!; let index = index"
       cdkDrag
-      [ngClass]="getItemFlex(rowContent)"
+      [ngClass]="getItemFlex((rowContent.child ?? rowContent))"
       [style.backgroundColor]="rowContent.style.backgroundColor ?? 'white'"
-      [style.color]="rowContent.style.color ?? 'black'"
-      [style.width]="rowContent.style.expanded ? '100%' : undefined"
-      [style.font-size.px]="rowContent.style.fontSize"
-      [style.font-weight]="rowContent.style.fontWeight"
-      [style.font-family]="rowContent.style.fontFamily"
+      [style.color]="(rowContent.child ?? rowContent).style.color ?? 'black'"
+      [style.width]="(rowContent.child ?? rowContent).style.expanded ? '100%' : undefined"
+      [style.font-size.px]="(rowContent.child ?? rowContent).style.fontSize"
+      [style.font-weight]="(rowContent.child ?? rowContent).style.fontWeight"
+      [style.font-family]="(rowContent.child ?? rowContent).style.fontFamily"
       (click)="onElementClick(rowContent, index);$event.stopPropagation()"
     >
-      {{ rowContent.name }}
+      {{ (rowContent.child ?? rowContent).name }}
 
       <span class="close" (click)="removeElement(index)">&times;</span>
     </div>

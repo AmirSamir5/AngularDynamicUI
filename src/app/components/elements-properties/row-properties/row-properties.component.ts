@@ -71,54 +71,67 @@ export class RowPropertiesComponent implements OnInit {
     this.checkConfiguration();
     this.rowElementModel!.children?.push(
       new WidgetModel({
-        widget_type: AppConstants.WIDGET_TEXT,
-        name: 'Text',
+        widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          rowspan: 1,
           backgroundColor: 'white',
-          color: 'black',
-          fontFamily: 'Robota-Regular',
-          fontSize: 12,
-          fontWeight: 'normal',
         }),
+        child:  new WidgetModel({
+          widget_type: AppConstants.WIDGET_TEXT,
+          name: 'Text',
+          style: new StyleModel({
+            rowspan: 1,
+            color: 'black',
+            fontFamily: 'Robota-Regular',
+            fontSize: 12,
+            fontWeight: 'normal',
+          }),
+        })
       })
     );
-    // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSelectButton() {
     this.checkConfiguration();
     this.rowElementModel!.children?.push(
       new WidgetModel({
-        widget_type: AppConstants.WIDGET_BUTTON,
-        name: 'Button',
+        widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          rowspan: 1,
           backgroundColor: 'deeppink',
-          color: 'white',
-          fontFamily: 'Robota-Regular',
-          fontSize: 12,
-          fontWeight: 'normal',
         }),
+        child:  new WidgetModel({
+          widget_type: AppConstants.WIDGET_BUTTON,
+          name: 'Button',
+          style: new StyleModel({
+            rowspan: 1,
+            color: 'white',
+            fontFamily: 'Robota-Regular',
+            fontSize: 12,
+            fontWeight: 'normal',
+          }),
+        })
       })
     );
-    // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSelectIcon() {
     this.checkConfiguration();
     this.rowElementModel!.children?.push(
       new WidgetModel({
-        widget_type: AppConstants.WIDGET_ICON,
-        name: 'Icon',
+        widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          rowspan: 1,
-          backgroundColor: 'deeppink',
-          color: 'white',
-          fontFamily: 'Robota-Regular',
-          fontSize: 12,
-          fontWeight: 'normal',
+          backgroundColor: 'orange',
         }),
+        child: new WidgetModel({
+          widget_type: AppConstants.WIDGET_ICON,
+          name: 'Icon',
+          style: new StyleModel({
+            rowspan: 1,
+            color: 'white',
+            fontFamily: 'Robota-Regular',
+            fontSize: 12,
+            fontWeight: 'normal',
+          }),
+        })
       })
     );
     // this.elementService.onSaveItem(this.listElementModel!, this.index);
@@ -136,8 +149,6 @@ export class RowPropertiesComponent implements OnInit {
         }),
       })
     );
-
-    // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSubmit() {
