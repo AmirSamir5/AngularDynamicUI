@@ -76,20 +76,20 @@ export class RowPropertiesComponent implements OnInit {
   getMarginValue(event) {
     var margins = event.target.value.split(' ');
     this.selectedElement!.style.margin = new EdgeInsetsModel({
-      top: margins[0],
-      left: margins[2],
-      right: margins[3],
-      bottom: margins[1],
+      top: +margins[0],
+      left: +margins[2],
+      right: +margins[3],
+      bottom: +margins[1],
     });
   }
 
   getPaddingValue(event) {
     var paddings = event.target.value.split(' ');
     this.selectedElement!.style.padding = new EdgeInsetsModel({
-      top: paddings[0],
-      left: paddings[2],
-      right: paddings[3],
-      bottom: paddings[1],
+      top: +paddings[0],
+      left: +paddings[2],
+      right: +paddings[3],
+      bottom: +paddings[1],
     });
   }
 
