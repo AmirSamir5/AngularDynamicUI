@@ -28,5 +28,23 @@
       [(ngModel)]="listElementModel!.dataIdInMap"
     />
   </label>
+  <label>
+    List Cell Padding
+    <input
+      type="text"
+      class="form-control"
+      placeholder="top bottom left right"
+      (input)="onPadding($event)"
+    />
+  </label>
+  <label>
+    List Cell Margin
+    <input
+      type="text"
+      class="form-control"
+      placeholder="top bottom left right"
+      (input)="onMargin($event)"
+    />
+  </label>
   <button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { StyleModel } from 'src/app/models/style.model';
+import { EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
 import { WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
@@ -28,6 +28,8 @@ export class ListPropertiesComponent implements OnInit {
         style: new StyleModel({
           flex: 6,
           rowspan: 1,
+          padding: new EdgeInsetsModel({}),
+          margin: new EdgeInsetsModel({}),
           backgroundColor: 'white',
         }),
       })
@@ -44,5 +46,27 @@ export class ListPropertiesComponent implements OnInit {
     if (this.listElementModel!.cell!.child!.children === undefined) {
       this.listElementModel!.cell!.child!.children = [];
     }
+  }
+
+  onPadding(event) {
+    var paddings = event.target.value.split(' ');
+    if (this.listElementModel!.cell!.style.padding === undefined)
+      this.listElementModel!.cell!.style.padding = new EdgeInsetsModel({});
+    this.listElementModel!.cell!.style.padding!.top = parseFloat(paddings[0]);
+    this.listElementModel!.cell!.style.padding!.bottom = parseFloat(
+      paddings[1]
+    );
+    this.listElementModel!.cell!.style.padding!.left = parseFloat(paddings[2]);
+    this.listElementModel!.cell!.style.padding!.right = parseFloat(paddings[3]);
+  }
+
+  onMargin(event) {
+    var margins = event.target.value.split(' ');
+    if (this.listElementModel!.cell!.style.margin === undefined)
+      this.listElementModel!.cell!.style.margin = new EdgeInsetsModel({});
+    this.listElementModel!.cell!.style.margin!.top = parseFloat(margins[0]);
+    this.listElementModel!.cell!.style.margin!.bottom = parseFloat(margins[1]);
+    this.listElementModel!.cell!.style.margin!.left = parseFloat(margins[2]);
+    this.listElementModel!.cell!.style.margin!.right = parseFloat(margins[3]);
   }
 }
