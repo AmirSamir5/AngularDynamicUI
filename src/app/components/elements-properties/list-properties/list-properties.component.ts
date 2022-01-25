@@ -1,7 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import { EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
-import { WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
+import {
+  ClickableConfiguration,
+  DestinationScreenLookup,
+  WidgetConfiguration,
+  WidgetModel,
+} from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -14,10 +19,26 @@ export class ListPropertiesComponent implements OnInit {
   @Input() index: number = 0;
   item?: WidgetModel;
   listIndex: number = 0;
+  isClickable: boolean = false;
+  clickablesArr = AppConstants.CLICKABLE_CONFIGURATION;
 
   constructor(private elementService: ElementService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.listElementModel!.cell!.widgetConfiguration === undefined) {
+      this.listElementModel!.cell!.widgetConfiguration =
+        new WidgetConfiguration();
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration =
+        new ClickableConfiguration({
+          type: '',
+          passedKeys: [],
+          destination_screen_lookUp: new DestinationScreenLookup({
+            type: '',
+            name: '',
+          }),
+        });
+    }
+  }
 
   onAddRow() {
     this.checkConfiguration();
@@ -28,8 +49,6 @@ export class ListPropertiesComponent implements OnInit {
         style: new StyleModel({
           flex: 6,
           rowspan: 1,
-          padding: new EdgeInsetsModel({}),
-          margin: new EdgeInsetsModel({}),
           backgroundColor: 'white',
         }),
       })
@@ -66,5 +85,24 @@ export class ListPropertiesComponent implements OnInit {
     this.listElementModel!.cell!.style.margin!.bottom = +margins[1];
     this.listElementModel!.cell!.style.margin!.left = +margins[2];
     this.listElementModel!.cell!.style.margin!.right = +margins[3];
+  }
+
+  onClickablChange() {
+    if (!this.isClickable) {
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.type =
+        '';
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.passedKeys =
+        [];
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.name =
+        '';
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.type =
+        '';
+    }
+  }
+
+  onPassedKeys(event) {
+    console.log(event.target.value);
+    this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.passedKeys =
+      event.target.value.split(' ');
   }
 }
