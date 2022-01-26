@@ -130,6 +130,29 @@ export class ClickableConfiguration {
   }
 }
 
+export class LoadDataConfiguration {
+  passedKeys?: string[];
+  type?: string;
+  lookUpName?: string;
+  apiCode?: string;
+  constructor({
+    passedKeys,
+    type,
+    lookUpName,
+    apiCode,
+  }: {
+    passedKeys: string[];
+    type: string;
+    lookUpName: string;
+    apiCode: string;
+  }) {
+    this.passedKeys = passedKeys;
+    this.type = type;
+    this.lookUpName = lookUpName;
+    this.apiCode = apiCode;
+  }
+}
+
 export class DestinationScreenLookup {
   name?: string;
   type?: string;
