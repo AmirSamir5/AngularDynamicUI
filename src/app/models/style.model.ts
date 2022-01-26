@@ -87,7 +87,7 @@ export class StyleModel {
   }
 
   export class BoxDecoration{
-    shape?: string = 'rectangle'; 
+    shape?: string; 
     padding?: EdgeInsetsModel;
     margin?: EdgeInsetsModel;
     height?: number;
@@ -113,7 +113,7 @@ export class StyleModel {
         color?: string,
         borderRadius?: number,
       }) {
-        this.shape = shape;
+        this.shape = shape ?? 'rectangle';
         this.padding = padding;
         this.margin = margin;
         this.width = width;

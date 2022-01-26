@@ -75,7 +75,7 @@ export class RowPropertiesComponent implements OnInit {
 
   getMarginValue(event) {
     var margin = event.target.value;
-    this.selectedElement!.style.decoration!.margin = new EdgeInsetsModel({
+    this.selectedElement!.style.margin = new EdgeInsetsModel({
       top: +margin,
       left: +margin,
       right: +margin,
@@ -86,7 +86,7 @@ export class RowPropertiesComponent implements OnInit {
   getPaddingValue(event) {
     var padding = event.target.value;
     
-    this.selectedElement!.style.decoration!.padding = new EdgeInsetsModel({
+    this.selectedElement!.style.padding = new EdgeInsetsModel({
       top: +padding,
       left: +padding,
       right: +padding,
