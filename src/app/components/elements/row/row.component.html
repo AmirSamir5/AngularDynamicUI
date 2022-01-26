@@ -11,7 +11,7 @@
       *ngFor="let rowContent of row!.children!; let index = index"
       cdkDrag
       [ngClass]="getItemFlex((rowContent.child ?? rowContent))"
-      [style.backgroundColor]="rowContent.style.backgroundColor ?? 'white'"
+      [style.backgroundColor]="rowContent.style.decoration!.color ?? 'white'"
       [style.color]="(rowContent.child ?? rowContent).style.color ?? 'black'"
       [style.width]="(rowContent.child ?? rowContent).style.expanded ? '100%' : undefined"
       [style.font-size.px]="(rowContent.child ?? rowContent).style.fontSize"

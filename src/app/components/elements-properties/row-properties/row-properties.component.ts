@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
+import { BoxDecoration, EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
 import {
   ClickableConfiguration,
   DestinationScreenLookup,
@@ -74,22 +74,23 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   getMarginValue(event) {
-    var margins = event.target.value.split(' ');
-    this.selectedElement!.style.margin = new EdgeInsetsModel({
-      top: +margins[0],
-      left: +margins[2],
-      right: +margins[3],
-      bottom: +margins[1],
+    var margin = event.target.value;
+    this.selectedElement!.style.decoration!.margin = new EdgeInsetsModel({
+      top: +margin,
+      left: +margin,
+      right: +margin,
+      bottom: +margin,
     });
   }
 
   getPaddingValue(event) {
-    var paddings = event.target.value.split(' ');
-    this.selectedElement!.style.padding = new EdgeInsetsModel({
-      top: +paddings[0],
-      left: +paddings[2],
-      right: +paddings[3],
-      bottom: +paddings[1],
+    var padding = event.target.value;
+    
+    this.selectedElement!.style.decoration!.padding = new EdgeInsetsModel({
+      top: +padding,
+      left: +padding,
+      right: +padding,
+      bottom: +padding,
     });
   }
 
@@ -100,7 +101,7 @@ export class RowPropertiesComponent implements OnInit {
 
   getBackgroundColorValue(event) {
     (this.selectedElement!.child ??
-      this.selectedElement)!.style.backgroundColor = event.target.value;
+      this.selectedElement)!.style.decoration!.color = event.target.value;
   }
 
   getColorValue(event) {
@@ -138,7 +139,7 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          backgroundColor: 'white',
+          decoration: new BoxDecoration({color:'white'}),
         }),
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_TEXT,
@@ -162,7 +163,7 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          backgroundColor: 'deeppink',
+          decoration: new BoxDecoration({color:'deeppink'}),
         }),
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_BUTTON,
@@ -185,7 +186,7 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          backgroundColor: 'orange',
+          decoration: new BoxDecoration({color:'orange'}),
         }),
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_ICON,
@@ -200,7 +201,6 @@ export class RowPropertiesComponent implements OnInit {
         }),
       })
     );
-    // this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
 
   onSelectEmpty() {
@@ -211,7 +211,7 @@ export class RowPropertiesComponent implements OnInit {
         name: 'Empty',
         style: new StyleModel({
           rowspan: 1,
-          backgroundColor: 'white',
+          decoration: new BoxDecoration({color:'deeppink'}),
         }),
       })
     );

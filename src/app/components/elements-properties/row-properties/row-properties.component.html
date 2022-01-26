@@ -94,7 +94,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="top bottom left right"
+        placeholder="Enter margin value"
         (input)="getMarginValue($event)"
       />
     </label>
@@ -103,7 +103,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="top bottom left right"
+        placeholder="Enter padding value"
         (input)="getPaddingValue($event)"
       />
     </label>
@@ -113,7 +113,7 @@
         type="text"
         class="form-control"
         placeholder="Enter element color string"
-        [(ngModel)]="selectedElement.style.backgroundColor"
+        [(ngModel)]="selectedElement.style.decoration!.color"
         (input)="getBackgroundColorValue($event)"
       />
     </label>
@@ -157,6 +157,7 @@
         (input)="getFontFamilyValue($event)"
       />
     </label>
+    <div *ngIf="selectedElement.name !== 'Empty'">
     <label class="container-checkbox" *ngIf="selectedElement.name !== 'Empty'"
       >Clickable
       <input
@@ -167,6 +168,7 @@
       />
       <span class="checkmark"></span>
     </label>
+    
     <label [hidden]="!isClickable"
       >Clickable Type
 
@@ -242,5 +244,6 @@
         (input)="onPassedKeys($event)"
       />
     </label>
+    </div>
   </div>
 </div>

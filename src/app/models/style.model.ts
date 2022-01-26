@@ -9,14 +9,13 @@ export class StyleModel {
     justify?: string;
     padding?: EdgeInsetsModel;
     margin?: EdgeInsetsModel;
+    decoration?: BoxDecoration;
     expanded: boolean = false;
     mainAxisAlignment?:string;
     mainAxisSize?:string;
     crossAxisAlignment?:string;
     textDirection?:string;
     verticalDirection?:string;
-    height?:number;
-    width?:number;
 
     constructor(
     {
@@ -24,6 +23,7 @@ export class StyleModel {
         color,
         flex,
         rowspan,
+        decoration,
         fontSize,
         fontWeight,
         fontFamily,
@@ -38,6 +38,7 @@ export class StyleModel {
         flex?: number,
         rowspan?: number,
         fontSize?: number,
+        decoration?:BoxDecoration,
         fontWeight?: string,
         fontFamily?: string,
         justify?: string,
@@ -53,6 +54,7 @@ export class StyleModel {
         this.fontSize = fontSize;
         this.fontWeight = fontWeight;
         this.fontFamily = fontFamily;
+        this.decoration = decoration;
         this.justify = justify;
         this.padding = padding;
         this.margin = margin;
@@ -72,14 +74,52 @@ export class StyleModel {
         left,
         right
       }: {
-        top?:number;
-        bottom?:number;
-        left?:number;
-        right?:number;
+        top?:number,
+        bottom?:number,
+        left?:number,
+        right?:number,
       }) {
         this.top = top;
         this.right = right;
         this.bottom = bottom;
         this.left = left;
       }
+  }
+
+  export class BoxDecoration{
+    shape?: string = 'rectangle'; 
+    padding?: EdgeInsetsModel;
+    margin?: EdgeInsetsModel;
+    height?: number;
+    width?: number;
+    color?: string;
+    borderRadius?: number;
+
+    constructor(
+      {
+        shape,
+        padding,
+        margin,
+        height,
+        width,
+        color,
+        borderRadius,
+      }: {
+        shape?: string,
+        padding?: EdgeInsetsModel,
+        margin?: EdgeInsetsModel,
+        height?: number,
+        width?: number,
+        color?: string,
+        borderRadius?: number,
+      }) {
+        this.shape = shape;
+        this.padding = padding;
+        this.margin = margin;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.borderRadius = borderRadius;
+      }
+    
   }
