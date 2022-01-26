@@ -10,14 +10,16 @@
     <div
       *ngFor="let rowContent of row!.children!; let index = index"
       cdkDrag
-      [ngClass]="getItemFlex((rowContent.child ?? rowContent))"
-      [style.backgroundColor]="rowContent.style.decoration!.color ?? 'white'"
-      [style.color]="(rowContent.child ?? rowContent).style.color ?? 'black'"
-      [style.width]="(rowContent.child ?? rowContent).style.expanded ? '100%' : undefined"
+      [ngClass]="getItemFlex(rowContent.child ?? rowContent)"
+      [style.backgroundColor]="getItemBackgroundColor(rowContent) ?? 'white'"
+      [style.color]="getItemColor(rowContent) ?? 'black'"
+      [style.width]="
+        (rowContent.child ?? rowContent).style.expanded ? '100%' : undefined
+      "
       [style.font-size.px]="(rowContent.child ?? rowContent).style.fontSize"
       [style.font-weight]="(rowContent.child ?? rowContent).style.fontWeight"
       [style.font-family]="(rowContent.child ?? rowContent).style.fontFamily"
-      (click)="onElementClick(rowContent, index);$event.stopPropagation()"
+      (click)="onElementClick(rowContent, index); $event.stopPropagation()"
     >
       {{ (rowContent.child ?? rowContent).name }}
 
