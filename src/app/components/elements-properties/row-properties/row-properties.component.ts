@@ -99,16 +99,6 @@ export class RowPropertiesComponent implements OnInit {
       event.target.value;
   }
 
-  getBackgroundColorValue(event) {
-    (this.selectedElement!.child ??
-      this.selectedElement)!.style.decoration!.color = event.target.value;
-  }
-
-  getColorValue(event) {
-    (this.selectedElement!.child ?? this.selectedElement)!.style.color =
-      event.target.value;
-  }
-
   getFontSizeValue(event) {
     (this.selectedElement!.child ?? this.selectedElement)!.style.fontSize =
       event.target.value;

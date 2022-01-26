@@ -107,25 +107,25 @@
         (input)="getPaddingValue($event)"
       />
     </label>
-    <label>
+    <label style="width: 100%;">
       Background Color
       <input
-        type="text"
-        class="form-control"
-        placeholder="Enter element color string"
+       ejs-colorpicker
+        type="color"
+        class="form-control" 
+        id="colorpicker"
         [(ngModel)]="selectedElement.style.decoration!.color"
-        (input)="getBackgroundColorValue($event)"
-      />
+        name="colorpicker" />
     </label>
-    <label *ngIf="selectedElement.name !== 'Empty'">
+    <label *ngIf="selectedElement.name !== 'Empty'" style="width: 100%;">
       Color
       <input
-        type="text"
-        class="form-control"
-        placeholder="Enter element color"
+        ejs-colorpicker
+        type="color"
+        class="form-control" 
+        id="colorpicker"
         [(ngModel)]="selectedElement.child!.style.color"
-        (input)="getColorValue($event)"
-      />
+        name="colorpicker" />
     </label>
     <label *ngIf="selectedElement.name !== 'Empty'">
       Font Size
