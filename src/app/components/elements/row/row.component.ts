@@ -35,6 +35,18 @@ export class RowComponent implements OnInit {
     return 'item';
   }
 
+  getRowMainAxis(mainAxisAlignment:string){
+    switch(mainAxisAlignment){
+      case ('spaceBetween'):
+        return 'space-between';
+      case ('spaceEvenly'):
+        return 'space-evenly';
+      case ('spaceAround'):
+        return 'space-around';
+    }
+    return mainAxisAlignment;
+  }
+
   drag(event: CdkDragDrop<WidgetModel[]>) {
     console.log(
       event.container,

@@ -1,7 +1,7 @@
 <div class="example-boundary">
   <div
     class="row"
-    [style.justify-content]="row!.style.mainAxisAlignment"
+    [style.justify-content]="getRowMainAxis(row!.style.mainAxisAlignment ?? 'start')"
     cdkDropList
     [cdkDropListData]="row!.children!"
     cdkDragBoundary=".example-boundary"
