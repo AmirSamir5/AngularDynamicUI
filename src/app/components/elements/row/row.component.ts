@@ -11,7 +11,10 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./row.component.css'],
 })
 export class RowComponent implements OnInit {
-  @Input() row?: WidgetModel = new WidgetModel({widget_type:AppConstants.WIDGET_ROW,name:'Row'});
+  @Input() row?: WidgetModel = new WidgetModel({
+    widget_type: AppConstants.WIDGET_ROW,
+    name: 'Row',
+  });
 
   onElementClick(item: WidgetModel, index: number) {
     this.elementService.editRowElementItem(this.row!.children![index], index);
@@ -22,11 +25,9 @@ export class RowComponent implements OnInit {
     this.elementService.removeRowElementItem();
   }
 
-  constructor(private elementService:ElementService) {}
+  constructor(private elementService: ElementService) {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   getItemFlex(item: WidgetModel): string {
     if (item.style.flex !== undefined) {
@@ -60,5 +61,13 @@ export class RowComponent implements OnInit {
         event.currentIndex
       );
     }
+  }
+
+  getItemBackgroundColor(item: WidgetModel) {
+    return item.style.decoration!.color?.toString(16).replace('ff', '#');
+  }
+
+  getItemColor(item: WidgetModel) {
+    return (item.child ?? item).style!.color!.toString(16).replace('ff', '#');
   }
 }

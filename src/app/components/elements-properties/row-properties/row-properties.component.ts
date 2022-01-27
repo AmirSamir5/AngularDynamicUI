@@ -1,6 +1,11 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { BoxDecoration, EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
+import {
+  BoxDecoration,
+  EdgeInsetsModel,
+  StyleModel,
+} from 'src/app/models/style.model';
 import {
   ClickableConfiguration,
   DestinationScreenLookup,
@@ -85,7 +90,7 @@ export class RowPropertiesComponent implements OnInit {
 
   getPaddingValue(event) {
     var padding = event.target.value;
-    
+
     this.selectedElement!.style.padding = new EdgeInsetsModel({
       top: +padding,
       left: +padding,
@@ -129,14 +134,14 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          decoration: new BoxDecoration({color:'white'}),
+          decoration: new BoxDecoration({ color: 4294967295 }),
         }),
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_TEXT,
           name: 'Text',
           style: new StyleModel({
             rowspan: 1,
-            color: 'black',
+            color: 4278190080,
             fontFamily: 'Robota-Regular',
             fontSize: 12,
             fontWeight: 'normal',
@@ -153,14 +158,14 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          decoration: new BoxDecoration({color:'deeppink'}),
+          decoration: new BoxDecoration({ color: 4293467747 }),
         }),
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_BUTTON,
           name: 'Button',
           style: new StyleModel({
             rowspan: 1,
-            color: 'white',
+            color: 4294967295,
             fontFamily: 'Robota-Regular',
             fontSize: 12,
             fontWeight: 'normal',
@@ -176,14 +181,14 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          decoration: new BoxDecoration({color:'orange'}),
+          decoration: new BoxDecoration({ color: 4294940672 }),
         }),
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_ICON,
           name: 'Icon',
           style: new StyleModel({
             rowspan: 1,
-            color: 'white',
+            color: 4294967295,
             fontFamily: 'Robota-Regular',
             fontSize: 12,
             fontWeight: 'normal',
@@ -201,7 +206,7 @@ export class RowPropertiesComponent implements OnInit {
         name: 'Empty',
         style: new StyleModel({
           rowspan: 1,
-          decoration: new BoxDecoration({color:'deeppink'}),
+          decoration: new BoxDecoration({ color: 4293467747 }),
         }),
       })
     );
@@ -216,5 +221,17 @@ export class RowPropertiesComponent implements OnInit {
     if (this.rowElementModel!.children === undefined) {
       this.rowElementModel!.children = [];
     }
+  }
+
+  onBackgroundChange(event) {
+    var val = event.target.value.replace('#', '0xFF');
+    console.log(val, parseInt(val, 16));
+    this.selectedElement!.style.decoration!.color = parseInt(val, 16);
+  }
+
+  onColorChange(event) {
+    var val = event.target.value.replace('#', '0xFF');
+    console.log(val, parseInt(val, 16));
+    this.selectedElement!.child!.style.color = parseInt(val, 16);
   }
 }
