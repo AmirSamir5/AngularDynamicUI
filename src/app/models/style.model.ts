@@ -53,8 +53,8 @@ export class StyleModel {
     this.fontFamily = fontFamily;
     this.decoration = decoration;
     this.justify = justify;
-    this.padding = padding;
-    this.margin = margin;
+    this.padding = padding ?? new EdgeInsetsModel({});
+    this.margin = margin ?? new EdgeInsetsModel({});
     this.expanded = expanded ?? false;
   }
 }

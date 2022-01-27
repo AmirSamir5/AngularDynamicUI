@@ -95,6 +95,7 @@
         type="text"
         class="form-control"
         placeholder="Enter margin value"
+        [(ngModel)]="selectedElement.style.margin!.top"
         (input)="getMarginValue($event)"
       />
     </label>
@@ -104,6 +105,7 @@
         type="text"
         class="form-control"
         placeholder="Enter padding value"
+        [(ngModel)]="selectedElement.style.padding!.top"
         (input)="getPaddingValue($event)"
       />
     </label>
@@ -114,6 +116,7 @@
         type="color"
         class="form-control"
         id="colorpicker"
+        [(ngModel)]="selectedElement.style.decoration!.color"
         (input)="onBackgroundChange($event)"
         name="colorpicker"
       />
@@ -125,6 +128,7 @@
         type="color"
         class="form-control"
         id="colorpicker"
+        [(ngModel)]="selectedElement.child!.style.color"
         (input)="onColorChange($event)"
         name="colorpicker"
       />

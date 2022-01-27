@@ -68,23 +68,23 @@ export class ListPropertiesComponent implements OnInit {
   }
 
   onPadding(event) {
-    var paddings = event.target.value.split(' ');
+    var paddings = event.target.value;
     if (this.listElementModel!.cell!.style.padding === undefined)
       this.listElementModel!.cell!.style.padding = new EdgeInsetsModel({});
-    this.listElementModel!.cell!.style.padding!.top = +paddings[0];
-    this.listElementModel!.cell!.style.padding!.bottom = +paddings[1];
-    this.listElementModel!.cell!.style.padding!.left = +paddings[2];
-    this.listElementModel!.cell!.style.padding!.right = +paddings[3];
+    this.listElementModel!.cell!.style.padding!.top = +paddings;
+    this.listElementModel!.cell!.style.padding!.bottom = +paddings;
+    this.listElementModel!.cell!.style.padding!.left = +paddings;
+    this.listElementModel!.cell!.style.padding!.right = +paddings;
   }
 
   onMargin(event) {
-    var margins = event.target.value.split(' ');
+    var margins = event.target.value;
     if (this.listElementModel!.cell!.style.margin === undefined)
       this.listElementModel!.cell!.style.margin = new EdgeInsetsModel({});
-    this.listElementModel!.cell!.style.margin!.top = +margins[0];
-    this.listElementModel!.cell!.style.margin!.bottom = +margins[1];
-    this.listElementModel!.cell!.style.margin!.left = +margins[2];
-    this.listElementModel!.cell!.style.margin!.right = +margins[3];
+    this.listElementModel!.cell!.style.margin!.top = +margins;
+    this.listElementModel!.cell!.style.margin!.bottom = +margins;
+    this.listElementModel!.cell!.style.margin!.left = +margins;
+    this.listElementModel!.cell!.style.margin!.right = +margins;
   }
 
   onClickablChange() {
