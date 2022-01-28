@@ -79,6 +79,15 @@
         [(ngModel)]="selectedElement.child!.dataIdInMap"
       />
     </label>
+    <label *ngIf="selectedElement.name !== 'Empty'">
+      Element Displayed Text
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter element displayed text"
+        [(ngModel)]="selectedElement.child!.textDisplayed"
+      />
+    </label>
     <label>
       Flex
       <input
