@@ -23,6 +23,55 @@ export class AppComponent {
     private dialog: MatDialog
   ) {}
 
+  onSaveScreen(){
+    var valid: Boolean = true;
+    var jsonModel: JSONModel;
+    var cellsJsonModel: JSONModel;
+    var widgetArray: Array<WidgetModel> = [];
+    var cells: Array<any> = [];
+    this.elementService.selectedElements.forEach((element) => {
+      console.log(element);
+      var tmp = { ...element };
+      if(valid){
+        if (tmp.widget_type === AppConstants.WIDGET_LIST) {
+          if(element.cellProtoType === undefined){
+            valid = false;
+            window.alert('Please Enter List Cell Prototype!');
+            return;
+          }
+          cells.push({ cell: element.cell!, cellName: element.cellProtoType });
+          tmp.cell = undefined;
+        }
+        widgetArray.push(tmp);
+      }
+      
+    });
+    widgetArray.forEach((element) => {
+      if (valid) {
+        if (element.widget_type === undefined) {
+          window.alert('Please Fill Elements Properties!');
+          valid = false;
+        }
+      }
+    });
+    if (valid) {
+      if (this.elementService.selectedElements.length === 0) {
+        window.alert('Screen Has No Elements!');
+        return;
+      }
+      if (this.elementService.screenName === '') {
+        window.alert('Please Enter Appbar Title!');
+        return;
+      }
+      console.log('cell', cells);
+      jsonModel = new JSONModel(this.elementService.screenName, 7, [
+        new ScreenPages(this.elementService.screenName, widgetArray),
+      ]);
+      var screen = JSON.parse(localStorage.getItem("screens")!);
+      localStorage.setItem("screens", JSON.stringify(jsonModel, null, 4),);
+    }
+  }
+
   onGenerateJSON() {
     var valid: Boolean = true;
     var jsonModel: JSONModel;

@@ -12,7 +12,7 @@
       cdkDrag
       [ngClass]="getItemFlex(rowContent.child ?? rowContent)"
       [style.backgroundColor]="getItemBackgroundColor(rowContent) ?? 'white'"
-      [style.color]="getItemColor(rowContent) ?? 'black'"
+      [style.color]="getItemColor(rowContent)"
       [style.width]="
         (rowContent.child ?? rowContent).style.expanded ? '100%' : undefined
       "

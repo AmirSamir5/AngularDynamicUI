@@ -1,0 +1,6 @@
+<div class="sidenav" [style.width]="this.width">
+    <a class="closebtn" (click)="closeNav()">&times;</a>
+    <a (click)="onItemClick()" *ngIf="this.screen !== undefined">{{this.screen.screen_name}}</a>
+    <a *ngIf="this.screen === undefined"> No Saved Screen</a>
+</div>
+<span class="hamburgerButton"(click)="openNav()">&#9776;</span>

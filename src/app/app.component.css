@@ -47,9 +47,25 @@
 
   .generateButton{
     margin-top: 16px;
-    margin-left: 25%;
+    margin-right: 4px;
     padding:16px;
     font-size: 18px;
     background-color: green;
+    width: 100%;
+  }
+  .saveButton{
+    margin-top: 16px;
+    margin-left: 4px;
+    padding:16px;
+    font-size: 18px;
+    width: 100%;
+  }
+
+  .row {
+    display: flex;
+    position: relative;
+    flex-flow: row;
+    min-height: 50px;
+    margin: inherit;
   }
   

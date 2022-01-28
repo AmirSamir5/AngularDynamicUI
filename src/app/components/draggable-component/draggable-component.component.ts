@@ -27,6 +27,11 @@ export class DraggableComponentComponent implements OnInit {
         this.selectedElements = elementsArr;
       }
     );
+    this.elementService.changeAppbarEvent.subscribe(
+      (appbar) => {
+        this.title = appbar;
+      }
+    );
   }
 
   drag(event: CdkDragDrop<WidgetModel[]>) {

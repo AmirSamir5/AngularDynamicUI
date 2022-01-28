@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -33,6 +34,7 @@ import { CheckboxComponent } from './components/elements/checkbox/checkbox.compo
 import { CheckboxPropertiesComponent } from './components/elements-properties/checkbox-properties/checkbox-properties.component';
 import { RowComponent } from './components/elements/row/row.component';
 import { RowPropertiesComponent } from './components/elements-properties/row-properties/row-properties.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { RowPropertiesComponent } from './components/elements-properties/row-pro
     CheckboxPropertiesComponent,
     RowComponent,
     RowPropertiesComponent,
+    SideMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +73,7 @@ import { RowPropertiesComponent } from './components/elements-properties/row-pro
     MatGridListModule,
     MatDividerModule,
     MatTabsModule,
+    MatSidenavModule
   ],
   providers: [ElementService],
   bootstrap: [AppComponent],

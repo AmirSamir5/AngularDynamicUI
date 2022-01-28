@@ -11,7 +11,10 @@
       </div>
       <div>
          <app-draggable-component></app-draggable-component>
-         <button type="button" (click)="onGenerateJSON()" class="btn btn-warning generateButton">Generate Screen Json</button>
+         <div class="row">
+            <button type="button" (click)="onGenerateJSON()" class="btn btn-warning generateButton">Generate Screen Json</button>
+            <button type="button" (click)="onSaveScreen()" class="btn btn-primary saveButton">Save Screen</button>
+         </div>
       </div>
       <div>
       <app-elements-properties></app-elements-properties>

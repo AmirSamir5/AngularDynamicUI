@@ -4,6 +4,7 @@ import { JSONModel } from '../models/json.model';
 import { WidgetModel } from '../models/widget.model';
 
 export class ElementService {
+  changeAppbarEvent = new EventEmitter<string>();
   selectedElementsChangedEvent = new EventEmitter<WidgetModel[]>();
   onRemoveElementEvent = new EventEmitter<{
     make: WidgetModel[];
@@ -57,11 +58,8 @@ export class ElementService {
   }
 
   addSelectedItems(selectedElement: WidgetModel) {
-    var element = new WidgetModel({
-      widget_type: selectedElement.widget_type,
-      name: selectedElement.name,
-    });
-    this.selectedElements.push(element);
+    var temp = {...selectedElement};
+    this.selectedElements.push(temp);
     this.selectedElementsChangedEvent.emit(this.selectedElements);
   }
 
