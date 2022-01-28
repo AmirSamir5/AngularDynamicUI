@@ -42,8 +42,14 @@ export class DropdownPropertiesComponent implements OnInit {
       this.hint = this.dropdownElementModel!.hint!;
       this.isRequired =
         this.dropdownElementModel!.validations?.isMandatory === 1;
+      this.lookupsIndex = this.lookups.findIndex(
+        (element) =>
+          element.lookupIdKey ===
+          this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration!
+            .lookupIdKey
+      );
       // this.lookupListKey =
-        // this.dropdownElementModel!.widget.widgetConfiguration.lookupListKey!;
+      // this.dropdownElementModel!.widget.widgetConfiguration.lookupListKey!;
     }
   }
 
@@ -60,8 +66,8 @@ export class DropdownPropertiesComponent implements OnInit {
     this.dropdownElementModel!.fieldTitle = this.title;
     this.dropdownElementModel!.hint = this.hint;
     if (
-      this.dropdownElementModel!.widgetConfiguration!
-        .dropDownConfiguration === undefined
+      this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration ===
+      undefined
     ) {
       this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration =
         new DropDownConfiguration();
