@@ -21,6 +21,7 @@ export class ListPropertiesComponent implements OnInit {
   listIndex: number = 0;
   isClickable: boolean = false;
   clickablesArr = AppConstants.CLICKABLE_CONFIGURATION;
+  listDirectionsArr = AppConstants.LIST_DIRECTION;
 
   constructor(private elementService: ElementService) {}
 
@@ -37,6 +38,10 @@ export class ListPropertiesComponent implements OnInit {
             name: '',
           }),
         });
+    }
+    if (this.listElementModel!.widgetConfiguration === undefined) {
+      this.listElementModel!.widgetConfiguration = new WidgetConfiguration();
+      this.listElementModel!.widgetConfiguration!.showedFields = [];
     }
   }
 

@@ -46,6 +46,15 @@
       (input)="onMargin($event)"
     />
   </label>
+  <label
+    >List Direction
+
+    <select [(ngModel)]="listElementModel!.widgetConfiguration!.direction">
+      <option [value]="item.value" *ngFor="let item of listDirectionsArr">
+        {{ item.name }}
+      </option>
+    </select>
+  </label>
   <label class="container-checkbox"
     >Clickable
     <input

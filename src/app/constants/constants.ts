@@ -91,4 +91,15 @@ export class AppConstants {
     //   value: 'ClickableConfigurationType.callBack',
     // },
   ];
+
+  public static LIST_DIRECTION = [
+    {
+      name: 'Horizontal',
+      value: 'h',
+    },
+    {
+      name: 'Vertical',
+      value: 'v',
+    },
+  ];
 }

@@ -11,6 +11,7 @@ export class WidgetModel {
   widgetId?: number;
   widgetConfiguration?: WidgetConfiguration;
   widget_type?: string;
+  textDisplayed?: string;
   name?: string;
   style: StyleModel;
   dataArray?: string;
@@ -108,6 +109,8 @@ export class WidgetConfiguration {
   listConfiguration?: WidgetModel[];
   rowConfiguration?: WidgetModel[];
   clickableConfiguration?: ClickableConfiguration;
+  direction?: string;
+  showedFields?: any[];
 }
 
 export class ClickableConfiguration {
