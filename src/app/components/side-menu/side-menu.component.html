@@ -1,6 +1,18 @@
 <div class="sidenav" [style.width]="this.width">
     <a class="closebtn" (click)="closeNav()">&times;</a>
-    <a (click)="onItemClick()" *ngIf="this.screen !== undefined">{{this.screen.screen_name}}</a>
-    <a *ngIf="this.screen === undefined"> No Saved Screen</a>
+    <div *ngIf="this.screens.length !== 0">
+        <div *ngFor="let screen of screens;let index = index">
+            <div class="row">
+                <a (click)="onItemClick(screen)" class="col-lg-6" >
+                    {{screen.screen_name}}
+                </a>
+                <button class="btn btn-danger" (click)="onItemDelete(index)">delete</button>
+            </div>
+        </div>
+        <button class="btn btn-primary removeBtn" *ngIf="this.screens.length > 1" (click)="clearAll()" ><span
+            class="glyphicon glyphicon-trash"></span>&nbsp; Clear All</button>
+    </div>
+    
+    <h3 *ngIf="this.screens.length === 0"> No Saved Screen</h3>
 </div>
 <span class="hamburgerButton"(click)="openNav()">&#9776;</span>

@@ -29,6 +29,8 @@ export class AppComponent {
     var cellsJsonModel: JSONModel;
     var widgetArray: Array<WidgetModel> = [];
     var cells: Array<any> = [];
+    var screens: Array<JSONModel> = [];
+
     this.elementService.selectedElements.forEach((element) => {
       console.log(element);
       var tmp = { ...element };
@@ -67,8 +69,25 @@ export class AppComponent {
       jsonModel = new JSONModel(this.elementService.screenName, 7, [
         new ScreenPages(this.elementService.screenName, widgetArray),
       ]);
-      var screen = JSON.parse(localStorage.getItem("screens")!);
-      localStorage.setItem("screens", JSON.stringify(jsonModel, null, 4),);
+      
+      if (localStorage.getItem('screens') !== null || localStorage.getItem('screens') === ''){
+        var screenExsits = false;
+        screens = JSON.parse(localStorage.getItem('screens')!);
+        screens.forEach((element,index) => {
+          if (element.screen_name === jsonModel.screen_name){
+            screenExsits = true;
+            screens[index] = jsonModel;
+          }
+        });
+        if(!screenExsits){
+          screens.push(jsonModel);
+        }
+      }else{
+        screens.push(jsonModel);
+      }
+      
+      localStorage.setItem("screens", JSON.stringify(screens, null, 4),);
+      window.alert('Screen Saved!');
     }
   }
 

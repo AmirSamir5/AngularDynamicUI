@@ -13,7 +13,7 @@
   .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 16px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -26,8 +26,16 @@
   .sidenav .closebtn {
     position: absolute;
     top: 0;
-    left: 0px;
-    font-size: 36px;
+    right: 0px;
+    font-size: 22px;
+  }
+
+  .row {
+    display: flex;
+    position: relative;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .hamburgerButton{
@@ -35,4 +43,12 @@
     margin-left: 16px;
     height: 40px;
     width: 40px;
+  }
+  h3{
+    margin: 16px;
+  }
+
+  .removeBtn{
+    margin: 4%;
+    width: 92%;
   }
