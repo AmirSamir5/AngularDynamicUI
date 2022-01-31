@@ -145,6 +145,7 @@ export class BoxDecoration {
     width,
     color,
     borderRadius,
+    border,
   }: {
     shape?: string;
     padding?: EdgeInsetsModel;
@@ -153,6 +154,7 @@ export class BoxDecoration {
     width?: number;
     color?: number;
     borderRadius?: BorderRadiusModel;
+    border?: Border;
   }) {
     this.shape = shape ?? 'rectangle';
     this.padding = padding;
@@ -161,5 +163,6 @@ export class BoxDecoration {
     this.height = height;
     this.color = color;
     this.borderRadius = borderRadius;
+    this.border = border;
   }
 }

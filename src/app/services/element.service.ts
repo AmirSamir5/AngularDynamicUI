@@ -21,6 +21,8 @@ export class ElementService {
       widget_type: AppConstants.WIDGET_CONTAINER,
       name: 'Dropdown',
       style: new StyleModel({
+        padding: { bottom: 10, left: 10, right: 10, top: 10 },
+        margin: { top: 10, right: 10, left: 10, bottom: 10 },
         decoration: new BoxDecoration({
           borderRadius: {
             bottomLeft: 10,
