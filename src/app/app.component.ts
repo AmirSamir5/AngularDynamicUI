@@ -85,7 +85,7 @@ export class AppComponent {
       console.log(element);
       var tmp = { ...element };
       if (valid) {
-        if (tmp.child!.widget_type === AppConstants.WIDGET_LIST) {
+        if (tmp.child?.widget_type === AppConstants.WIDGET_LIST) {
           if (element.child!.cellProtoType === undefined) {
             valid = false;
             window.alert('Please Enter List Cell Prototype!');

@@ -102,9 +102,11 @@ export class WidgetConfiguration {
   formRendering?: string;
   lookupListKey?: string;
   lookupIdKey?: string;
+  lookupTextKey?: string;
   paymentMethodCode?: string;
   parentDropDwonId?: string;
   dropDownConfiguration?: DropDownConfiguration;
+  filterByParentIdKey?: string;
   fieldConditions?: FieldCondition[];
   listConfiguration?: WidgetModel[];
   rowConfiguration?: WidgetModel[];
