@@ -19,7 +19,7 @@
       [(ngModel)]="listElementModel!.dataArray"
     />
   </label>
-  <label>
+  <!-- <label>
     List Data ID In Map
     <input
       type="text"
@@ -27,9 +27,9 @@
       placeholder="Enter list data array"
       [(ngModel)]="listElementModel!.dataIdInMap"
     />
-  </label>
+  </label> -->
   <label>
-    List Cell Padding
+    Padding
     <input
       type="text"
       class="form-control"
@@ -38,7 +38,7 @@
     />
   </label>
   <label>
-    List Cell Margin
+    Margin
     <input
       type="text"
       class="form-control"
@@ -46,10 +46,9 @@
       (input)="onMargin($event)"
     />
   </label>
-  <label
+  <label 
     >List Direction
-
-    <select [(ngModel)]="listElementModel!.widgetConfiguration!.direction">
+    <select class="form-control" style="display: inline-block;" [(ngModel)]="listElementModel!.widgetConfiguration!.direction">
       <option [value]="item.value" *ngFor="let item of listDirectionsArr">
         {{ item.name }}
       </option>
@@ -60,16 +59,17 @@
     <input
       type="checkbox"
       checked="checked"
-      [(ngModel)]="isClickable"
+      [value]="this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration ?? false"
       (change)="onClickablChange()"
     />
     <span class="checkmark"></span>
   </label>
-  <label [hidden]="!isClickable"
+  <label [hidden]="isClickable"
     >Clickable Type
 
     <select
-      [hidden]="!isClickable"
+      [hidden]="isClickable"
+      class="form-control" style="display: inline-block;"
       [(ngModel)]="
         (listElementModel!.cell?.widgetConfiguration?.clickableConfiguration)!
           .type
@@ -82,7 +82,7 @@
   </label>
   <label
     *ngIf="
-      isClickable &&
+      !isClickable &&
       listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!
         .type === 'ClickableConfigurationType.callApi'
     "
@@ -99,7 +99,7 @@
   </label>
   <label
     *ngIf="
-      isClickable &&
+      !isClickable &&
       listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!
         .type === 'ClickableConfigurationType.redirect'
     "
@@ -116,7 +116,7 @@
   </label>
   <label
     *ngIf="
-      isClickable &&
+      !isClickable &&
       listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!
         .type === 'ClickableConfigurationType.redirect'
     "
@@ -131,7 +131,7 @@
       "
     />
   </label>
-  <label *ngIf="isClickable"
+  <label *ngIf="!isClickable"
     >Passed Keys
     <input
       type="text"

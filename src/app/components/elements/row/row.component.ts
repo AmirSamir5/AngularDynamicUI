@@ -17,6 +17,7 @@ export class RowComponent implements OnInit {
   });
 
   onElementClick(item: WidgetModel, index: number) {
+    this.elementService.editSelectedItem(this.row!, index);
     this.elementService.editRowElementItem(this.row!.children![index], index);
   }
 

@@ -93,6 +93,7 @@ export class ListPropertiesComponent implements OnInit {
   }
 
   onClickablChange() {
+    this.isClickable = !this.isClickable;
     if (!this.isClickable) {
       this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.type =
         '';

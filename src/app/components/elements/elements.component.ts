@@ -13,7 +13,7 @@ export class ElementsComponent implements OnInit {
   constructor(private elementService:ElementService) { }
 
   ngOnInit(): void {
-    this.items = this.elementService.getElements();
+    this.items = [...this.elementService.getElements()];
   }
 
   elementOnClick(selectedElement:WidgetModel){

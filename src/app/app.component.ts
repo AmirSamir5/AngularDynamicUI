@@ -26,28 +26,10 @@ export class AppComponent {
   onSaveScreen(){
     var valid: Boolean = true;
     var jsonModel: JSONModel;
-    var cellsJsonModel: JSONModel;
     var widgetArray: Array<WidgetModel> = [];
-    var cells: Array<any> = [];
     var screens: Array<JSONModel> = [];
 
-    this.elementService.selectedElements.forEach((element) => {
-      console.log(element);
-      var tmp = { ...element };
-      if(valid){
-        if (tmp.widget_type === AppConstants.WIDGET_LIST) {
-          if(element.cellProtoType === undefined){
-            valid = false;
-            window.alert('Please Enter List Cell Prototype!');
-            return;
-          }
-          cells.push({ cell: element.cell!, cellName: element.cellProtoType });
-          tmp.cell = undefined;
-        }
-        widgetArray.push(tmp);
-      }
-      
-    });
+    widgetArray = this.elementService.selectedElements;
     widgetArray.forEach((element) => {
       if (valid) {
         if (element.widget_type === undefined) {
@@ -65,7 +47,6 @@ export class AppComponent {
         window.alert('Please Enter Appbar Title!');
         return;
       }
-      console.log('cell', cells);
       jsonModel = new JSONModel(this.elementService.screenName, 7, [
         new ScreenPages(this.elementService.screenName, widgetArray),
       ]);
