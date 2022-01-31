@@ -16,9 +16,6 @@ import { ElementService } from 'src/app/services/element.service';
 export class DropdownPropertiesComponent implements OnInit {
   @Input() dropdownElementModel?: WidgetModel;
   @Input() index: number = 0;
-
-  title: string = '';
-  hint: string = '';
   isRequired: boolean = false;
   lookupListKey: string = '';
 
@@ -38,8 +35,6 @@ export class DropdownPropertiesComponent implements OnInit {
         new WidgetConfiguration();
       // this.dropdownElementModel!.widget.widgetConfiguration.lookupListKey = '';
     } else {
-      this.title = this.dropdownElementModel!.fieldTitle!;
-      this.hint = this.dropdownElementModel!.hint!;
       this.isRequired =
         this.dropdownElementModel!.validations?.isMandatory === 1;
       this.lookupsIndex = this.lookups.findIndex(
@@ -53,6 +48,13 @@ export class DropdownPropertiesComponent implements OnInit {
     }
   }
 
+  requiredClicked(){
+    this.isRequired = !this.isRequired;
+    this.dropdownElementModel!.validations!.isMandatory = this.isRequired
+      ? 1
+      : 0;
+  }
+
   selectChange(event) {
     var val = event.target.value;
     if (val === 'other') {
@@ -63,8 +65,6 @@ export class DropdownPropertiesComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dropdownElementModel!.fieldTitle = this.title;
-    this.dropdownElementModel!.hint = this.hint;
     if (
       this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration ===
       undefined

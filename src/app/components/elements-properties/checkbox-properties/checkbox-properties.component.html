@@ -4,13 +4,13 @@
     type="text"
     class="form-control"
     placeholder="Enter Title"
-    [(ngModel)]="title"
+    [(ngModel)]="this.checkboxElementModel!.fieldTitle"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Parameter Name"
-    [(ngModel)]="parameterName"
+    [(ngModel)]="this.checkboxElementModel!.validations!.parameterName"
   />
   <br />
   <hr class="rounded" />
