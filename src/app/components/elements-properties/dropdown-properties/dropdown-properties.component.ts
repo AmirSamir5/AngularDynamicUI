@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import {
-  DropDownConfiguration,
   Validations,
   WidgetConfiguration,
   WidgetModel,
@@ -30,25 +29,25 @@ export class DropdownPropertiesComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    if (this.dropdownElementModel!.widgetConfiguration === undefined) {
-      this.dropdownElementModel!.widgetConfiguration =
+    console.log(this.dropdownElementModel);
+    if (this.dropdownElementModel!.child!.widgetConfiguration === undefined) {
+      this.dropdownElementModel!.child!.widgetConfiguration =
         new WidgetConfiguration();
       // this.dropdownElementModel!.widget.widgetConfiguration.lookupListKey = '';
     } else {
       this.isRequired =
-        this.dropdownElementModel!.validations?.isMandatory === 1;
+        this.dropdownElementModel!.child!.validations?.isMandatory === 1;
       this.lookupsIndex = this.lookups.findIndex(
         (element) =>
           element.lookupIdKey ===
-          this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration!
-            .lookupIdKey
+          this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey
       );
       // this.lookupListKey =
       // this.dropdownElementModel!.widget.widgetConfiguration.lookupListKey!;
     }
   }
 
-  requiredClicked(){
+  requiredClicked() {
     this.isRequired = !this.isRequired;
     this.dropdownElementModel!.validations!.isMandatory = this.isRequired
       ? 1
@@ -65,36 +64,30 @@ export class DropdownPropertiesComponent implements OnInit {
   }
 
   onSubmit() {
-    if (
-      this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration ===
-      undefined
-    ) {
-      this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration =
-        new DropDownConfiguration();
-    }
     if (this.showInputFields) {
-      this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration.lookupListKey =
+      this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey =
         this.listKeyInput;
-      this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
+      this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey =
         this.lookupIdKey;
-      this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
+      this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey =
         this.lookupTextKey;
     } else {
-      this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration.lookupListKey =
+      this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey =
         this.lookups[this.lookupsIndex].lookupListKey;
-      this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration.lookupIdKey =
+      this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey =
         this.lookups[this.lookupsIndex].lookupIdKey;
-      this.dropdownElementModel!.widgetConfiguration!.dropDownConfiguration.lookupTextKey =
+      this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey =
         this.lookups[this.lookupsIndex].lookupTextKey;
     }
 
-    if (this.dropdownElementModel!.validations === undefined) {
-      this.dropdownElementModel!.validations = new Validations();
+    if (this.dropdownElementModel!.child!.validations === undefined) {
+      this.dropdownElementModel!.child!.validations = new Validations();
     }
-    this.dropdownElementModel!.validations!.isMandatory = this.isRequired
+    this.dropdownElementModel!.child!.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
-    this.dropdownElementModel!.widget_type = AppConstants.WIDGET_DROPDOWN;
+    this.dropdownElementModel!.child!.widget_type =
+      AppConstants.WIDGET_DROPDOWN;
     console.log(this.dropdownElementModel);
     this.elementService.onSaveItem(this.dropdownElementModel!, this.index);
     // this.elementPropertyService.dropdownSaveEvent(this.dropdownElementModel!);

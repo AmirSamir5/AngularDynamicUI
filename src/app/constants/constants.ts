@@ -75,6 +75,12 @@ export class AppConstants {
       lookupTextKey: '',
       displayValue: 'Month Days',
     },
+    {
+      lookupListKey: 'choosePaymentMethod.list.lookup',
+      lookupIdKey: 'paymentMethod_id',
+      lookupTextKey: 'paymentMethod_name',
+      displayValue: 'Choose Payment Method',
+    },
   ];
 
   public static CLICKABLE_CONFIGURATION = [

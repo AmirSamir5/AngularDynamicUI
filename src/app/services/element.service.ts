@@ -7,7 +7,7 @@ import { WidgetModel } from '../models/widget.model';
 export class ElementService {
   changeAppbarEvent = new EventEmitter<string>();
   selectedElementsChangedEvent = new EventEmitter<WidgetModel[]>();
-  clearPropertiesEvent  = new EventEmitter();
+  clearPropertiesEvent = new EventEmitter();
   onRemoveElementEvent = new EventEmitter<{
     make: WidgetModel[];
     name: WidgetModel;
@@ -18,8 +18,10 @@ export class ElementService {
 
   readonly elements: WidgetModel[] = [
     new WidgetModel({
-      widget_type: AppConstants.WIDGET_DROPDOWN,
+      widget_type: AppConstants.WIDGET_CONTAINER,
       name: 'Dropdown',
+      style: new StyleModel({}),
+      child: new WidgetModel({ widget_type: AppConstants.WIDGET_DROPDOWN }),
     }),
     new WidgetModel({
       widget_type: AppConstants.WIDGET_INPUT_FIELD,
@@ -63,7 +65,7 @@ export class ElementService {
     return this.elements.slice();
   }
 
-  clearProperties(){
+  clearProperties() {
     this.clearPropertiesEvent.emit();
   }
 
