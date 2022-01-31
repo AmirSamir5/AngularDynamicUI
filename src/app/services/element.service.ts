@@ -60,8 +60,19 @@ export class ElementService {
     }),
     new WidgetModel({ widget_type: AppConstants.WIDGET_ROW, name: 'Row' }),
     new WidgetModel({
-      widget_type: AppConstants.WIDGET_CALENDAR,
+      widget_type: AppConstants.WIDGET_CONTAINER,
       name: 'Calendar',
+      style: {
+        expanded: false,
+        margin: { bottom: 10, left: 10, right: 10, top: 10 },
+      },
+      child: {
+        widget_type: AppConstants.WIDGET_CALENDAR,
+        widgetConfiguration: { DateFormat: 'single date' },
+        style: {
+          expanded: false,
+        },
+      },
     }),
     new WidgetModel({
       widget_type: AppConstants.WIDGET_CHECKBOX,

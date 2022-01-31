@@ -113,6 +113,7 @@ export class WidgetConfiguration {
   clickableConfiguration?: ClickableConfiguration;
   direction?: string;
   showedFields?: any[];
+  DateFormat?: string;
 }
 
 export class ClickableConfiguration {
