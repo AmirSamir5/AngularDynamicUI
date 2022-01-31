@@ -24,10 +24,7 @@
   }
   
   .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 0px;
-    font-size: 22px;
+    font-size: 32px;
   }
 
   .row {

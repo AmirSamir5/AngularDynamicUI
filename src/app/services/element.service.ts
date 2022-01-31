@@ -7,6 +7,7 @@ import { WidgetModel } from '../models/widget.model';
 export class ElementService {
   changeAppbarEvent = new EventEmitter<string>();
   selectedElementsChangedEvent = new EventEmitter<WidgetModel[]>();
+  clearPropertiesEvent  = new EventEmitter();
   onRemoveElementEvent = new EventEmitter<{
     make: WidgetModel[];
     name: WidgetModel;
@@ -60,6 +61,10 @@ export class ElementService {
 
   getElements() {
     return this.elements.slice();
+  }
+
+  clearProperties(){
+    this.clearPropertiesEvent.emit();
   }
 
   addSelectedItems(selectedElement: WidgetModel) {

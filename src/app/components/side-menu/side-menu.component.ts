@@ -17,6 +17,7 @@ export class SideMenuComponent implements OnInit {
 
   onItemClick(screen: JSONModel){
     this.closeNav();
+    this.elementService.clearProperties();
     this.elementService.selectedElements = [];
     this.elementService.screenName = screen.screen_name!;
     this.elementService.changeAppbarEvent.emit(screen.screen_name!);

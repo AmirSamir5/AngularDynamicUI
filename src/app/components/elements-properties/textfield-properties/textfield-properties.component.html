@@ -6,7 +6,7 @@
 
       <select [(ngModel)]="inputFieldElementModel!.widget_type">
         <option value="WidgetType.textBox">Text</option>
-        <option value="WidgetType.numeric">Amount</option>
+        <option value="WidgetType.numeric">Number</option>
         <option value="WidgetType.mobileNumber">Mobile Number</option>
       </select>
     </label>
@@ -17,13 +17,13 @@
     type="text"
     class="form-control"
     placeholder="Enter Title"
-    [(ngModel)]="title"
+    [(ngModel)]="inputFieldElementModel!.fieldTitle"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Hint"
-    [(ngModel)]="hint"
+    [(ngModel)]="inputFieldElementModel!.hint"
   />
   <label>
     Max Length
@@ -31,7 +31,8 @@
       type="number"
       class="form-control"
       placeholder="Enter max length"
-      [(ngModel)]="maxLength"
+      [value]="inputFieldElementModel!.validations!.maxLength"
+      [(ngModel)]="inputFieldElementModel!.validations!.maxLength"
     />
   </label>
   <label>
@@ -40,32 +41,33 @@
       type="number"
       class="form-control"
       placeholder="Enter min length"
-      [(ngModel)]="minLength"
+      [value]="inputFieldElementModel!.validations!.minLength"
+      [(ngModel)]="inputFieldElementModel!.validations!.minLength"
     />
   </label>
   <input
     type="text"
     class="form-control"
     placeholder="Enter Regex"
-    [(ngModel)]="regex"
+    [(ngModel)]="inputFieldElementModel!.validations!.regex"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Error Message"
-    [(ngModel)]="error_msg"
+    [(ngModel)]="inputFieldElementModel!.validations!.error_msg"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Default Value"
-    [(ngModel)]="default_value"
+    [(ngModel)]="inputFieldElementModel!.validations!.parameterDefaultValue"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Parameter Name"
-    [(ngModel)]="parameter_name"
+    [(ngModel)]="inputFieldElementModel!.validations!.parameterName"
   />
   <label>
     Parameter Order
@@ -73,7 +75,8 @@
       type="number"
       class="form-control"
       placeholder="Enter Parameter Order"
-      [(ngModel)]="parameter_order"
+      [value]="inputFieldElementModel!.validations!.parameterOrder"
+      [(ngModel)]="inputFieldElementModel!.validations!.parameterOrder"
     />
   </label>
   <label class="container-checkbox"

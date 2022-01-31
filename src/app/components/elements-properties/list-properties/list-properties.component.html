@@ -19,7 +19,7 @@
       [(ngModel)]="listElementModel!.child!.dataArray"
     />
   </label>
-  <label>
+  <!-- <label>
     List Data ID In Map
     <input
       type="text"
@@ -28,6 +28,7 @@
       [(ngModel)]="listElementModel!.child!.dataIdInMap"
     />
   </label>
+-->
   <label>
     List Height
     <input
@@ -38,7 +39,7 @@
     />
   </label>
   <label>
-    List Cell Padding
+    Padding
     <input
       type="text"
       class="form-control"
@@ -47,7 +48,7 @@
     />
   </label>
   <label>
-    List Cell Margin
+    Margin
     <input
       type="text"
       class="form-control"
@@ -59,6 +60,8 @@
     >List Direction
 
     <select
+      class="form-control"
+      style="display: inline-block"
       [(ngModel)]="listElementModel!.child!.widgetConfiguration!.direction"
     >
       <option [value]="item.value" *ngFor="let item of listDirectionsArr">
@@ -71,16 +74,21 @@
     <input
       type="checkbox"
       checked="checked"
-      [(ngModel)]="isClickable"
+      [value]="
+        this.listElementModel!.child!.cell!.widgetConfiguration!
+          .clickableConfiguration ?? false
+      "
       (change)="onClickablChange()"
     />
     <span class="checkmark"></span>
   </label>
-  <label [hidden]="!isClickable"
+  <label [hidden]="isClickable"
     >Clickable Type
 
     <select
-      [hidden]="!isClickable"
+      [hidden]="isClickable"
+      class="form-control"
+      style="display: inline-block"
       [(ngModel)]="
         (listElementModel!.child!.cell?.widgetConfiguration
           ?.clickableConfiguration)!.type
@@ -142,7 +150,7 @@
       "
     />
   </label>
-  <label *ngIf="isClickable"
+  <label *ngIf="!isClickable"
     >Passed Keys
     <input
       type="text"

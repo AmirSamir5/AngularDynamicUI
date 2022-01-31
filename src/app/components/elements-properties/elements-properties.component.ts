@@ -27,5 +27,9 @@ export class ElementsPropertiesComponent implements OnInit {
         }
       }
     );
+
+    this.elementService.clearPropertiesEvent.subscribe(()=>{
+      this.item = undefined;
+    });
   }
 }

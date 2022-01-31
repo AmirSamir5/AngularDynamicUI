@@ -3,7 +3,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
   }
 .circle-link {
     height: 40px;
@@ -29,20 +28,9 @@
     margin-top: 8px;
     display: flex;
     align-items: center;
-    line-height: 20px;
   }
 
   footer a {
     display: flex;
     align-items: center;
-  }
-
-  
-
-  svg#clouds {
-    position: fixed;
-    bottom: -160px;
-    left: -230px;
-    z-index: -10;
-    width: 1920px;
   }
