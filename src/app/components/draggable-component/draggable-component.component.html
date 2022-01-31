@@ -28,9 +28,7 @@
       <div class="item">
         <div [ngSwitch]="element.name">
           <div *ngSwitchCase="'Button'">
-            <app-button
-              [title]="element.fieldTitle ?? 'Button'"
-            ></app-button>
+            <app-button [title]="element.fieldTitle ?? 'Button'"></app-button>
           </div>
           <div *ngSwitchCase="'Dropdown'">
             <app-dropdown
@@ -45,9 +43,7 @@
             ></app-textfield>
           </div>
           <div *ngSwitchCase="'List'">
-            <app-list
-              [listModel]="element"
-            ></app-list>
+            <app-list [listModel]="element.child!"></app-list>
           </div>
           <div *ngSwitchCase="'Calendar'">
             <app-calendar
@@ -59,9 +55,7 @@
             <app-checkbox [title]="element.fieldTitle"></app-checkbox>
           </div>
           <div *ngSwitchCase="'Row'">
-            <app-row
-              [row]="element">
-            </app-row>
+            <app-row [row]="element"> </app-row>
           </div>
         </div>
       </div>
