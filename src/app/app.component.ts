@@ -23,7 +23,7 @@ export class AppComponent {
     private dialog: MatDialog
   ) {}
 
-  onSaveScreen(){
+  onSaveScreen() {
     var valid: Boolean = true;
     var jsonModel: JSONModel;
     var widgetArray: Array<WidgetModel> = [];
@@ -50,24 +50,27 @@ export class AppComponent {
       jsonModel = new JSONModel(this.elementService.screenName, 7, [
         new ScreenPages(this.elementService.screenName, widgetArray),
       ]);
-      
-      if (localStorage.getItem('screens') !== null || localStorage.getItem('screens') === ''){
+
+      if (
+        localStorage.getItem('screens') !== null ||
+        localStorage.getItem('screens') === ''
+      ) {
         var screenExsits = false;
         screens = JSON.parse(localStorage.getItem('screens')!);
-        screens.forEach((element,index) => {
-          if (element.screen_name === jsonModel.screen_name){
+        screens.forEach((element, index) => {
+          if (element.screen_name === jsonModel.screen_name) {
             screenExsits = true;
             screens[index] = jsonModel;
           }
         });
-        if(!screenExsits){
+        if (!screenExsits) {
           screens.push(jsonModel);
         }
-      }else{
+      } else {
         screens.push(jsonModel);
       }
-      
-      localStorage.setItem("screens", JSON.stringify(screens, null, 4),);
+
+      localStorage.setItem('screens', JSON.stringify(screens, null, 4));
       window.alert('Screen Saved!');
     }
   }
@@ -81,19 +84,22 @@ export class AppComponent {
     this.elementService.selectedElements.forEach((element) => {
       console.log(element);
       var tmp = { ...element };
-      if(valid){
-        if (tmp.widget_type === AppConstants.WIDGET_LIST) {
-          if(element.cellProtoType === undefined){
+      if (valid) {
+        if (tmp.child!.widget_type === AppConstants.WIDGET_LIST) {
+          if (element.child!.cellProtoType === undefined) {
             valid = false;
             window.alert('Please Enter List Cell Prototype!');
             return;
           }
-          cells.push({ cell: element.cell!, cellName: element.cellProtoType });
-          tmp.cell = undefined;
+          cells.push({
+            cell: element.child!.cell!,
+            cellName: element.child!.cellProtoType,
+          });
+          tmp.child = { ...element.child! };
+          tmp.child!.cell = undefined;
         }
         widgetArray.push(tmp);
       }
-      
     });
     widgetArray.forEach((element) => {
       if (valid) {
