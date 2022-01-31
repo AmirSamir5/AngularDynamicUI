@@ -15,7 +15,14 @@ export class TextfieldPropertiesComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    
+    if (this.inputFieldElementModel!.validations === undefined) {
+      this.inputFieldElementModel!.validations = new Validations();
+      this.inputFieldElementModel!.validations.isMandatory = 0;
+      this.inputFieldElementModel!.validations.maxLength = '';
+      this.inputFieldElementModel!.validations.minLength = '';
+      this.inputFieldElementModel!.validations.regex = '';
+      this.inputFieldElementModel!.validations.error_msg = '';
+    }
   }
 
   onSubmit() {
