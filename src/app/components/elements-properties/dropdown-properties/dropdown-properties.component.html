@@ -4,14 +4,14 @@
     type="text"
     class="form-control"
     placeholder="Enter Title"
-    [(ngModel)]="this.dropdownElementModel!.fieldTitle"
+    [(ngModel)]="this.dropdownElementModel!.child!.fieldTitle"
   />
   <!-- [(ngModel)]="dropdownElementModel.title" -->
   <input
     type="text"
     class="form-control"
     placeholder="Enter hint"
-    [(ngModel)]="this.dropdownElementModel!.hint"
+    [(ngModel)]="this.dropdownElementModel!.child!.hint"
   />
   <p>Lookup list key</p>
   <!-- [(ngModel)]="dropdownElementModel.lookupListKey" -->

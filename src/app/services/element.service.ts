@@ -1,7 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { AppConstants } from '../constants/constants';
 import { JSONModel } from '../models/json.model';
-import { StyleModel } from '../models/style.model';
+import { Border, BoxDecoration, StyleModel } from '../models/style.model';
 import { WidgetModel } from '../models/widget.model';
 
 export class ElementService {
@@ -20,7 +20,17 @@ export class ElementService {
     new WidgetModel({
       widget_type: AppConstants.WIDGET_CONTAINER,
       name: 'Dropdown',
-      style: new StyleModel({}),
+      style: new StyleModel({
+        decoration: new BoxDecoration({
+          borderRadius: {
+            bottomLeft: 10,
+            bottomRight: 10,
+            topLeft: 10,
+            topRight: 10,
+          },
+          border: new Border({ style: 'solid', color: 1692879254, width: 1 }),
+        }),
+      }),
       child: new WidgetModel({ widget_type: AppConstants.WIDGET_DROPDOWN }),
     }),
     new WidgetModel({

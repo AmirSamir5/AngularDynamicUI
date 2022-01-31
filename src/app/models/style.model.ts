@@ -108,6 +108,26 @@ export class BorderRadiusModel {
   }
 }
 
+export class Border {
+  style?: string;
+  width?: number;
+  color?: number;
+
+  constructor({
+    style,
+    width,
+    color,
+  }: {
+    style: string;
+    width: number;
+    color: number;
+  }) {
+    this.color = color;
+    this.style = style;
+    this.width = width;
+  }
+}
+
 export class BoxDecoration {
   shape?: string;
   padding?: EdgeInsetsModel;
@@ -116,7 +136,7 @@ export class BoxDecoration {
   width?: number;
   color?: number;
   borderRadius?: BorderRadiusModel;
-
+  border?: Border;
   constructor({
     shape,
     padding,
