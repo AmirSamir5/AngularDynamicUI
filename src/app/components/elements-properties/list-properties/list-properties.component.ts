@@ -26,6 +26,11 @@ export class ListPropertiesComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
+    console.log(this.listElementModel);
+    this.listElementModel!.child = { ...this.listElementModel!.child! };
+    this.listElementModel!.child!.widgetConfiguration = {
+      ...this.listElementModel!.child!.widgetConfiguration,
+    };
     if (this.listElementModel!.child!.cell!.widgetConfiguration === undefined) {
       this.listElementModel!.child!.cell!.widgetConfiguration =
         new WidgetConfiguration();

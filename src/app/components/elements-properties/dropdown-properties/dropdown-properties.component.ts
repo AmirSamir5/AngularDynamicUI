@@ -30,6 +30,7 @@ export class DropdownPropertiesComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.dropdownElementModel);
+    this.dropdownElementModel!.child = { ...this.dropdownElementModel!.child! };
     if (this.dropdownElementModel!.child!.widgetConfiguration === undefined) {
       this.dropdownElementModel!.child!.widgetConfiguration =
         new WidgetConfiguration();
