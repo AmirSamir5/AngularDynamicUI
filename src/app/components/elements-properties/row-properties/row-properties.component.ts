@@ -2,6 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import {
+  BorderRadiusModel,
   BoxDecoration,
   EdgeInsetsModel,
   StyleModel,
@@ -97,6 +98,17 @@ export class RowPropertiesComponent implements OnInit {
       left: +padding,
       right: +padding,
       bottom: +padding,
+    });
+  }
+
+  getBorderRadiusValue(event) {
+    var radius = event.target.value;
+
+    this.selectedElement!.style.decoration!.borderRadius = new BorderRadiusModel({
+      topLeft: +radius,
+      topRight: +radius,
+      bottomLeft: +radius,
+      bottomRight: +radius,
     });
   }
 

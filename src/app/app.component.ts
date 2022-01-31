@@ -85,20 +85,24 @@ export class AppComponent {
       console.log(element);
       var tmp = { ...element };
       if (valid) {
-        if (tmp.child!.widget_type === AppConstants.WIDGET_LIST) {
-          if (element.child!.cellProtoType === undefined) {
-            valid = false;
-            window.alert('Please Enter List Cell Prototype!');
-            return;
+        if(tmp.child !== undefined){
+          if (tmp.child!.widget_type === AppConstants.WIDGET_LIST) {
+            if (element.child!.cellProtoType === undefined) {
+              valid = false;
+              window.alert('Please Enter List Cell Prototype!');
+              return;
+            }
+            cells.push({
+              cell: element.child!.cell!,
+              cellName: element.child!.cellProtoType,
+            });
+            tmp.child = { ...element.child! };
+            tmp.child!.cell = undefined;
           }
-          cells.push({
-            cell: element.child!.cell!,
-            cellName: element.child!.cellProtoType,
-          });
-          tmp.child = { ...element.child! };
-          tmp.child!.cell = undefined;
+          widgetArray.push(tmp);
+        }else{
+          widgetArray.push(tmp);
         }
-        widgetArray.push(tmp);
       }
     });
     widgetArray.forEach((element) => {

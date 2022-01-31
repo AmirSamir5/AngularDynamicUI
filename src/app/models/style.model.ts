@@ -84,6 +84,30 @@ export class EdgeInsetsModel {
   }
 }
 
+export class BorderRadiusModel {
+  topLeft?: number;
+  topRight?: number;
+  bottomLeft?: number;
+  bottomRight?: number;
+
+  constructor({
+    topLeft,
+    bottomLeft,
+    bottomRight,
+    topRight,
+  }: {
+    topLeft?: number;
+    bottomLeft?: number;
+    bottomRight?: number;
+    topRight?: number;
+  }) {
+    this.topLeft = topLeft;
+    this.topRight = topRight;
+    this.bottomLeft = bottomLeft;
+    this.bottomRight = bottomRight;
+  }
+}
+
 export class BoxDecoration {
   shape?: string;
   padding?: EdgeInsetsModel;
@@ -91,7 +115,7 @@ export class BoxDecoration {
   height?: number;
   width?: number;
   color?: number;
-  borderRadius?: number;
+  borderRadius?: BorderRadiusModel;
 
   constructor({
     shape,
@@ -108,7 +132,7 @@ export class BoxDecoration {
     height?: number;
     width?: number;
     color?: number;
-    borderRadius?: number;
+    borderRadius?: BorderRadiusModel;
   }) {
     this.shape = shape ?? 'rectangle';
     this.padding = padding;

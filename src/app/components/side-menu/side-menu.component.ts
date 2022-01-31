@@ -28,6 +28,14 @@ export class SideMenuComponent implements OnInit {
     });
   }
 
+  onAddNewScreen(){
+    this.closeNav();
+    this.elementService.clearProperties();
+    this.elementService.screenName = '';
+    this.elementService.changeAppbarEvent.emit('appbar title');
+    this.elementService.selectedElements.splice(0,this.elementService.selectedElements.length);
+  }
+
   openNav() {
     this.width = "20%";
     if(localStorage.getItem("screens") !== null){

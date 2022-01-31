@@ -10,6 +10,8 @@ import { Validations, WidgetModel } from 'src/app/models/widget.model';
 export class CheckboxPropertiesComponent implements OnInit {
   @Input() checkboxElementModel?: WidgetModel;
   @Input() index: number = 0;
+  
+  parameterName: string = '';
 
   constructor() {}
 
@@ -17,6 +19,9 @@ export class CheckboxPropertiesComponent implements OnInit {
     if (this.checkboxElementModel!.validations === undefined) {
       this.checkboxElementModel!.validations = new Validations();
       this.checkboxElementModel!.validations!.isMandatory = 1;
+    } else {
+      this.parameterName =
+        this.checkboxElementModel!.validations!.parameterName!;
     }
   }
 
@@ -25,6 +30,10 @@ export class CheckboxPropertiesComponent implements OnInit {
       this.checkboxElementModel!.validations = new Validations();
       this.checkboxElementModel!.validations!.isMandatory = 1;
     }
+    this.checkboxElementModel!.validations!.parameterName =
+      this.parameterName;
+    this.checkboxElementModel!.validations!.parameterDefaultValue =
+      this.parameterName;
     this.checkboxElementModel!.widget_type = AppConstants.WIDGET_CHECKBOX;
   }
 }
