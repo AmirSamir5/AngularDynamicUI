@@ -1,6 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { AppConstants } from '../constants/constants';
 import { JSONModel } from '../models/json.model';
+import { StyleModel } from '../models/style.model';
 import { WidgetModel } from '../models/widget.model';
 
 export class ElementService {
@@ -29,15 +30,19 @@ export class ElementService {
       name: 'Button',
     }),
     new WidgetModel({
-      widget_type: AppConstants.WIDGET_LIST,
+      widget_type: AppConstants.WIDGET_CONTAINER,
       name: 'List',
-      cell: new WidgetModel({
-        widget_type: AppConstants.WIDGET_CONTAINER,
-        child: new WidgetModel({
-          widget_type: AppConstants.WIDGET_COLUMN,
-          children: [],
+      child: {
+        widget_type: AppConstants.WIDGET_LIST,
+        cell: new WidgetModel({
+          widget_type: AppConstants.WIDGET_CONTAINER,
+          child: new WidgetModel({
+            widget_type: AppConstants.WIDGET_COLUMN,
+            children: [],
+          }),
         }),
-      }),
+        style: new StyleModel({}),
+      },
     }),
     new WidgetModel({ widget_type: AppConstants.WIDGET_ROW, name: 'Row' }),
     new WidgetModel({
@@ -63,7 +68,7 @@ export class ElementService {
   }
 
   addSelectedItems(selectedElement: WidgetModel) {
-    var temp = {...selectedElement};
+    var temp = { ...selectedElement };
     this.selectedElements.push(temp);
     this.selectedElementsChangedEvent.emit(this.selectedElements);
   }

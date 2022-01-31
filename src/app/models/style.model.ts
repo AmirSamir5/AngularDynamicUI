@@ -16,6 +16,7 @@ export class StyleModel {
   crossAxisAlignment?: string;
   textDirection?: string;
   verticalDirection?: string;
+  height?: number;
 
   constructor({
     backgroundColor,

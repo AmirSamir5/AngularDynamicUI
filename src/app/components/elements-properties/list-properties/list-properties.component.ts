@@ -26,10 +26,10 @@ export class ListPropertiesComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    if (this.listElementModel!.cell!.widgetConfiguration === undefined) {
-      this.listElementModel!.cell!.widgetConfiguration =
+    if (this.listElementModel!.child!.cell!.widgetConfiguration === undefined) {
+      this.listElementModel!.child!.cell!.widgetConfiguration =
         new WidgetConfiguration();
-      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration =
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration =
         new ClickableConfiguration({
           type: '',
           passedKeys: [],
@@ -39,15 +39,16 @@ export class ListPropertiesComponent implements OnInit {
           }),
         });
     }
-    if (this.listElementModel!.widgetConfiguration === undefined) {
-      this.listElementModel!.widgetConfiguration = new WidgetConfiguration();
-      this.listElementModel!.widgetConfiguration!.showedFields = [];
+    if (this.listElementModel!.child!.widgetConfiguration === undefined) {
+      this.listElementModel!.child!.widgetConfiguration =
+        new WidgetConfiguration();
+      this.listElementModel!.child!.widgetConfiguration!.showedFields = [];
     }
   }
 
   onAddRow() {
     this.checkConfiguration();
-    this.listElementModel!.cell!.child!.children?.push(
+    this.listElementModel!.child!.cell!.child!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_ROW,
         name: 'Row',
@@ -63,52 +64,56 @@ export class ListPropertiesComponent implements OnInit {
 
   onSubmit() {
     this.checkConfiguration();
-    this.listElementModel!.widget_type = AppConstants.WIDGET_LIST;
+    this.listElementModel!.child!.widget_type = AppConstants.WIDGET_LIST;
   }
 
   checkConfiguration() {
-    if (this.listElementModel!.cell!.child!.children === undefined) {
-      this.listElementModel!.cell!.child!.children = [];
+    if (this.listElementModel!.child!.cell!.child!.children === undefined) {
+      this.listElementModel!.child!.cell!.child!.children = [];
     }
   }
 
   onPadding(event) {
     var paddings = event.target.value;
-    if (this.listElementModel!.cell!.style.padding === undefined)
-      this.listElementModel!.cell!.style.padding = new EdgeInsetsModel({});
-    this.listElementModel!.cell!.style.padding!.top = +paddings;
-    this.listElementModel!.cell!.style.padding!.bottom = +paddings;
-    this.listElementModel!.cell!.style.padding!.left = +paddings;
-    this.listElementModel!.cell!.style.padding!.right = +paddings;
+    if (this.listElementModel!.child!.cell!.style.padding === undefined)
+      this.listElementModel!.child!.cell!.style.padding = new EdgeInsetsModel(
+        {}
+      );
+    this.listElementModel!.child!.cell!.style.padding!.top = +paddings;
+    this.listElementModel!.child!.cell!.style.padding!.bottom = +paddings;
+    this.listElementModel!.child!.cell!.style.padding!.left = +paddings;
+    this.listElementModel!.child!.cell!.style.padding!.right = +paddings;
   }
 
   onMargin(event) {
     var margins = event.target.value;
-    if (this.listElementModel!.cell!.style.margin === undefined)
-      this.listElementModel!.cell!.style.margin = new EdgeInsetsModel({});
-    this.listElementModel!.cell!.style.margin!.top = +margins;
-    this.listElementModel!.cell!.style.margin!.bottom = +margins;
-    this.listElementModel!.cell!.style.margin!.left = +margins;
-    this.listElementModel!.cell!.style.margin!.right = +margins;
+    if (this.listElementModel!.child!.cell!.style.margin === undefined)
+      this.listElementModel!.child!.cell!.style.margin = new EdgeInsetsModel(
+        {}
+      );
+    this.listElementModel!.child!.cell!.style.margin!.top = +margins;
+    this.listElementModel!.child!.cell!.style.margin!.bottom = +margins;
+    this.listElementModel!.child!.cell!.style.margin!.left = +margins;
+    this.listElementModel!.child!.cell!.style.margin!.right = +margins;
   }
 
   onClickablChange() {
     this.isClickable = !this.isClickable;
     if (!this.isClickable) {
-      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.type =
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.type =
         '';
-      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.passedKeys =
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.passedKeys =
         [];
-      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.name =
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.name =
         '';
-      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.type =
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.type =
         '';
     }
   }
 
   onPassedKeys(event) {
     console.log(event.target.value);
-    this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!.passedKeys =
+    this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.passedKeys =
       event.target.value.split(' ');
   }
 }
