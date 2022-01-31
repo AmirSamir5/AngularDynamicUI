@@ -11,28 +11,20 @@ export class CheckboxPropertiesComponent implements OnInit {
   @Input() checkboxElementModel?: WidgetModel;
   @Input() index: number = 0;
 
-  title: string = '';
-  parameterName: string = '';
-
   constructor() {}
 
   ngOnInit(): void {
     if (this.checkboxElementModel!.validations === undefined) {
       this.checkboxElementModel!.validations = new Validations();
       this.checkboxElementModel!.validations!.isMandatory = 1;
-    } else {
-      this.title = this.checkboxElementModel!.fieldTitle!;
-      this.parameterName =
-        this.checkboxElementModel!.validations!.parameterName!;
     }
   }
 
   onSubmit() {
-    this.checkboxElementModel!.fieldTitle = this.title;
-    this.checkboxElementModel!.validations!.parameterName =
-      this.parameterName;
-    this.checkboxElementModel!.validations!.parameterDefaultValue =
-      this.parameterName;
+    if (this.checkboxElementModel!.validations === undefined) {
+      this.checkboxElementModel!.validations = new Validations();
+      this.checkboxElementModel!.validations!.isMandatory = 1;
+    }
     this.checkboxElementModel!.widget_type = AppConstants.WIDGET_CHECKBOX;
   }
 }
