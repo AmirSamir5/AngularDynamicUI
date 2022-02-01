@@ -9,7 +9,11 @@ import {
 import { JsonResultDialogComponent } from './components/json-result-dialog/json-result-dialog.component';
 import { JSONModel, ScreenPages } from './models/json.model';
 import { AppConstants } from './constants/constants';
-import { BoxDecoration, EdgeInsetsModel, StyleModel } from './models/style.model';
+import {
+  BoxDecoration,
+  EdgeInsetsModel,
+  StyleModel,
+} from './models/style.model';
 
 @Component({
   selector: 'app-root',
@@ -88,7 +92,7 @@ export class AppComponent {
       console.log(element);
       var tmp = { ...element };
       if (valid) {
-        if(tmp.child !== undefined){
+        if (tmp.child !== undefined) {
           if (tmp.child!.widget_type === AppConstants.WIDGET_LIST) {
             if (element.child!.cellProtoType === undefined) {
               valid = false;
@@ -103,7 +107,7 @@ export class AppComponent {
             tmp.child!.cell = undefined;
           }
           widgetArray.push(tmp);
-        }else{
+        } else {
           widgetArray.push(tmp);
         }
       }
@@ -129,37 +133,50 @@ export class AppComponent {
 
       screenModel.page_name = this.elementService.screenName;
 
-      if (screenModel.widget_type !== undefined){
+      if (screenModel.widget_type !== undefined) {
         var scrollableWidget: WidgetModel = new WidgetModel({
           widget_type: screenModel.widget_type,
           child: new WidgetModel({
             widget_type: AppConstants.WIDGET_CONTAINER,
             style: new StyleModel({
-              margin: new EdgeInsetsModel({top:16,bottom:16,left:16,right:16,}),
-              decoration: new BoxDecoration({shape:'rectangle',})}),
-            child:new WidgetModel({
-              widget_type: AppConstants.WIDGET_COLUMN,
-              children:widgetArray,
-              style: new StyleModel({crossAxisAlignment: 'stretch'})
+              margin: new EdgeInsetsModel({
+                top: 16,
+                bottom: 16,
+                left: 16,
+                right: 16,
+              }),
+              decoration: new BoxDecoration({ shape: 'rectangle' }),
             }),
-          })
-          
-        }); 
+            child: new WidgetModel({
+              widget_type: AppConstants.WIDGET_COLUMN,
+              children: widgetArray,
+              style: new StyleModel({ crossAxisAlignment: 'stretch' }),
+            }),
+          }),
+        });
         screenModel.fields = [scrollableWidget];
-      }else{
+      } else {
         screenModel.fields = widgetArray;
       }
 
-      jsonModel = new JSONModel(
-        screenModel.page_name,
-         7,
-       [screenModel]);
+      jsonModel = new JSONModel(screenModel.page_name, 7, [screenModel]);
 
+      var map: Map<string, any> = new Map();
+
+      map[screenModel.page_name] = jsonModel;
 
       const dialogRef = this.dialog.open(JsonResultDialogComponent, {
         width: '50%',
         data: {
-          json: JSON.stringify(jsonModel, null, 4),
+          json: JSON.stringify(
+            {
+              response: {
+                result: map,
+              },
+            },
+            null,
+            4
+          ),
           cells: cells,
           screenName: this.elementService.screenName,
         },
