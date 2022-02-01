@@ -178,7 +178,7 @@ export class AppComponent {
             4
           ),
           cells: cells,
-          screenName: this.elementService.screenName,
+          screenName: this.elementService.screenLookup,
         },
       });
     }
