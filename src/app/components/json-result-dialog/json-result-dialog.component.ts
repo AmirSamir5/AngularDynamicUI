@@ -55,13 +55,11 @@ export class JsonResultDialogComponent implements OnInit {
       this.file = this.data.cells[event.index - 1].cellName;
       var map: Map<string, any> = new Map();
       map[this.data.cells[event.index - 1].cellName] =
-        this.data.cells[event.index - 1].cell;
+        this.data.cells[event.index - 1];
       this.selectedData = JSON.stringify(
         {
           response: {
-            result: {
-              cell: map,
-            },
+            result: map,
           },
         },
         null,
