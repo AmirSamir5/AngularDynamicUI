@@ -19,6 +19,9 @@ export class CalendarPropertiesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.calendarElementModel!.child! = {
+      ...this.calendarElementModel!.child!,
+    };
     if (this.calendarElementModel!.child!.validations === undefined) {
       this.calendarElementModel!.child!.validations = new Validations();
     } else {
