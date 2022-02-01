@@ -62,7 +62,7 @@
     <select
       class="form-control"
       style="display: inline-block"
-      [(ngModel)]="listElementModel!.child!.widgetConfiguration!.direction"
+      [(ngModel)]="listElementModel!.child!.cell!.widgetConfiguration!.direction"
     >
       <option [value]="item.value" *ngFor="let item of listDirectionsArr">
         {{ item.name }}

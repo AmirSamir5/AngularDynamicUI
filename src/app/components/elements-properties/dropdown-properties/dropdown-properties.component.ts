@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import {
   Validations,
@@ -12,51 +12,52 @@ import { ElementService } from 'src/app/services/element.service';
   templateUrl: './dropdown-properties.component.html',
   styleUrls: ['./dropdown-properties.component.css'],
 })
-export class DropdownPropertiesComponent implements OnInit {
+export class DropdownPropertiesComponent implements OnChanges {
   @Input() dropdownElementModel?: WidgetModel;
   @Input() index: number = 0;
   isRequired: boolean = false;
-  lookupListKey: string = '';
-
   showInputFields: boolean = false;
-  listKeyInput: string = '';
-  lookupIdKey: string = '';
-  lookupTextKey: string = '';
 
   lookups = AppConstants.LOOKUP_LISTS;
-  lookupsIndex: number = -1;
 
   constructor(private elementService: ElementService) {}
 
-  ngOnInit(): void {
-    console.log(this.dropdownElementModel);
+  ngOnChanges(): void {
     this.dropdownElementModel!.child = { ...this.dropdownElementModel!.child! };
+    if (this.dropdownElementModel!.child!.validations === undefined) {
+      this.dropdownElementModel!.child!.validations = new Validations();
+    }
     if (this.dropdownElementModel!.child!.widgetConfiguration === undefined) {
       this.dropdownElementModel!.child!.widgetConfiguration =
         new WidgetConfiguration();
-      // this.dropdownElementModel!.widget.widgetConfiguration.lookupListKey = '';
-    } else {
-      this.isRequired =
-        this.dropdownElementModel!.child!.validations?.isMandatory === 1;
-      this.lookupsIndex = this.lookups.findIndex(
-        (element) =>
-          element.lookupIdKey ===
-          this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey
-      );
-      // this.lookupListKey =
-      // this.dropdownElementModel!.widget.widgetConfiguration.lookupListKey!;
     }
   }
 
   requiredClicked() {
     this.isRequired = !this.isRequired;
-    this.dropdownElementModel!.validations!.isMandatory = this.isRequired
+    this.dropdownElementModel!.child!.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
   }
 
+  requiredValue():boolean{
+    if(this.dropdownElementModel!.child!.validations!.isMandatory === 1 && this.dropdownElementModel!.child!.validations!.isMandatory !== undefined){
+      return true;
+    }
+    return false;
+  }
+
   selectChange(event) {
     var val = event.target.value;
+    this.lookups.forEach(
+      (element) =>{
+        if(element.displayValue === val){
+          this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey = element.lookupIdKey;
+          this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey = element.lookupListKey;
+          this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey = element.lookupTextKey;
+        }
+      }
+    );
     if (val === 'other') {
       this.showInputFields = true;
     } else {
@@ -65,20 +66,9 @@ export class DropdownPropertiesComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.showInputFields) {
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey =
-        this.listKeyInput;
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey =
-        this.lookupIdKey;
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey =
-        this.lookupTextKey;
-    } else {
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey =
-        this.lookups[this.lookupsIndex].lookupListKey;
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey =
-        this.lookups[this.lookupsIndex].lookupIdKey;
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey =
-        this.lookups[this.lookupsIndex].lookupTextKey;
+    if (this.dropdownElementModel!.child!.widgetConfiguration === undefined) {
+      this.dropdownElementModel!.child!.widgetConfiguration =
+        new WidgetConfiguration();
     }
 
     if (this.dropdownElementModel!.child!.validations === undefined) {
@@ -91,6 +81,5 @@ export class DropdownPropertiesComponent implements OnInit {
       AppConstants.WIDGET_DROPDOWN;
     console.log(this.dropdownElementModel);
     this.elementService.onSaveItem(this.dropdownElementModel!, this.index);
-    // this.elementPropertyService.dropdownSaveEvent(this.dropdownElementModel!);
   }
 }

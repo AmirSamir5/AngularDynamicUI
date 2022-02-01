@@ -6,9 +6,9 @@
 
 .calendar .calbtn {
   cursor: pointer;
-  font-size: 16px;
-  font-family: inherit;
-  margin: 0;
-  /* height: 60px; */
-  width: 100%;
+    font-size: 16px;
+    font-family: inherit;
+    margin: 0;
+    height: 40px;
+    width: 100%;
 }

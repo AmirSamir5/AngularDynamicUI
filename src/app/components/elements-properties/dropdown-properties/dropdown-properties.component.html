@@ -15,8 +15,8 @@
   />
   <p>Lookup list key</p>
   <!-- [(ngModel)]="dropdownElementModel.lookupListKey" -->
-  <select [(ngModel)]="lookupsIndex" (change)="selectChange($event)">
-    <option [value]="index" *ngFor="let item of lookups; let index = index">
+  <select [(ngModel)]="this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey" (change)="selectChange($event)">
+    <option [value]="item.displayValue" *ngFor="let item of lookups">
       {{ item.displayValue }}
     </option>
     <option value="other">Other ( please enter data )</option>
@@ -28,24 +28,27 @@
     type="text"
     placeholder="Enter Lookup List Key"
     style="margin-top: 16px"
-    [(ngModel)]="listKeyInput"
+    [(ngModel)]="this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey"
     [hidden]="!showInputFields"
   />
   <input
     type="text"
     placeholder="Enter Lookup ID Key"
-    [(ngModel)]="lookupIdKey"
+    [(ngModel)]="this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey"
     [hidden]="!showInputFields"
   />
   <input
     type="text"
     placeholder="Enter Lookup Text Key"
-    [(ngModel)]="lookupTextKey"
+    [(ngModel)]="this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey"
     [hidden]="!showInputFields"
   />
   <label class="container-checkbox"
     >Required
-    <input type="checkbox" checked="checked" [(ngModel)]="isRequired" />
+    <input 
+    type="checkbox"
+    (change)="requiredClicked()"
+    [checked]="requiredValue()" />
     <span class="checkmark"></span>
   </label>
   <hr class="rounded" />

@@ -47,8 +47,8 @@
           </div>
           <div *ngSwitchCase="'Calendar'">
             <app-calendar
-              [title]="element.fieldTitle"
-              [hintText]="element.hint"
+              [title]="element.child!.fieldTitle"
+              [hintText]="element.child!.hint"
             ></app-calendar>
           </div>
           <div *ngSwitchCase="'Checkbox'">
