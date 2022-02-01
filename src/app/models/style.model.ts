@@ -29,6 +29,8 @@ export class StyleModel {
     fontFamily,
     justify,
     padding,
+    mainAxisAlignment,
+    crossAxisAlignment,
     margin,
     expanded,
   }: {
@@ -44,6 +46,8 @@ export class StyleModel {
     padding?: EdgeInsetsModel;
     margin?: EdgeInsetsModel;
     expanded?: boolean;
+    mainAxisAlignment?: string;
+    crossAxisAlignment?: string;
   }) {
     this.backgroundColor = backgroundColor;
     this.color = color;
@@ -57,6 +61,8 @@ export class StyleModel {
     this.padding = padding;
     this.margin = margin;
     this.expanded = expanded ?? false;
+    this.mainAxisAlignment = mainAxisAlignment;
+    this.crossAxisAlignment = crossAxisAlignment;
   }
 }
 
