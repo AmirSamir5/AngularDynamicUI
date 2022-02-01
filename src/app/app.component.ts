@@ -131,8 +131,6 @@ export class AppComponent {
       }
       console.log('cell', cells);
 
-      screenModel.page_name = this.elementService.screenName;
-
       if (screenModel.widget_type !== undefined) {
         var scrollableWidget: WidgetModel = new WidgetModel({
           widget_type: screenModel.widget_type,
@@ -159,7 +157,7 @@ export class AppComponent {
         screenModel.fields = widgetArray;
       }
 
-      jsonModel = new JSONModel(screenModel.page_name, 7, [screenModel]);
+      jsonModel = new JSONModel(this.elementService.screenName, 7, [screenModel]);
 
       var map: Map<string, any> = new Map();
 

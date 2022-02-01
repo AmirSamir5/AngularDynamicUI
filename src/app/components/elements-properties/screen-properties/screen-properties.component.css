@@ -16,6 +16,11 @@ input{
     width: 100%;
 }
 
+input::placeholder{
+    font-size: 14px;
+    font-weight: 200;
+}
+
 .bottom {
     position: absolute;
     bottom: 0;

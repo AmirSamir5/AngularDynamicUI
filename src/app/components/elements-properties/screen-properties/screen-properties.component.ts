@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import { ScreenPages } from 'src/app/models/json.model';
 import { ElementService } from 'src/app/services/element.service';
@@ -8,12 +8,15 @@ import { ElementService } from 'src/app/services/element.service';
   templateUrl: './screen-properties.component.html',
   styleUrls: ['./screen-properties.component.css']
 })
-export class ScreenPropertiesComponent implements OnChanges {
-  isScrollable = false;
+export class ScreenPropertiesComponent implements OnInit {
+  isScrollable = true;
+  screenProperty?:ScreenPages;
 
   constructor(private elementService:ElementService) {}
 
-  ngOnChanges(): void {
+  ngOnInit(): void {
+    this.elementService.screenModel.widget_type = AppConstants.WIDGET_SCROLLVIEW;
+    this.screenProperty = this.elementService.screenModel;
   }
 
   onScrollableChange(){

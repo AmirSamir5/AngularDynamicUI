@@ -4,10 +4,20 @@
     >Scrollable
     <input
       type="checkbox"
+      checked="checked"
       [value]="isScrollable"
       (change)="onScrollableChange()"
     />
     <span class="checkmark"></span>
+  </label>
+  <label>
+    Screen Lookup Name
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter screen lookup name"
+      [(ngModel)]="screenProperty!.page_name"
+    />
   </label>
     
 </div>
