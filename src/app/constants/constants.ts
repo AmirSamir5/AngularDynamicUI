@@ -58,24 +58,24 @@ export class AppConstants {
     //   lookupTextKey: '',
     //   displayValue: 'Allowed Contribution Frequencies',
     // },
-    // {
-    //   lookupListKey: 'allowed.wining.turn.decisions',
-    //   lookupIdKey: '',
-    //   lookupTextKey: '',
-    //   displayValue: 'Allowed Winning Turn decisions',
-    // },
-    // {
-    //   lookupListKey: 'week.days',
-    //   lookupIdKey: '',
-    //   lookupTextKey: '',
-    //   displayValue: 'Week Days',
-    // },
-    // {
-    //   lookupListKey: 'month.days',
-    //   lookupIdKey: '',
-    //   lookupTextKey: '',
-    //   displayValue: 'Month Days',
-    // },
+    {
+      lookupListKey: 'allowed.wining.turn.decisions',
+      lookupIdKey: 'ID',
+      lookupTextKey: 'WINNING',
+      displayValue: 'Allowed Winning Turn decisions',
+    },
+    {
+      lookupListKey: 'week.days',
+      lookupIdKey: 'ID',
+      lookupTextKey: 'NAME',
+      displayValue: 'Week Days',
+    },
+    {
+      lookupListKey: 'month.days',
+      lookupIdKey: 'ID',
+      lookupTextKey: 'NAME',
+      displayValue: 'Month Days',
+    },
     {
       lookupListKey: 'choosePaymentMethod.list.lookup',
       lookupIdKey: 'paymentMethod_id',
@@ -87,6 +87,18 @@ export class AppConstants {
       lookupIdKey: 'turn_id',
       lookupTextKey: 'turn_name',
       displayValue: 'Future Turns',
+    },
+    {
+      lookupListKey: 'currency.lookup.list',
+      lookupIdKey: 'ID',
+      lookupTextKey: 'CODE',
+      displayValue: 'Currency',
+    },
+    {
+      lookupListKey: 'allowed.contribution.frequencies',
+      lookupIdKey: 'ID',
+      lookupTextKey: 'CONTRIBUTIONFREQUENCY',
+      displayValue: 'Allowed contribution frequencies',
     },
   ];
 
