@@ -22,6 +22,7 @@ export class ElementService {
       widget_type: AppConstants.WIDGET_CONTAINER,
       name: 'Dropdown',
       style: new StyleModel({
+        margin: { top: 10, bottom: 10 },
         decoration: new BoxDecoration({
           borderRadius: {
             bottomLeft: 10,
@@ -63,7 +64,7 @@ export class ElementService {
       name: 'Calendar',
       style: {
         expanded: false,
-        margin: { bottom: 10, left: 10, right: 10, top: 10 },
+        margin: { bottom: 10, top: 10 },
       },
       child: {
         widget_type: AppConstants.WIDGET_CALENDAR,
