@@ -15,14 +15,13 @@ export class ElementService {
   EditElementEvent = new EventEmitter<{ make?: WidgetModel; name?: number }>();
   EditRowElementEvent = new EventEmitter<{ make: WidgetModel; name: number }>();
   RemoveRowElementEvent = new EventEmitter();
-  screenModel : ScreenPages = new ScreenPages('',[]);
+  screenModel: ScreenPages = new ScreenPages('', []);
 
   readonly elements: WidgetModel[] = [
     new WidgetModel({
       widget_type: AppConstants.WIDGET_CONTAINER,
       name: 'Dropdown',
       style: new StyleModel({
-        padding: { bottom: 10, left: 10, right: 10, top: 10 },
         margin: { top: 10, right: 10, left: 10, bottom: 10 },
         decoration: new BoxDecoration({
           borderRadius: {
