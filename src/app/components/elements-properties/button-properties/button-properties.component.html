@@ -1,5 +1,18 @@
 <div class="col">
-    <p> Button Properties </p>
-    <input type="text" class="form-control" [(ngModel)]="buttonText" placeholder="Enter Button Title..." [value]="buttonItem!.fieldTitle ?? null">
+  <p>Button Properties</p>
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="buttonText"
+    placeholder="Enter Button Title..."
+    [value]="buttonItem!.fieldTitle ?? null"
+  />
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="apiCode"
+    placeholder="Enter Button API Code..."
+    [value]="buttonItem!.apiCode ?? null"
+  />
 </div>
 <button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
