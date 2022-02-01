@@ -161,7 +161,7 @@ export class AppComponent {
 
       var map: Map<string, any> = new Map();
 
-      map[screenModel.page_name] = jsonModel;
+      map[this.elementService.screenLookup] = jsonModel;
 
       const dialogRef = this.dialog.open(JsonResultDialogComponent, {
         width: '50%',
@@ -176,7 +176,7 @@ export class AppComponent {
             4
           ),
           cells: cells,
-          screenName: this.elementService.screenName,
+          screenName: this.elementService.screenLookup,
         },
       });
     }
