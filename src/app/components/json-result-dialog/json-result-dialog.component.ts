@@ -59,7 +59,9 @@ export class JsonResultDialogComponent implements OnInit {
       this.selectedData = JSON.stringify(
         {
           response: {
-            result: map,
+            result: {
+              cell: map,
+            },
           },
         },
         null,
