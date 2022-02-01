@@ -1,6 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { AppConstants } from '../constants/constants';
-import { JSONModel } from '../models/json.model';
+import { JSONModel, ScreenPages } from '../models/json.model';
 import { Border, BoxDecoration, StyleModel } from '../models/style.model';
 import { WidgetModel } from '../models/widget.model';
 
@@ -12,9 +12,10 @@ export class ElementService {
     make: WidgetModel[];
     name: WidgetModel;
   }>();
-  EditElementEvent = new EventEmitter<{ make: WidgetModel; name: number }>();
+  EditElementEvent = new EventEmitter<{ make?: WidgetModel; name?: number }>();
   EditRowElementEvent = new EventEmitter<{ make: WidgetModel; name: number }>();
   RemoveRowElementEvent = new EventEmitter();
+  screenModel : ScreenPages = new ScreenPages('',[]);
 
   readonly elements: WidgetModel[] = [
     new WidgetModel({
@@ -107,7 +108,7 @@ export class ElementService {
     });
   }
 
-  editSelectedItem(item: WidgetModel, index: number) {
+  editSelectedItem(item?: WidgetModel, index?: number) {
     this.EditElementEvent.emit({ make: item, name: index });
   }
 

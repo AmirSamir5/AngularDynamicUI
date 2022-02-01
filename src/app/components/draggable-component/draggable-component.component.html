@@ -1,4 +1,4 @@
-<div class="appbar">
+<div class="appbar" (click)="onAppbarPressed()">
   <p>9:00 am</p>
   <span (dblclick)="editItem()" [hidden]="show">{{ title }}</span>
   <input

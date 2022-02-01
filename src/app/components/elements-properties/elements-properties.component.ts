@@ -17,7 +17,7 @@ export class ElementsPropertiesComponent implements OnInit {
     this.elementService.EditElementEvent.subscribe(
       ({ make: item, name: index }) => {
         this.item = item;
-        this.index = index;
+        this.index = index ?? 0;
       }
     );
     this.elementService.onRemoveElementEvent.subscribe(

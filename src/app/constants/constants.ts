@@ -31,6 +31,7 @@ export class AppConstants {
   public static WIDGET_TEXT_VIEW = 'WidgetType.textView';
   public static WIDGET_CENTER = 'WidgetType.center';
   public static WIDGET_COLUMN = 'WidgetType.column';
+  public static WIDGET_SCROLLVIEW = 'WidgetType.scrollView';
 
   public static LOOKUP_LISTS = [
     // {

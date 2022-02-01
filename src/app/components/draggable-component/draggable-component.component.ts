@@ -51,6 +51,10 @@ export class DraggableComponentComponent implements OnInit {
     }
   }
 
+  onAppbarPressed(){
+    this.elementService.editSelectedItem(undefined, undefined);
+  }
+
   removeElement(index: number) {
     this.elementService.removeSelectedItems(index);
   }

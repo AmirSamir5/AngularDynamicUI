@@ -1,3 +1,4 @@
+import { AppConstants } from "../constants/constants";
 import { WidgetModel } from "./widget.model";
 
 export class JSONModel{
@@ -11,6 +12,6 @@ export class JSONModel{
 export class ScreenPages{
     constructor(
         public page_name:string,
-        public fields:Array<WidgetModel>
-        ){}
+        public fields:Array<WidgetModel>,
+        public widget_type?: string){}
 }

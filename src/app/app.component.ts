@@ -81,6 +81,8 @@ export class AppComponent {
     var cellsJsonModel: JSONModel;
     var widgetArray: Array<WidgetModel> = [];
     var cells: Array<any> = [];
+    var screenModel: ScreenPages = this.elementService.screenModel;
+
     this.elementService.selectedElements.forEach((element) => {
       console.log(element);
       var tmp = { ...element };
@@ -123,9 +125,28 @@ export class AppComponent {
         return;
       }
       console.log('cell', cells);
-      jsonModel = new JSONModel(this.elementService.screenName, 7, [
-        new ScreenPages(this.elementService.screenName, widgetArray),
-      ]);
+
+      screenModel.page_name = this.elementService.screenName;
+
+      if (screenModel.widget_type !== undefined){
+        var scrollableWidget: WidgetModel = new WidgetModel({
+          widget_type: screenModel.widget_type,
+          child: new WidgetModel({
+            widget_type: AppConstants.WIDGET_COLUMN,
+            children:widgetArray
+          }),
+        }); 
+        screenModel.fields = [scrollableWidget];
+      }else{
+        screenModel.fields = widgetArray;
+      }
+
+      jsonModel = new JSONModel(
+        screenModel.page_name,
+         7,
+       [screenModel]);
+
+
       const dialogRef = this.dialog.open(JsonResultDialogComponent, {
         width: '50%',
         data: {

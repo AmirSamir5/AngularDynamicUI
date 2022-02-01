@@ -1,4 +1,7 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div *ngIf="item === undefined">
+    <app-screen-properties></app-screen-properties>
+  </div>
   <div [ngSwitch]="item.name" *ngIf="item">
     <div *ngSwitchCase="'Button'">
       <app-button-properties

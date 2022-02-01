@@ -35,6 +35,7 @@ import { CheckboxPropertiesComponent } from './components/elements-properties/ch
 import { RowComponent } from './components/elements/row/row.component';
 import { RowPropertiesComponent } from './components/elements-properties/row-properties/row-properties.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { ScreenPropertiesComponent } from './components/elements-properties/screen-properties/screen-properties.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
     RowComponent,
     RowPropertiesComponent,
     SideMenuComponent,
+    ScreenPropertiesComponent,
   ],
   imports: [
     BrowserModule,
