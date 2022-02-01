@@ -9,6 +9,7 @@ import {
 import { JsonResultDialogComponent } from './components/json-result-dialog/json-result-dialog.component';
 import { JSONModel, ScreenPages } from './models/json.model';
 import { AppConstants } from './constants/constants';
+import { BoxDecoration, EdgeInsetsModel, StyleModel } from './models/style.model';
 
 @Component({
   selector: 'app-root',
@@ -132,9 +133,17 @@ export class AppComponent {
         var scrollableWidget: WidgetModel = new WidgetModel({
           widget_type: screenModel.widget_type,
           child: new WidgetModel({
-            widget_type: AppConstants.WIDGET_COLUMN,
-            children:widgetArray
-          }),
+            widget_type: AppConstants.WIDGET_CONTAINER,
+            style: new StyleModel({
+              margin: new EdgeInsetsModel({top:16,bottom:16,left:16,right:16,}),
+              decoration: new BoxDecoration({shape:'rectangle',})}),
+            child:new WidgetModel({
+              widget_type: AppConstants.WIDGET_COLUMN,
+              children:widgetArray,
+              style: new StyleModel({crossAxisAlignment: 'stretch'})
+            }),
+          })
+          
         }); 
         screenModel.fields = [scrollableWidget];
       }else{
