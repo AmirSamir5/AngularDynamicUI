@@ -81,6 +81,7 @@ export class ElementService {
   ];
 
   public screenName: string = '';
+  public screenLookup: string = '';
 
   public selectedElements: WidgetModel[] = [];
 

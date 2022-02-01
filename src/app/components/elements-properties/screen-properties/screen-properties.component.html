@@ -1,6 +1,6 @@
 <div class="col">
-    <p> Screen Properties </p>
-    <label class="container-checkbox"
+  <p>Screen Properties</p>
+  <label class="container-checkbox"
     >Scrollable
     <input
       type="checkbox"
@@ -9,5 +9,14 @@
     />
     <span class="checkmark"></span>
   </label>
-    
+
+  <label
+    >Screen Lookup Name
+    <input
+      type="text"
+      class="form-control"
+      [value]="screenLookupName"
+      (change)="onLookupNameChange($event)"
+    />
+  </label>
 </div>
