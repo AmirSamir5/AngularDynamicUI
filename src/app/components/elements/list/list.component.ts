@@ -16,6 +16,7 @@ export class ListComponent implements OnInit {
       widget_type: AppConstants.WIDGET_CONTAINER,
       child: new WidgetModel({
         widget_type: AppConstants.WIDGET_COLUMN,
+        style: { expanded: false, mainAxisSize: 'max' },
         children: [],
       }),
     }),

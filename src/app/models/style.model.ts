@@ -17,6 +17,7 @@ export class StyleModel {
   textDirection?: string;
   verticalDirection?: string;
   height?: number;
+  widthRatioToScreen?: number;
 
   constructor({
     backgroundColor,

@@ -56,7 +56,7 @@
       <input
         type="checkbox"
         checked="checked"
-        [(ngModel)]="(selectedElement.child ?? selectedElement).style.expanded"
+        [(ngModel)]="(selectedElement.child ?? selectedElement).expanded"
         (change)="onExpandedChange()"
       />
       <span class="checkmark"></span>
@@ -132,7 +132,11 @@
         type="color"
         class="form-control"
         id="colorpicker"
-        [value]="this.selectedElement.style!.decoration!.color!.toString(16).replace('ff', '#')"
+        [value]="
+          this.selectedElement
+            .style!.decoration!.color!.toString(16)
+            .replace('ff', '#')
+        "
         (input)="onBackgroundChange($event)"
         name="colorpicker"
       />
@@ -144,7 +148,11 @@
         type="color"
         class="form-control"
         id="colorpicker"
-        [value]="this.selectedElement.child!.style!.color!.toString(16).replace('ff', '#')"
+        [value]="
+          this.selectedElement
+            .child!.style!.color!.toString(16)
+            .replace('ff', '#')
+        "
         (input)="onColorChange($event)"
         name="colorpicker"
       />
@@ -185,7 +193,10 @@
         <input
           type="checkbox"
           checked="checked"
-          [value]="this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration ?? false"
+          [value]="
+            this.selectedElement!.child!.widgetConfiguration!
+              .clickableConfiguration ?? false
+          "
           (change)="onClickablChange()"
         />
         <span class="checkmark"></span>

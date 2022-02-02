@@ -8,6 +8,7 @@ export class WidgetModel {
   groupId?: number;
   fieldId?: number;
   hint?: string;
+  expanded?: boolean;
   widgetId?: number;
   widgetConfiguration?: WidgetConfiguration;
   widget_type?: string;

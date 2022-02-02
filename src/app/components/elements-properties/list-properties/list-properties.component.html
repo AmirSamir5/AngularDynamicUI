@@ -56,13 +56,31 @@
       (input)="onMargin($event)"
     />
   </label>
+  <label>
+    Cell Border Radius
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter border radius value"
+      (input)="getBorderRadiusValue($event)"
+    />
+  </label>
+  <label>
+    Cell Width Ratio
+    <input
+      type="number"
+      class="form-control"
+      placeholder="Enter Cell Width Ratio"
+      [(ngModel)]="listElementModel!.child!.cell!.style.widthRatioToScreen"
+    />
+  </label>
   <label
     >List Direction
 
     <select
       class="form-control"
       style="display: inline-block"
-      [(ngModel)]="listElementModel!.child!.cell!.widgetConfiguration!.direction"
+      [(ngModel)]="listElementModel!.child!.widgetConfiguration!.direction"
     >
       <option [value]="item.value" *ngFor="let item of listDirectionsArr">
         {{ item.name }}
