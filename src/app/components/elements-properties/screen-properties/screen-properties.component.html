@@ -17,6 +17,7 @@
       class="form-control"
       placeholder="Enter screen lookup name"
       [(ngModel)]="screenProperty!.page_name"
+      (change)="onLookupNameChange($event)"
     />
   </label>
     

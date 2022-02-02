@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { JSONModel } from 'src/app/models/json.model';
+import { JSONModel, ScreenPages } from 'src/app/models/json.model';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -26,12 +26,14 @@ export class SideMenuComponent implements OnInit {
         this.elementService.addSelectedItems(field);
       });
     });
+    this.elementService.savedScreenChoosed(screen);
   }
 
   onAddNewScreen(){
     this.closeNav();
     this.elementService.clearProperties();
     this.elementService.screenName = '';
+    this.elementService.savedScreenChoosed(new JSONModel('',7,[new ScreenPages('',[])]));
     this.elementService.changeAppbarEvent.emit('appbar title');
     this.elementService.selectedElements.splice(0,this.elementService.selectedElements.length);
   }

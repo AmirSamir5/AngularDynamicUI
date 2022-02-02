@@ -33,6 +33,7 @@ export class AppComponent {
     var jsonModel: JSONModel;
     var widgetArray: Array<WidgetModel> = [];
     var screens: Array<JSONModel> = [];
+    var screenModel: ScreenPages = this.elementService.screenModel;
 
     widgetArray = this.elementService.selectedElements;
     widgetArray.forEach((element) => {
@@ -52,9 +53,10 @@ export class AppComponent {
         window.alert('Please Enter Appbar Title!');
         return;
       }
-      jsonModel = new JSONModel(this.elementService.screenName, 7, [
-        new ScreenPages(this.elementService.screenName, widgetArray),
-      ]);
+      screenModel.fields = widgetArray;
+
+      jsonModel = new JSONModel(this.elementService.screenName, 7, [screenModel]);
+
 
       if (
         localStorage.getItem('screens') !== null ||
@@ -161,7 +163,7 @@ export class AppComponent {
 
       var map: Map<string, any> = new Map();
 
-      map[this.elementService.screenLookup] = jsonModel;
+      map[screenModel.page_name] = jsonModel;
 
       const dialogRef = this.dialog.open(JsonResultDialogComponent, {
         width: '50%',
@@ -176,7 +178,7 @@ export class AppComponent {
             4
           ),
           cells: cells,
-          screenName: this.elementService.screenLookup,
+          screenName: screenModel.page_name,
         },
       });
     }

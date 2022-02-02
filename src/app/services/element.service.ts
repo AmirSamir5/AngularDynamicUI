@@ -15,6 +15,7 @@ export class ElementService {
   EditElementEvent = new EventEmitter<{ make?: WidgetModel; name?: number }>();
   EditRowElementEvent = new EventEmitter<{ make: WidgetModel; name: number }>();
   RemoveRowElementEvent = new EventEmitter();
+  onScreenSelectEvent = new EventEmitter<JSONModel>();
   screenModel: ScreenPages = new ScreenPages('', []);
 
   readonly elements: WidgetModel[] = [
@@ -91,6 +92,11 @@ export class ElementService {
 
   clearProperties() {
     this.clearPropertiesEvent.emit();
+  }
+
+  savedScreenChoosed(screen:JSONModel){
+    this.screenModel = screen.screenPages[0];
+    this.onScreenSelectEvent.emit(screen);
   }
 
   addSelectedItems(selectedElement: WidgetModel) {
