@@ -1,8 +1,7 @@
-
 <div class="appbar" (click)="onAppbarPressed()">
   <img
     width="92%"
-    [style.margin-top] = "'4px'"
+    [style.margin-top]="'4px'"
     [attr.font-size]="80"
     alt="Mkento Logo"
     src="assets/svg/status-bar-light.svg"
@@ -69,7 +68,7 @@
             <app-row [row]="element"> </app-row>
           </div>
           <div *ngSwitchCase="'Container'">
-            <app-container></app-container>
+            <app-container [containerModel]="element"></app-container>
           </div>
         </div>
       </div>

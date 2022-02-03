@@ -1,1 +1,168 @@
-<p>container-properties works!</p>
+<div class="col">
+  <p>Add Elements To Container</p>
+  <button class="btn btn-danger bottom" (click)="onAddRow()">+ Add Row</button>
+
+  <label>
+    Padding
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter list padding"
+      (input)="onPadding($event)"
+    />
+  </label>
+  <label>
+    Margin
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter list margin"
+      (input)="onMargin($event)"
+    />
+  </label>
+  <label>
+    Border Radius
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter border radius value"
+      (input)="getBorderRadiusValue($event)"
+    />
+  </label>
+
+  <label class="container-checkbox"
+    >Clickable
+    <input
+      type="checkbox"
+      checked="checked"
+      (change)="onClickablChange()"
+      [(ngModel)]="
+        this.containerElementModel!.widgetConfiguration!.clickableConfiguration!
+          .isClickable
+      "
+    />
+    <span class="checkmark"></span>
+  </label>
+  <label
+    *ngIf="
+      this.containerElementModel!.widgetConfiguration!.clickableConfiguration!
+        .isClickable
+    "
+    >Clickable Type
+
+    <select
+      *ngIf="
+        this.containerElementModel!.widgetConfiguration!.clickableConfiguration!
+          .isClickable
+      "
+      class="form-control"
+      style="display: inline-block"
+      [(ngModel)]="
+        (containerElementModel!.widgetConfiguration?.clickableConfiguration)!
+          .type
+      "
+    >
+      <option [value]="item.value" *ngFor="let item of clickablesArr">
+        {{ item.name }}
+      </option>
+    </select>
+  </label>
+  <label
+    *ngIf="
+      this.containerElementModel!.widgetConfiguration!.clickableConfiguration!
+        .isClickable &&
+      containerElementModel!.widgetConfiguration!.clickableConfiguration!
+        .type === 'clickableConfiguration!Type.callApi'
+    "
+    >API Code
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter API Code"
+      [(ngModel)]="
+        containerElementModel!.widgetConfiguration!.clickableConfiguration!
+          .apiCode
+      "
+    />
+  </label>
+  <label
+    *ngIf="
+      this.containerElementModel!.widgetConfiguration!.clickableConfiguration!
+        .isClickable &&
+      containerElementModel!.widgetConfiguration!.clickableConfiguration!
+        .type === 'ClickableConfigurationType.redirect'
+    "
+    >Destination Screen Name
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Destination Screen Name"
+      [(ngModel)]="
+        containerElementModel!.widgetConfiguration!.clickableConfiguration!!
+          .destination_screen_lookUp!.name
+      "
+    />
+  </label>
+  <label
+    *ngIf="
+      this.containerElementModel!.widgetConfiguration!.clickableConfiguration!
+        .isClickable &&
+      containerElementModel!.widgetConfiguration!.clickableConfiguration!!
+        .type === 'ClickableConfigurationType.redirect'
+    "
+    >Destination Screen Type
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Destination Screen Type"
+      [(ngModel)]="
+        containerElementModel!.widgetConfiguration!.clickableConfiguration!!
+          .destination_screen_lookUp!.type
+      "
+    />
+  </label>
+  <label
+    *ngIf="
+      this.containerElementModel!.widgetConfiguration!.clickableConfiguration!
+        .isClickable
+    "
+    >Passed Keys
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Destination Screen Name"
+      [defaultValue]="getPassedDataValue()"
+      (input)="onPassedKeys($event)"
+    />
+  </label>
+  <label class="container-checkbox"
+    >Load Data from Lookup
+    <input
+      type="checkbox"
+      checked="checked"
+      (change)="onLookupChange()"
+      [(ngModel)]="
+        this.containerElementModel!.widgetConfiguration!.loadDataConfiguration!
+          .isLoadData
+      "
+    />
+    <span class="checkmark"></span>
+  </label>
+  <label
+    *ngIf="
+      this.containerElementModel!.widgetConfiguration!.loadDataConfiguration!
+        .isLoadData
+    "
+    >Lookup Name
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Lookup Name"
+      [(ngModel)]="
+        containerElementModel!.widgetConfiguration!.loadDataConfiguration!
+          .lookUpName
+      "
+    />
+  </label>
+  <button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
+</div>
