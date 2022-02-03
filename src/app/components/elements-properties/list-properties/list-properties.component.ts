@@ -1,4 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import {
   BorderRadiusModel,
@@ -19,7 +25,7 @@ import { ElementService } from 'src/app/services/element.service';
   templateUrl: './list-properties.component.html',
   styleUrls: ['./list-properties.component.css'],
 })
-export class ListPropertiesComponent implements OnInit {
+export class ListPropertiesComponent implements OnInit, OnChanges {
   @Input() listElementModel?: WidgetModel;
   @Input() index: number = 0;
   item?: WidgetModel;
@@ -30,6 +36,45 @@ export class ListPropertiesComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
+    console.log(this.listElementModel);
+    this.listElementModel!.child = { ...this.listElementModel!.child! };
+    this.listElementModel!.child!.cell = {
+      ...this.listElementModel!.child!.cell!,
+    };
+    this.listElementModel!.child!.cell!.child = {
+      ...this.listElementModel!.child!.cell!.child!,
+    };
+    this.listElementModel!.child!.cell!.child!.children =
+      this.listElementModel!.child!.cell!.child!.children!.slice();
+    this.listElementModel!.child!.widgetConfiguration = {
+      ...this.listElementModel!.child!.widgetConfiguration,
+    };
+    if (this.listElementModel?.style.decoration === undefined) {
+      this.listElementModel!.style.decoration = new BoxDecoration({
+        color: 4294967295,
+      });
+    }
+    if (this.listElementModel!.child!.cell!.widgetConfiguration === undefined) {
+      this.listElementModel!.child!.cell!.widgetConfiguration =
+        new WidgetConfiguration();
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration =
+        new ClickableConfiguration({
+          type: '',
+          passedKeys: [],
+          destination_screen_lookUp: new DestinationScreenLookup({
+            type: '',
+            name: '',
+          }),
+        });
+    }
+    if (this.listElementModel!.child!.widgetConfiguration === undefined) {
+      this.listElementModel!.child!.widgetConfiguration =
+        new WidgetConfiguration();
+    }
+    this.listElementModel!.child!.widgetConfiguration!.showedFields = [];
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
     console.log(this.listElementModel);
     this.listElementModel!.child = { ...this.listElementModel!.child! };
     this.listElementModel!.child!.widgetConfiguration = {
@@ -93,7 +138,6 @@ export class ListPropertiesComponent implements OnInit {
     );
   }
 
-
   onSubmit() {
     this.checkConfiguration();
     this.listElementModel!.child!.widget_type = AppConstants.WIDGET_LIST;
@@ -130,7 +174,9 @@ export class ListPropertiesComponent implements OnInit {
   }
 
   onClickablChange() {
-    this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.isClickable = !this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.isClickable;
+    this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.isClickable =
+      !this.listElementModel!.child!.cell!.widgetConfiguration!
+        .clickableConfiguration!.isClickable;
   }
 
   onPassedKeys(event) {
