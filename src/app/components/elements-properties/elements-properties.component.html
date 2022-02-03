@@ -28,6 +28,12 @@
         [index]="index"
       ></app-list-properties>
     </div>
+    <div *ngSwitchCase="'Col'">
+      <app-column-properties
+        [columnElementModel]="item"
+        [index]="index"
+      ></app-column-properties>
+    </div>
     <div *ngSwitchCase="'Calendar'">
       <app-calendar-properties
         [calendarElementModel]="item"

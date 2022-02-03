@@ -119,19 +119,23 @@ export class WidgetConfiguration {
 }
 
 export class ClickableConfiguration {
+  isClickable?: boolean = false;
   type?: string;
   passedKeys?: string[];
   apiCode?: string;
   destination_screen_lookUp?: DestinationScreenLookup;
   constructor({
+    isClickable,
     type,
     passedKeys,
     destination_screen_lookUp,
   }: {
-    type: string;
-    passedKeys: string[];
-    destination_screen_lookUp: DestinationScreenLookup;
+    isClickable?: boolean,
+    type?: string;
+    passedKeys?: string[];
+    destination_screen_lookUp?: DestinationScreenLookup;
   }) {
+    this.isClickable = isClickable;
     this.type = type;
     this.passedKeys = passedKeys;
     this.destination_screen_lookUp = destination_screen_lookUp;

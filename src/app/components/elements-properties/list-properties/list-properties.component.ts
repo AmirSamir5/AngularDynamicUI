@@ -24,7 +24,6 @@ export class ListPropertiesComponent implements OnInit {
   @Input() index: number = 0;
   item?: WidgetModel;
   listIndex: number = 0;
-  isClickable: boolean = false;
   clickablesArr = AppConstants.CLICKABLE_CONFIGURATION;
   listDirectionsArr = AppConstants.LIST_DIRECTION;
 
@@ -74,8 +73,26 @@ export class ListPropertiesComponent implements OnInit {
         }),
       })
     );
-    this.elementService.onSaveItem(this.listElementModel!, this.index);
   }
+
+  onAddColumn() {
+    this.checkConfiguration();
+    this.listElementModel!.child!.cell!.child!.children?.push(
+      new WidgetModel({
+        widget_type: AppConstants.WIDGET_CONTAINER,
+        name: 'Col',
+        child: new WidgetModel({
+          widget_type: AppConstants.WIDGET_COLUMN,
+          style: new StyleModel({
+            flex: 6,
+            rowspan: 1,
+            backgroundColor: 'white',
+          }),
+        }),
+      })
+    );
+  }
+
 
   onSubmit() {
     this.checkConfiguration();
@@ -113,17 +130,7 @@ export class ListPropertiesComponent implements OnInit {
   }
 
   onClickablChange() {
-    this.isClickable = !this.isClickable;
-    if (!this.isClickable) {
-      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.type =
-        '';
-      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.passedKeys =
-        [];
-      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.name =
-        '';
-      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.type =
-        '';
-    }
+    this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.isClickable = !this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.isClickable;
   }
 
   onPassedKeys(event) {

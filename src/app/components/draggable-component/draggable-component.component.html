@@ -45,6 +45,9 @@
           <div *ngSwitchCase="'List'">
             <app-list [listModel]="element.child!"></app-list>
           </div>
+          <div *ngSwitchCase="'Col'">
+            <app-column [columnModel]="element"></app-column>
+          </div>
           <div *ngSwitchCase="'Calendar'">
             <app-calendar
               [title]="element.child!.fieldTitle"

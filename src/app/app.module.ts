@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -38,6 +38,10 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { ScreenPropertiesComponent } from './components/elements-properties/screen-properties/screen-properties.component';
 import { ContainerComponent } from './components/elements/container/container.component';
 import { ContainerPropertiesComponent } from './components/elements-properties/container-properties/container-properties.component';
+import { ColumnComponent } from './components/elements/column/column.component';
+import { ColumnPropertiesComponent } from './components/elements-properties/column-properties/column-properties.component';
+import { TextviewComponent } from './components/elements/textview/textview.component';
+import { TextviewPropertiesComponent } from './components/elements-properties/textview-properties/textview-properties.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +70,10 @@ import { ContainerPropertiesComponent } from './components/elements-properties/c
     ScreenPropertiesComponent,
     ContainerComponent,
     ContainerPropertiesComponent,
+    ColumnComponent,
+    ColumnPropertiesComponent,
+    TextviewComponent,
+    TextviewPropertiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +87,7 @@ import { ContainerPropertiesComponent } from './components/elements-properties/c
     MatGridListModule,
     MatDividerModule,
     MatTabsModule,
-    MatSidenavModule
+    MatSidenavModule,
   ],
   providers: [ElementService],
   bootstrap: [AppComponent],

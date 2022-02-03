@@ -1,30 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import {
-  BorderRadiusModel,
-  BoxDecoration,
-  EdgeInsetsModel,
-  StyleModel,
-} from 'src/app/models/style.model';
-import {
-  ClickableConfiguration,
-  DestinationScreenLookup,
-  WidgetConfiguration,
-  WidgetModel,
-} from 'src/app/models/widget.model';
+import { BorderRadiusModel, BoxDecoration, EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
+import { ClickableConfiguration, DestinationScreenLookup, WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
 import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
-  selector: 'app-row-properties',
-  templateUrl: './row-properties.component.html',
-  styleUrls: ['./row-properties.component.css'],
+  selector: 'app-column-properties',
+  templateUrl: './column-properties.component.html',
+  styleUrls: ['./column-properties.component.css']
 })
-export class RowPropertiesComponent implements OnInit {
-  @Input() rowElementModel?: WidgetModel;
+export class ColumnPropertiesComponent implements OnInit {
+  @Input() columnElementModel?: WidgetModel;
   @Input() index: number = 0;
   selectedElement?: WidgetModel;
   listIndex: number = 0;
+  isClickable: boolean = false;
   justifyArr = AppConstants.JUSTIFY_LIST;
   crossAxisArr = AppConstants.CROSS_AXIS_ALIGNMENT_LIST;
   mainAxisSizeArr = AppConstants.MAIN_AXIS_SIZE_LIST;
@@ -53,7 +44,17 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   onClickablChange() {
-    this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable = !this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable;
+    this.isClickable = !this.isClickable;
+    if (!this.isClickable) {
+      this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.type =
+        '';
+      this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.passedKeys =
+        [];
+      this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.name =
+        '';
+      this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.type =
+        '';
+    }
   }
 
   onPassedKeys(event) {
@@ -132,7 +133,7 @@ export class RowPropertiesComponent implements OnInit {
         type: '',
       }),
     });
-    this.rowElementModel!.children?.push(
+    this.columnElementModel!.child!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
@@ -165,7 +166,7 @@ export class RowPropertiesComponent implements OnInit {
         type: '',
       }),
     });
-    this.rowElementModel!.children?.push(
+    this.columnElementModel!.child!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
@@ -198,7 +199,7 @@ export class RowPropertiesComponent implements OnInit {
         type: '',
       }),
     });
-    this.rowElementModel!.children?.push(
+    this.columnElementModel!.child!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
@@ -220,37 +221,14 @@ export class RowPropertiesComponent implements OnInit {
     );
   }
 
-  onSelectEmpty() {
-    this.checkConfiguration();
-    var widgetConfig = new WidgetConfiguration();
-    widgetConfig.clickableConfiguration = new ClickableConfiguration({
-      type: '',
-      passedKeys: [],
-      destination_screen_lookUp: new DestinationScreenLookup({
-        name: '',
-        type: '',
-      }),
-    });
-    this.rowElementModel!.children?.push(
-      new WidgetModel({
-        widget_type: AppConstants.WIDGET_CONTAINER,
-        name: 'Empty',
-        style: new StyleModel({
-          rowspan: 1,
-          decoration: new BoxDecoration({ color: 4293467747 }),
-        }),
-      })
-    );
-  }
-
   onSubmit() {
     this.checkConfiguration();
-    this.rowElementModel!.widget_type = AppConstants.WIDGET_ROW;
+    this.columnElementModel!.child!.widget_type = AppConstants.WIDGET_COLUMN;
   }
 
   checkConfiguration() {
-    if (this.rowElementModel!.children === undefined) {
-      this.rowElementModel!.children = [];
+    if (this.columnElementModel!.child!.children === undefined) {
+      this.columnElementModel!.child!.children = [];
     }
   }
 

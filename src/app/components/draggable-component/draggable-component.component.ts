@@ -1,6 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { WidgetModel } from 'src/app/models/widget.model';
+import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -19,15 +20,15 @@ export class DraggableComponentComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    this.elementService.selectedElementsChangedEvent.subscribe((elements) => {
+    AppEvents.selectedElementsChangedEvent.subscribe((elements) => {
       this.selectedElements = elements;
     });
-    this.elementService.onRemoveElementEvent.subscribe(
+    AppEvents.onRemoveElementEvent.subscribe(
       ({ make: elementsArr, name: element }) => {
         this.selectedElements = elementsArr;
       }
     );
-    this.elementService.changeAppbarEvent.subscribe(
+    AppEvents.changeAppbarEvent.subscribe(
       (appbar) => {
         this.title = appbar;
       }
@@ -62,7 +63,7 @@ export class DraggableComponentComponent implements OnInit {
   onClickElement(item: WidgetModel, index: number) {
     this.i = index;
     this.selectedElement = item;
-    var component = this.elementService.editSelectedItem(item, index);
+    var component = this.elementService.editSelectedItem(this.selectedElement, index);
   }
   editItem() {
     this.show = !this.show;

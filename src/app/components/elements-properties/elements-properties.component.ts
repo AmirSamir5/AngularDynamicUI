@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WidgetModel } from 'src/app/models/widget.model';
+import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -14,13 +15,13 @@ export class ElementsPropertiesComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    this.elementService.EditElementEvent.subscribe(
+    AppEvents.EditElementEvent.subscribe(
       ({ make: item, name: index }) => {
         this.item = item;
         this.index = index ?? 0;
       }
     );
-    this.elementService.onRemoveElementEvent.subscribe(
+    AppEvents.onRemoveElementEvent.subscribe(
       ({ make: elementsArr, name: element }) => {
         if (this.item === element) {
           this.item = undefined;
@@ -28,7 +29,7 @@ export class ElementsPropertiesComponent implements OnInit {
       }
     );
 
-    this.elementService.clearPropertiesEvent.subscribe(()=>{
+    AppEvents.clearPropertiesEvent.subscribe(()=>{
       this.item = undefined;
     });
   }

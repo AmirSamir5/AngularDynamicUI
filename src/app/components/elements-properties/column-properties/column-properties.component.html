@@ -1,0 +1,269 @@
+<div class="col">
+    <p class="header">Add Elements To Col</p>
+    <div class="buttons">
+      <button class="btn btn-info item-button" (click)="onSelectText()">
+        Text
+      </button>
+      <button class="btn btn-success item-button" (click)="onSelectButton()">
+        Button
+      </button>
+      <button class="btn btn-warning item-button" (click)="onSelectIcon()">
+        Icon
+      </button>
+    </div>
+    <p>Col Main Axis Alignment</p>
+    <select [(ngModel)]="columnElementModel!.style.mainAxisAlignment">
+      <option [value]="item" *ngFor="let item of justifyArr">
+        {{ item }}
+      </option>
+    </select>
+    <p>Col Cross Axis Alignment</p>
+    <select [(ngModel)]="columnElementModel!.style.crossAxisAlignment">
+      <option [value]="item" *ngFor="let item of crossAxisArr">
+        {{ item }}
+      </option>
+    </select>
+    <p>Col Main Axis Size</p>
+    <select [(ngModel)]="columnElementModel!.style.mainAxisSize">
+      <option [value]="item" *ngFor="let item of mainAxisSizeArr">
+        {{ item }}
+      </option>
+    </select>
+    <p>Col Text Direction</p>
+    <select [(ngModel)]="columnElementModel!.style.textDirection">
+      <option [value]="item" *ngFor="let item of textDirectionArr">
+        {{ item }}
+      </option>
+    </select>
+    <p>Col Vertical Direction</p>
+    <select [(ngModel)]="columnElementModel!.style.verticalDirection">
+      <option [value]="item" *ngFor="let item of varticalDirectionArr">
+        {{ item }}
+      </option>
+    </select>
+    <div *ngIf="selectedElement !== undefined">
+      <div class="container">
+        <div class="line"><mat-divider></mat-divider></div>
+        <div class="text">Edit Element</div>
+        <div class="line"><mat-divider></mat-divider></div>
+      </div>
+  
+      <label class="container-checkbox"
+        >Expanded
+        <input
+          type="checkbox"
+          checked="checked"
+          [(ngModel)]="(selectedElement.child ?? selectedElement).style.expanded"
+          (change)="onExpandedChange()"
+        />
+        <span class="checkmark"></span>
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'">
+        Element Data Map ID
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter element data map ID"
+          [(ngModel)]="selectedElement.child!.dataMapId"
+        />
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'">
+        Element Data ID In Map
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter element data ID in map"
+          [(ngModel)]="selectedElement.child!.dataIdInMap"
+        />
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'">
+        Element Displayed Text
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter element displayed text"
+          [(ngModel)]="selectedElement.child!.textDisplayed"
+        />
+      </label>
+      <label>
+        Flex
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Enter element flex"
+          [(ngModel)]="selectedElement.child!.style.flex"
+          (input)="getFlexValue($event)"
+        />
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'">
+        Margin
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter margin value"
+          (input)="getMarginValue($event)"
+        />
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'">
+        Padding
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter padding value"
+          (input)="getPaddingValue($event)"
+        />
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'">
+        Border Radius
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter border radius value"
+          (input)="getBorderRadiusValue($event)"
+        />
+      </label>
+      <label style="width: 100%">
+        Background Color
+        <input
+          ejs-colorpicker
+          type="color"
+          class="form-control"
+          id="colorpicker"
+          [value]="this.selectedElement.style!.decoration!.color!.toString(16).replace('ff', '#')"
+          (input)="onBackgroundChange($event)"
+          name="colorpicker"
+        />
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'" style="width: 100%">
+        Color
+        <input
+          ejs-colorpicker
+          type="color"
+          class="form-control"
+          id="colorpicker"
+          [value]="this.selectedElement.child!.style!.color!.toString(16).replace('ff', '#')"
+          (input)="onColorChange($event)"
+          name="colorpicker"
+        />
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'">
+        Font Size
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Enter element font size"
+          [(ngModel)]="selectedElement.child!.style.fontSize"
+          (input)="getFontSizeValue($event)"
+        />
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'">
+        Font Weight
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter element font weight"
+          [(ngModel)]="selectedElement.child!.style.fontWeight"
+          (input)="getFontWeightValue($event)"
+        />
+      </label>
+      <label *ngIf="selectedElement.name !== 'Empty'">
+        Font Family
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter element font family"
+          [(ngModel)]="selectedElement.child!.style.fontFamily"
+          (input)="getFontFamilyValue($event)"
+        />
+      </label>
+      <div *ngIf="selectedElement.name !== 'Empty'">
+        <label class="container-checkbox" *ngIf="selectedElement.name !== 'Empty'"
+          >Clickable
+          <input
+            type="checkbox"
+            checked="checked"
+            [value]="this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration ?? false"
+            (change)="onClickablChange()"
+          />
+          <span class="checkmark"></span>
+        </label>
+  
+        <label [hidden]="isClickable"
+          >Clickable Type
+  
+          <select
+            [hidden]="isClickable"
+            [(ngModel)]="
+              (selectedElement!.child?.widgetConfiguration
+                ?.clickableConfiguration)!.type
+            "
+          >
+            <option [value]="item.value" *ngFor="let item of clickablesArr">
+              {{ item.name }}
+            </option>
+          </select>
+        </label>
+        <label
+          *ngIf="
+            !isClickable &&
+            selectedElement!.child!.widgetConfiguration!.clickableConfiguration!
+              .type === 'ClickableConfigurationType.callApi'
+          "
+          >API Code
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter API Code"
+            [(ngModel)]="
+              selectedElement!.child!.widgetConfiguration!.clickableConfiguration!
+                .apiCode
+            "
+          />
+        </label>
+        <label
+          *ngIf="
+            !isClickable &&
+            selectedElement!.child!.widgetConfiguration!.clickableConfiguration!
+              .type === 'ClickableConfigurationType.redirect'
+          "
+          >Destination Screen Name
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Destination Screen Name"
+            [(ngModel)]="
+              selectedElement!.child!.widgetConfiguration!.clickableConfiguration!
+                .destination_screen_lookUp!.name
+            "
+          />
+        </label>
+        <label
+          *ngIf="
+            !isClickable &&
+            selectedElement!.child!.widgetConfiguration!.clickableConfiguration!
+              .type === 'ClickableConfigurationType.redirect'
+          "
+          >Destination Screen Type
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Destination Screen Type"
+            [(ngModel)]="
+              selectedElement!.child!.widgetConfiguration!.clickableConfiguration!
+                .destination_screen_lookUp!.type
+            "
+          />
+        </label>
+        <label *ngIf="!isClickable"
+          >Passed Keys
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Destination Screen Name"
+            (input)="onPassedKeys($event)"
+          />
+        </label>
+      </div>
+    </div>
+  </div>
+  
