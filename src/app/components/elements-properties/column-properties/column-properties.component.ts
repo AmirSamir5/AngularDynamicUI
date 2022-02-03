@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import { BorderRadiusModel, BoxDecoration, EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
 import { ClickableConfiguration, DestinationScreenLookup, WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
@@ -10,7 +10,7 @@ import { ElementService } from 'src/app/services/element.service';
   templateUrl: './column-properties.component.html',
   styleUrls: ['./column-properties.component.css']
 })
-export class ColumnPropertiesComponent implements OnInit {
+export class ColumnPropertiesComponent implements OnInit,OnChanges {
   @Input() columnElementModel?: WidgetModel;
   @Input() index: number = 0;
   selectedElement?: WidgetModel;
@@ -34,6 +34,21 @@ export class ColumnPropertiesComponent implements OnInit {
     AppEvents.RemoveRowElementEvent.subscribe(() => {
       this.selectedElement = undefined;
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.columnElementModel!.child = { ...this.columnElementModel!.child! };
+    this.columnElementModel!.child!.cell = {
+      ...this.columnElementModel!.child!.cell!,
+    };
+    this.columnElementModel!.child!.cell!.child = {
+      ...this.columnElementModel!.child!.cell!.child!,
+    };
+    this.columnElementModel!.child!.cell!.child!.children =
+      this.columnElementModel!.child!.cell!.child!.children!.slice();
+    this.columnElementModel!.child!.widgetConfiguration = {
+      ...this.columnElementModel!.child!.widgetConfiguration,
+    };
   }
 
   onExpandedChange() {

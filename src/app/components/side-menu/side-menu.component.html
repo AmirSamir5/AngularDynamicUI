@@ -10,13 +10,14 @@
                 <a (click)="onItemClick(screen)" class="col-lg-6" >
                     {{screen.screen_name}}
                 </a>
-                <button class="btn btn-danger" (click)="onItemDelete(index)">delete</button>
+                <div style="background-color:black;" (click)="onItemDelete(index)"><span
+                    class="glyphicon glyphicon-trash"></span></div>
                 <div style="height: 50px;"></div>
             </div>
         </div>
-        <button class="btn btn-warning removeBtn" *ngIf="this.screens.length > 1" (click)="onAddNewScreen()" ><span
+        <button class="btn removeBtn" *ngIf="this.screens.length > 1" (click)="onAddNewScreen()" ><span
             class="glyphicon glyphicon-plus"></span>&nbsp; Add New Screen</button>
-        <button class="btn btn-primary removeBtn" *ngIf="this.screens.length > 1" (click)="clearAll()" ><span
+        <button class="btn btn-primary clearBtn" *ngIf="this.screens.length > 1" (click)="clearAll()" ><span
             class="glyphicon glyphicon-trash"></span>&nbsp; Clear All</button>
     </div>
     

@@ -1,7 +1,4 @@
-
-<div class="col">
-  <label>Row</label>
-</div>
+<label>Row</label>
 <div class="example-boundary">
   <div
     class="row"
@@ -18,7 +15,7 @@
       [style.backgroundColor]="getItemBackgroundColor(rowContent) ?? 'white'"
       [style.color]="getItemColor(rowContent)"
       [style.width]="
-        (rowContent.child ?? rowContent).style.expanded ? '100%' : undefined
+        (rowContent.child ?? rowContent).expanded ? '100%' : undefined
       "
       [style.font-size.px]="(rowContent.child ?? rowContent).style.fontSize"
       [style.font-weight]="(rowContent.child ?? rowContent).style.fontWeight"

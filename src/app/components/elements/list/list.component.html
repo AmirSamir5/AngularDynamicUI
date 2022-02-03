@@ -14,15 +14,12 @@
       cdkDrag
       *ngFor="let tile of listModel!.cell!.child!.children!; let index = index"
       [colspan]="6"
+      [ngSwitch]="tile.name"
+      (click)="onRowSelected(tile, index); $event.stopPropagation()"
     >
-    <div [ngSwitch]="tile.name">
-      <div *ngSwitchCase="'Row'">
-        <app-row class="row" [row]="tile"></app-row>
-      </div>
-      <div *ngSwitchCase="'Col'">
-        <app-column class="row" [columnModel]="tile"></app-column>
-      </div>
-    </div>
+      <app-row *ngSwitchCase="'Row'" class="row" [row]="tile"></app-row>
+      <app-column *ngSwitchCase="'Col'" class="row" [columnModel]="tile"></app-column>
+    
       
       <span class="close" (click)="removeElement(index)">&times;</span>
     </mat-grid-tile>

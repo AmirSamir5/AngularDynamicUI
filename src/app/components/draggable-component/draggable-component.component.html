@@ -1,5 +1,13 @@
+
 <div class="appbar" (click)="onAppbarPressed()">
-  <p>9:00 am</p>
+  <img
+    width="92%"
+    [style.margin-top] = "'4px'"
+    [attr.font-size]="80"
+    alt="Mkento Logo"
+    src="assets/svg/status-bar-light.svg"
+    class="image"
+  />
   <span (dblclick)="editItem()" [hidden]="show">{{ title }}</span>
   <input
     type="text"

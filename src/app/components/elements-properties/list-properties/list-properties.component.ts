@@ -36,19 +36,6 @@ export class ListPropertiesComponent implements OnInit, OnChanges {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    console.log(this.listElementModel);
-    this.listElementModel!.child = { ...this.listElementModel!.child! };
-    this.listElementModel!.child!.cell = {
-      ...this.listElementModel!.child!.cell!,
-    };
-    this.listElementModel!.child!.cell!.child = {
-      ...this.listElementModel!.child!.cell!.child!,
-    };
-    this.listElementModel!.child!.cell!.child!.children =
-      this.listElementModel!.child!.cell!.child!.children!.slice();
-    this.listElementModel!.child!.widgetConfiguration = {
-      ...this.listElementModel!.child!.widgetConfiguration,
-    };
     if (this.listElementModel?.style.decoration === undefined) {
       this.listElementModel!.style.decoration = new BoxDecoration({
         color: 4294967295,
