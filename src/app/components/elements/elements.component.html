@@ -28,6 +28,12 @@
         </div>
         <app-row></app-row>
       </div>
+      <div *ngSwitchCase="'Container'">
+        <div class="col">
+          <label>Container</label>
+        </div>
+        <app-container></app-container>
+      </div>
     </div>
     <!-- <ng-container *ngComponentOutlet="item.type" ></ng-container> -->
     <hr class="rounded" />

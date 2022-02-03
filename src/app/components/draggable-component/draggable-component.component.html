@@ -57,6 +57,9 @@
           <div *ngSwitchCase="'Row'">
             <app-row [row]="element"> </app-row>
           </div>
+          <div *ngSwitchCase="'Container'">
+            <app-container></app-container>
+          </div>
         </div>
       </div>
       <span class="close" (click)="removeElement(index)">&times;</span>

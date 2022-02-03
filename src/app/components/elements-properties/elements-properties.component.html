@@ -46,5 +46,8 @@
         [index]="index"
       ></app-row-properties>
     </div>
+    <div *ngSwitchCase="'Container'">
+      <app-container-properties></app-container-properties>
+    </div>
   </div>
 </cdk-virtual-scroll-viewport>

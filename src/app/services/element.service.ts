@@ -79,6 +79,14 @@ export class ElementService {
       widget_type: AppConstants.WIDGET_CHECKBOX,
       name: 'Checkbox',
     }),
+    new WidgetModel({
+      widget_type: AppConstants.WIDGET_CONTAINER,
+      name: 'Container',
+      child: new WidgetModel({
+        widget_type: AppConstants.WIDGET_COLUMN,
+        children: [],
+      }),
+    }),
   ];
 
   public screenName: string = '';
@@ -94,7 +102,7 @@ export class ElementService {
     this.clearPropertiesEvent.emit();
   }
 
-  savedScreenChoosed(screen:JSONModel){
+  savedScreenChoosed(screen: JSONModel) {
     this.screenModel = screen.screenPages[0];
     this.onScreenSelectEvent.emit(screen);
   }
