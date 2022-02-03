@@ -23,10 +23,10 @@
       </div>
       <div *ngSwitchCase="'Checkbox'"><app-checkbox></app-checkbox></div>
       <div *ngSwitchCase="'Row'">
-        <div class="col">
-          <label>Row</label>
-        </div>
         <app-row></app-row>
+      </div>
+      <div *ngSwitchCase="'Col'">
+        <app-column></app-column>
       </div>
     </div>
     <!-- <ng-container *ngComponentOutlet="item.type" ></ng-container> -->

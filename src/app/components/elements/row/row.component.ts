@@ -69,6 +69,9 @@ export class RowComponent implements OnInit {
   }
 
   getItemColor(item: WidgetModel) {
-    return (item.child ?? item).style!.color!.toString(16).replace('ff', '#');
+    if((item.child ?? item).style!.color !== undefined) {
+      return (item.child ?? item).style!.color!.toString(16).replace('ff', '#');
+    } 
+    return;
   }
 }

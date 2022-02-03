@@ -2,6 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import { ScreenPages } from 'src/app/models/json.model';
+import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class ScreenPropertiesComponent implements OnInit{
   ngOnInit(): void {
     this.elementService.screenModel.widget_type = AppConstants.WIDGET_SCROLLVIEW;
     this.screenProperty = this.elementService.screenModel;
-    this.elementService.onScreenSelectEvent.subscribe((screen)=>{
+    AppEvents.onScreenSelectEvent.subscribe((screen)=>{
       this.screenProperty = screen.screenPages[0];
       if (this.isScrollable) {
         this.elementService.screenModel.widget_type =

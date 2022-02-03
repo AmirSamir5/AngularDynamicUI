@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { JSONModel, ScreenPages } from 'src/app/models/json.model';
+import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class SideMenuComponent implements OnInit {
     this.elementService.clearProperties();
     this.elementService.selectedElements = [];
     this.elementService.screenName = screen.screen_name!;
-    this.elementService.changeAppbarEvent.emit(screen.screen_name!);
+    AppEvents.changeAppbarEvent.emit(screen.screen_name!);
     screen.screenPages.forEach((element) => {
       element.fields.forEach((field) => {
         this.elementService.addSelectedItems(field);
@@ -34,7 +35,7 @@ export class SideMenuComponent implements OnInit {
     this.elementService.clearProperties();
     this.elementService.screenName = '';
     this.elementService.savedScreenChoosed(new JSONModel('',7,[new ScreenPages('',[])]));
-    this.elementService.changeAppbarEvent.emit('appbar title');
+    AppEvents.changeAppbarEvent.emit('appbar title');
     this.elementService.selectedElements.splice(0,this.elementService.selectedElements.length);
   }
 

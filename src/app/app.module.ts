@@ -36,6 +36,10 @@ import { RowComponent } from './components/elements/row/row.component';
 import { RowPropertiesComponent } from './components/elements-properties/row-properties/row-properties.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { ScreenPropertiesComponent } from './components/elements-properties/screen-properties/screen-properties.component';
+import { ColumnComponent } from './components/elements/column/column.component';
+import { ColumnPropertiesComponent } from './components/elements-properties/column-properties/column-properties.component';
+import { TextviewComponent } from './components/elements/textview/textview.component';
+import { TextviewPropertiesComponent } from './components/elements-properties/textview-properties/textview-properties.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +66,10 @@ import { ScreenPropertiesComponent } from './components/elements-properties/scre
     RowPropertiesComponent,
     SideMenuComponent,
     ScreenPropertiesComponent,
+    ColumnComponent,
+    ColumnPropertiesComponent,
+    TextviewComponent,
+    TextviewPropertiesComponent,
   ],
   imports: [
     BrowserModule,

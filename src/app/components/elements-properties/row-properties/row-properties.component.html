@@ -88,7 +88,7 @@
         [(ngModel)]="selectedElement.child!.textDisplayed"
       />
     </label>
-    <label>
+    <label *ngIf="selectedElement.name !== 'Empty'">
       Flex
       <input
         type="number"
@@ -184,18 +184,17 @@
         >Clickable
         <input
           type="checkbox"
-          checked="checked"
-          [value]="this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration ?? false"
+          [value]="this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable"
           (change)="onClickablChange()"
         />
         <span class="checkmark"></span>
       </label>
 
-      <label [hidden]="isClickable"
+      <label *ngIf="this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable"
         >Clickable Type
 
         <select
-          [hidden]="isClickable"
+          *ngIf="this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable"
           [(ngModel)]="
             (selectedElement!.child?.widgetConfiguration
               ?.clickableConfiguration)!.type
@@ -208,9 +207,8 @@
       </label>
       <label
         *ngIf="
-          !isClickable &&
-          selectedElement!.child!.widgetConfiguration!.clickableConfiguration!
-            .type === 'ClickableConfigurationType.callApi'
+        this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable &&
+        selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.type === 'ClickableConfigurationType.callApi'
         "
         >API Code
         <input
@@ -225,7 +223,7 @@
       </label>
       <label
         *ngIf="
-          !isClickable &&
+        this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable &&
           selectedElement!.child!.widgetConfiguration!.clickableConfiguration!
             .type === 'ClickableConfigurationType.redirect'
         "
@@ -242,7 +240,7 @@
       </label>
       <label
         *ngIf="
-          !isClickable &&
+        this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable &&
           selectedElement!.child!.widgetConfiguration!.clickableConfiguration!
             .type === 'ClickableConfigurationType.redirect'
         "
@@ -257,7 +255,7 @@
           "
         />
       </label>
-      <label *ngIf="!isClickable"
+      <label *ngIf="this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable"
         >Passed Keys
         <input
           type="text"
