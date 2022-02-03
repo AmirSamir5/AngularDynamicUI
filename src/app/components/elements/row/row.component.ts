@@ -37,13 +37,13 @@ export class RowComponent implements OnInit {
     return 'item';
   }
 
-  getRowMainAxis(mainAxisAlignment:string){
-    switch(mainAxisAlignment){
-      case ('spaceBetween'):
+  getRowMainAxis(mainAxisAlignment: string) {
+    switch (mainAxisAlignment) {
+      case 'spaceBetween':
         return 'space-between';
-      case ('spaceEvenly'):
+      case 'spaceEvenly':
         return 'space-evenly';
-      case ('spaceAround'):
+      case 'spaceAround':
         return 'space-around';
     }
     return mainAxisAlignment;
@@ -65,13 +65,15 @@ export class RowComponent implements OnInit {
   }
 
   getItemBackgroundColor(item: WidgetModel) {
-    return item.style.decoration!.color?.toString(16).replace('ff', '#');
+    return (
+      item.style.decoration!.color?.toString(16).replace('ff', '#') ?? 'red'
+    );
   }
 
   getItemColor(item: WidgetModel) {
-    if((item.child ?? item).style!.color !== undefined) {
+    if ((item.child ?? item).style!.color !== undefined) {
       return (item.child ?? item).style!.color!.toString(16).replace('ff', '#');
-    } 
+    }
     return;
   }
 }
