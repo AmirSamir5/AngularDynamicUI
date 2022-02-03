@@ -1,6 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
+import {
+  BorderRadiusModel,
+  BoxDecoration,
+  EdgeInsetsModel,
+  StyleModel,
+} from 'src/app/models/style.model';
 import {
   ClickableConfiguration,
   DestinationScreenLookup,
@@ -27,6 +32,14 @@ export class ListPropertiesComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.listElementModel);
     this.listElementModel!.child = { ...this.listElementModel!.child! };
+    this.listElementModel!.child!.widgetConfiguration = {
+      ...this.listElementModel!.child!.widgetConfiguration,
+    };
+    if (this.listElementModel?.style.decoration === undefined) {
+      this.listElementModel!.style.decoration = new BoxDecoration({
+        color: 4294967295,
+      });
+    }
     if (this.listElementModel!.child!.cell!.widgetConfiguration === undefined) {
       this.listElementModel!.child!.cell!.widgetConfiguration =
         new WidgetConfiguration();
@@ -43,8 +56,8 @@ export class ListPropertiesComponent implements OnInit {
     if (this.listElementModel!.child!.widgetConfiguration === undefined) {
       this.listElementModel!.child!.widgetConfiguration =
         new WidgetConfiguration();
-      this.listElementModel!.child!.widgetConfiguration!.showedFields = [];
     }
+    this.listElementModel!.child!.widgetConfiguration!.showedFields = [];
   }
 
   onAddRow() {
@@ -124,5 +137,22 @@ export class ListPropertiesComponent implements OnInit {
     console.log(event.target.value);
     this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.passedKeys =
       event.target.value.split(' ');
+  }
+
+  getBorderRadiusValue(event) {
+    var radius = event.target.value;
+    if (this.listElementModel?.child?.cell?.style.decoration === undefined) {
+      this.listElementModel!.child!.cell!.style.decoration = new BoxDecoration({
+        border: { color: 4293347734, width: 0.6, style: 'solid' },
+      });
+    }
+
+    this.listElementModel!.child!.cell!.style.decoration!.borderRadius =
+      new BorderRadiusModel({
+        topLeft: +radius,
+        topRight: +radius,
+        bottomLeft: +radius,
+        bottomRight: +radius,
+      });
   }
 }
