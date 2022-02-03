@@ -77,6 +77,14 @@ export class ListPropertiesComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.listElementModel);
     this.listElementModel!.child = { ...this.listElementModel!.child! };
+    this.listElementModel!.child!.cell = {
+      ...this.listElementModel!.child!.cell!,
+    };
+    this.listElementModel!.child!.cell!.child = {
+      ...this.listElementModel!.child!.cell!.child!,
+    };
+    this.listElementModel!.child!.cell!.child!.children =
+      this.listElementModel!.child!.cell!.child!.children!.slice();
     this.listElementModel!.child!.widgetConfiguration = {
       ...this.listElementModel!.child!.widgetConfiguration,
     };
