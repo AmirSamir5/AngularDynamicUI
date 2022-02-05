@@ -1,0 +1,14 @@
+.example-boundary {
+  min-width: 200px;
+  border: dotted #ccc 2px;
+  min-height: 50px;
+}
+.close {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 100;
+}
+.row {
+  width: 90%;
+}

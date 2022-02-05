@@ -113,6 +113,7 @@ export class WidgetConfiguration {
   listConfiguration?: WidgetModel[];
   rowConfiguration?: WidgetModel[];
   clickableConfiguration?: ClickableConfiguration;
+  loadDataConfiguration?: LoadDataConfiguration;
   direction?: string;
   showedFields?: any[];
   DateFormat?: string;
@@ -130,7 +131,7 @@ export class ClickableConfiguration {
     passedKeys,
     destination_screen_lookUp,
   }: {
-    isClickable?: boolean,
+    isClickable?: boolean;
     type?: string;
     passedKeys?: string[];
     destination_screen_lookUp?: DestinationScreenLookup;
@@ -143,6 +144,7 @@ export class ClickableConfiguration {
 }
 
 export class LoadDataConfiguration {
+  isLoadData?: boolean = false;
   passedKeys?: string[];
   type?: string;
   lookUpName?: string;
@@ -152,12 +154,15 @@ export class LoadDataConfiguration {
     type,
     lookUpName,
     apiCode,
+    isLoadData,
   }: {
     passedKeys: string[];
     type: string;
     lookUpName: string;
     apiCode: string;
+    isLoadData: boolean;
   }) {
+    this.isLoadData = isLoadData;
     this.passedKeys = passedKeys;
     this.type = type;
     this.lookUpName = lookUpName;
