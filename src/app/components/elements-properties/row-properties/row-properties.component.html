@@ -7,11 +7,11 @@
     <button class="btn btn-success item-button" (click)="onSelectButton()">
       Button
     </button>
-    <button class="btn btn-warning item-button" (click)="onSelectIcon()">
-      Icon
+    <button class="btn btn-warning item-button" (click)="onSelectImage()">
+      Image
     </button>
-    <button class="btn btn-light item-button" (click)="onSelectEmpty()">
-      Empty
+    <button class="btn btn-light item-button" (click)="onSelectColumn()">
+      Column
     </button>
   </div>
   <p>Row Main Axis Alignment</p>
@@ -56,7 +56,7 @@
       <input
         type="checkbox"
         checked="checked"
-        [(ngModel)]="(selectedElement.child ?? selectedElement).expanded"
+        [(ngModel)]="selectedElement.child!.expanded"
         (change)="onExpandedChange()"
       />
       <span class="checkmark"></span>
@@ -133,9 +133,7 @@
         class="form-control"
         id="colorpicker"
         [value]="
-          this.selectedElement
-            .style!.decoration!.color!.toString(16)
-            .replace('ff', '#')
+          getItemBackgroundColor()
         "
         (input)="onBackgroundChange($event)"
         name="colorpicker"
@@ -149,9 +147,7 @@
         class="form-control"
         id="colorpicker"
         [value]="
-          this.selectedElement
-            .child!.style!.color!.toString(16)
-            .replace('ff', '#')
+          getItemColor()
         "
         (input)="onColorChange($event)"
         name="colorpicker"

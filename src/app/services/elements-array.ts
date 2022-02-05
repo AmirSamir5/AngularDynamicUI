@@ -46,7 +46,7 @@ export const elements: WidgetModel[] = [
   new WidgetModel({ widget_type: AppConstants.WIDGET_ROW, name: 'Row' }),
   new WidgetModel({
     widget_type: AppConstants.WIDGET_CONTAINER,
-    name: 'Col',
+    name: 'Column',
     child: {
       widget_type: AppConstants.WIDGET_COLUMN,
       style: new StyleModel({}),

@@ -15,16 +15,24 @@
       [style.backgroundColor]="getItemBackgroundColor(rowContent) ?? 'white'"
       [style.color]="getItemColor(rowContent)"
       [style.width]="
-        (rowContent.child ?? rowContent).expanded ? '100%' : undefined
+        rowContent.child!.expanded ? '100%' : undefined
       "
       [style.font-size.px]="(rowContent.child ?? rowContent).style.fontSize"
       [style.font-weight]="(rowContent.child ?? rowContent).style.fontWeight"
       [style.font-family]="(rowContent.child ?? rowContent).style.fontFamily"
       (click)="onElementClick(rowContent, index); $event.stopPropagation()"
-    >
-      {{ (rowContent.child ?? rowContent).name }}
-
-      <span class="close" (click)="removeElement(index)">&times;</span>
+      [ngSwitch]="rowContent.name"
+    > 
+          <app-column 
+          *ngSwitchCase="'Column'"
+          [columnModel]="rowContent"
+          [showTitle]="false"
+          style="width: 100%;">
+        </app-column>
+      <div *ngSwitchDefault="">
+        {{ (rowContent.child ?? rowContent).name }}
+        <span class="close" (click)="removeElement(index)">&times;</span>
+      </div>
     </div>
   </div>
 </div>

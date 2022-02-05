@@ -10,6 +10,7 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./column.component.css']
 })
 export class ColumnComponent implements OnInit {
+  @Input() showTitle = true;
   @Input() columnModel: WidgetModel = new WidgetModel({
     widget_type: AppConstants.WIDGET_CONTAINER,
     child: new WidgetModel({
@@ -23,7 +24,7 @@ export class ColumnComponent implements OnInit {
   }
 
   onElementClick(item: WidgetModel, index: number) {
-    this.elementService.editSelectedItem(this.columnModel.child, index);
+    this.elementService.editSelectedItem(this.columnModel, index);
     this.elementService.editRowElementItem(this.columnModel.child!.children![index], index);
   }
 

@@ -18,7 +18,7 @@
       (click)="onRowSelected(tile, index); $event.stopPropagation()"
     >
       <app-row *ngSwitchCase="'Row'" class="row" [row]="tile"></app-row>
-      <app-column *ngSwitchCase="'Col'" class="row" [columnModel]="tile"></app-column>
+      <app-column *ngSwitchCase="'Column'" class="row" [columnModel]="tile"></app-column>
     
       
       <span class="close" (click)="removeElement(index)">&times;</span>

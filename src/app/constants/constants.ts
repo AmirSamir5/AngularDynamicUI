@@ -25,7 +25,7 @@ export class AppConstants {
   public static WIDGET_CHECKBOX = 'WidgetType.checkbox';
   public static WIDGET_ROW = 'WidgetType.row';
   public static WIDGET_BUTTON = 'WidgetType.button';
-  public static WIDGET_ICON = 'WidgetType.icon';
+  public static WIDGET_IMAGE = 'WidgetType.image';
   public static WIDGET_TEXT = 'WidgetType.textView';
   public static WIDGET_CONTAINER = 'WidgetType.container';
   public static WIDGET_TEXT_VIEW = 'WidgetType.textView';

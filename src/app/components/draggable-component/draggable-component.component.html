@@ -1,14 +1,18 @@
 
 <div class="appbar" (click)="onAppbarPressed()">
-  <img
+  <div>
+    <img
     width="92%"
     [style.margin-top] = "'4px'"
     [attr.font-size]="80"
     alt="Mkento Logo"
     src="assets/svg/status-bar-light.svg"
     class="image"
-  />
-  <span (dblclick)="editItem()" [hidden]="show">{{ title }}</span>
+    />
+  </div>
+  <div>
+    <span (dblclick)="editItem()" [hidden]="show">{{ title }}</span>
+  </div>
   <input
     type="text"
     [(ngModel)]="title"
@@ -53,7 +57,7 @@
           <div *ngSwitchCase="'List'">
             <app-list [listModel]="element.child!"></app-list>
           </div>
-          <div *ngSwitchCase="'Col'">
+          <div *ngSwitchCase="'Column'">
             <app-column [columnModel]="element"></app-column>
           </div>
           <div *ngSwitchCase="'Calendar'">

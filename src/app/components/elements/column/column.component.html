@@ -1,42 +1,40 @@
-<div class="col">
-    <label>Column</label>
-  </div>
-  <div class="example-boundary">
-    <div
-    class="col"
+<div class="col" *ngIf="showTitle">
+  <label>Column</label>
+</div>
+  <div
+  class="example-boundary col"
+  cdkDropList
+  [cdkDropListData]="columnModel.child!.children!"
+  cdkDragBoundary=".example-boundary"
+  (cdkDropListDropped)="drag($event)"
+>
+  <mat-grid-list
+    cols="6"
+    rowHeight="50px"
     cdkDropList
     [cdkDropListData]="columnModel.child!.children!"
     cdkDragBoundary=".example-boundary"
     (cdkDropListDropped)="drag($event)"
   >
-    <mat-grid-list
-      cols="6"
-      rowHeight="50px"
-      cdkDropList
-      [cdkDropListData]="columnModel.child!.children!"
-      cdkDragBoundary=".example-boundary"
-      (cdkDropListDropped)="drag($event)"
+    <mat-grid-tile
+      cdkDrag
+      *ngFor="let tile of columnModel.child!.children!; let index = index"
+      [colspan]="6"
+      [rowspan]="tile.child!.style.rowspan"
+      [style.background]="getItemBackgroundColor(tile) ?? 'white'"
+      [style.color]="getItemColor(tile)"
+      [style.width]="
+          tile.child!.style.expanded ? '100%' : undefined
+      "
+      [style.background]="tile.style.backgroundColor"
+      [style.color]="tile.child!.style.color"
+      [style.font-size.px]="tile.child!.style.fontSize"
+      [style.font-weight]="tile.child!.style.fontWeight"
+      [style.font-family]="tile.child!.style.fontFamily"
+      (click)="onElementClick(tile, index); $event.stopPropagation()"
     >
-      <mat-grid-tile
-        cdkDrag
-        *ngFor="let tile of columnModel.child!.children!; let index = index"
-        [colspan]="6"
-        [rowspan]="tile.child!.style.rowspan"
-        [style.background]="getItemBackgroundColor(tile) ?? 'white'"
-        [style.color]="getItemColor(tile)"
-        [style.width]="
-            tile.child!.style.expanded ? '100%' : undefined
-        "
-        [style.background]="tile.style.backgroundColor"
-        [style.color]="tile.child!.style.color"
-        [style.font-size.px]="tile.child!.style.fontSize"
-        [style.font-weight]="tile.child!.style.fontWeight"
-        [style.font-family]="tile.child!.style.fontFamily"
-        (click)="onElementClick(tile, index); $event.stopPropagation()"
-      >
-      {{ (tile.child ?? tile).name }}
-        <span class="close" (click)="removeElement(index)">&times;</span>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
-  
+    {{ (tile.child ?? tile).name }}
+      <span class="close" (click)="removeElement(index)">&times;</span>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

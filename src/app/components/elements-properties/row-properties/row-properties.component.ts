@@ -46,7 +46,7 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   onExpandedChange() {
-    (this.selectedElement!.child ?? this.selectedElement)!.style.flex =
+    this.selectedElement!.child!.style.flex =
       undefined;
     (this.selectedElement!.child ??
       this.selectedElement)!.style.mainAxisAlignment = '';
@@ -63,8 +63,7 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   getFlexValue(event) {
-    (this.selectedElement!.child ?? this.selectedElement)!.style.expanded =
-      false;
+    this.selectedElement!.child!.style.expanded = false;
     (this.selectedElement!.child ??
       this.selectedElement)!.style.mainAxisAlignment = event.target.value;
   }
@@ -136,7 +135,10 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          decoration: new BoxDecoration({ color: 4294967295 }),
+          decoration: new BoxDecoration({ 
+            color: 4294967295,
+            shape: "rectangle", 
+          }),
         }),
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_TEXT,
@@ -169,7 +171,7 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          decoration: new BoxDecoration({ color: 4293467747 }),
+          decoration: new BoxDecoration({ color: 4293467747,shape: "rectangle",  }),
         }),
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_BUTTON,
@@ -187,7 +189,7 @@ export class RowPropertiesComponent implements OnInit {
     );
   }
 
-  onSelectIcon() {
+  onSelectImage() {
     this.checkConfiguration();
     var widgetConfig = new WidgetConfiguration();
     widgetConfig.clickableConfiguration = new ClickableConfiguration({
@@ -202,11 +204,11 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          decoration: new BoxDecoration({ color: 4294940672 }),
+          decoration: new BoxDecoration({ color: 4294940672,shape: "rectangle",  }),
         }),
         child: new WidgetModel({
-          widget_type: AppConstants.WIDGET_ICON,
-          name: 'Icon',
+          widget_type: AppConstants.WIDGET_IMAGE,
+          name: 'Image',
           style: new StyleModel({
             rowspan: 1,
             color: 4294967295,
@@ -220,7 +222,7 @@ export class RowPropertiesComponent implements OnInit {
     );
   }
 
-  onSelectEmpty() {
+  onSelectColumn() {
     this.checkConfiguration();
     var widgetConfig = new WidgetConfiguration();
     widgetConfig.clickableConfiguration = new ClickableConfiguration({
@@ -234,11 +236,17 @@ export class RowPropertiesComponent implements OnInit {
     this.rowElementModel!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
-        name: 'Empty',
+        name: 'Column',
         style: new StyleModel({
-          rowspan: 1,
-          decoration: new BoxDecoration({ color: 4293467747 }),
+          decoration: new BoxDecoration({ shape: "rectangle",  }),
         }),
+        child: {
+          widget_type: AppConstants.WIDGET_COLUMN,
+          expanded:true,
+          style: new StyleModel({}),
+          widgetConfiguration: widgetConfig,
+        },
+        
       })
     );
   }
@@ -260,9 +268,26 @@ export class RowPropertiesComponent implements OnInit {
     this.selectedElement!.style.decoration!.color = parseInt(val, 16);
   }
 
+  getItemBackgroundColor(){
+    if(this.selectedElement!.style!.decoration !== undefined){
+        return this.selectedElement!
+        .style!.decoration!.color!.toString(16)
+        .replace('ff', '#');
+      }
+      return '#FFFFFF';
+  }
+
   onColorChange(event) {
     var val = event.target.value.replace('#', '0xFF');
     console.log(val, parseInt(val, 16));
     this.selectedElement!.child!.style.color = parseInt(val, 16);
+  }
+
+  getItemColor(){
+    if (this.selectedElement!.child!.style.color !== undefined){
+        return this.selectedElement!.child!.style!.color!.toString(16)
+            .replace('ff', '#');
+      }
+      return '#FFFFFF';
   }
 }

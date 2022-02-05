@@ -139,6 +139,11 @@ export class ColumnPropertiesComponent implements OnInit,OnChanges {
 
   onSelectText() {
     this.checkConfiguration();
+    if(this.columnElementModel!.child!.style.rowspan === undefined){
+      this.columnElementModel!.child!.style.rowspan = 1;
+    }else{
+      this.columnElementModel!.child!.style.rowspan += 1;
+    }
     var widgetConfig = new WidgetConfiguration();
     widgetConfig.clickableConfiguration = new ClickableConfiguration({
       type: '',
@@ -172,6 +177,11 @@ export class ColumnPropertiesComponent implements OnInit,OnChanges {
 
   onSelectButton() {
     this.checkConfiguration();
+    if(this.columnElementModel!.child!.style.rowspan === undefined){
+      this.columnElementModel!.child!.style.rowspan = 1;
+    }else{
+      this.columnElementModel!.child!.style.rowspan += 1;
+    }
     var widgetConfig = new WidgetConfiguration();
     widgetConfig.clickableConfiguration = new ClickableConfiguration({
       type: '',
@@ -203,8 +213,13 @@ export class ColumnPropertiesComponent implements OnInit,OnChanges {
     );
   }
 
-  onSelectIcon() {
+  onSelectImage() {
     this.checkConfiguration();
+    if(this.columnElementModel!.child!.style.rowspan === undefined){
+      this.columnElementModel!.child!.style.rowspan = 1;
+    }else{
+      this.columnElementModel!.child!.style.rowspan += 1;
+    }
     var widgetConfig = new WidgetConfiguration();
     widgetConfig.clickableConfiguration = new ClickableConfiguration({
       type: '',
@@ -221,8 +236,8 @@ export class ColumnPropertiesComponent implements OnInit,OnChanges {
           decoration: new BoxDecoration({ color: 4294940672 }),
         }),
         child: new WidgetModel({
-          widget_type: AppConstants.WIDGET_ICON,
-          name: 'Icon',
+          widget_type: AppConstants.WIDGET_IMAGE,
+          name: 'Image',
           style: new StyleModel({
             rowspan: 1,
             color: 4294967295,

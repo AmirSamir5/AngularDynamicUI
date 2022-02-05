@@ -17,6 +17,10 @@ export class RowComponent implements OnInit {
   });
 
   onElementClick(item: WidgetModel, index: number) {
+    if(item.name === 'Column'){
+      this.elementService.editSelectedItem(item, index);
+      return;
+    }
     this.elementService.editSelectedItem(this.row!, index);
     this.elementService.editRowElementItem(this.row!.children![index], index);
   }
@@ -65,7 +69,10 @@ export class RowComponent implements OnInit {
   }
 
   getItemBackgroundColor(item: WidgetModel) {
-    return item.style.decoration!.color?.toString(16).replace('ff', '#');
+    if(item.style.decoration !== undefined){
+      return item.style.decoration!.color?.toString(16).replace('ff', '#');
+    }
+    return '#FFFFFF'
   }
 
   getItemColor(item: WidgetModel) {

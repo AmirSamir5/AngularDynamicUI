@@ -120,7 +120,7 @@ export class ListPropertiesComponent implements OnInit, OnChanges {
     this.listElementModel!.child!.cell!.child!.children?.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
-        name: 'Col',
+        name: 'Column',
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_COLUMN,
           style: new StyleModel({
