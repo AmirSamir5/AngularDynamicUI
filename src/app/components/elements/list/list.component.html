@@ -14,6 +14,7 @@
       cdkDrag
       *ngFor="let tile of listModel!.cell!.child!.children!; let index = index"
       [colspan]="6"
+      [rowspan]="getItemRowspan(tile)"
       [ngSwitch]="tile.name"
       (click)="onRowSelected(tile, index); $event.stopPropagation()"
     >

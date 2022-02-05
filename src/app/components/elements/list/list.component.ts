@@ -52,6 +52,23 @@ export class ListComponent implements OnInit {
     this.listModel!.cell!.child!.children?.splice(index, 1);
   }
 
+  getItemRowspan(item:WidgetModel){
+    if(item.child !== undefined){
+      return item.child!.style.rowspan;
+    }else{
+      if(item.children !== undefined){
+        var rowspan = 1;
+        item.children.forEach((element) => {
+          if (element.name === 'Column'){
+            rowspan = element.child!.style.rowspan ?? 1;
+          }
+        })
+        return rowspan;
+      }
+      return 1;
+    }
+  }
+
   drag(event: CdkDragDrop<WidgetModel[]>) {
     console.log(
       event.container,

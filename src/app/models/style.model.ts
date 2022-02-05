@@ -17,7 +17,9 @@ export class StyleModel {
   textDirection?: string;
   verticalDirection?: string;
   height?: number;
+  width? :number;
   widthRatioToScreen?: number;
+  borderRadiusCircularSize? : number;
 
   constructor({
     backgroundColor,
@@ -34,6 +36,9 @@ export class StyleModel {
     crossAxisAlignment,
     margin,
     expanded,
+    borderRadiusCircularSize,
+    height,
+    width,
   }: {
     backgroundColor?: string;
     color?: number;
@@ -49,6 +54,9 @@ export class StyleModel {
     expanded?: boolean;
     mainAxisAlignment?: string;
     crossAxisAlignment?: string;
+    borderRadiusCircularSize?: number;
+    height?: number,
+    width? : number,
   }) {
     this.backgroundColor = backgroundColor;
     this.color = color;
@@ -61,9 +69,12 @@ export class StyleModel {
     this.justify = justify;
     this.padding = padding;
     this.margin = margin;
+    this.height = height;
+    this.width = width;
     this.expanded = expanded ?? false;
     this.mainAxisAlignment = mainAxisAlignment;
     this.crossAxisAlignment = crossAxisAlignment;
+    this.borderRadiusCircularSize = borderRadiusCircularSize;
   }
 }
 

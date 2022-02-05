@@ -49,8 +49,13 @@ export class ColumnComponent implements OnInit {
 
   getItemBackgroundColor(item: WidgetModel) {
     if(item.style.decoration === undefined){
+      if(item.child!.widget_type === AppConstants.WIDGET_IMAGE){
+        var color = 4294940672;
+        return color.toString(16).replace('ff', '#');
+      }
       return 'grey';
     }
+    
     return item.style.decoration!.color?.toString(16).replace('ff', '#');
   }
 

@@ -233,7 +233,8 @@ export class ColumnPropertiesComponent implements OnInit,OnChanges {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_CONTAINER,
         style: new StyleModel({
-          decoration: new BoxDecoration({ color: 4294940672 }),
+          height: 70,
+          width: 70,
         }),
         child: new WidgetModel({
           widget_type: AppConstants.WIDGET_IMAGE,
@@ -241,9 +242,7 @@ export class ColumnPropertiesComponent implements OnInit,OnChanges {
           style: new StyleModel({
             rowspan: 1,
             color: 4294967295,
-            fontFamily: 'Robota-Regular',
-            fontSize: 12,
-            fontWeight: 'normal',
+            borderRadiusCircularSize: 50,
           }),
           widgetConfiguration: widgetConfig,
         }),
