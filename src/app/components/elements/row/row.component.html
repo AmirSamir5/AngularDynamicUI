@@ -2,7 +2,9 @@
 <div class="example-boundary">
   <div
     class="row"
-    [style.justify-content]="getRowMainAxis(row!.style.mainAxisAlignment ?? 'start')"
+    [style.justify-content]="
+      getRowMainAxis(row!.style.mainAxisAlignment ?? 'start')
+    "
     cdkDropList
     [cdkDropListData]="row!.children!"
     cdkDragBoundary=".example-boundary"
@@ -14,23 +16,25 @@
       [ngClass]="getItemFlex(rowContent.child ?? rowContent)"
       [style.backgroundColor]="getItemBackgroundColor(rowContent) ?? 'white'"
       [style.color]="getItemColor(rowContent)"
-      [style.width]="
-        rowContent.child!.expanded ? '100%' : undefined
-      "
+      [style.width]="rowContent.child!.expanded ? '100%' : undefined"
       [style.font-size.px]="(rowContent.child ?? rowContent).style.fontSize"
       [style.font-weight]="(rowContent.child ?? rowContent).style.fontWeight"
       [style.font-family]="(rowContent.child ?? rowContent).style.fontFamily"
       (click)="onElementClick(rowContent, index); $event.stopPropagation()"
       [ngSwitch]="rowContent.name"
-    > 
-          <app-column 
-          *ngSwitchCase="'Column'"
-          [columnModel]="rowContent"
-          [showTitle]="false"
-          style="width: 100%;">
-        </app-column>
+    >
+      <app-column
+        *ngSwitchCase="'Column'"
+        [columnModel]="rowContent"
+        [showTitle]="false"
+        style="width: 100%"
+      >
+      </app-column>
       <div *ngSwitchDefault="">
-        {{ (rowContent.child ?? rowContent).name }}
+        {{
+          (rowContent.child ?? rowContent).textDisplayed ??
+            (rowContent.child ?? rowContent).name
+        }}
         <span class="close" (click)="removeElement(index)">&times;</span>
       </div>
     </div>
