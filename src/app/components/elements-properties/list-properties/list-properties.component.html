@@ -1,7 +1,9 @@
 <div class="col">
   <p>Add Elements To List</p>
   <button class="btn btn-danger bottom" (click)="onAddRow()">+ Add Row</button>
-  <button class="btn btn-primary bottom" (click)="onAddColumn()">+ Add Column</button>
+  <button class="btn btn-primary bottom" (click)="onAddColumn()">
+    + Add Column
+  </button>
   <label>
     List Cell Prototype
     <input
@@ -93,28 +95,31 @@
     <input
       type="checkbox"
       checked="checked"
-      [value]="
-        this.listElementModel!.child!.cell!.widgetConfiguration!
+      [(ngModel)]="
+        listElementModel!.child!.cell!.widgetConfiguration!
           .clickableConfiguration!.isClickable
       "
       (change)="onClickablChange()"
     />
     <span class="checkmark"></span>
   </label>
-  <label *ngIf="
-  this.listElementModel!.child!.cell!.widgetConfiguration!
-  .clickableConfiguration!.isClickable"
+  <label
+    *ngIf="
+      this.listElementModel!.child!.cell!.widgetConfiguration!
+        .clickableConfiguration!.isClickable
+    "
     >Clickable Type
 
     <select
-    *ngIf="
-    this.listElementModel!.child!.cell!.widgetConfiguration!
-    .clickableConfiguration!.isClickable"
+      *ngIf="
+        this.listElementModel!.child!.cell!.widgetConfiguration!
+          .clickableConfiguration!.isClickable
+      "
       class="form-control"
       style="display: inline-block"
       [(ngModel)]="
-        (listElementModel!.child!.cell?.widgetConfiguration
-          ?.clickableConfiguration!)!.type
+        listElementModel!.child!.cell?.widgetConfiguration
+          ?.clickableConfiguration!!.type
       "
     >
       <option [value]="item.value" *ngFor="let item of clickablesArr">
@@ -124,8 +129,8 @@
   </label>
   <label
     *ngIf="
-    this.listElementModel!.child!.cell!.widgetConfiguration!
-    .clickableConfiguration!.isClickable &&
+      this.listElementModel!.child!.cell!.widgetConfiguration!
+        .clickableConfiguration!.isClickable &&
       listElementModel!.child!.cell!.widgetConfiguration!
         .clickableConfiguration!!.type === 'clickableConfiguration!Type.callApi'
     "
@@ -142,10 +147,10 @@
   </label>
   <label
     *ngIf="
-    this.listElementModel!.child!.cell!.widgetConfiguration!
-    .clickableConfiguration!.isClickable &&
+      this.listElementModel!.child!.cell!.widgetConfiguration!
+        .clickableConfiguration!.isClickable &&
       listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!!.type === 'clickableConfiguration!Type.redirect'
+        .clickableConfiguration!!.type === 'ClickableConfigurationType.redirect'
     "
     >Destination Screen Name
     <input
@@ -160,10 +165,10 @@
   </label>
   <label
     *ngIf="
-    this.listElementModel!.child!.cell!.widgetConfiguration!
-    .clickableConfiguration!.isClickable &&
+      this.listElementModel!.child!.cell!.widgetConfiguration!
+        .clickableConfiguration!.isClickable &&
       listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!!.type === 'clickableConfiguration!Type.redirect'
+        .clickableConfiguration!!.type === 'ClickableConfigurationType.redirect'
     "
     >Destination Screen Type
     <input
@@ -176,8 +181,11 @@
       "
     />
   </label>
-  <label *ngIf="this.listElementModel!.child!.cell!.widgetConfiguration!
-  .clickableConfiguration!.isClickable"
+  <label
+    *ngIf="
+      this.listElementModel!.child!.cell!.widgetConfiguration!
+        .clickableConfiguration!.isClickable
+    "
     >Passed Keys
     <input
       type="text"

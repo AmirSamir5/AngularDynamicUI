@@ -169,9 +169,21 @@ export class ListPropertiesComponent implements OnInit, OnChanges {
   }
 
   onClickablChange() {
-    this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.isClickable =
+    if (
       !this.listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!.isClickable;
+        .clickableConfiguration!.isClickable
+    ) {
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.apiCode =
+        '';
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.name =
+        '';
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.destination_screen_lookUp!.type =
+        '';
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.passedKeys =
+        [];
+      this.listElementModel!.child!.cell!.widgetConfiguration!.clickableConfiguration!.type =
+        '';
+    }
   }
 
   onPassedKeys(event) {
