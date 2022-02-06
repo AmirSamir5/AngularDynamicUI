@@ -12,31 +12,31 @@
       </button>
     </div>
     <p>Col Main Axis Alignment</p>
-    <select [(ngModel)]="columnElementModel!.style.mainAxisAlignment">
+    <select [(ngModel)]="columnElementModel!.child!.style.mainAxisAlignment">
       <option [value]="item" *ngFor="let item of justifyArr">
         {{ item }}
       </option>
     </select>
     <p>Col Cross Axis Alignment</p>
-    <select [(ngModel)]="columnElementModel!.style.crossAxisAlignment">
+    <select [(ngModel)]="columnElementModel!.child!.style.crossAxisAlignment">
       <option [value]="item" *ngFor="let item of crossAxisArr">
         {{ item }}
       </option>
     </select>
     <p>Col Main Axis Size</p>
-    <select [(ngModel)]="columnElementModel!.style.mainAxisSize">
+    <select [(ngModel)]="columnElementModel!.child!.style.mainAxisSize">
       <option [value]="item" *ngFor="let item of mainAxisSizeArr">
         {{ item }}
       </option>
     </select>
     <p>Col Text Direction</p>
-    <select [(ngModel)]="columnElementModel!.style.textDirection">
+    <select [(ngModel)]="columnElementModel!.child!.style.textDirection">
       <option [value]="item" *ngFor="let item of textDirectionArr">
         {{ item }}
       </option>
     </select>
     <p>Col Vertical Direction</p>
-    <select [(ngModel)]="columnElementModel!.style.verticalDirection">
+    <select [(ngModel)]="columnElementModel!.child!.style.verticalDirection">
       <option [value]="item" *ngFor="let item of varticalDirectionArr">
         {{ item }}
       </option>
