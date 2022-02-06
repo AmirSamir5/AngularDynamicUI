@@ -30,6 +30,19 @@
     />
   </label>
 
+  <label style="width: 100%">
+    Background Color
+    <input
+      ejs-colorpicker
+      type="color"
+      class="form-control"
+      id="colorpicker"
+      [value]="getItemBackgroundColor()"
+      (input)="onBackgroundChange($event)"
+      name="colorpicker"
+    />
+  </label>
+
   <label class="container-checkbox"
     >Clickable
     <input

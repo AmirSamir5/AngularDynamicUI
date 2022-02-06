@@ -46,9 +46,15 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
     if (this.containerElementModel?.style.decoration === undefined) {
       this.containerElementModel!.style = new StyleModel({});
       this.containerElementModel!.style.decoration = new BoxDecoration({
-        color: 4294967295,
+        color: 4294630378,
       });
     }
+    this.containerElementModel!.style = {
+      ...this.containerElementModel!.style,
+    };
+    this.containerElementModel!.style!.decoration = {
+      ...this.containerElementModel!.style!.decoration,
+    };
     if (this.containerElementModel!.widgetConfiguration === undefined) {
       this.containerElementModel!.widgetConfiguration =
         new WidgetConfiguration();
@@ -94,9 +100,15 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
 
     if (this.containerElementModel?.style.decoration === undefined) {
       this.containerElementModel!.style.decoration = new BoxDecoration({
-        color: 4294967295,
+        color: 4294630378,
       });
     }
+    this.containerElementModel!.style = {
+      ...this.containerElementModel!.style,
+    };
+    this.containerElementModel!.style!.decoration = {
+      ...this.containerElementModel!.style!.decoration,
+    };
 
     if (this.containerElementModel!.widgetConfiguration === undefined) {
       this.containerElementModel!.widgetConfiguration =
@@ -114,6 +126,19 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
             type: '',
             name: '',
           }),
+        });
+    }
+    if (
+      this.containerElementModel!.widgetConfiguration!.loadDataConfiguration ===
+      undefined
+    ) {
+      this.containerElementModel!.widgetConfiguration.loadDataConfiguration =
+        new LoadDataConfiguration({
+          isLoadData: false,
+          passedKeys: [],
+          type: '',
+          lookUpName: '',
+          apiCode: '',
         });
     }
     this.containerElementModel!.widgetConfiguration!.showedFields = [];
@@ -233,5 +258,20 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
         bottomLeft: +radius,
         bottomRight: +radius,
       });
+  }
+
+  getItemBackgroundColor() {
+    if (this.containerElementModel!.style!.decoration !== undefined) {
+      return this.containerElementModel!.style!.decoration!.color!.toString(
+        16
+      ).replace('ff', '#');
+    }
+    return '#FFFFFF';
+  }
+
+  onBackgroundChange(event) {
+    var val = event.target.value.replace('#', '0xFF');
+    console.log(val, parseInt(val, 16));
+    this.containerElementModel!.style.decoration!.color = parseInt(val, 16);
   }
 }
