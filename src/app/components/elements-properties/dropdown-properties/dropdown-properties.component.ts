@@ -40,8 +40,11 @@ export class DropdownPropertiesComponent implements OnChanges {
       : 0;
   }
 
-  requiredValue():boolean{
-    if(this.dropdownElementModel!.child!.validations!.isMandatory === 1 && this.dropdownElementModel!.child!.validations!.isMandatory !== undefined){
+  requiredValue(): boolean {
+    if (
+      this.dropdownElementModel!.child!.validations!.isMandatory === 1 &&
+      this.dropdownElementModel!.child!.validations!.isMandatory !== undefined
+    ) {
       return true;
     }
     return false;
@@ -49,17 +52,21 @@ export class DropdownPropertiesComponent implements OnChanges {
 
   selectChange(event) {
     var val = event.target.value;
-    this.lookups.forEach(
-      (element) =>{
-        if(element.displayValue === val){
-          this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey = element.lookupIdKey;
-          this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey = element.lookupListKey;
-          this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey = element.lookupTextKey;
-        }
+    this.lookups.forEach((element) => {
+      if (element.displayValue === val) {
+        this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey =
+          element.lookupIdKey;
+        this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey =
+          element.lookupListKey;
+        this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey =
+          element.lookupTextKey;
       }
-    );
+    });
     if (val === 'other') {
       this.showInputFields = true;
+      this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey = '';
+      this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey = '';
+      this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey = '';
     } else {
       this.showInputFields = false;
     }
