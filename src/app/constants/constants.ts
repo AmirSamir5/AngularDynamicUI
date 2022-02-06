@@ -103,10 +103,10 @@ export class AppConstants {
   ];
 
   public static CLICKABLE_CONFIGURATION = [
-    // {
-    //   name: 'Call API',
-    //   value: 'ClickableConfigurationType.callApi',
-    // },
+    {
+      name: 'Call API',
+      value: 'ClickableConfigurationType.callApi',
+    },
     {
       name: 'Redirect',
       value: 'ClickableConfigurationType.redirect',
