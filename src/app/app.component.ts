@@ -65,7 +65,7 @@ export class AppComponent {
         var screenExsits = false;
         screens = JSON.parse(localStorage.getItem('screens')!);
         screens.forEach((element, index) => {
-          if (element.screen_name === jsonModel.screen_name) {
+          if (element.screenPages[0].page_name === jsonModel.screenPages[0].page_name) {
             screenExsits = true;
             screens[index] = jsonModel;
           }
