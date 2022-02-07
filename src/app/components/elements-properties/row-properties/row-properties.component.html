@@ -188,7 +188,7 @@
         >Clickable
         <input
           type="checkbox"
-          [value]="this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable"
+          [(ngModel)]="this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable"
           (change)="onClickablChange()"
         />
         <span class="checkmark"></span>
