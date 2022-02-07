@@ -134,17 +134,18 @@ export class AppComponent {
       console.log('cell', cells);
 
       if (screenModel.widget_type !== undefined) {
+        var margin = new EdgeInsetsModel({});
+        if(screenModel.page_name === 'home'){
+          margin = new EdgeInsetsModel({top: 16, bottom: 16 });
+        }else{
+          margin = new EdgeInsetsModel({top: 16,bottom: 16,left: 16,right: 16,});
+        }
         var scrollableWidget: WidgetModel = new WidgetModel({
           widget_type: screenModel.widget_type,
           child: new WidgetModel({
             widget_type: AppConstants.WIDGET_CONTAINER,
             style: new StyleModel({
-              margin: new EdgeInsetsModel({
-                top: 16,
-                bottom: 16,
-                left: 16,
-                right: 16,
-              }),
+              margin: margin,
               decoration: new BoxDecoration({ shape: 'rectangle' }),
             }),
             child: new WidgetModel({
