@@ -17,9 +17,9 @@ export class StyleModel {
   textDirection?: string;
   verticalDirection?: string;
   height?: number;
-  width? :number;
+  width?: number;
   widthRatioToScreen?: number;
-  borderRadiusCircularSize? : number;
+  borderRadiusCircularSize?: number;
 
   constructor({
     backgroundColor,
@@ -55,8 +55,8 @@ export class StyleModel {
     mainAxisAlignment?: string;
     crossAxisAlignment?: string;
     borderRadiusCircularSize?: number;
-    height?: number,
-    width? : number,
+    height?: number;
+    width?: number;
   }) {
     this.backgroundColor = backgroundColor;
     this.color = color;
@@ -79,6 +79,9 @@ export class StyleModel {
 }
 
 export class EdgeInsetsModel {
+  all?: number;
+  horizontal?: number;
+  vertical?: number;
   top?: number;
   bottom?: number;
   left?: number;
