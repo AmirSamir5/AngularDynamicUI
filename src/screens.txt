@@ -2646,5 +2646,1534 @@
                 "widget_type": "WidgetType.scrollView"
             }
         ]
+    },
+    {
+        "screen_name": "Likelemba Home Other",
+        "screen_id": 7,
+        "screenPages": [
+            {
+                "page_name": "home",
+                "fields": [
+                    {
+                        "widgetConfiguration": {
+                            "clickableConfiguration": {
+                                "type": "ClickableConfigurationType.redirect",
+                                "passedKeys": [
+                                    "1",
+                                    "2",
+                                    "3",
+                                    "4",
+                                    "5",
+                                    "611",
+                                    "22"
+                                ],
+                                "destination_screen_lookUp": {
+                                    "name": "members_screen",
+                                    "type": "DestinationScreenLookUpType.per_customer"
+                                },
+                                "isClickable": true
+                            },
+                            "loadDataConfiguration": {
+                                "isLoadData": true,
+                                "passedKeys": [],
+                                "type": "LoadDataActionType.callLookUp",
+                                "lookUpName": "home.my.organized.lookup",
+                                "apiCode": ""
+                            },
+                            "showedFields": []
+                        },
+                        "widget_type": "WidgetType.container",
+                        "name": "Container",
+                        "style": {
+                            "expanded": false,
+                            "decoration": {
+                                "shape": "rectangle",
+                                "color": 4294967295
+                            },
+                            "padding": {
+                                "top": 15,
+                                "right": 15,
+                                "bottom": 15,
+                                "left": 15
+                            }
+                        },
+                        "child": {
+                            "widget_type": "WidgetType.column",
+                            "style": {
+                                "expanded": false
+                            },
+                            "children": [
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "spaceBetween"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "isClickable": true,
+                                                        "type": "ClickableConfigurationType.redirect",
+                                                        "passedKeys": [
+                                                            "1",
+                                                            "2",
+                                                            "3",
+                                                            "4",
+                                                            "5",
+                                                            "6",
+                                                            "7",
+                                                            "8"
+                                                        ],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "setUpNewScreen",
+                                                            "type": "DestinationScreenLookUpType.per_customer"
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": "14",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "textDisplayed": "Setup New"
+                                            }
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": "16",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "textDisplayed": "My Organized"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "spaceBetween"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4279510271,
+                                                    "rowspan": 1,
+                                                    "fontSize": "16",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "1"
+                                            }
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4279566171,
+                                                    "rowspan": 1,
+                                                    "fontSize": "14",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "2"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "start"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": 12,
+                                                    "fontWeight": "normal",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "5"
+                                            }
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": 12,
+                                                    "fontWeight": "normal",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "6"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "start"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": 12,
+                                                    "fontWeight": "normal",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "4"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "spaceBetween"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": 12,
+                                                    "fontWeight": "normal",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "7"
+                                            }
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4294907027,
+                                                    "rowspan": 1,
+                                                    "fontSize": "16",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "8"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "widgetConfiguration": {
+                            "clickableConfiguration": {
+                                "type": "",
+                                "passedKeys": [],
+                                "destination_screen_lookUp": {
+                                    "name": "",
+                                    "type": ""
+                                }
+                            },
+                            "loadDataConfiguration": {
+                                "isLoadData": false,
+                                "passedKeys": [],
+                                "type": "",
+                                "lookUpName": "",
+                                "apiCode": ""
+                            },
+                            "showedFields": []
+                        },
+                        "widget_type": "WidgetType.container",
+                        "name": "Container",
+                        "style": {
+                            "expanded": false,
+                            "decoration": {
+                                "shape": "rectangle",
+                                "color": 4294630378
+                            },
+                            "margin": {
+                                "top": 0,
+                                "right": 0,
+                                "bottom": 0,
+                                "left": 0
+                            },
+                            "padding": {
+                                "top": 0,
+                                "right": 0,
+                                "bottom": 0,
+                                "left": 0
+                            },
+                            "height": 16
+                        },
+                        "child": {
+                            "widget_type": "WidgetType.column",
+                            "style": {
+                                "expanded": false
+                            },
+                            "children": []
+                        }
+                    },
+                    {
+                        "widget_type": "WidgetType.container",
+                        "name": "List",
+                        "style": {
+                            "expanded": false,
+                            "decoration": {
+                                "shape": "rectangle",
+                                "color": 4294967295
+                            },
+                            "height": 165
+                        },
+                        "child": {
+                            "widget_type": "WidgetType.list",
+                            "cell": {
+                                "widgetConfiguration": {
+                                    "clickableConfiguration": {
+                                        "type": "ClickableConfigurationType.redirect",
+                                        "passedKeys": [
+                                            "1",
+                                            "2",
+                                            "3",
+                                            "4",
+                                            "5",
+                                            "6",
+                                            "7",
+                                            "8"
+                                        ],
+                                        "destination_screen_lookUp": {
+                                            "name": "setUpNewScreen",
+                                            "type": "DestinationScreenLookUpType.per_customer"
+                                        },
+                                        "isClickable": true
+                                    }
+                                },
+                                "widget_type": "WidgetType.container",
+                                "style": {
+                                    "expanded": false,
+                                    "decoration": {
+                                        "shape": "rectangle",
+                                        "borderRadius": {
+                                            "topLeft": 10,
+                                            "topRight": 10,
+                                            "bottomLeft": 10,
+                                            "bottomRight": 10
+                                        },
+                                        "border": {
+                                            "color": 4293347734,
+                                            "width": 0.6,
+                                            "style": "solid"
+                                        }
+                                    },
+                                    "padding": {
+                                        "top": 5,
+                                        "right": 5,
+                                        "bottom": 5,
+                                        "left": 5
+                                    },
+                                    "margin": {
+                                        "top": 5,
+                                        "right": 5,
+                                        "bottom": 5,
+                                        "left": 5
+                                    },
+                                    "widthRatioToScreen": 0.7
+                                },
+                                "child": {
+                                    "widget_type": "WidgetType.column",
+                                    "style": {
+                                        "expanded": false
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.row",
+                                            "name": "Row",
+                                            "style": {
+                                                "expanded": false,
+                                                "backgroundColor": "white",
+                                                "flex": 6,
+                                                "rowspan": 1,
+                                                "mainAxisAlignment": "spaceBetween",
+                                                "crossAxisAlignment": "start",
+                                                "mainAxisSize": "max",
+                                                "textDirection": "ltr",
+                                                "verticalDirection": "up"
+                                            },
+                                            "children": [
+                                                {
+                                                    "widget_type": "WidgetType.container",
+                                                    "style": {
+                                                        "expanded": false,
+                                                        "decoration": {
+                                                            "shape": "rectangle",
+                                                            "color": 4294967295
+                                                        },
+                                                        "padding": {
+                                                            "top": 0,
+                                                            "right": 0,
+                                                            "bottom": 0,
+                                                            "left": 0
+                                                        },
+                                                        "margin": {
+                                                            "top": 5,
+                                                            "right": 5,
+                                                            "bottom": 5,
+                                                            "left": 5
+                                                        }
+                                                    },
+                                                    "child": {
+                                                        "widgetConfiguration": {
+                                                            "clickableConfiguration": {
+                                                                "type": "",
+                                                                "passedKeys": [],
+                                                                "destination_screen_lookUp": {
+                                                                    "name": "",
+                                                                    "type": ""
+                                                                }
+                                                            }
+                                                        },
+                                                        "widget_type": "WidgetType.textView",
+                                                        "name": "Text",
+                                                        "style": {
+                                                            "expanded": true,
+                                                            "color": 4294907027,
+                                                            "rowspan": 1,
+                                                            "fontSize": "16",
+                                                            "fontWeight": "bold",
+                                                            "fontFamily": "Robota-Regular",
+                                                            "mainAxisAlignment": ""
+                                                        },
+                                                        "dataIdInMap": "1"
+                                                    }
+                                                },
+                                                {
+                                                    "widget_type": "WidgetType.container",
+                                                    "style": {
+                                                        "expanded": false,
+                                                        "decoration": {
+                                                            "shape": "rectangle",
+                                                            "color": 4294967295
+                                                        },
+                                                        "margin": {
+                                                            "top": 5,
+                                                            "right": 5,
+                                                            "bottom": 5,
+                                                            "left": 5
+                                                        }
+                                                    },
+                                                    "child": {
+                                                        "widgetConfiguration": {
+                                                            "clickableConfiguration": {
+                                                                "type": "",
+                                                                "passedKeys": [],
+                                                                "destination_screen_lookUp": {
+                                                                    "name": "",
+                                                                    "type": ""
+                                                                }
+                                                            }
+                                                        },
+                                                        "widget_type": "WidgetType.textView",
+                                                        "name": "Text",
+                                                        "style": {
+                                                            "expanded": false,
+                                                            "color": 4294907027,
+                                                            "rowspan": 1,
+                                                            "fontSize": "14",
+                                                            "fontWeight": "bold",
+                                                            "fontFamily": "Robota-Regular"
+                                                        },
+                                                        "dataIdInMap": "2"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.row",
+                                            "name": "Row",
+                                            "style": {
+                                                "expanded": false,
+                                                "backgroundColor": "white",
+                                                "flex": 6,
+                                                "rowspan": 1,
+                                                "mainAxisAlignment": "start",
+                                                "crossAxisAlignment": "start",
+                                                "mainAxisSize": "max",
+                                                "textDirection": "ltr",
+                                                "verticalDirection": "up"
+                                            },
+                                            "children": [
+                                                {
+                                                    "widget_type": "WidgetType.container",
+                                                    "style": {
+                                                        "expanded": false,
+                                                        "decoration": {
+                                                            "shape": "rectangle",
+                                                            "color": 4294967295
+                                                        },
+                                                        "margin": {
+                                                            "top": 5,
+                                                            "right": 5,
+                                                            "bottom": 5,
+                                                            "left": 5
+                                                        }
+                                                    },
+                                                    "child": {
+                                                        "widgetConfiguration": {
+                                                            "clickableConfiguration": {
+                                                                "type": "",
+                                                                "passedKeys": [],
+                                                                "destination_screen_lookUp": {
+                                                                    "name": "",
+                                                                    "type": ""
+                                                                }
+                                                            }
+                                                        },
+                                                        "widget_type": "WidgetType.textView",
+                                                        "name": "Text",
+                                                        "style": {
+                                                            "expanded": false,
+                                                            "color": 4278190080,
+                                                            "rowspan": 1,
+                                                            "fontSize": "14",
+                                                            "fontWeight": "normal",
+                                                            "fontFamily": "Robota-Regular"
+                                                        },
+                                                        "dataIdInMap": "4"
+                                                    }
+                                                },
+                                                {
+                                                    "widget_type": "WidgetType.container",
+                                                    "style": {
+                                                        "expanded": false,
+                                                        "decoration": {
+                                                            "shape": "rectangle",
+                                                            "color": 4294967295
+                                                        },
+                                                        "margin": {
+                                                            "top": 5,
+                                                            "right": 5,
+                                                            "bottom": 5,
+                                                            "left": 5
+                                                        }
+                                                    },
+                                                    "child": {
+                                                        "widgetConfiguration": {
+                                                            "clickableConfiguration": {
+                                                                "type": "",
+                                                                "passedKeys": [],
+                                                                "destination_screen_lookUp": {
+                                                                    "name": "",
+                                                                    "type": ""
+                                                                }
+                                                            }
+                                                        },
+                                                        "widget_type": "WidgetType.textView",
+                                                        "name": "Text",
+                                                        "style": {
+                                                            "expanded": false,
+                                                            "color": 4278190080,
+                                                            "rowspan": 1,
+                                                            "fontSize": "14",
+                                                            "fontWeight": "normal",
+                                                            "fontFamily": "Robota-Regular"
+                                                        },
+                                                        "dataIdInMap": "5"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.row",
+                                            "name": "Row",
+                                            "style": {
+                                                "expanded": false,
+                                                "backgroundColor": "white",
+                                                "flex": 6,
+                                                "rowspan": 1,
+                                                "mainAxisAlignment": "start",
+                                                "crossAxisAlignment": "start",
+                                                "mainAxisSize": "max",
+                                                "textDirection": "ltr",
+                                                "verticalDirection": "up"
+                                            },
+                                            "children": [
+                                                {
+                                                    "widget_type": "WidgetType.container",
+                                                    "style": {
+                                                        "expanded": false,
+                                                        "decoration": {
+                                                            "shape": "rectangle",
+                                                            "color": 4294967295
+                                                        },
+                                                        "margin": {
+                                                            "top": 5,
+                                                            "right": 5,
+                                                            "bottom": 5,
+                                                            "left": 5
+                                                        }
+                                                    },
+                                                    "child": {
+                                                        "widgetConfiguration": {
+                                                            "clickableConfiguration": {
+                                                                "type": "",
+                                                                "passedKeys": [],
+                                                                "destination_screen_lookUp": {
+                                                                    "name": "",
+                                                                    "type": ""
+                                                                }
+                                                            }
+                                                        },
+                                                        "widget_type": "WidgetType.textView",
+                                                        "name": "Text",
+                                                        "style": {
+                                                            "expanded": false,
+                                                            "color": 4278190080,
+                                                            "rowspan": 1,
+                                                            "fontSize": "14",
+                                                            "fontWeight": "normal",
+                                                            "fontFamily": "Robota-Regular"
+                                                        },
+                                                        "dataIdInMap": "3"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.row",
+                                            "name": "Row",
+                                            "style": {
+                                                "expanded": false,
+                                                "backgroundColor": "white",
+                                                "flex": 6,
+                                                "rowspan": 1,
+                                                "mainAxisAlignment": "center",
+                                                "crossAxisAlignment": "center",
+                                                "mainAxisSize": "max",
+                                                "textDirection": "ltr",
+                                                "verticalDirection": "up"
+                                            },
+                                            "children": [
+                                                {
+                                                    "widget_type": "WidgetType.container",
+                                                    "style": {
+                                                        "expanded": false,
+                                                        "decoration": {
+                                                            "shape": "rectangle",
+                                                            "color": 4294907027,
+                                                            "borderRadius": {
+                                                                "topLeft": 5,
+                                                                "topRight": 5,
+                                                                "bottomLeft": 5,
+                                                                "bottomRight": 5
+                                                            }
+                                                        },
+                                                        "padding": {
+                                                            "top": 8,
+                                                            "right": 8,
+                                                            "bottom": 8,
+                                                            "left": 8
+                                                        },
+                                                        "margin": {
+                                                            "top": 5,
+                                                            "right": 5,
+                                                            "bottom": 5,
+                                                            "left": 5
+                                                        }
+                                                    },
+                                                    "child": {
+                                                        "widgetConfiguration": {
+                                                            "clickableConfiguration": {
+                                                                "type": "ClickableConfigurationType.redirect",
+                                                                "passedKeys": [
+                                                                    "1",
+                                                                    "2",
+                                                                    "3",
+                                                                    "4",
+                                                                    "5",
+                                                                    "6",
+                                                                    "7",
+                                                                    "8"
+                                                                ],
+                                                                "destination_screen_lookUp": {
+                                                                    "name": "subscribeScreen",
+                                                                    "type": "DestinationScreenLookUpType.per_customer"
+                                                                },
+                                                                "isClickable": true
+                                                            }
+                                                        },
+                                                        "widget_type": "WidgetType.textView",
+                                                        "name": "Text",
+                                                        "style": {
+                                                            "expanded": false,
+                                                            "color": 4294967295,
+                                                            "rowspan": 1,
+                                                            "fontSize": "16",
+                                                            "fontWeight": "bold",
+                                                            "fontFamily": "Robota-Regular",
+                                                            "mainAxisAlignment": ""
+                                                        },
+                                                        "dataIdInMap": "6",
+                                                        "expanded": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "style": {
+                                "expanded": false
+                            },
+                            "widgetConfiguration": {
+                                "showedFields": [],
+                                "direction": "h"
+                            },
+                            "cellProtoType": "Home.Open.for.subscription.cell",
+                            "dataArray": "Home.open.for.subscription.data.array",
+                            "dataIdInMap": "5"
+                        }
+                    },
+                    {
+                        "widgetConfiguration": {
+                            "clickableConfiguration": {
+                                "type": "",
+                                "passedKeys": [],
+                                "destination_screen_lookUp": {
+                                    "name": "",
+                                    "type": ""
+                                }
+                            },
+                            "loadDataConfiguration": {
+                                "isLoadData": false,
+                                "passedKeys": [],
+                                "type": "",
+                                "lookUpName": "",
+                                "apiCode": ""
+                            },
+                            "showedFields": []
+                        },
+                        "widget_type": "WidgetType.container",
+                        "name": "Container",
+                        "style": {
+                            "expanded": false,
+                            "decoration": {
+                                "shape": "rectangle",
+                                "color": 4294630378
+                            },
+                            "margin": {
+                                "top": 0,
+                                "right": 0,
+                                "bottom": 0,
+                                "left": 0
+                            },
+                            "padding": {
+                                "top": 0,
+                                "right": 0,
+                                "bottom": 0,
+                                "left": 0
+                            },
+                            "height": 16
+                        },
+                        "child": {
+                            "widget_type": "WidgetType.column",
+                            "style": {
+                                "expanded": false
+                            },
+                            "children": []
+                        }
+                    },
+                    {
+                        "widgetConfiguration": {
+                            "clickableConfiguration": {
+                                "type": "",
+                                "passedKeys": [],
+                                "destination_screen_lookUp": {
+                                    "name": "",
+                                    "type": ""
+                                }
+                            },
+                            "loadDataConfiguration": {
+                                "isLoadData": true,
+                                "passedKeys": [],
+                                "type": "LoadDataActionType.callLookUp",
+                                "lookUpName": "home.my.subscriptions.lookup",
+                                "apiCode": ""
+                            },
+                            "showedFields": []
+                        },
+                        "widget_type": "WidgetType.container",
+                        "name": "Container",
+                        "style": {
+                            "expanded": false,
+                            "decoration": {
+                                "shape": "rectangle",
+                                "color": 4294967295
+                            },
+                            "padding": {
+                                "top": 5,
+                                "right": 5,
+                                "bottom": 5,
+                                "left": 5
+                            }
+                        },
+                        "child": {
+                            "widget_type": "WidgetType.column",
+                            "style": {
+                                "expanded": false
+                            },
+                            "children": [
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "spaceBetween"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": "16",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "textDisplayed": "My Subscription"
+                                            }
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "isClickable": true,
+                                                        "type": "ClickableConfigurationType.redirect",
+                                                        "passedKeys": [
+                                                            "1",
+                                                            "2",
+                                                            "3",
+                                                            "4",
+                                                            "5",
+                                                            "6",
+                                                            "7",
+                                                            "8",
+                                                            "22"
+                                                        ],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "mySubscriptionViewScreen",
+                                                            "type": "DestinationScreenLookUpType.per_customer"
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": "14",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "textDisplayed": "View All"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "spaceBetween"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4294907027,
+                                                    "rowspan": 1,
+                                                    "fontSize": "16",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "1"
+                                            }
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4294907027,
+                                                    "rowspan": 1,
+                                                    "fontSize": "14",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "2"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "start"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": 12,
+                                                    "fontWeight": "normal",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "3"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "start"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": 12,
+                                                    "fontWeight": "normal",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "5"
+                                            }
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": 12,
+                                                    "fontWeight": "normal",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "6"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "start"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": 12,
+                                                    "fontWeight": "normal",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "4"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "widget_type": "WidgetType.row",
+                                    "name": "Row",
+                                    "style": {
+                                        "expanded": false,
+                                        "backgroundColor": "white",
+                                        "flex": 6,
+                                        "rowspan": 1,
+                                        "mainAxisAlignment": "spaceBetween"
+                                    },
+                                    "children": [
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4278190080,
+                                                    "rowspan": 1,
+                                                    "fontSize": 12,
+                                                    "fontWeight": "normal",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "7"
+                                            }
+                                        },
+                                        {
+                                            "widget_type": "WidgetType.container",
+                                            "style": {
+                                                "expanded": false,
+                                                "decoration": {
+                                                    "shape": "rectangle",
+                                                    "color": 4294967295
+                                                },
+                                                "margin": {
+                                                    "top": 5,
+                                                    "right": 5,
+                                                    "bottom": 5,
+                                                    "left": 5
+                                                }
+                                            },
+                                            "child": {
+                                                "widgetConfiguration": {
+                                                    "clickableConfiguration": {
+                                                        "type": "",
+                                                        "passedKeys": [],
+                                                        "destination_screen_lookUp": {
+                                                            "name": "",
+                                                            "type": ""
+                                                        }
+                                                    }
+                                                },
+                                                "widget_type": "WidgetType.textView",
+                                                "name": "Text",
+                                                "style": {
+                                                    "expanded": false,
+                                                    "color": 4294907027,
+                                                    "rowspan": 1,
+                                                    "fontSize": "16",
+                                                    "fontWeight": "bold",
+                                                    "fontFamily": "Robota-Regular"
+                                                },
+                                                "dataIdInMap": "8"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "widget_type": "WidgetType.scrollView"
+            }
+        ]
     }
 ]
