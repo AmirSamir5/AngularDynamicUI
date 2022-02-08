@@ -55,8 +55,9 @@ export class AppComponent {
       }
       screenModel.fields = widgetArray;
 
-      jsonModel = new JSONModel(this.elementService.screenName, 7, [screenModel]);
-
+      jsonModel = new JSONModel(this.elementService.screenName, 7, [
+        screenModel,
+      ]);
 
       if (
         localStorage.getItem('screens') !== null ||
@@ -65,7 +66,10 @@ export class AppComponent {
         var screenExsits = false;
         screens = JSON.parse(localStorage.getItem('screens')!);
         screens.forEach((element, index) => {
-          if (element.screenPages[0].page_name === jsonModel.screenPages[0].page_name) {
+          if (
+            element.screenPages[0].page_name ===
+            jsonModel.screenPages[0].page_name
+          ) {
             screenExsits = true;
             screens[index] = jsonModel;
           }
@@ -135,10 +139,15 @@ export class AppComponent {
 
       if (screenModel.widget_type !== undefined) {
         var margin = new EdgeInsetsModel({});
-        if(screenModel.page_name === 'home'){
-          margin = new EdgeInsetsModel({top: 16, bottom: 16 });
-        }else{
-          margin = new EdgeInsetsModel({top: 16,bottom: 16,left: 16,right: 16,});
+        if (screenModel.page_name === 'home') {
+          margin = new EdgeInsetsModel({ top: 16, bottom: 16 });
+        } else {
+          margin = new EdgeInsetsModel({
+            top: 16,
+            bottom: 16,
+            left: 16,
+            right: 16,
+          });
         }
         var scrollableWidget: WidgetModel = new WidgetModel({
           widget_type: screenModel.widget_type,
@@ -160,7 +169,11 @@ export class AppComponent {
         screenModel.fields = widgetArray;
       }
 
-      jsonModel = new JSONModel(this.elementService.screenName, 7, [screenModel]);
+      jsonModel = new JSONModel(
+        this.elementService.screenName,
+        this.elementService.screenId,
+        [screenModel]
+      );
 
       var map: Map<string, any> = new Map();
 

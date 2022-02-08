@@ -10,16 +10,17 @@ import { ElementService } from 'src/app/services/element.service';
   templateUrl: './screen-properties.component.html',
   styleUrls: ['./screen-properties.component.css'],
 })
-export class ScreenPropertiesComponent implements OnInit{
+export class ScreenPropertiesComponent implements OnInit {
   isScrollable = true;
-  screenProperty?:ScreenPages;
+  screenProperty?: ScreenPages;
 
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    this.elementService.screenModel.widget_type = AppConstants.WIDGET_SCROLLVIEW;
+    this.elementService.screenModel.widget_type =
+      AppConstants.WIDGET_SCROLLVIEW;
     this.screenProperty = this.elementService.screenModel;
-    AppEvents.onScreenSelectEvent.subscribe((screen)=>{
+    AppEvents.onScreenSelectEvent.subscribe((screen) => {
       this.screenProperty = screen.screenPages[0];
       if (this.isScrollable) {
         this.elementService.screenModel.widget_type =
@@ -42,5 +43,9 @@ export class ScreenPropertiesComponent implements OnInit{
 
   onLookupNameChange(event) {
     this.elementService.screenModel.page_name = event.target.value;
+  }
+
+  onScreenIdChange(event) {
+    this.elementService.screenId = +event.target.value;
   }
 }
