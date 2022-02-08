@@ -1,7 +1,7 @@
 [
     {
         "screen_name": "Likelemba Home",
-        "screen_id": 7,
+        "screen_id": 1,
         "screenPages": [
             {
                 "page_name": "home",
@@ -2649,7 +2649,7 @@
     },
     {
         "screen_name": "Likelemba Home Other",
-        "screen_id": 7,
+        "screen_id": 1,
         "screenPages": [
             {
                 "page_name": "home",
