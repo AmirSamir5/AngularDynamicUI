@@ -20,6 +20,7 @@ import {
   WidgetModel,
 } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
+import { HelpersService } from 'src/app/services/helpers.service';
 
 @Component({
   selector: 'app-container-properties',
@@ -38,23 +39,26 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     console.log(this.containerElementModel);
-    this.containerElementModel!.child = {
-      ...this.containerElementModel!.child!,
-    };
-    this.containerElementModel!.child!.children =
-      this.containerElementModel!.child!.children!.slice();
+    this.containerElementModel!.child = HelpersService.deepCopy(
+      this.containerElementModel?.child
+    );
+    // this.containerElementModel!.child = {
+    //   ...this.containerElementModel!.child!,
+    // };
+    // this.containerElementModel!.child!.children =
+    //   this.containerElementModel!.child!.children!.slice();
     if (this.containerElementModel?.style.decoration === undefined) {
       this.containerElementModel!.style = new StyleModel({});
       this.containerElementModel!.style.decoration = new BoxDecoration({
         color: 4294630378,
       });
     }
-    this.containerElementModel!.style = {
-      ...this.containerElementModel!.style,
-    };
-    this.containerElementModel!.style!.decoration = {
-      ...this.containerElementModel!.style!.decoration,
-    };
+    // this.containerElementModel!.style = {
+    //   ...this.containerElementModel!.style,
+    // };
+    // this.containerElementModel!.style!.decoration = {
+    //   ...this.containerElementModel!.style!.decoration,
+    // };
     if (this.containerElementModel!.widgetConfiguration === undefined) {
       this.containerElementModel!.widgetConfiguration =
         new WidgetConfiguration();
@@ -92,23 +96,23 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.containerElementModel);
-    this.containerElementModel!.child = {
-      ...this.containerElementModel!.child!,
-    };
-    this.containerElementModel!.child!.children =
-      this.containerElementModel!.child!.children!.slice();
+    // this.containerElementModel!.child = {
+    //   ...this.containerElementModel!.child!,
+    // };
+    // this.containerElementModel!.child!.children =
+    //   this.containerElementModel!.child!.children!.slice();
 
     if (this.containerElementModel?.style.decoration === undefined) {
       this.containerElementModel!.style.decoration = new BoxDecoration({
         color: 4294630378,
       });
     }
-    this.containerElementModel!.style = {
-      ...this.containerElementModel!.style,
-    };
-    this.containerElementModel!.style!.decoration = {
-      ...this.containerElementModel!.style!.decoration,
-    };
+    // this.containerElementModel!.style = {
+    //   ...this.containerElementModel!.style,
+    // };
+    // this.containerElementModel!.style!.decoration = {
+    //   ...this.containerElementModel!.style!.decoration,
+    // };
 
     if (this.containerElementModel!.widgetConfiguration === undefined) {
       this.containerElementModel!.widgetConfiguration =
