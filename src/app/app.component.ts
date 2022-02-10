@@ -55,9 +55,16 @@ export class AppComponent {
       }
       screenModel.fields = widgetArray;
 
-      jsonModel = new JSONModel(this.elementService.screenName, 7, [
-        screenModel,
-      ]);
+      if (this.elementService.screenId === undefined) {
+        window.alert('Please Enter Screen ID!');
+        return;
+      }
+
+      jsonModel = new JSONModel(
+        this.elementService.screenName,
+        this.elementService.screenId!,
+        [screenModel]
+      );
 
       if (
         localStorage.getItem('screens') !== null ||
@@ -169,9 +176,14 @@ export class AppComponent {
         screenModel.fields = widgetArray;
       }
 
+      if (this.elementService.screenId === undefined) {
+        window.alert('Please Enter Screen ID!');
+        return;
+      }
+
       jsonModel = new JSONModel(
         this.elementService.screenName,
-        this.elementService.screenId,
+        this.elementService.screenId!,
         [screenModel]
       );
 

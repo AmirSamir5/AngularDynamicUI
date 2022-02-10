@@ -11,7 +11,7 @@ export class ElementService {
 
   public screenName: string = '';
   public screenLookup: string = '';
-  public screenId: number = 0;
+  public screenId?: number;
 
   public selectedElements: WidgetModel[] = [];
 
