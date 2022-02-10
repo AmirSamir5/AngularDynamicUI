@@ -13,6 +13,7 @@ import { ElementService } from 'src/app/services/element.service';
 export class ScreenPropertiesComponent implements OnInit {
   isScrollable = true;
   screenProperty?: ScreenPages;
+  screenId?: number;
 
   constructor(private elementService: ElementService) {}
 
@@ -20,6 +21,7 @@ export class ScreenPropertiesComponent implements OnInit {
     this.elementService.screenModel.widget_type =
       AppConstants.WIDGET_SCROLLVIEW;
     this.screenProperty = this.elementService.screenModel;
+    this.screenId = this.elementService.screenId;
     AppEvents.onScreenSelectEvent.subscribe((screen) => {
       this.screenProperty = screen.screenPages[0];
       if (this.isScrollable) {
@@ -28,6 +30,7 @@ export class ScreenPropertiesComponent implements OnInit {
       } else {
         this.elementService.screenModel.widget_type = undefined;
       }
+      this.screenId = screen.screen_id;
     });
   }
 
