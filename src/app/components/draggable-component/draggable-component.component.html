@@ -10,15 +10,8 @@
     />
   </div>
   <div>
-    <span (dblclick)="editItem()" [hidden]="show">{{ title }}</span>
+    <span >{{ title ?? 'Appbar Title' }}</span>
   </div>
-  <input
-    type="text"
-    [(ngModel)]="title"
-    [hidden]="!show"
-    (keyup.enter)="editItem()"
-    (change)="onChangeAppbar()"
-  />
 </div>
 <div class="example-boundary">
   <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport"> -->
@@ -43,8 +36,8 @@
           </div>
           <div *ngSwitchCase="'Dropdown'">
             <app-dropdown
-              [title]="element.child!.fieldTitle"
-              [hintText]="element.child!.hint"
+              [title]="element.fieldTitle"
+              [hintText]="element.hint"
             ></app-dropdown>
           </div>
           <div *ngSwitchCase="'Input Field'">
@@ -54,15 +47,15 @@
             ></app-textfield>
           </div>
           <div *ngSwitchCase="'List'">
-            <app-list [listModel]="element.child!"></app-list>
+            <app-list [listModel]="element"></app-list>
           </div>
           <div *ngSwitchCase="'Column'">
             <app-column [columnModel]="element"></app-column>
           </div>
           <div *ngSwitchCase="'Calendar'">
             <app-calendar
-              [title]="element.child!.fieldTitle"
-              [hintText]="element.child!.hint"
+              [title]="element.fieldTitle"
+              [hintText]="element.hint"
             ></app-calendar>
           </div>
           <div *ngSwitchCase="'Checkbox'">

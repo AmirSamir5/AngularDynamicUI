@@ -10,7 +10,7 @@
       type="text"
       class="form-control"
       placeholder="Enter list cell prototype"
-      [(ngModel)]="listElementModel!.child!.cellProtoType"
+      [(ngModel)]="listElementModel!.cellProtoType"
     />
   </label>
   <label>
@@ -19,7 +19,7 @@
       type="text"
       class="form-control"
       placeholder="Enter list data array"
-      [(ngModel)]="listElementModel!.child!.dataArray"
+      [(ngModel)]="listElementModel!.dataArray"
     />
   </label>
   <label>
@@ -28,7 +28,7 @@
       type="text"
       class="form-control"
       placeholder="Enter list data array"
-      [(ngModel)]="listElementModel!.child!.dataIdInMap"
+      [(ngModel)]="listElementModel!.dataIdInMap"
     />
   </label>
 
@@ -74,7 +74,7 @@
       type="number"
       class="form-control"
       placeholder="Enter Cell Width Ratio"
-      [(ngModel)]="listElementModel!.child!.cell!.style.widthRatioToScreen"
+      [(ngModel)]="listElementModel!.cell!.style.widthRatioToScreen"
     />
   </label>
   <label
@@ -83,7 +83,7 @@
     <select
       class="form-control"
       style="display: inline-block"
-      [(ngModel)]="listElementModel!.child!.widgetConfiguration!.direction"
+      [(ngModel)]="listElementModel!.widgetConfiguration!.direction"
     >
       <option [value]="item.value" *ngFor="let item of listDirectionsArr">
         {{ item.name }}
@@ -95,31 +95,28 @@
     <input
       type="checkbox"
       checked="checked"
-      [(ngModel)]="
-        listElementModel!.child!.cell!.widgetConfiguration!
-          .clickableConfiguration!.isClickable
-      "
+      [value]="listElementModel!.cell!.widgetConfiguration!
+          .clickableConfiguration?.isClickable ?? false"
       (change)="onClickablChange()"
     />
     <span class="checkmark"></span>
   </label>
   <label
     *ngIf="
-      this.listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!.isClickable
+      this.listElementModel!.cell!.widgetConfiguration!
+        .clickableConfiguration?.isClickable
     "
     >Clickable Type
-
     <select
       *ngIf="
-        this.listElementModel!.child!.cell!.widgetConfiguration!
-          .clickableConfiguration!.isClickable
+        this.listElementModel!.cell!.widgetConfiguration!
+          .clickableConfiguration?.isClickable
       "
       class="form-control"
       style="display: inline-block"
       [(ngModel)]="
-        listElementModel!.child!.cell?.widgetConfiguration
-          ?.clickableConfiguration!!.type
+        listElementModel!.cell?.widgetConfiguration
+          !.clickableConfiguration!.type
       "
     >
       <option [value]="item.value" *ngFor="let item of clickablesArr">
@@ -129,10 +126,10 @@
   </label>
   <label
     *ngIf="
-      this.listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!.isClickable &&
-      listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!!.type === 'clickableConfiguration!Type.callApi'
+      this.listElementModel!.cell!.widgetConfiguration!
+        .clickableConfiguration?.isClickable &&
+      listElementModel!.cell!.widgetConfiguration!
+        .clickableConfiguration!.type === 'clickableConfiguration!Type.callApi'
     "
     >API Code
     <input
@@ -140,16 +137,16 @@
       class="form-control"
       placeholder="Enter API Code"
       [(ngModel)]="
-        listElementModel!.child!.cell!.widgetConfiguration!
+        listElementModel!.cell!.widgetConfiguration!
           .clickableConfiguration!!.apiCode
       "
     />
   </label>
   <label
     *ngIf="
-      this.listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!.isClickable &&
-      listElementModel!.child!.cell!.widgetConfiguration!
+      this.listElementModel!.cell!.widgetConfiguration!
+        .clickableConfiguration?.isClickable &&
+      listElementModel!.cell!.widgetConfiguration!
         .clickableConfiguration!!.type === 'ClickableConfigurationType.redirect'
     "
     >Destination Screen Name
@@ -158,17 +155,17 @@
       class="form-control"
       placeholder="Enter Destination Screen Name"
       [(ngModel)]="
-        listElementModel!.child!.cell!.widgetConfiguration!
+        listElementModel!.cell!.widgetConfiguration!
           .clickableConfiguration!!.destination_screen_lookUp!.name
       "
     />
   </label>
   <label
     *ngIf="
-      this.listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!.isClickable &&
-      listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!!.type === 'ClickableConfigurationType.redirect'
+      this.listElementModel!.cell!.widgetConfiguration!
+        .clickableConfiguration?.isClickable &&
+      listElementModel!.cell!.widgetConfiguration!
+        .clickableConfiguration!.type === 'ClickableConfigurationType.redirect'
     "
     >Destination Screen Type
     <input
@@ -176,15 +173,15 @@
       class="form-control"
       placeholder="Enter Destination Screen Type"
       [(ngModel)]="
-        listElementModel!.child!.cell!.widgetConfiguration!
-          .clickableConfiguration!!.destination_screen_lookUp!.type
+        listElementModel!.cell!.widgetConfiguration!
+          .clickableConfiguration!.destination_screen_lookUp!.type
       "
     />
   </label>
   <label
     *ngIf="
-      this.listElementModel!.child!.cell!.widgetConfiguration!
-        .clickableConfiguration!.isClickable
+      this.listElementModel!.cell!.widgetConfiguration!
+        .clickableConfiguration?.isClickable
     "
     >Passed Keys
     <input
@@ -194,5 +191,4 @@
       (input)="onPassedKeys($event)"
     />
   </label>
-  <button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
 </div>

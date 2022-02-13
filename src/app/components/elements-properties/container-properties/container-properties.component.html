@@ -55,8 +55,7 @@
       type="color"
       class="form-control"
       id="colorpicker"
-      [value]="getItemBackgroundColor()"
-      (input)="onBackgroundChange($event)"
+      [(ngModel)]="containerElementModel!.style.backgroundColor" 
       name="colorpicker"
     />
   </label>

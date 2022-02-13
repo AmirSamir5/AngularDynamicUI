@@ -8,7 +8,6 @@ import {
 import { AppConstants } from 'src/app/constants/constants';
 import {
   BorderRadiusModel,
-  BoxDecoration,
   EdgeInsetsModel,
   StyleModel,
 } from 'src/app/models/style.model';
@@ -47,12 +46,7 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
     // };
     // this.containerElementModel!.child!.children =
     //   this.containerElementModel!.child!.children!.slice();
-    if (this.containerElementModel?.style.decoration === undefined) {
-      this.containerElementModel!.style = new StyleModel({});
-      this.containerElementModel!.style.decoration = new BoxDecoration({
-        color: 4294630378,
-      });
-    }
+    
     // this.containerElementModel!.style = {
     //   ...this.containerElementModel!.style,
     // };
@@ -102,11 +96,6 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
     // this.containerElementModel!.child!.children =
     //   this.containerElementModel!.child!.children!.slice();
 
-    if (this.containerElementModel?.style.decoration === undefined) {
-      this.containerElementModel!.style.decoration = new BoxDecoration({
-        color: 4294630378,
-      });
-    }
     // this.containerElementModel!.style = {
     //   ...this.containerElementModel!.style,
     // };
@@ -247,35 +236,13 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
 
   getBorderRadiusValue(event) {
     var radius = event.target.value;
-    if (
-      this.containerElementModel?.child?.cell?.style.decoration === undefined
-    ) {
-      this.containerElementModel!.style.decoration = new BoxDecoration({
-        border: { color: 4293347734, width: 0.6, style: 'solid' },
-      });
-    }
 
-    this.containerElementModel!.style.decoration!.borderRadius =
+    this.containerElementModel!.style.borderRadius =
       new BorderRadiusModel({
         topLeft: +radius,
         topRight: +radius,
         bottomLeft: +radius,
         bottomRight: +radius,
       });
-  }
-
-  getItemBackgroundColor() {
-    if (this.containerElementModel!.style!.decoration !== undefined) {
-      return this.containerElementModel!.style!.decoration!.color!.toString(
-        16
-      ).replace('ff', '#');
-    }
-    return '#FFFFFF';
-  }
-
-  onBackgroundChange(event) {
-    var val = event.target.value.replace('#', '0xFF');
-    console.log(val, parseInt(val, 16));
-    this.containerElementModel!.style.decoration!.color = parseInt(val, 16);
   }
 }

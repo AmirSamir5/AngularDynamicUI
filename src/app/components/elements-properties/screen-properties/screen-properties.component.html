@@ -4,11 +4,19 @@
     >Scrollable
     <input
       type="checkbox"
-      checked="checked"
-      [value]="isScrollable"
-      (change)="onScrollableChange()"
+      [value]="screenProperty!.screenPages?.isScrollable ?? false"
     />
     <span class="checkmark"></span>
+  </label>
+  <label>
+    Appbar Title
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter screen lookup name"
+      [(ngModel)]="screenProperty!.screen_name"
+      (change)="onAppbarChange()"
+    />
   </label>
   <label>
     Screen Lookup Name
@@ -16,8 +24,7 @@
       type="text"
       class="form-control"
       placeholder="Enter screen lookup name"
-      [(ngModel)]="screenProperty!.page_name"
-      (change)="onLookupNameChange($event)"
+      [(ngModel)]="screenProperty!.screenPages.page_name"
     />
   </label>
   <label>
@@ -26,8 +33,7 @@
       type="number"
       class="form-control"
       placeholder="Enter screen lookup name"
-      [(ngModel)]="screenId"
-      (change)="onScreenIdChange($event)"
+      [(ngModel)]="screenProperty!.screen_id"
     />
   </label>
 </div>

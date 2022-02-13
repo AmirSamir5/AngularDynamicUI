@@ -1,18 +1,26 @@
 <div class="col">
   <p>Button Properties</p>
+  <label>Title</label>
   <input
     type="text"
     class="form-control"
-    [(ngModel)]="buttonText"
+    [(ngModel)]="buttonItem!.fieldTitle"
     placeholder="Enter Button Title..."
-    [value]="buttonItem!.fieldTitle ?? null"
   />
+  <label>Api Code</label>
   <input
     type="text"
     class="form-control"
-    [(ngModel)]="apiCode"
+    [(ngModel)]="buttonItem!.apiCode"
     placeholder="Enter Button API Code..."
-    [value]="buttonItem!.apiCode ?? null"
   />
+  <label>Height</label>
+    <input
+    type="number"
+    class="form-control"
+    [(ngModel)]="buttonItem!.style.height"
+    placeholder="Enter Button Height..."
+  />
+ 
+  
 </div>
-<button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>

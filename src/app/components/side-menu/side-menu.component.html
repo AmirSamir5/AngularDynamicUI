@@ -15,7 +15,7 @@
                 <div style="height: 50px;"></div>
             </div>
         </div>
-        <button class="btn removeBtn" *ngIf="this.screens.length > 1" (click)="onAddNewScreen()" ><span
+        <button class="btn removeBtn" (click)="onAddNewScreen()" ><span
             class="glyphicon glyphicon-plus"></span>&nbsp; Add New Screen</button>
         <button class="btn btn-primary clearBtn" *ngIf="this.screens.length > 1" (click)="clearAll()" ><span
             class="glyphicon glyphicon-trash"></span>&nbsp; Clear All</button>

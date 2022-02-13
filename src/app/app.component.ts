@@ -1,19 +1,10 @@
 import { Component } from '@angular/core';
 import { WidgetModel } from './models/widget.model';
 import { ElementService } from './services/element.service';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { JsonResultDialogComponent } from './components/json-result-dialog/json-result-dialog.component';
-import { JSONModel, ScreenPages } from './models/json.model';
+import { ScreenModel, ScreenPages } from './models/screen.model';
 import { AppConstants } from './constants/constants';
-import {
-  BoxDecoration,
-  EdgeInsetsModel,
-  StyleModel,
-} from './models/style.model';
 
 @Component({
   selector: 'app-root',
@@ -30,10 +21,9 @@ export class AppComponent {
 
   onSaveScreen() {
     var valid: Boolean = true;
-    var jsonModel: JSONModel;
     var widgetArray: Array<WidgetModel> = [];
-    var screens: Array<JSONModel> = [];
-    var screenModel: ScreenPages = this.elementService.screenModel;
+    var screens: Array<ScreenModel> = [];
+    var screenModel = this.elementService.screenModel;
 
     widgetArray = this.elementService.selectedElements;
     widgetArray.forEach((element) => {
@@ -49,22 +39,17 @@ export class AppComponent {
         window.alert('Screen Has No Elements!');
         return;
       }
-      if (this.elementService.screenName === '') {
+      if (this.elementService.screenModel?.screen_name === '') {
         window.alert('Please Enter Appbar Title!');
         return;
       }
-      screenModel.fields = widgetArray;
+      screenModel!.screenPages.fields = widgetArray;
 
-      if (this.elementService.screenId === undefined) {
+      if (this.elementService.screenModel!.screen_id === undefined
+        || this.elementService.screenModel!.screen_id === -1) {
         window.alert('Please Enter Screen ID!');
         return;
       }
-
-      jsonModel = new JSONModel(
-        this.elementService.screenName,
-        this.elementService.screenId!,
-        [screenModel]
-      );
 
       if (
         localStorage.getItem('screens') !== null ||
@@ -74,18 +59,17 @@ export class AppComponent {
         screens = JSON.parse(localStorage.getItem('screens')!);
         screens.forEach((element, index) => {
           if (
-            element.screenPages[0].page_name ===
-            jsonModel.screenPages[0].page_name
+            element.screenPages.page_name === screenModel!.screenPages.page_name
           ) {
             screenExsits = true;
-            screens[index] = jsonModel;
+            screens[index] = screenModel!;
           }
         });
         if (!screenExsits) {
-          screens.push(jsonModel);
+          screens.push(screenModel!);
         }
       } else {
-        screens.push(jsonModel);
+        screens.push(screenModel!);
       }
 
       localStorage.setItem('screens', JSON.stringify(screens, null, 4));
@@ -95,34 +79,31 @@ export class AppComponent {
 
   onGenerateJSON() {
     var valid: Boolean = true;
-    var jsonModel: JSONModel;
-    var cellsJsonModel: JSONModel;
+    var cellsJsonModel: ScreenModel;
     var widgetArray: Array<WidgetModel> = [];
     var cells: Array<any> = [];
-    var screenModel: ScreenPages = this.elementService.screenModel;
+    var screenModel = this.elementService.screenModel;
 
     this.elementService.selectedElements.forEach((element) => {
       console.log(element);
       var tmp = { ...element };
       if (valid) {
-        if (tmp.child !== undefined) {
-          if (tmp.child!.widget_type === AppConstants.WIDGET_LIST) {
-            if (element.child!.cellProtoType === undefined) {
-              valid = false;
-              window.alert('Please Enter List Cell Prototype!');
-              return;
-            }
-            cells.push({
-              cell: element.child!.cell!,
-              cellName: element.child!.cellProtoType,
-            });
-            tmp.child = { ...element.child! };
-            tmp.child!.cell = undefined;
+        if (tmp.widget_type === AppConstants.WIDGET_LIST) {
+          if (element.cellProtoType === undefined) {
+            valid = false;
+            window.alert('Please Enter List Cell Prototype!');
+            return;
           }
-          widgetArray.push(tmp);
-        } else {
-          widgetArray.push(tmp);
+          cells.push({
+            cell: element.cell!,
+            cellName: element.cellProtoType,
+          });
+          tmp = { ...element };
+          tmp.cell = undefined;
         }
+        widgetArray.push(tmp);
+      } else {
+        widgetArray.push(tmp);
       }
     });
     widgetArray.forEach((element) => {
@@ -138,73 +119,28 @@ export class AppComponent {
         window.alert('Screen Has No Elements!');
         return;
       }
-      if (this.elementService.screenName === '') {
+      if (this.elementService.screenModel!.screen_name === undefined || this.elementService.screenModel!.screen_name === '') {
+        window.alert('Please Enter Look Screen Name!');
+        return;
+      }
+
+      if (this.elementService.screenModel!.screenPages.page_name === undefined) {
         window.alert('Please Enter Appbar Title!');
         return;
       }
-      console.log('cell', cells);
 
-      if (screenModel.widget_type !== undefined) {
-        var margin = new EdgeInsetsModel({});
-        if (screenModel.page_name === 'home') {
-          margin = new EdgeInsetsModel({ top: 16, bottom: 16 });
-        } else {
-          margin = new EdgeInsetsModel({
-            top: 16,
-            bottom: 16,
-            left: 16,
-            right: 16,
-          });
-        }
-        var scrollableWidget: WidgetModel = new WidgetModel({
-          widget_type: screenModel.widget_type,
-          child: new WidgetModel({
-            widget_type: AppConstants.WIDGET_CONTAINER,
-            style: new StyleModel({
-              margin: margin,
-              decoration: new BoxDecoration({ shape: 'rectangle' }),
-            }),
-            child: new WidgetModel({
-              widget_type: AppConstants.WIDGET_COLUMN,
-              children: widgetArray,
-              style: new StyleModel({ crossAxisAlignment: 'stretch' }),
-            }),
-          }),
-        });
-        screenModel.fields = [scrollableWidget];
-      } else {
-        screenModel.fields = widgetArray;
-      }
-
-      if (this.elementService.screenId === undefined) {
+      if (this.elementService.screenModel!.screen_id === undefined
+        || this.elementService.screenModel!.screen_id === -1) {
         window.alert('Please Enter Screen ID!');
         return;
       }
-
-      jsonModel = new JSONModel(
-        this.elementService.screenName,
-        this.elementService.screenId!,
-        [screenModel]
-      );
-
-      var map: Map<string, any> = new Map();
-
-      map[screenModel.page_name] = jsonModel;
-
+      screenModel.screenPages.fields = widgetArray;
       const dialogRef = this.dialog.open(JsonResultDialogComponent, {
         width: '50%',
         data: {
-          json: JSON.stringify(
-            {
-              response: {
-                result: map,
-              },
-            },
-            null,
-            4
-          ),
+          json: JSON.stringify(screenModel, null, 4),
           cells: cells,
-          screenName: screenModel.page_name,
+          screenName: screenModel!.screen_name,
         },
       });
     }

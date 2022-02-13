@@ -67,24 +67,4 @@ export class RowComponent implements OnInit {
       );
     }
   }
-
-  getItemBackgroundColor(item: WidgetModel) {
-    if (item.child !== undefined){
-      if(item.child.widget_type === AppConstants.WIDGET_IMAGE){
-        var color = 4294940672;
-        return color.toString(16).replace('ff', '#');
-      }
-    }
-    if(item.style.decoration !== undefined){
-      return item.style.decoration!.color?.toString(16).replace('ff', '#');
-    }
-    return '#FFFFFF'
-  }
-
-  getItemColor(item: WidgetModel) {
-    if ((item.child ?? item).style!.color !== undefined) {
-      return (item.child ?? item).style!.color!.toString(16).replace('ff', '#');
-    }
-    return;
-  }
 }

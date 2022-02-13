@@ -1,6 +1,6 @@
 export class StyleModel {
   backgroundColor?: string;
-  color?: number;
+  color?: string;
   flex?: number;
   rowspan?: number;
   fontSize?: number;
@@ -9,8 +9,7 @@ export class StyleModel {
   justify?: string;
   padding?: EdgeInsetsModel;
   margin?: EdgeInsetsModel;
-  decoration?: BoxDecoration;
-  expanded: boolean = false;
+  expanded?: boolean;
   mainAxisAlignment?: string;
   mainAxisSize?: string;
   crossAxisAlignment?: string;
@@ -20,13 +19,15 @@ export class StyleModel {
   width?: number;
   widthRatioToScreen?: number;
   borderRadiusCircularSize?: number;
+  shape?: string;
+  borderRadius?: BorderRadiusModel;
+  border?: Border;
 
   constructor({
     backgroundColor,
     color,
     flex,
     rowspan,
-    decoration,
     fontSize,
     fontWeight,
     fontFamily,
@@ -39,13 +40,15 @@ export class StyleModel {
     borderRadiusCircularSize,
     height,
     width,
+    shape,
+    border,
+    borderRadius,
   }: {
     backgroundColor?: string;
-    color?: number;
+    color?: string;
     flex?: number;
     rowspan?: number;
     fontSize?: number;
-    decoration?: BoxDecoration;
     fontWeight?: string;
     fontFamily?: string;
     justify?: string;
@@ -57,6 +60,9 @@ export class StyleModel {
     borderRadiusCircularSize?: number;
     height?: number;
     width?: number;
+    shape?: string;
+    borderRadius?: BorderRadiusModel,
+    border?: Border
   }) {
     this.backgroundColor = backgroundColor;
     this.color = color;
@@ -65,16 +71,18 @@ export class StyleModel {
     this.fontSize = fontSize;
     this.fontWeight = fontWeight;
     this.fontFamily = fontFamily;
-    this.decoration = decoration;
     this.justify = justify;
     this.padding = padding;
     this.margin = margin;
     this.height = height;
     this.width = width;
-    this.expanded = expanded ?? false;
+    this.expanded = expanded;
     this.mainAxisAlignment = mainAxisAlignment;
     this.crossAxisAlignment = crossAxisAlignment;
     this.borderRadiusCircularSize = borderRadiusCircularSize;
+    this.shape = shape;
+    this.border = border;
+    this.borderRadius = borderRadius;
   }
 }
 
@@ -149,41 +157,41 @@ export class Border {
   }
 }
 
-export class BoxDecoration {
-  shape?: string;
-  padding?: EdgeInsetsModel;
-  margin?: EdgeInsetsModel;
-  height?: number;
-  width?: number;
-  color?: number;
-  borderRadius?: BorderRadiusModel;
-  border?: Border;
-  constructor({
-    shape,
-    padding,
-    margin,
-    height,
-    width,
-    color,
-    borderRadius,
-    border,
-  }: {
-    shape?: string;
-    padding?: EdgeInsetsModel;
-    margin?: EdgeInsetsModel;
-    height?: number;
-    width?: number;
-    color?: number;
-    borderRadius?: BorderRadiusModel;
-    border?: Border;
-  }) {
-    this.shape = shape ?? 'rectangle';
-    this.padding = padding;
-    this.margin = margin;
-    this.width = width;
-    this.height = height;
-    this.color = color;
-    this.borderRadius = borderRadius;
-    this.border = border;
-  }
-}
+// export class BoxDecoration {
+//   shape?: string;
+//   padding?: EdgeInsetsModel;
+//   margin?: EdgeInsetsModel;
+//   height?: number;
+//   width?: number;
+//   color?: number;
+//   borderRadius?: BorderRadiusModel;
+//   border?: Border;
+//   constructor({
+//     shape,
+//     padding,
+//     margin,
+//     height,
+//     width,
+//     color,
+//     borderRadius,
+//     border,
+//   }: {
+//     shape?: string;
+//     padding?: EdgeInsetsModel;
+//     margin?: EdgeInsetsModel;
+//     height?: number;
+//     width?: number;
+//     color?: number;
+//     borderRadius?: BorderRadiusModel;
+//     border?: Border;
+//   }) {
+//     this.shape = shape ?? 'rectangle';
+//     this.padding = padding;
+//     this.margin = margin;
+//     this.width = width;
+//     this.height = height;
+//     this.color = color;
+//     this.borderRadius = borderRadius;
+//     this.border = border;
+//   }
+// }

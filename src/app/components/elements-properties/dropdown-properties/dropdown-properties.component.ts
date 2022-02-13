@@ -23,27 +23,27 @@ export class DropdownPropertiesComponent implements OnChanges {
   constructor(private elementService: ElementService) {}
 
   ngOnChanges(): void {
-    this.dropdownElementModel!.child = { ...this.dropdownElementModel!.child! };
-    if (this.dropdownElementModel!.child!.validations === undefined) {
-      this.dropdownElementModel!.child!.validations = new Validations();
+    // this.dropdownElementModel! = { ..this.dropdownElementModel! };
+    if (this.dropdownElementModel!.validations === undefined) {
+      this.dropdownElementModel!.validations = new Validations();
     }
-    if (this.dropdownElementModel!.child!.widgetConfiguration === undefined) {
-      this.dropdownElementModel!.child!.widgetConfiguration =
+    if (this.dropdownElementModel!.widgetConfiguration === undefined) {
+      this.dropdownElementModel!.widgetConfiguration =
         new WidgetConfiguration();
     }
   }
 
   requiredClicked() {
     this.isRequired = !this.isRequired;
-    this.dropdownElementModel!.child!.validations!.isMandatory = this.isRequired
+    this.dropdownElementModel!.validations!.isMandatory = this.isRequired
       ? 1
       : 0;
   }
 
   requiredValue(): boolean {
     if (
-      this.dropdownElementModel!.child!.validations!.isMandatory === 1 &&
-      this.dropdownElementModel!.child!.validations!.isMandatory !== undefined
+      this.dropdownElementModel!.validations!.isMandatory === 1 &&
+      this.dropdownElementModel!.validations!.isMandatory !== undefined
     ) {
       return true;
     }
@@ -54,39 +54,21 @@ export class DropdownPropertiesComponent implements OnChanges {
     var val = event.target.value;
     this.lookups.forEach((element) => {
       if (element.displayValue === val) {
-        this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey =
+        this.dropdownElementModel!.widgetConfiguration!.lookupIdKey =
           element.lookupIdKey;
-        this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey =
+        this.dropdownElementModel!.widgetConfiguration!.lookupListKey =
           element.lookupListKey;
-        this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey =
+        this.dropdownElementModel!.widgetConfiguration!.lookupTextKey =
           element.lookupTextKey;
       }
     });
     if (val === 'other') {
       this.showInputFields = true;
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey = '';
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey = '';
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey = '';
+      this.dropdownElementModel!.widgetConfiguration!.lookupIdKey = '';
+      this.dropdownElementModel!.widgetConfiguration!.lookupListKey = '';
+      this.dropdownElementModel!.widgetConfiguration!.lookupTextKey = '';
     } else {
       this.showInputFields = false;
     }
-  }
-
-  onSubmit() {
-    if (this.dropdownElementModel!.child!.widgetConfiguration === undefined) {
-      this.dropdownElementModel!.child!.widgetConfiguration =
-        new WidgetConfiguration();
-    }
-
-    if (this.dropdownElementModel!.child!.validations === undefined) {
-      this.dropdownElementModel!.child!.validations = new Validations();
-    }
-    this.dropdownElementModel!.child!.validations!.isMandatory = this.isRequired
-      ? 1
-      : 0;
-    this.dropdownElementModel!.child!.widget_type =
-      AppConstants.WIDGET_DROPDOWN;
-    console.log(this.dropdownElementModel);
-    this.elementService.onSaveItem(this.dropdownElementModel!, this.index);
   }
 }

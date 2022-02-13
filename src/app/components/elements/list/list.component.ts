@@ -10,38 +10,11 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  @Input() listModel: WidgetModel = new WidgetModel({
-    widget_type: AppConstants.WIDGET_LIST,
-    cell: new WidgetModel({
-      widget_type: AppConstants.WIDGET_CONTAINER,
-      child: new WidgetModel({
-        widget_type: AppConstants.WIDGET_COLUMN,
-        style: { expanded: false, mainAxisSize: 'max' },
-        children: [],
-      }),
-    }),
-  });
+  @Input() listModel?: WidgetModel;
 
   constructor(private elementService: ElementService) {}
 
-  ngOnInit(): void {
-    console.log(this.listModel);
-    if (this.listModel.cell === undefined) {
-      this.listModel.cell = new WidgetModel({
-        widget_type: AppConstants.WIDGET_CONTAINER,
-        child: new WidgetModel({
-          widget_type: AppConstants.WIDGET_COLUMN,
-          children: [],
-        }),
-      });
-    }
-    if (this.listModel.cell.child === undefined) {
-      this.listModel.cell.child = new WidgetModel({
-        widget_type: AppConstants.WIDGET_COLUMN,
-        children: [],
-      });
-    }
-  }
+  ngOnInit(): void {}
 
   onRowSelected(item: WidgetModel, index: number) {
     this.elementService.editSelectedItem(item, index);
@@ -49,18 +22,18 @@ export class ListComponent implements OnInit {
   }
 
   removeElement(index: number) {
-    this.listModel!.cell!.child!.children?.splice(index, 1);
+    this.listModel!.cell!.children?.splice(index, 1);
   }
 
   getItemRowspan(item:WidgetModel){
     if(item.child !== undefined){
-      return item.child!.style.rowspan;
+      return item.style.rowspan;
     }else{
       if(item.children !== undefined){
         var rowspan = 1;
         item.children.forEach((element) => {
           if (element.name === 'Column'){
-            rowspan = element.child!.style.rowspan ?? 1;
+            rowspan = element.style.rowspan ?? 1;
           }
         })
         return rowspan;

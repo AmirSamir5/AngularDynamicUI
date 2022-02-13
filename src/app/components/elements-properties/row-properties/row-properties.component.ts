@@ -1,11 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import {
-  BorderRadiusModel,
-  BoxDecoration,
-  EdgeInsetsModel,
-  StyleModel,
-} from 'src/app/models/style.model';
+import { BorderRadiusModel, EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
 import {
   ClickableConfiguration,
   DestinationScreenLookup,
@@ -46,26 +41,31 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   onExpandedChange() {
-    this.selectedElement!.child!.style.flex =
-      undefined;
-    (this.selectedElement!.child ??
-      this.selectedElement)!.style.mainAxisAlignment = '';
+    this.selectedElement!.style.flex = undefined;
+    this.selectedElement!.style.mainAxisAlignment = undefined;
   }
 
   onClickablChange() {
-    this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable = !this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.isClickable;
+    if (this.selectedElement!.widgetConfiguration === undefined){
+      this.selectedElement!.widgetConfiguration = new WidgetConfiguration();
+    }
+    if (this.selectedElement!.widgetConfiguration.clickableConfiguration === undefined){
+      this.selectedElement!.widgetConfiguration.clickableConfiguration = new ClickableConfiguration({});
+    }
+    this.selectedElement!.widgetConfiguration!.clickableConfiguration!.isClickable =
+      !this.selectedElement!.widgetConfiguration!.clickableConfiguration!
+        .isClickable;
   }
 
   onPassedKeys(event) {
     console.log(event.target.value);
-    this.selectedElement!.child!.widgetConfiguration!.clickableConfiguration!.passedKeys =
+    this.selectedElement!.widgetConfiguration!.clickableConfiguration!.passedKeys =
       event.target.value.split(' ');
   }
 
   getFlexValue(event) {
-    this.selectedElement!.child!.style.expanded = false;
-    (this.selectedElement!.child ??
-      this.selectedElement)!.style.mainAxisAlignment = event.target.value;
+    this.selectedElement!.style.expanded = false;
+    this.selectedElement!.style.mainAxisAlignment = event.target.value;
   }
 
   getMarginValue(event) {
@@ -92,201 +92,50 @@ export class RowPropertiesComponent implements OnInit {
   getBorderRadiusValue(event) {
     var radius = event.target.value;
 
-    this.selectedElement!.style.decoration!.borderRadius = new BorderRadiusModel({
-      topLeft: +radius,
-      topRight: +radius,
-      bottomLeft: +radius,
-      bottomRight: +radius,
-    });
-  }
-
-  getRowSpan(event) {
-    (this.selectedElement!.child ?? this.selectedElement)!.style.rowspan =
-      event.target.value;
-  }
-
-  getFontSizeValue(event) {
-    (this.selectedElement!.child ?? this.selectedElement)!.style.fontSize =
-      event.target.value;
-  }
-
-  getFontFamilyValue(event) {
-    (this.selectedElement!.child ?? this.selectedElement)!.style.fontFamily =
-      event.target.value;
-  }
-
-  getFontWeightValue(event) {
-    (this.selectedElement!.child ?? this.selectedElement)!.style.fontWeight =
-      event.target.value;
+    this.selectedElement!.style.borderRadius =
+      new BorderRadiusModel({
+        topLeft: +radius,
+        topRight: +radius,
+        bottomLeft: +radius,
+        bottomRight: +radius,
+      });
   }
 
   onSelectText() {
-    this.checkConfiguration();
-    var widgetConfig = new WidgetConfiguration();
-    widgetConfig.clickableConfiguration = new ClickableConfiguration({
-      type: '',
-      passedKeys: [],
-      destination_screen_lookUp: new DestinationScreenLookup({
-        name: '',
-        type: '',
-      }),
-    });
     this.rowElementModel!.children?.push(
       new WidgetModel({
-        widget_type: AppConstants.WIDGET_CONTAINER,
-        style: new StyleModel({
-          decoration: new BoxDecoration({ 
-            color: 4294967295,
-            shape: "rectangle", 
-          }),
-        }),
-        child: new WidgetModel({
-          widget_type: AppConstants.WIDGET_TEXT,
-          name: 'Text',
-          style: new StyleModel({
-            rowspan: 1,
-            color: 4278190080,
-            fontFamily: 'Robota-Regular',
-            fontSize: 12,
-            fontWeight: 'normal',
-          }),
-          widgetConfiguration: widgetConfig,
-        }),
+        widget_type: AppConstants.WIDGET_TEXT,
+        name: 'Text',
       })
     );
   }
 
   onSelectButton() {
-    this.checkConfiguration();
-    var widgetConfig = new WidgetConfiguration();
-    widgetConfig.clickableConfiguration = new ClickableConfiguration({
-      type: '',
-      passedKeys: [],
-      destination_screen_lookUp: new DestinationScreenLookup({
-        name: '',
-        type: '',
-      }),
-    });
     this.rowElementModel!.children?.push(
       new WidgetModel({
-        widget_type: AppConstants.WIDGET_CONTAINER,
-        style: new StyleModel({
-          decoration: new BoxDecoration({ color: 4293467747,shape: "rectangle",  }),
-        }),
-        child: new WidgetModel({
-          widget_type: AppConstants.WIDGET_BUTTON,
-          name: 'Button',
-          style: new StyleModel({
-            rowspan: 1,
-            color: 4294967295,
-            fontFamily: 'Robota-Regular',
-            fontSize: 12,
-            fontWeight: 'normal',
-          }),
-          widgetConfiguration: widgetConfig,
-        }),
+        widget_type: AppConstants.WIDGET_BUTTON,
+        name: 'Button',
       })
     );
   }
 
   onSelectImage() {
-    this.checkConfiguration();
-    var widgetConfig = new WidgetConfiguration();
-    widgetConfig.clickableConfiguration = new ClickableConfiguration({
-      type: '',
-      passedKeys: [],
-      destination_screen_lookUp: new DestinationScreenLookup({
-        name: '',
-        type: '',
-      }),
-    });
     this.rowElementModel!.children?.push(
       new WidgetModel({
-        widget_type: AppConstants.WIDGET_CONTAINER,
-        style: new StyleModel({
-          height: 70,
-          width: 70,
-        }),
-        child: new WidgetModel({
-          widget_type: AppConstants.WIDGET_IMAGE,
-          name: 'Image',
-          style: new StyleModel({
-            rowspan: 1,
-            color: 4294967295,
-            borderRadiusCircularSize: 50,
-          }),
-          widgetConfiguration: widgetConfig,
-        }),
+        widget_type: AppConstants.WIDGET_IMAGE,
+        name: 'Image',
       })
     );
   }
 
   onSelectColumn() {
-    this.checkConfiguration();
-    var widgetConfig = new WidgetConfiguration();
-    widgetConfig.clickableConfiguration = new ClickableConfiguration({
-      type: '',
-      passedKeys: [],
-      destination_screen_lookUp: new DestinationScreenLookup({
-        name: '',
-        type: '',
-      }),
-    });
     this.rowElementModel!.children?.push(
       new WidgetModel({
-        widget_type: AppConstants.WIDGET_CONTAINER,
+        widget_type: AppConstants.WIDGET_COLUMN,
         name: 'Column',
-        style: new StyleModel({
-          decoration: new BoxDecoration({ shape: "rectangle",  }),
-        }),
-        child: {
-          widget_type: AppConstants.WIDGET_COLUMN,
-          expanded:true,
-          style: new StyleModel({}),
-          widgetConfiguration: widgetConfig,
-        },
-        
+        style: new StyleModel({expanded:true}),
+        children: [],
       })
     );
-  }
-
-  onSubmit() {
-    this.checkConfiguration();
-    this.rowElementModel!.widget_type = AppConstants.WIDGET_ROW;
-  }
-
-  checkConfiguration() {
-    if (this.rowElementModel!.children === undefined) {
-      this.rowElementModel!.children = [];
-    }
-  }
-
-  onBackgroundChange(event) {
-    var val = event.target.value.replace('#', '0xFF');
-    console.log(val, parseInt(val, 16));
-    this.selectedElement!.style.decoration!.color = parseInt(val, 16);
-  }
-
-  getItemBackgroundColor(){
-    if(this.selectedElement!.style!.decoration !== undefined){
-        return this.selectedElement!
-        .style!.decoration!.color!.toString(16)
-        .replace('ff', '#');
-      }
-      return '#FFFFFF';
-  }
-
-  onColorChange(event) {
-    var val = event.target.value.replace('#', '0xFF');
-    console.log(val, parseInt(val, 16));
-    this.selectedElement!.child!.style.color = parseInt(val, 16);
-  }
-
-  getItemColor(){
-    if (this.selectedElement!.child!.style.color !== undefined){
-        return this.selectedElement!.child!.style!.color!.toString(16)
-            .replace('ff', '#');
-      }
-      return '#FFFFFF';
   }
 }

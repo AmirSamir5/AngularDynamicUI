@@ -13,13 +13,13 @@
     <div
       *ngFor="let rowContent of row!.children!; let index = index"
       cdkDrag
-      [ngClass]="getItemFlex(rowContent.child ?? rowContent)"
-      [style.backgroundColor]="getItemBackgroundColor(rowContent) ?? 'white'"
-      [style.color]="getItemColor(rowContent)"
-      [style.width]="rowContent.child!.expanded ? '100%' : undefined"
-      [style.font-size.px]="(rowContent.child ?? rowContent).style.fontSize"
-      [style.font-weight]="(rowContent.child ?? rowContent).style.fontWeight"
-      [style.font-family]="(rowContent.child ?? rowContent).style.fontFamily"
+      [ngClass]="getItemFlex(rowContent)"
+      [style.backgroundColor]="rowContent.style.backgroundColor ?? 'white'"
+      [style.color]="rowContent.style.color ?? 'black'"
+      [style.width]="rowContent.style.expanded ? '100%' : undefined"
+      [style.font-size.px]="rowContent.style.fontSize"
+      [style.font-weight]="rowContent.style.fontWeight"
+      [style.font-family]="rowContent.style.fontFamily"
       (click)="onElementClick(rowContent, index); $event.stopPropagation()"
       [ngSwitch]="rowContent.name"
     >
@@ -32,8 +32,8 @@
       </app-column>
       <div *ngSwitchDefault="">
         {{
-          (rowContent.child ?? rowContent).textDisplayed ??
-            (rowContent.child ?? rowContent).name
+          rowContent.textDisplayed ??
+            rowContent.name
         }}
         <span class="close" (click)="removeElement(index)">&times;</span>
       </div>

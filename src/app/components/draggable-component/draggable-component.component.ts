@@ -11,15 +11,15 @@ import { ElementService } from 'src/app/services/element.service';
 })
 export class DraggableComponentComponent implements OnInit {
   height = 350;
-  title = 'appbar title';
+  title?: string;
   i = 0;
   selectedElements: WidgetModel[] = [];
   selectedElement?: WidgetModel;
-  show: boolean = false;
 
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
+    this.title = this.elementService.screenModel?.screen_name;
     AppEvents.selectedElementsChangedEvent.subscribe((elements) => {
       this.selectedElements = elements;
     });
@@ -28,9 +28,9 @@ export class DraggableComponentComponent implements OnInit {
         this.selectedElements = elementsArr;
       }
     );
-    AppEvents.changeAppbarEvent.subscribe(
-      (appbar) => {
-        this.title = appbar;
+    AppEvents.onScreenSelectEvent.subscribe(
+      (screen) => {
+        this.title = screen.screen_name!;
       }
     );
   }
@@ -64,11 +64,5 @@ export class DraggableComponentComponent implements OnInit {
     this.i = index;
     this.selectedElement = item;
     var component = this.elementService.editSelectedItem(this.selectedElement, index);
-  }
-  editItem() {
-    this.show = !this.show;
-  }
-  onChangeAppbar(){
-    this.elementService.screenName = this.title;
   }
 }

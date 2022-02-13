@@ -4,37 +4,34 @@
     type="text"
     class="form-control"
     placeholder="Enter Title"
-    [(ngModel)]="this.dropdownElementModel!.child!.fieldTitle"
+    [(ngModel)]="this.dropdownElementModel!.fieldTitle"
   />
   <!-- [(ngModel)]="dropdownElementModel.title" -->
   <input
     type="text"
     class="form-control"
     placeholder="Enter hint"
-    [(ngModel)]="this.dropdownElementModel!.child!.hint"
+    [(ngModel)]="this.dropdownElementModel!.hint"
   />
   <p>Lookup list key</p>
   <!-- [(ngModel)]="dropdownElementModel.lookupListKey" -->
   <select
     [(ngModel)]="
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey
+      this.dropdownElementModel!.widgetConfiguration!.lookupIdKey
     "
     (change)="selectChange($event)"
   >
-    <option [value]="item.lookupIdKey" *ngFor="let item of lookups">
+    <option [value]="item.displayValue" *ngFor="let item of lookups">
       {{ item.displayValue }}
     </option>
     <option value="other">Other ( please enter data )</option>
-
-    <!-- <option value="veiw.payment.methods.screens">view payment methods</option>
-    <option value="numbers">numbers</option> -->
   </select>
   <input
     type="text"
     placeholder="Enter Lookup List Key"
     style="margin-top: 16px"
     [(ngModel)]="
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupListKey
+      this.dropdownElementModel!.widgetConfiguration!.lookupListKey
     "
     [hidden]="!showInputFields"
   />
@@ -42,7 +39,7 @@
     type="text"
     placeholder="Enter Lookup ID Key"
     [(ngModel)]="
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupIdKey
+      this.dropdownElementModel!.widgetConfiguration!.lookupIdKey
     "
     [hidden]="!showInputFields"
   />
@@ -50,7 +47,7 @@
     type="text"
     placeholder="Enter Lookup Text Key"
     [(ngModel)]="
-      this.dropdownElementModel!.child!.widgetConfiguration!.lookupTextKey
+      this.dropdownElementModel!.widgetConfiguration!.lookupTextKey
     "
     [hidden]="!showInputFields"
   />
@@ -65,4 +62,3 @@
   </label>
   <hr class="rounded" />
 </div>
-<button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>

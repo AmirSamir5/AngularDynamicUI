@@ -4,7 +4,7 @@
   <div
   class="example-boundary col"
   cdkDropList
-  [cdkDropListData]="columnModel.child!.children!"
+  [cdkDropListData]="columnModel?.children!"
   cdkDragBoundary=".example-boundary"
   (cdkDropListDropped)="drag($event)"
 >
@@ -12,28 +12,26 @@
     cols="6"
     rowHeight="50px"
     cdkDropList
-    [cdkDropListData]="columnModel.child!.children!"
+    [cdkDropListData]="columnModel?.children!"
     cdkDragBoundary=".example-boundary"
     (cdkDropListDropped)="drag($event)"
   >
     <mat-grid-tile
       cdkDrag
-      *ngFor="let tile of columnModel.child!.children!; let index = index"
+      *ngFor="let tile of columnModel?.children!; let index = index"
       [colspan]="6"
-      [rowspan]="tile.child!.style.rowspan"
-      [style.background]="getItemBackgroundColor(tile) ?? 'white'"
-      [style.color]="getItemColor(tile)"
+      [rowspan]="tile.style.rowspan ?? 1"
+      [style.background]="tile.style.backgroundColor ?? 'white'"
+      [style.color]="tile.style.color ?? 'black'"
       [style.width]="
-          tile.child!.style.expanded ? '100%' : undefined
+          tile.style.expanded ? '100%' : undefined
       "
-      [style.background]="tile.style.backgroundColor"
-      [style.color]="tile.child!.style.color"
-      [style.font-size.px]="tile.child!.style.fontSize"
-      [style.font-weight]="tile.child!.style.fontWeight"
-      [style.font-family]="tile.child!.style.fontFamily"
+      [style.font-size.px]="tile.style.fontSize"
+      [style.font-weight]="tile.style.fontWeight"
+      [style.font-family]="tile.style.fontFamily"
       (click)="onElementClick(tile, index); $event.stopPropagation()"
     >
-    {{ (tile.child ?? tile).name }}
+    {{ tile.name }}
       <span class="close" (click)="removeElement(index)">&times;</span>
     </mat-grid-tile>
   </mat-grid-list>

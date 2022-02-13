@@ -6,8 +6,6 @@
     <div *ngSwitchCase="'Button'">
       <app-button-properties
         [buttonItem]="item"
-        [index]="index"
-        [apiCode]="item.apiCode ?? ''"
       ></app-button-properties>
     </div>
     <div *ngSwitchCase="'Dropdown'">

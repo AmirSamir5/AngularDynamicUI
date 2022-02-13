@@ -4,25 +4,24 @@
     type="text"
     class="form-control"
     placeholder="Enter Title"
-    [(ngModel)]="title"
+    [(ngModel)]="calendarElementModel!.fieldTitle"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Hint"
-    [(ngModel)]="hint"
+    [(ngModel)]="calendarElementModel!.hint"
   />
   <input
     type="text"
     class="form-control"
     placeholder="Enter Parameter Name"
-    [(ngModel)]="parameterName"
+    [(ngModel)]="calendarElementModel!.validations!.parameterName"
   />
   <label class="container-checkbox"
     >Required
-    <input type="checkbox" checked="checked" [(ngModel)]="isRequired" />
+    <input type="checkbox" checked="checked" [(ngModel)]="isRequired" (change)="onRequiredChange()">
     <span class="checkmark"></span>
   </label>
   <hr class="rounded" />
 </div>
-<button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>

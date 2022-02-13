@@ -6,13 +6,13 @@
     cols="6"
     rowHeight="80px"
     cdkDropList
-    [cdkDropListData]="listModel!.cell!.child!.children!"
+    [cdkDropListData]="listModel?.cell?.children!"
     cdkDragBoundary=".example-boundary"
     (cdkDropListDropped)="drag($event)"
   >
     <mat-grid-tile
       cdkDrag
-      *ngFor="let tile of listModel!.cell!.child!.children!; let index = index"
+      *ngFor="let tile of listModel?.cell?.children!; let index = index"
       [colspan]="6"
       [rowspan]="getItemRowspan(tile)"
       [ngSwitch]="tile.name"

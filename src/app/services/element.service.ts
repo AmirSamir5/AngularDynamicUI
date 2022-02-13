@@ -1,17 +1,12 @@
 import { EventEmitter } from '@angular/core';
 import { AppConstants } from '../constants/constants';
-import { JSONModel, ScreenPages } from '../models/json.model';
-import { Border, BoxDecoration, StyleModel } from '../models/style.model';
+import { ScreenModel, ScreenPages } from '../models/screen.model';
 import { WidgetModel } from '../models/widget.model';
 import { AppEvents } from './app-events';
 import { elements } from './elements-array';
 
 export class ElementService {
-  screenModel: ScreenPages = new ScreenPages('', []);
-
-  public screenName: string = '';
-  public screenLookup: string = '';
-  public screenId?: number;
+  screenModel: ScreenModel = new ScreenModel({});
 
   public selectedElements: WidgetModel[] = [];
 
@@ -23,8 +18,8 @@ export class ElementService {
     AppEvents.clearPropertiesEvent.emit();
   }
 
-  savedScreenChoosed(screen: JSONModel) {
-    this.screenModel = screen.screenPages[0];
+  savedScreenChoosed(screen: ScreenModel) {
+    this.screenModel = screen;
     AppEvents.onScreenSelectEvent.emit(screen);
   }
 

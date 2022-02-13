@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { JSONModel, ScreenPages } from 'src/app/models/json.model';
+import { ScreenModel, ScreenPages } from 'src/app/models/screen.model';
 import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 
@@ -10,22 +10,17 @@ import { ElementService } from 'src/app/services/element.service';
 })
 export class SideMenuComponent implements OnInit {
   width = '0%';
-  screens: Array<JSONModel> = [];
+  screens: Array<ScreenModel> = [];
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {}
 
-  onItemClick(screen: JSONModel) {
+  onItemClick(screen: ScreenModel) {
     this.closeNav();
     this.elementService.clearProperties();
     this.elementService.selectedElements = [];
-    this.elementService.screenName = screen.screen_name!;
-    this.elementService.screenId = screen.screen_id;
-    AppEvents.changeAppbarEvent.emit(screen.screen_name!);
-    screen.screenPages.forEach((element) => {
-      element.fields.forEach((field) => {
-        this.elementService.addSelectedItems(field);
-      });
+    screen.screenPages.fields.forEach((field) => {
+      this.elementService.addSelectedItems(field);
     });
     this.elementService.savedScreenChoosed(screen);
   }
@@ -33,11 +28,9 @@ export class SideMenuComponent implements OnInit {
   onAddNewScreen() {
     this.closeNav();
     this.elementService.clearProperties();
-    this.elementService.screenName = '';
     this.elementService.savedScreenChoosed(
-      new JSONModel('', 7, [new ScreenPages('', [])])
+      new ScreenModel({})
     );
-    AppEvents.changeAppbarEvent.emit('appbar title');
     this.elementService.selectedElements.splice(
       0,
       this.elementService.selectedElements.length

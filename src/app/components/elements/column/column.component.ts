@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
 import { WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
@@ -9,27 +9,25 @@ import { ElementService } from 'src/app/services/element.service';
   templateUrl: './column.component.html',
   styleUrls: ['./column.component.css']
 })
-export class ColumnComponent implements OnInit {
+export class ColumnComponent implements OnInit,OnChanges {
   @Input() showTitle = true;
-  @Input() columnModel: WidgetModel = new WidgetModel({
-    widget_type: AppConstants.WIDGET_CONTAINER,
-    child: new WidgetModel({
-      widget_type: AppConstants.WIDGET_COLUMN
-    }),
-  });
+  @Input() columnModel?: WidgetModel;
 
   constructor(private elementService: ElementService) { }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.columnModel);
+  }
 
   ngOnInit(): void {
   }
 
   onElementClick(item: WidgetModel, index: number) {
     this.elementService.editSelectedItem(this.columnModel, index);
-    this.elementService.editRowElementItem(this.columnModel.child!.children![index], index);
+    this.elementService.editRowElementItem(this.columnModel!.children![index], index);
   }
 
   removeElement(index: number) {
-    this.columnModel.child!.children?.splice(index, 1);
+    this.columnModel!.children?.splice(index, 1);
   }
 
   drag(event: CdkDragDrop<WidgetModel[]>) {
@@ -45,25 +43,6 @@ export class ColumnComponent implements OnInit {
         event.currentIndex
       );
     }
-  }
-
-  getItemBackgroundColor(item: WidgetModel) {
-    if(item.style.decoration === undefined){
-      if(item.child!.widget_type === AppConstants.WIDGET_IMAGE){
-        var color = 4294940672;
-        return color.toString(16).replace('ff', '#');
-      }
-      return 'grey';
-    }
-    
-    return item.style.decoration!.color?.toString(16).replace('ff', '#');
-  }
-
-  getItemColor(item: WidgetModel) {
-    if(item.child === undefined){
-      return 'black';
-    }
-    return item.child!.style!.color!.toString(16).replace('ff', '#');
   }
 
 }
