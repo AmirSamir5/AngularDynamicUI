@@ -9,6 +9,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -88,6 +89,7 @@ import { TextviewPropertiesComponent } from './components/elements-properties/te
     MatDividerModule,
     MatTabsModule,
     MatSidenavModule,
+    MatExpansionModule
   ],
   providers: [ElementService],
   bootstrap: [AppComponent],
