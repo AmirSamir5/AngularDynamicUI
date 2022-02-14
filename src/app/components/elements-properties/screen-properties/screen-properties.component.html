@@ -4,7 +4,7 @@
     >Scrollable
     <input
       type="checkbox"
-      [value]="screenProperty!.screenPages?.isScrollable ?? false"
+      [(ngModel)]="screenProperty!.screenPages!.isScrollable"
     />
     <span class="checkmark"></span>
   </label>
