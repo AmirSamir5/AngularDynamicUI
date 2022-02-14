@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ScreenModel, ScreenPages } from 'src/app/models/screen.model';
+import { WidgetModel } from 'src/app/models/widget.model';
 import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 
@@ -11,6 +12,7 @@ import { ElementService } from 'src/app/services/element.service';
 export class SideMenuComponent implements OnInit {
   width = '0%';
   screens: Array<ScreenModel> = [];
+  elements: Array<WidgetModel> = [];
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {}
@@ -28,9 +30,7 @@ export class SideMenuComponent implements OnInit {
   onAddNewScreen() {
     this.closeNav();
     this.elementService.clearProperties();
-    this.elementService.savedScreenChoosed(
-      new ScreenModel({})
-    );
+    this.elementService.savedScreenChoosed(new ScreenModel({}));
     this.elementService.selectedElements.splice(
       0,
       this.elementService.selectedElements.length
@@ -41,6 +41,9 @@ export class SideMenuComponent implements OnInit {
     this.width = '20%';
     if (localStorage.getItem('screens') !== null) {
       this.screens = JSON.parse(localStorage.getItem('screens')!);
+    }
+    if (localStorage.getItem('elements') !== null) {
+      this.elements = JSON.parse(localStorage.getItem('elements')!);
     }
   }
 

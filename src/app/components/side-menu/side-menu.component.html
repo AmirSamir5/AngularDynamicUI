@@ -1,27 +1,37 @@
 <div class="sidenav" [style.width]="this.width">
-    <div class="row">
-        <h3>Saved Screens</h3>
-        <a class="closebtn" (click)="closeNav()">&times;</a>
-    </div>
-    
-    <div *ngIf="this.screens.length !== 0">
-        <div *ngFor="let screen of screens;let index = index">
-            <div class="row">
-                <a (click)="onItemClick(screen)" class="col-lg-6" >
-                    {{screen.screen_name}}
-                </a>
-                <div style="background-color:black;" (click)="onItemDelete(index)"><span
-                    class="glyphicon glyphicon-trash"></span></div>
-                <div style="height: 50px;"></div>
-            </div>
+  <div class="row">
+    <h3>Saved Screens</h3>
+    <a class="closebtn" (click)="closeNav()">&times;</a>
+  </div>
+
+  <div *ngIf="this.screens.length !== 0">
+    <div *ngFor="let screen of screens; let index = index">
+      <div class="row">
+        <a (click)="onItemClick(screen)" class="col-lg-6">
+          {{ screen.screen_name }}
+        </a>
+        <div style="background-color: black" (click)="onItemDelete(index)">
+          <span class="glyphicon glyphicon-trash"></span>
         </div>
-        <button class="btn removeBtn" (click)="onAddNewScreen()" ><span
-            class="glyphicon glyphicon-plus"></span>&nbsp; Add New Screen</button>
-        <button class="btn btn-primary clearBtn" *ngIf="this.screens.length > 1" (click)="clearAll()" ><span
-            class="glyphicon glyphicon-trash"></span>&nbsp; Clear All</button>
+        <div style="height: 50px"></div>
+      </div>
     </div>
-    
-    <h3 *ngIf="this.screens.length === 0"> No Saved Screen</h3>
-    
+    <button class="btn removeBtn" (click)="onAddNewScreen()">
+      <span class="glyphicon glyphicon-plus"></span>&nbsp; Add New Screen
+    </button>
+    <button
+      class="btn btn-primary clearBtn"
+      *ngIf="this.screens.length > 1"
+      (click)="clearAll()"
+    >
+      <span class="glyphicon glyphicon-trash"></span>&nbsp; Clear All
+    </button>
+  </div>
+
+  <h3 *ngIf="this.screens.length === 0">No Saved Screen</h3>
+
+  <div *ngFor="let item of elements">
+    {{ item.name }}
+  </div>
 </div>
-<span class="hamburgerButton"(click)="openNav()">&#9776;</span>
+<span class="hamburgerButton" (click)="openNav()">&#9776;</span>

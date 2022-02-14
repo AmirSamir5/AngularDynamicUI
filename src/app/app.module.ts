@@ -43,6 +43,7 @@ import { ColumnComponent } from './components/elements/column/column.component';
 import { ColumnPropertiesComponent } from './components/elements-properties/column-properties/column-properties.component';
 import { TextviewComponent } from './components/elements/textview/textview.component';
 import { TextviewPropertiesComponent } from './components/elements-properties/textview-properties/textview-properties.component';
+import { SaveElementComponent } from './components/elements-properties/save-element/save-element.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { TextviewPropertiesComponent } from './components/elements-properties/te
     ColumnPropertiesComponent,
     TextviewComponent,
     TextviewPropertiesComponent,
+    SaveElementComponent,
   ],
   imports: [
     BrowserModule,
