@@ -16,9 +16,7 @@
   <p>Lookup list key</p>
   <!-- [(ngModel)]="dropdownElementModel.lookupListKey" -->
   <select
-    [(ngModel)]="
-      this.dropdownElementModel!.widgetConfiguration!.lookupIdKey
-    "
+    [(ngModel)]="dropdownElementModel!.widgetConfiguration!.lookupIdKey"
     (change)="selectChange($event)"
   >
     <option [value]="item.displayValue" *ngFor="let item of lookups">
@@ -30,25 +28,19 @@
     type="text"
     placeholder="Enter Lookup List Key"
     style="margin-top: 16px"
-    [(ngModel)]="
-      this.dropdownElementModel!.widgetConfiguration!.lookupListKey
-    "
+    [(ngModel)]="this.dropdownElementModel!.widgetConfiguration!.lookupListKey"
     [hidden]="!showInputFields"
   />
   <input
     type="text"
     placeholder="Enter Lookup ID Key"
-    [(ngModel)]="
-      this.dropdownElementModel!.widgetConfiguration!.lookupIdKey
-    "
+    [(ngModel)]="this.dropdownElementModel!.widgetConfiguration!.lookupIdKey"
     [hidden]="!showInputFields"
   />
   <input
     type="text"
     placeholder="Enter Lookup Text Key"
-    [(ngModel)]="
-      this.dropdownElementModel!.widgetConfiguration!.lookupTextKey
-    "
+    [(ngModel)]="this.dropdownElementModel!.widgetConfiguration!.lookupTextKey"
     [hidden]="!showInputFields"
   />
   <label class="container-checkbox"

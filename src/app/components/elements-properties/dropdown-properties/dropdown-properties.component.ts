@@ -54,8 +54,6 @@ export class DropdownPropertiesComponent implements OnChanges {
     var val = event.target.value;
     this.lookups.forEach((element) => {
       if (element.displayValue === val) {
-        this.dropdownElementModel!.widgetConfiguration!.lookupIdKey =
-          element.lookupIdKey;
         this.dropdownElementModel!.widgetConfiguration!.lookupListKey =
           element.lookupListKey;
         this.dropdownElementModel!.widgetConfiguration!.lookupTextKey =
