@@ -16,17 +16,19 @@ export class ScreenPropertiesComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    this.screenProperty = this.elementService.screenModel ?? new ScreenModel({});
+    this.screenProperty =
+      this.elementService.screenModel ?? new ScreenModel({});
     AppEvents.onScreenSelectEvent.subscribe((screen) => {
       this.screenProperty = screen;
     });
   }
 
   onScrollableChange() {
-    this.screenProperty!.screenPages.isScrollable = !this.screenProperty!.screenPages.isScrollable
+    this.screenProperty!.screenPages.isScrollable =
+      !this.screenProperty!.screenPages.isScrollable;
   }
 
-  onAppbarChange(){
+  onAppbarChange() {
     AppEvents.onScreenSelectEvent.emit(this.screenProperty!);
   }
 }
