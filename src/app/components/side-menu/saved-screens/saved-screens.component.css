@@ -1,13 +1,7 @@
 .sidenav {
     height: 100%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
     background-color: #111;
-    overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
   }
   
   .sidenav a {
@@ -23,7 +17,7 @@
     color: #f1f1f1;
   }
 
-  .sidenav span:hover {
+  .sidenav span {
     color: #f1f1f1;
   }
   
@@ -31,24 +25,27 @@
     font-size: 32px;
   }
 
-  .spacer {
-    flex: 1;
-  }
-
   .row {
     display: flex;
     position: relative;
     flex-flow: row;
     align-items: center;
+    justify-content: space-between;
+  }
+  h3{
     margin: 16px;
   }
 
-  .hamburgerButton{
-    cursor:pointer;
-    margin-left: 16px;
-    height: 40px;
-    width: 40px;
+  .clearBtn{
+    margin: 4%;
+    width: 92%;
   }
-  h1,h2,h3{
-    margin: 16px;
+
+  .removeBtn{
+    background-color: #bf0000;
+    color: white;
+    margin-top: 4%;
+    margin-right: 4%;
+    margin-left: 4%;
+    width: 92%;
   }

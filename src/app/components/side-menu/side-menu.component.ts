@@ -11,61 +11,23 @@ import { ElementService } from 'src/app/services/element.service';
 })
 export class SideMenuComponent implements OnInit {
   width = '0%';
-  screens: Array<ScreenModel> = [];
-  elements: Array<WidgetModel> = [];
-  constructor(private elementService: ElementService) {}
+  constructor() {}
 
-  ngOnInit(): void {}
-
-  onItemClick(screen: ScreenModel) {
-    this.closeNav();
-    this.elementService.clearProperties();
-    this.elementService.selectedElements = [];
-    screen.screenPages.fields.forEach((field) => {
-      this.elementService.addSelectedItems(field);
+  ngOnInit(): void {
+    AppEvents.closeNavEvent.subscribe(()=> {
+      this.width = '0%';
     });
-    this.elementService.savedScreenChoosed(screen);
-  }
-
-  onAddNewScreen() {
-    this.closeNav();
-    this.elementService.clearProperties();
-    this.elementService.savedScreenChoosed(new ScreenModel({}));
-    this.elementService.selectedElements.splice(
-      0,
-      this.elementService.selectedElements.length
-    );
+    AppEvents.openNavEvent.subscribe(()=> {
+      this.width = '20%';
+    });
   }
 
   openNav() {
-    this.width = '20%';
-    if (localStorage.getItem('screens') !== null) {
-      this.screens = JSON.parse(localStorage.getItem('screens')!);
-    }
-    if (localStorage.getItem('elements') !== null) {
-      this.elements = JSON.parse(localStorage.getItem('elements')!);
-    }
+    AppEvents.openNavEvent.emit();
   }
 
-  closeNav() {
-    this.width = '0%';
+  closeNav(){
+    AppEvents.closeNavEvent.emit();
   }
-
-  onItemDelete(index: number) {
-    if (
-      confirm(
-        'Are you sure about delete ' + this.screens[index].screen_name + ' ?'
-      )
-    ) {
-      this.screens.splice(index, 1);
-      localStorage.setItem('screens', JSON.stringify(this.screens));
-    }
-  }
-
-  clearAll() {
-    if (confirm('Are you sure to clear all screens ?')) {
-      localStorage.clear();
-      this.screens.splice(0, this.screens.length);
-    }
-  }
+  
 }

@@ -44,6 +44,9 @@ import { ColumnPropertiesComponent } from './components/elements-properties/colu
 import { TextviewComponent } from './components/elements/textview/textview.component';
 import { TextviewPropertiesComponent } from './components/elements-properties/textview-properties/textview-properties.component';
 import { SaveElementComponent } from './components/elements-properties/save-element/save-element.component';
+import { ExpansionComponent } from './components/side-menu/expansion/expansion.component';
+import { SavedScreensComponent } from './components/side-menu/saved-screens/saved-screens.component';
+import { SavedElementsComponent } from './components/side-menu/saved-elements/saved-elements.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +80,9 @@ import { SaveElementComponent } from './components/elements-properties/save-elem
     TextviewComponent,
     TextviewPropertiesComponent,
     SaveElementComponent,
+    ExpansionComponent,
+    SavedScreensComponent,
+    SavedElementsComponent,
   ],
   imports: [
     BrowserModule,

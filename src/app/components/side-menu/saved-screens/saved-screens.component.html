@@ -1,0 +1,27 @@
+<div class="sidenav">
+  <div *ngIf="this.screens.length !== 0">
+    <div *ngFor="let screen of screens; let index = index">
+      <div class="row">
+        <a (click)="onItemClick(screen)" class="col-lg-6">
+          {{ screen.screen_name }}
+        </a>
+        <div style="background-color: black" (click)="onItemDelete(index)">
+          <span class="glyphicon glyphicon-trash"></span>
+        </div>
+        <div style="height: 50px"></div>
+      </div>
+    </div>
+    <button class="btn removeBtn" (click)="onAddNewScreen()">
+      <span class="glyphicon glyphicon-plus"></span>&nbsp; Add New Screen
+    </button>
+    <button
+      class="btn btn-primary clearBtn"
+      *ngIf="this.screens.length > 1"
+      (click)="clearAll()"
+    >
+      <span class="glyphicon glyphicon-trash"></span>&nbsp; Clear All
+    </button>
+  </div>
+
+  <h3 *ngIf="this.screens.length === 0">No Saved Screen</h3>
+</div>

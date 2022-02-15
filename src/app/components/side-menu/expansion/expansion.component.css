@@ -1,0 +1,23 @@
+.mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+  mat-accordion{
+    background-color: black;
+  }
+
+  mat-expansion-panel{
+    background-color: black;
+  }
+
+  .specific-class{
+    margin: 8px;
+  }
+
+  ::ng-deep .specific-class > .mat-expansion-indicator:after {
+    color: white;
+  }
+
+  h3,h4{
+    color: white;
+  }

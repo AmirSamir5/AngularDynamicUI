@@ -3,6 +3,8 @@ import { ScreenModel } from "../models/screen.model";
 import { WidgetModel } from "../models/widget.model";
 
 export class AppEvents{
+    static openNavEvent = new EventEmitter();
+    static closeNavEvent = new EventEmitter();
     static EditElementEvent = new EventEmitter<{ make?: WidgetModel; name?: number }>();
     static EditRowElementEvent = new EventEmitter<{ make: WidgetModel; name: number }>();
     static RemoveRowElementEvent = new EventEmitter();
