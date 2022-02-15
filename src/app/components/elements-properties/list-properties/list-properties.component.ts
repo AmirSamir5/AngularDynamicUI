@@ -18,6 +18,7 @@ import {
   WidgetModel,
 } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
+import { HelpersService } from 'src/app/services/helpers.service';
 
 @Component({
   selector: 'app-list-properties',
@@ -34,6 +35,7 @@ export class ListPropertiesComponent implements OnInit, OnChanges {
 
   constructor(private elementService: ElementService) {}
   ngOnChanges(changes: SimpleChanges): void {
+    this.listElementModel!.cell = HelpersService.deepCopy(this.listElementModel!.cell);
     if(this.listElementModel!.cell!.widgetConfiguration === undefined){
       this.listElementModel!.cell!.widgetConfiguration = new WidgetConfiguration();
     }
@@ -42,8 +44,7 @@ export class ListPropertiesComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onAddRow() {
     this.listElementModel!.cell!.children!.push(
