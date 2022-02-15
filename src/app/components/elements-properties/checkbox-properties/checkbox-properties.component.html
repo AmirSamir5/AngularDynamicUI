@@ -12,7 +12,5 @@
     placeholder="Enter Parameter Name"
     [(ngModel)]="parameterName"
   />
-  <br />
-  <hr class="rounded" />
+  <app-save-element [elementModel]="checkboxElementModel!"></app-save-element>
 </div>
-<button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>

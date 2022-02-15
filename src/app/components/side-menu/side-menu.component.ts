@@ -68,4 +68,23 @@ export class SideMenuComponent implements OnInit {
       this.screens.splice(0, this.screens.length);
     }
   }
+
+  onElementClick(element: WidgetModel) {
+    this.elementService.addSelectedItems(element);
+  }
+
+  onElementDelete(index: number) {
+    if (
+      confirm(
+        'Are you sure about delete ' +
+          this.elements[index].name +
+          ' - ' +
+          this.elements[index].fieldTitle +
+          '?'
+      )
+    ) {
+      this.elements.splice(index, 1);
+      localStorage.setItem('elements', JSON.stringify(this.elements));
+    }
+  }
 }

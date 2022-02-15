@@ -26,7 +26,7 @@
       {{ item }}
     </option>
   </select>
-  
+
   <div *ngIf="selectedElement !== undefined">
     <div class="container">
       <div class="line"><mat-divider></mat-divider></div>
@@ -162,20 +162,29 @@
         >Clickable
         <input
           type="checkbox"
-          [value]="this.selectedElement!.widgetConfiguration?.clickableConfiguration?.isClickable ?? false"
+          [value]="
+            this.selectedElement!.widgetConfiguration?.clickableConfiguration
+              ?.isClickable ?? false
+          "
           (change)="onClickablChange()"
         />
         <span class="checkmark"></span>
       </label>
 
-      <label *ngIf="this.selectedElement!.widgetConfiguration?.clickableConfiguration?.isClickable"
+      <label
+        *ngIf="
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable
+        "
         >Clickable Type
 
         <select
-          *ngIf="this.selectedElement!.widgetConfiguration?.clickableConfiguration?.isClickable"
+          *ngIf="
+            this.selectedElement!.widgetConfiguration?.clickableConfiguration
+              ?.isClickable
+          "
           [(ngModel)]="
-            (selectedElement!.widgetConfiguration
-              ?.clickableConfiguration)!.type
+            (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type
           "
         >
           <option [value]="item.value" *ngFor="let item of clickablesArr">
@@ -185,8 +194,10 @@
       </label>
       <label
         *ngIf="
-        this.selectedElement!.widgetConfiguration?.clickableConfiguration?.isClickable &&
-        selectedElement!.widgetConfiguration?.clickableConfiguration?.type === 'ClickableConfigurationType.callApi'
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable &&
+          selectedElement!.widgetConfiguration?.clickableConfiguration?.type ===
+            'ClickableConfigurationType.callApi'
         "
         >API Code
         <input
@@ -194,15 +205,16 @@
           class="form-control"
           placeholder="Enter API Code"
           [(ngModel)]="
-            selectedElement!.widgetConfiguration?.clickableConfiguration!
+            (selectedElement!.widgetConfiguration?.clickableConfiguration)!
               .apiCode
           "
         />
       </label>
       <label
         *ngIf="
-        this.selectedElement!.widgetConfiguration?.clickableConfiguration?.isClickable &&
-          selectedElement!.widgetConfiguration?.clickableConfiguration!
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable &&
+          (selectedElement!.widgetConfiguration?.clickableConfiguration)!
             .type === 'ClickableConfigurationType.redirect'
         "
         >Destination Screen Name
@@ -211,15 +223,16 @@
           class="form-control"
           placeholder="Enter Destination Screen Name"
           [(ngModel)]="
-            selectedElement!.widgetConfiguration?.clickableConfiguration!
+            (selectedElement!.widgetConfiguration?.clickableConfiguration)!
               .destination_screen_lookUp!.name
           "
         />
       </label>
       <label
         *ngIf="
-        this.selectedElement!.widgetConfiguration?.clickableConfiguration?.isClickable &&
-          selectedElement!.widgetConfiguration?.clickableConfiguration!
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable &&
+          (selectedElement!.widgetConfiguration?.clickableConfiguration)!
             .type === 'ClickableConfigurationType.redirect'
         "
         >Destination Screen Type
@@ -228,12 +241,16 @@
           class="form-control"
           placeholder="Enter Destination Screen Type"
           [(ngModel)]="
-            selectedElement!.widgetConfiguration?.clickableConfiguration!
+            (selectedElement!.widgetConfiguration?.clickableConfiguration)!
               .destination_screen_lookUp!.type
           "
         />
       </label>
-      <label *ngIf="this.selectedElement!.widgetConfiguration?.clickableConfiguration?.isClickable"
+      <label
+        *ngIf="
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable
+        "
         >Passed Keys
         <input
           type="text"
@@ -244,4 +261,5 @@
       </label>
     </div>
   </div>
+  <app-save-element [elementModel]="rowElementModel!"></app-save-element>
 </div>

@@ -95,28 +95,30 @@
     <input
       type="checkbox"
       checked="checked"
-      [value]="listElementModel!.cell!.widgetConfiguration!
-          .clickableConfiguration?.isClickable ?? false"
+      [value]="
+        listElementModel!.cell!.widgetConfiguration!.clickableConfiguration
+          ?.isClickable ?? false
+      "
       (change)="onClickablChange()"
     />
     <span class="checkmark"></span>
   </label>
   <label
     *ngIf="
-      this.listElementModel!.cell!.widgetConfiguration!
-        .clickableConfiguration?.isClickable
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration
+        ?.isClickable
     "
     >Clickable Type
     <select
       *ngIf="
-        this.listElementModel!.cell!.widgetConfiguration!
-          .clickableConfiguration?.isClickable
+        this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration
+          ?.isClickable
       "
       class="form-control"
       style="display: inline-block"
       [(ngModel)]="
-        listElementModel!.cell?.widgetConfiguration
-          !.clickableConfiguration!.type
+        (listElementModel!.cell?.widgetConfiguration)!.clickableConfiguration!
+          .type
       "
     >
       <option [value]="item.value" *ngFor="let item of clickablesArr">
@@ -126,10 +128,10 @@
   </label>
   <label
     *ngIf="
-      this.listElementModel!.cell!.widgetConfiguration!
-        .clickableConfiguration?.isClickable &&
-      listElementModel!.cell!.widgetConfiguration!
-        .clickableConfiguration!.type === 'clickableConfiguration!Type.callApi'
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration
+        ?.isClickable &&
+      listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!
+        .type === 'clickableConfiguration!Type.callApi'
     "
     >API Code
     <input
@@ -137,17 +139,17 @@
       class="form-control"
       placeholder="Enter API Code"
       [(ngModel)]="
-        listElementModel!.cell!.widgetConfiguration!
-          .clickableConfiguration!!.apiCode
+        listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!!
+          .apiCode
       "
     />
   </label>
   <label
     *ngIf="
-      this.listElementModel!.cell!.widgetConfiguration!
-        .clickableConfiguration?.isClickable &&
-      listElementModel!.cell!.widgetConfiguration!
-        .clickableConfiguration!!.type === 'ClickableConfigurationType.redirect'
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration
+        ?.isClickable &&
+      listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!!
+        .type === 'ClickableConfigurationType.redirect'
     "
     >Destination Screen Name
     <input
@@ -155,17 +157,17 @@
       class="form-control"
       placeholder="Enter Destination Screen Name"
       [(ngModel)]="
-        listElementModel!.cell!.widgetConfiguration!
-          .clickableConfiguration!!.destination_screen_lookUp!.name
+        listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!!
+          .destination_screen_lookUp!.name
       "
     />
   </label>
   <label
     *ngIf="
-      this.listElementModel!.cell!.widgetConfiguration!
-        .clickableConfiguration?.isClickable &&
-      listElementModel!.cell!.widgetConfiguration!
-        .clickableConfiguration!.type === 'ClickableConfigurationType.redirect'
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration
+        ?.isClickable &&
+      listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!
+        .type === 'ClickableConfigurationType.redirect'
     "
     >Destination Screen Type
     <input
@@ -173,15 +175,15 @@
       class="form-control"
       placeholder="Enter Destination Screen Type"
       [(ngModel)]="
-        listElementModel!.cell!.widgetConfiguration!
-          .clickableConfiguration!.destination_screen_lookUp!.type
+        listElementModel!.cell!.widgetConfiguration!.clickableConfiguration!
+          .destination_screen_lookUp!.type
       "
     />
   </label>
   <label
     *ngIf="
-      this.listElementModel!.cell!.widgetConfiguration!
-        .clickableConfiguration?.isClickable
+      this.listElementModel!.cell!.widgetConfiguration!.clickableConfiguration
+        ?.isClickable
     "
     >Passed Keys
     <input
@@ -191,4 +193,5 @@
       (input)="onPassedKeys($event)"
     />
   </label>
+  <app-save-element [elementModel]="listElementModel!"></app-save-element>
 </div>
