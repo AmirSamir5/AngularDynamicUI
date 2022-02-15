@@ -26,20 +26,24 @@ export class ListComponent implements OnInit {
   }
 
   getItemRowspan(item:WidgetModel){
-    if(item.child !== undefined){
-      return item.style.rowspan;
-    }else{
-      if(item.children !== undefined){
-        var rowspan = 1;
-        item.children.forEach((element) => {
-          if (element.name === 'Column'){
-            rowspan = element.style.rowspan ?? 1;
-          }
-        })
-        return rowspan;
+    var rowspan = 1;
+    if (item.name === 'Column'){
+      if(item.children?.length !== 0){
+        return item.children?.length;
       }
       return 1;
+    }else if (item.name === 'Row'){
+      item.children!.forEach((element) => {
+        if (element.name === 'Column'){
+          if(element.children?.length !== 0){
+            rowspan = element.children?.length!;
+          }
+          return 1;
+        }
+        return rowspan;
+      });
     }
+    return rowspan;
   }
 
   drag(event: CdkDragDrop<WidgetModel[]>) {
