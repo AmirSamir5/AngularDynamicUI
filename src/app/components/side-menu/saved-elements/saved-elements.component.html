@@ -1,1 +1,17 @@
-<p>saved-elements works!</p>
+<div class="sidenav">
+  <div *ngIf="this.elements.length !== 0">
+    <div *ngFor="let element of elements; let index = index">
+      <div class="row">
+        <a class="col-lg-6" (click)="onItemClick(element)">
+          {{ element.name }}
+        </a>
+        <div style="background-color: black" (click)="onItemDelete(index)">
+          <span class="glyphicon glyphicon-trash"></span>
+        </div>
+        <div style="height: 50px"></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 *ngIf="this.elements.length === 0">No Saved Elements</h3>
+</div>
