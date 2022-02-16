@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { JsonResultDialogComponent } from './components/json-result-dialog/json-result-dialog.component';
 import { ScreenModel, ScreenPages } from './models/screen.model';
 import { AppConstants } from './constants/constants';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +14,19 @@ import { AppConstants } from './constants/constants';
 })
 export class AppComponent {
   title = 'Vericash-angular-tool';
+  durationInSeconds = 2;
 
   constructor(
     private elementService: ElementService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) {}
+
+  openSnackBar() {
+    let config = new MatSnackBarConfig();
+    config.duration = 3000;
+    this._snackBar.open('Screen Saved Successfully!', 'OK',config);
+  }
 
   onSaveScreen() {
     var valid: Boolean = true;
@@ -73,7 +82,7 @@ export class AppComponent {
       }
 
       localStorage.setItem('screens', JSON.stringify(screens, null, 4));
-      window.alert('Screen Saved!');
+      this.openSnackBar();
     }
   }
 
