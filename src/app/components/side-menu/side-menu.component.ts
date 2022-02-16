@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { ScreenModel, ScreenPages } from 'src/app/models/screen.model';
 import { WidgetModel } from 'src/app/models/widget.model';
 import { AppEvents } from 'src/app/services/app-events';
@@ -11,7 +11,16 @@ import { ElementService } from 'src/app/services/element.service';
 })
 export class SideMenuComponent implements OnInit {
   width = '0%';
-  constructor() {}
+
+  
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if(!this.eRef.nativeElement.contains(event.target)) {
+      this.closeNav();
+    }
+  }
+
+  constructor(private eRef: ElementRef) {}
 
   ngOnInit(): void {
     AppEvents.closeNavEvent.subscribe(()=> {
