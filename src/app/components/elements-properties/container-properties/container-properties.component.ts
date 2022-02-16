@@ -46,7 +46,7 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
     // };
     // this.containerElementModel!.child!.children =
     //   this.containerElementModel!.child!.children!.slice();
-    
+
     // this.containerElementModel!.style = {
     //   ...this.containerElementModel!.style,
     // };
@@ -148,6 +148,7 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
           rowspan: 1,
           backgroundColor: 'white',
         }),
+        children: [],
       })
     );
     console.log('container properties', this.containerElementModel);
@@ -237,12 +238,11 @@ export class ContainerPropertiesComponent implements OnInit, OnChanges {
   getBorderRadiusValue(event) {
     var radius = event.target.value;
 
-    this.containerElementModel!.style.borderRadius =
-      new BorderRadiusModel({
-        topLeft: +radius,
-        topRight: +radius,
-        bottomLeft: +radius,
-        bottomRight: +radius,
-      });
+    this.containerElementModel!.style.borderRadius = new BorderRadiusModel({
+      topLeft: +radius,
+      topRight: +radius,
+      bottomLeft: +radius,
+      bottomRight: +radius,
+    });
   }
 }

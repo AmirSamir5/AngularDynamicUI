@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { BorderRadiusModel, EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
+import {
+  BorderRadiusModel,
+  EdgeInsetsModel,
+  StyleModel,
+} from 'src/app/models/style.model';
 import {
   ClickableConfiguration,
   DestinationScreenLookup,
@@ -9,6 +13,7 @@ import {
 } from 'src/app/models/widget.model';
 import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
+import { HelpersService } from 'src/app/services/helpers.service';
 
 @Component({
   selector: 'app-row-properties',
@@ -30,6 +35,10 @@ export class RowPropertiesComponent implements OnInit {
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
+    this.rowElementModel!.children = this.rowElementModel!.children!.slice();
+    this.rowElementModel!.style = HelpersService.deepCopy(
+      this.rowElementModel?.style
+    );
     AppEvents.EditRowElementEvent.subscribe(
       ({ make: itemList, name: index }) => {
         this.selectedElement = itemList;
@@ -46,11 +55,22 @@ export class RowPropertiesComponent implements OnInit {
   }
 
   onClickablChange() {
-    if (this.selectedElement!.widgetConfiguration === undefined){
+    if (this.selectedElement!.widgetConfiguration === undefined) {
       this.selectedElement!.widgetConfiguration = new WidgetConfiguration();
     }
-    if (this.selectedElement!.widgetConfiguration.clickableConfiguration === undefined){
-      this.selectedElement!.widgetConfiguration.clickableConfiguration = new ClickableConfiguration({});
+    if (
+      this.selectedElement!.widgetConfiguration.clickableConfiguration ===
+      undefined
+    ) {
+      this.selectedElement!.widgetConfiguration.clickableConfiguration =
+        new ClickableConfiguration({});
+    }
+    if (
+      this.selectedElement!.widgetConfiguration.clickableConfiguration!
+        .destination_screen_lookUp === undefined
+    ) {
+      this.selectedElement!.widgetConfiguration.clickableConfiguration!.destination_screen_lookUp =
+        new DestinationScreenLookup({ name: '', type: '' });
     }
     this.selectedElement!.widgetConfiguration!.clickableConfiguration!.isClickable =
       !this.selectedElement!.widgetConfiguration!.clickableConfiguration!
@@ -92,13 +112,12 @@ export class RowPropertiesComponent implements OnInit {
   getBorderRadiusValue(event) {
     var radius = event.target.value;
 
-    this.selectedElement!.style.borderRadius =
-      new BorderRadiusModel({
-        topLeft: +radius,
-        topRight: +radius,
-        bottomLeft: +radius,
-        bottomRight: +radius,
-      });
+    this.selectedElement!.style.borderRadius = new BorderRadiusModel({
+      topLeft: +radius,
+      topRight: +radius,
+      bottomLeft: +radius,
+      bottomRight: +radius,
+    });
   }
 
   onSelectText() {
@@ -133,7 +152,7 @@ export class RowPropertiesComponent implements OnInit {
       new WidgetModel({
         widget_type: AppConstants.WIDGET_COLUMN,
         name: 'Column',
-        style: new StyleModel({expanded:true}),
+        style: new StyleModel({ expanded: true }),
         children: [],
       })
     );

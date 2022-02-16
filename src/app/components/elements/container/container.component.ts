@@ -34,6 +34,27 @@ export class ContainerComponent implements OnInit {
     this.containerModel!.child!.children?.splice(index, 1);
   }
 
+  getItemRowspan(item: WidgetModel) {
+    var rowspan = 1;
+    if (item.name === 'Column') {
+      if (item.children?.length !== 0) {
+        return item.children?.length;
+      }
+      return 1;
+    } else if (item.name === 'Row') {
+      item.children!.forEach((element) => {
+        if (element.name === 'Column') {
+          if (element.children?.length !== 0) {
+            rowspan = element.children?.length!;
+          }
+          return 1;
+        }
+        return rowspan;
+      });
+    }
+    return rowspan;
+  }
+
   drag(event: CdkDragDrop<WidgetModel[]>) {
     console.log(
       event.container,

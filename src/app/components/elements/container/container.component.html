@@ -14,6 +14,7 @@
       cdkDrag
       *ngFor="let tile of containerModel!.child!.children!; let index = index"
       [colspan]="6"
+      [rowspan]="getItemRowspan(tile)"
       (click)="onRowSelected(tile, index); $event.stopPropagation()"
     >
       <app-row class="row" [row]="tile"></app-row>
