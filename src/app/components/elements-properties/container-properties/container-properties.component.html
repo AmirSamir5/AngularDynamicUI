@@ -55,7 +55,7 @@
       type="color"
       class="form-control"
       id="colorpicker"
-      [(ngModel)]="containerElementModel!.style.backgroundColor" 
+      [(ngModel)]="containerElementModel!.style.backgroundColor"
       name="colorpicker"
     />
   </label>
@@ -194,5 +194,5 @@
       "
     />
   </label>
-  <button class="btn btn-primary bottom" (click)="onSubmit()">Save</button>
+  <app-save-element [elementModel]="containerElementModel!"></app-save-element>
 </div>

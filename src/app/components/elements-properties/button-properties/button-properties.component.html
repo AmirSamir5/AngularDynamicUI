@@ -15,12 +15,12 @@
     placeholder="Enter Button API Code..."
   />
   <label>Height</label>
-    <input
+  <input
     type="number"
     class="form-control"
     [(ngModel)]="buttonItem!.style.height"
     placeholder="Enter Button Height..."
   />
- 
-  
+
+  <app-save-element [elementModel]="buttonItem!"></app-save-element>
 </div>

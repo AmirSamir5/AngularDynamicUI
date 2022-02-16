@@ -20,8 +20,13 @@
   />
   <label class="container-checkbox"
     >Required
-    <input type="checkbox" checked="checked" [(ngModel)]="isRequired" (change)="onRequiredChange()">
+    <input
+      type="checkbox"
+      checked="checked"
+      [(ngModel)]="isRequired"
+      (change)="onRequiredChange()"
+    />
     <span class="checkmark"></span>
   </label>
-  <hr class="rounded" />
+  <app-save-element [elementModel]="calendarElementModel!"></app-save-element>
 </div>
