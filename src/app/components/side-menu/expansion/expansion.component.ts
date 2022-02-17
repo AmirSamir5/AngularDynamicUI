@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SavedScreensComponent } from '../saved-screens/saved-screens.component';
 
 @Component({
   selector: 'app-expansion',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExpansionComponent implements OnInit {
   screensOpenState = false;
-  elementsOpenState = false;
+  @Input() title;
+  @Input() type :any;
   
   constructor() { }
 

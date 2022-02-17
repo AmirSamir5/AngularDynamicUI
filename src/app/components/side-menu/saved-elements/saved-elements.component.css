@@ -32,8 +32,10 @@
   align-items: center;
   justify-content: space-between;
 }
-h3 {
+h5 {
   margin: 16px;
+  color: white;
+  font-weight: 500;
 }
 
 .clearBtn {
