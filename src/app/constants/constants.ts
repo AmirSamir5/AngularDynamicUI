@@ -32,6 +32,7 @@ export class AppConstants {
   public static WIDGET_CENTER = 'WidgetType.center';
   public static WIDGET_COLUMN = 'WidgetType.column';
   public static WIDGET_SCROLLVIEW = 'WidgetType.scrollView';
+  public static WIDGET_ICON = 'WidgetType.icon';
 
   public static LOOKUP_LISTS = [
     // {
@@ -125,6 +126,44 @@ export class AppConstants {
     {
       name: 'Vertical',
       value: 'v',
+    },
+  ];
+
+  public static LIST_ICONS = [
+    {
+      codePoint: '0xf521',
+      iconName: 'account_box_rounded',
+      fontFamily: 'MaterialIcons',
+    },
+    {
+      codePoint: '0xe047',
+      iconName: 'add',
+      fontFamily: 'MaterialIcons',
+    },
+    {
+      codePoint: '0xe21a',
+      iconName: 'edit',
+      fontFamily: 'MaterialIcons',
+    },
+    {
+      codePoint: '0xe567',
+      iconName: 'search',
+      fontFamily: 'MaterialIcons',
+    },
+    {
+      codePoint: '0xe44f',
+      iconName: 'notifications',
+      fontFamily: 'MaterialIcons',
+    },
+    {
+      codePoint: '0xe402',
+      iconName: 'more_horiz',
+      fontFamily: 'MaterialIcons',
+    },
+    {
+      codePoint: '0xe404',
+      iconName: 'more_vert',
+      fontFamily: 'MaterialIcons',
     },
   ];
 }

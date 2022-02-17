@@ -1,14 +1,29 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { AppConstants } from 'src/app/constants/constants';
-import { BorderRadiusModel, EdgeInsetsModel, StyleModel } from 'src/app/models/style.model';
-import { ClickableConfiguration, DestinationScreenLookup, WidgetConfiguration, WidgetModel } from 'src/app/models/widget.model';
+import {
+  BorderRadiusModel,
+  EdgeInsetsModel,
+  StyleModel,
+} from 'src/app/models/style.model';
+import {
+  ClickableConfiguration,
+  DestinationScreenLookup,
+  WidgetConfiguration,
+  WidgetModel,
+} from 'src/app/models/widget.model';
 import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 
 @Component({
   selector: 'app-column-properties',
   templateUrl: './column-properties.component.html',
-  styleUrls: ['./column-properties.component.css']
+  styleUrls: ['./column-properties.component.css'],
 })
 export class ColumnPropertiesComponent implements OnInit {
   @Input() columnElementModel?: WidgetModel;
@@ -22,6 +37,7 @@ export class ColumnPropertiesComponent implements OnInit {
   textDirectionArr = AppConstants.TEXT_DIRECTION_LIST;
   varticalDirectionArr = AppConstants.VERTICAL_DIRECTION_LIST;
   clickablesArr = AppConstants.CLICKABLE_CONFIGURATION;
+  iconArr = AppConstants.LIST_ICONS;
 
   constructor(private elementService: ElementService) {}
 
@@ -37,17 +53,20 @@ export class ColumnPropertiesComponent implements OnInit {
   }
 
   onExpandedChange() {
-    this.selectedElement!.style.flex =
-      undefined;
+    this.selectedElement!.style.flex = undefined;
     this.selectedElement!.style.mainAxisAlignment = '';
   }
 
   onClickablChange() {
-    if (this.selectedElement!.widgetConfiguration === undefined){
+    if (this.selectedElement!.widgetConfiguration === undefined) {
       this.selectedElement!.widgetConfiguration = new WidgetConfiguration();
     }
-    if (this.selectedElement!.widgetConfiguration.clickableConfiguration === undefined){
-      this.selectedElement!.widgetConfiguration.clickableConfiguration = new ClickableConfiguration({});
+    if (
+      this.selectedElement!.widgetConfiguration.clickableConfiguration ===
+      undefined
+    ) {
+      this.selectedElement!.widgetConfiguration.clickableConfiguration =
+        new ClickableConfiguration({});
     }
     this.selectedElement!.widgetConfiguration!.clickableConfiguration!.isClickable =
       !this.selectedElement!.widgetConfiguration!.clickableConfiguration!
@@ -61,8 +80,7 @@ export class ColumnPropertiesComponent implements OnInit {
   }
 
   getFlexValue(event) {
-    this.selectedElement!!.style.expanded =
-      false;
+    this.selectedElement!!.style.expanded = false;
     this.selectedElement!.style.mainAxisAlignment = event.target.value;
   }
 
@@ -100,9 +118,9 @@ export class ColumnPropertiesComponent implements OnInit {
 
   onSelectText() {
     // this.checkConfiguration();
-    if(this.columnElementModel!.style.rowspan === undefined){
+    if (this.columnElementModel!.style.rowspan === undefined) {
       this.columnElementModel!.style.rowspan = 1;
-    }else{
+    } else {
       this.columnElementModel!.style.rowspan += 1;
     }
     this.columnElementModel!.children?.push(
@@ -114,9 +132,9 @@ export class ColumnPropertiesComponent implements OnInit {
   }
 
   onSelectButton() {
-    if(this.columnElementModel!.style.rowspan === undefined){
+    if (this.columnElementModel!.style.rowspan === undefined) {
       this.columnElementModel!.style.rowspan = 1;
-    }else{
+    } else {
       this.columnElementModel!.style.rowspan += 1;
     }
     this.columnElementModel!.children?.push(
@@ -128,9 +146,9 @@ export class ColumnPropertiesComponent implements OnInit {
   }
 
   onSelectImage() {
-    if(this.columnElementModel!.style.rowspan === undefined){
+    if (this.columnElementModel!.style.rowspan === undefined) {
       this.columnElementModel!.style.rowspan = 1;
-    }else{
+    } else {
       this.columnElementModel!.style.rowspan += 1;
     }
     this.columnElementModel!.children?.push(
@@ -139,5 +157,24 @@ export class ColumnPropertiesComponent implements OnInit {
         name: 'Image',
       })
     );
+  }
+
+  onSelectIcon() {
+    this.columnElementModel!.children?.push(
+      new WidgetModel({
+        widget_type: AppConstants.WIDGET_ICON,
+        name: 'Icon',
+      })
+    );
+  }
+
+  selectChange(event) {
+    var val = event.value;
+    this.iconArr.forEach((element) => {
+      if (element.iconName === val) {
+        this.selectedElement!.fontFamily = element.fontFamily;
+        this.selectedElement!.codePoint = element.codePoint;
+      }
+    });
   }
 }

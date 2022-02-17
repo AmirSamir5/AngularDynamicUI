@@ -25,6 +25,9 @@ export class WidgetModel {
   cell?: WidgetModel;
   cellProtoType?: string;
   apiCode?: string;
+  codePoint?: string;
+  fontFamily?: string;
+  iconName?: string;
 
   constructor({
     validations,

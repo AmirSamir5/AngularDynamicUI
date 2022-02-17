@@ -1,7 +1,7 @@
 <div class="col" *ngIf="showTitle">
   <label>Column</label>
 </div>
-  <div
+<div
   class="example-boundary col"
   cdkDropList
   [cdkDropListData]="columnModel?.children!"
@@ -23,15 +23,20 @@
       [rowspan]="tile.style.rowspan ?? 1"
       [style.background]="tile.style.backgroundColor ?? 'white'"
       [style.color]="tile.style.color ?? 'black'"
-      [style.width]="
-          tile.style.expanded ? '100%' : undefined
-      "
+      [style.width]="tile.style.expanded ? '100%' : undefined"
       [style.font-size.px]="tile.style.fontSize"
       [style.font-weight]="tile.style.fontWeight"
       [style.font-family]="tile.style.fontFamily"
       (click)="onElementClick(tile, index); $event.stopPropagation()"
     >
-    {{ tile.name }}
+      <div>
+        <mat-icon *ngIf="tile.iconName !== undefined">{{
+          tile.iconName
+        }}</mat-icon>
+        <div *ngIf="tile.iconName === undefined">
+          {{ tile.name }}
+        </div>
+      </div>
       <span class="close" (click)="removeElement(index)">&times;</span>
     </mat-grid-tile>
   </mat-grid-list>

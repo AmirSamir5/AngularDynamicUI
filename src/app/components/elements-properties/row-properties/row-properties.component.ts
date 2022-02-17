@@ -31,6 +31,7 @@ export class RowPropertiesComponent implements OnInit {
   textDirectionArr = AppConstants.TEXT_DIRECTION_LIST;
   varticalDirectionArr = AppConstants.VERTICAL_DIRECTION_LIST;
   clickablesArr = AppConstants.CLICKABLE_CONFIGURATION;
+  iconArr = AppConstants.LIST_ICONS;
 
   constructor(private elementService: ElementService) {}
 
@@ -147,6 +148,15 @@ export class RowPropertiesComponent implements OnInit {
     );
   }
 
+  onSelectIcon() {
+    this.rowElementModel!.children?.push(
+      new WidgetModel({
+        widget_type: AppConstants.WIDGET_ICON,
+        name: 'Icon',
+      })
+    );
+  }
+
   onSelectColumn() {
     this.rowElementModel!.children?.push(
       new WidgetModel({
@@ -156,5 +166,15 @@ export class RowPropertiesComponent implements OnInit {
         children: [],
       })
     );
+  }
+
+  selectChange(event) {
+    var val = event.value;
+    this.iconArr.forEach((element) => {
+      if (element.iconName === val) {
+        this.selectedElement!.fontFamily = element.fontFamily;
+        this.selectedElement!.codePoint = element.codePoint;
+      }
+    });
   }
 }

@@ -29,16 +29,16 @@
   min-height: 50px;
 }
 .item::-webkit-outer-spin-button,
-.item::-webkit-inner-spin-button{
+.item::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-.item{
+.item {
   margin-left: 2px;
   margin-right: 2px;
 }
 
-p{
+p {
   font-size: 14px;
   font-weight: 200;
 }
@@ -47,7 +47,7 @@ ul {
   list-style-type: none;
 }
 
-input::placeholder{
+input::placeholder {
   font-size: 14px;
   font-weight: 200;
 }
@@ -83,4 +83,9 @@ input::placeholder{
 select {
   width: 100%;
   margin-bottom: 5px;
+}
+mat-select {
+  background-color: white;
+  color: black;
+  border: 1px solid #666666;
 }

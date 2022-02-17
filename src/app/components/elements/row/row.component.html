@@ -30,12 +30,16 @@
         style="width: 100%"
       >
       </app-column>
+      <div *ngSwitchCase="'Icon'">
+        <mat-icon *ngIf="rowContent.iconName !== undefined">{{
+          rowContent.iconName
+        }}</mat-icon>
+        <div *ngIf="rowContent.iconName === undefined">
+          {{ rowContent.name }}
+        </div>
+      </div>
       <div *ngSwitchDefault="">
-        {{
-          rowContent.textDisplayed ??
-            rowContent.name
-        }}
-        
+        {{ rowContent.textDisplayed ?? rowContent.name }}
       </div>
       <span class="close" (click)="removeElement(index)">&times;</span>
     </div>

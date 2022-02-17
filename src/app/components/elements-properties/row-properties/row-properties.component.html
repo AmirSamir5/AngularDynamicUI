@@ -10,6 +10,9 @@
     <button class="btn btn-warning item-button" (click)="onSelectImage()">
       Image
     </button>
+    <button class="btn btn-warning item-button" (click)="onSelectIcon()">
+      Icon
+    </button>
     <button class="btn btn-light item-button" (click)="onSelectColumn()">
       Column
     </button>
@@ -27,7 +30,7 @@
     </option>
   </select>
 
-  <div *ngIf="selectedElement !== undefined">
+  <div *ngIf="selectedElement !== undefined && selectedElement.name !== 'Icon'">
     <div class="container">
       <div class="line"><mat-divider></mat-divider></div>
       <div class="text">Edit Element</div>
@@ -260,6 +263,19 @@
         />
       </label>
     </div>
+  </div>
+  <div *ngIf="selectedElement !== undefined && selectedElement.name === 'Icon'">
+    <div>
+      Icon: <mat-icon>{{ selectedElement.iconName }}</mat-icon>
+    </div>
+    <mat-select
+      [(ngModel)]="selectedElement.iconName"
+      (selectionChange)="selectChange($event)"
+    >
+      <mat-option *ngFor="let contact of iconArr" [value]="contact.iconName">
+        <mat-icon>{{ contact.iconName }}</mat-icon> {{ contact.codePoint }}
+      </mat-option>
+    </mat-select>
   </div>
   <app-save-element [elementModel]="rowElementModel!"></app-save-element>
 </div>
