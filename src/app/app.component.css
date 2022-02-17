@@ -31,7 +31,7 @@
 
   .content {
     display: flex;
-    margin: 70px auto 0px;
+    margin-top: 8px;
     padding: 0 16px;
     max-width: 100%;
     flex-direction: column;
