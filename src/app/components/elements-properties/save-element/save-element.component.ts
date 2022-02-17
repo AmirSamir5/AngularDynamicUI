@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { WidgetModel } from 'src/app/models/widget.model';
 
 @Component({
@@ -9,8 +10,13 @@ import { WidgetModel } from 'src/app/models/widget.model';
 export class SaveElementComponent implements OnInit {
   @Input() elementModel?: WidgetModel;
 
-  constructor() {}
-
+  constructor(private _snackBar: MatSnackBar) {}
+  
+    openSnackBar() {
+      let config = new MatSnackBarConfig();
+      config.duration = 3000;
+      this._snackBar.open('Element Saved Successfully!', 'OK',config);
+    }
   ngOnInit(): void {}
 
   onSubmit() {
@@ -30,6 +36,6 @@ export class SaveElementComponent implements OnInit {
     console.log('save elements widget model', this.elementModel);
     elements.push(this.elementModel!);
     localStorage.setItem('elements', JSON.stringify(elements, null, 4));
-    window.alert('Element Saved!');
+    this.openSnackBar();
   }
 }

@@ -3,6 +3,8 @@ import { ScreenModel, ScreenPages } from 'src/app/models/screen.model';
 import { WidgetModel } from 'src/app/models/widget.model';
 import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
+import { SavedElementsComponent } from './saved-elements/saved-elements.component';
+import { SavedScreensComponent } from './saved-screens/saved-screens.component';
 
 @Component({
   selector: 'app-side-menu',
@@ -11,6 +13,8 @@ import { ElementService } from 'src/app/services/element.service';
 })
 export class SideMenuComponent implements OnInit {
   width = '0%';
+  public savedScreens = SavedScreensComponent;
+  public savedElements = SavedElementsComponent;
 
   
   @HostListener('document:click', ['$event'])

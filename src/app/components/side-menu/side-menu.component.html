@@ -5,7 +5,8 @@
     <a class="closebtn" (click)="closeNav()">&times;</a>
   </div>
   
-  <app-expansion></app-expansion>
+  <app-expansion [title]="'Saved Screens'" [type]="savedScreens"></app-expansion>
+  <app-expansion [title]="'Saved Elements'"[type]="savedElements"></app-expansion>
   
 </div>
 <span class="hamburgerButton" (click)="openNav()">&#9776;</span>
