@@ -18,7 +18,6 @@
     </div>
   </div>
   <div class="example-boundary">
-    <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport"> -->
     <div
       class="example-list"
       cdkDropList
@@ -36,7 +35,7 @@
         <div class="item">
           <div [ngSwitch]="element.name">
             <div *ngSwitchCase="'Button'">
-              <app-button [title]="element.fieldTitle ?? 'Button'"></app-button>
+              <app-button [title]="element.fieldTitle ?? 'Button CTA'"></app-button>
             </div>
             <div *ngSwitchCase="'Dropdown'">
               <app-dropdown

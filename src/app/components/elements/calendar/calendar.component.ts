@@ -16,10 +16,10 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.title === undefined) {
-      this.title = 'Title';
+      this.title = 'Label';
     }
     if (this.hintText === undefined) {
-      this.hintText = 'Calendar';
+      this.hintText = 'Choose a date';
     }
   }
 }

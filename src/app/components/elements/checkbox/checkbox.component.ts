@@ -11,7 +11,7 @@ export class CheckboxComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.title === undefined) {
-      this.title = 'Checkbox';
+      this.title = 'Label';
     }
   }
 }

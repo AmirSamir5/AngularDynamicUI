@@ -1,16 +1,6 @@
 .dropdown{
-    border-color: black;
-    border-width: 1px;
-    color: black;
-}
-
-.dropdown .dropbtn {
-    cursor: pointer;
-    font-size: 16px;
-    font-family: inherit;
-    margin: 0;
-    height: 40px;
-    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
 }
 .arrow {
     border: solid black;
@@ -23,4 +13,9 @@
   .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+  }
+
+  label{
+    font-size: 12px;
+    font-weight: 500;
   }

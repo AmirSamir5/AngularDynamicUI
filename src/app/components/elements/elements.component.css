@@ -1,13 +1,39 @@
+cdk-virtual-scroll-viewport::-webkit-scrollbar
+{
+  width: 4px;
+  background-color: #F5F5F5;
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: 
+  #CCCCCC;
+}
 .example-viewport {
     height: 100%;
     width: 250px;
     border: 1px solid black;
     overflow-x: hidden;
     background-color: white;
+    
+  }
+
+  .title{
+    margin-left: 16px;
+    margin-top: 16px;
+    font-size: 20px;
+    font-weight: 700;
   }
   
   .example-item {
     margin: 16px;
+  }
+
+  .element {
+    padding: 3%;
+    background-color: #efefef;
+    border-radius: 2%;
   }
 
   p{

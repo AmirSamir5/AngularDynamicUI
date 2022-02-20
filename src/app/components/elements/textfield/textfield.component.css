@@ -7,3 +7,7 @@ input{
     width: 100%;
     text-align: center;
 }
+label{
+    font-size: 12px;
+    font-weight: 500;
+  }
