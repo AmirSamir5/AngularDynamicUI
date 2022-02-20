@@ -25,6 +25,7 @@
       class="form-control"
       placeholder="Enter screen lookup name"
       [(ngModel)]="screenProperty!.screenPages.page_name"
+      (change)="onAppbarChange()"
     />
   </label>
   <label>

@@ -1,75 +1,81 @@
-<div class="appbar" (click)="onAppbarPressed()">
-  <div>
+
+
+<h5 style="margin-top: 16px;">{{ screenName === '' ? 'Screen' : screenName ?? 'Screen'  }}</h5>
+<div class="content">
+  <div class="statusbar">
     <img
     width="92%"
-    [style.margin-top]="'4px'"
-    [attr.font-size]="80"
     alt="Mkento Logo"
     src="assets/svg/status-bar-light.svg"
     class="image"
     />
   </div>
-  <div>
-    <span >{{ title ?? 'Appbar Title' }}</span>
+  <div class="appbar" (click)="onAppbarPressed()">
+    <div class="appbar-title">
+      <div class="center">
+        {{ title ?? 'Appbar Title' }}
+      </div>
+    </div>
   </div>
-</div>
-<div class="example-boundary">
-  <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport"> -->
-  <div
-    class="example-list"
-    cdkDropList
-    [cdkDropListData]="selectedElements"
-    (cdkDropListDropped)="drag($event)"
-  >
+  <div class="example-boundary">
+    <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport"> -->
     <div
-      (click)="onClickElement(element, index)"
-      class="example-box"
-      cdkDrag
-      cdkDragBoundary=".example-boundary"
-      *ngFor="let element of selectedElements; let index = index"
+      class="example-list"
+      cdkDropList
+      [cdkDropListData]="selectedElements"
+      (cdkDropListDropped)="drag($event)"
     >
-      <span *ngIf="selectedElement === element">&#8594;</span>
-      <div class="item">
-        <div [ngSwitch]="element.name">
-          <div *ngSwitchCase="'Button'">
-            <app-button [title]="element.fieldTitle ?? 'Button'"></app-button>
-          </div>
-          <div *ngSwitchCase="'Dropdown'">
-            <app-dropdown
-              [title]="element.fieldTitle"
-              [hintText]="element.hint"
-            ></app-dropdown>
-          </div>
-          <div *ngSwitchCase="'Input Field'">
-            <app-textfield
-              [title]="element.fieldTitle"
-              [hintText]="element.hint"
-            ></app-textfield>
-          </div>
-          <div *ngSwitchCase="'List'">
-            <app-list [listModel]="element"></app-list>
-          </div>
-          <div *ngSwitchCase="'Column'">
-            <app-column [columnModel]="element"></app-column>
-          </div>
-          <div *ngSwitchCase="'Calendar'">
-            <app-calendar
-              [title]="element.fieldTitle"
-              [hintText]="element.hint"
-            ></app-calendar>
-          </div>
-          <div *ngSwitchCase="'Checkbox'">
-            <app-checkbox [title]="element.fieldTitle"></app-checkbox>
-          </div>
-          <div *ngSwitchCase="'Row'">
-            <app-row [row]="element"> </app-row>
-          </div>
-          <div *ngSwitchCase="'Container'">
-            <app-container [containerModel]="element"></app-container>
+      <div
+        (click)="onClickElement(element, index)"
+        class="example-box"
+        cdkDrag
+        cdkDragBoundary=".example-boundary"
+        *ngFor="let element of selectedElements; let index = index"
+      >
+        <span *ngIf="selectedElement === element">&#8594;</span>
+        <div class="item">
+          <div [ngSwitch]="element.name">
+            <div *ngSwitchCase="'Button'">
+              <app-button [title]="element.fieldTitle ?? 'Button'"></app-button>
+            </div>
+            <div *ngSwitchCase="'Dropdown'">
+              <app-dropdown
+                [title]="element.fieldTitle"
+                [hintText]="element.hint"
+              ></app-dropdown>
+            </div>
+            <div *ngSwitchCase="'Input Field'">
+              <app-textfield
+                [title]="element.fieldTitle"
+                [hintText]="element.hint"
+              ></app-textfield>
+            </div>
+            <div *ngSwitchCase="'List'">
+              <app-list [listModel]="element"></app-list>
+            </div>
+            <div *ngSwitchCase="'Column'">
+              <app-column [columnModel]="element"></app-column>
+            </div>
+            <div *ngSwitchCase="'Calendar'">
+              <app-calendar
+                [title]="element.fieldTitle"
+                [hintText]="element.hint"
+              ></app-calendar>
+            </div>
+            <div *ngSwitchCase="'Checkbox'">
+              <app-checkbox [title]="element.fieldTitle"></app-checkbox>
+            </div>
+            <div *ngSwitchCase="'Row'">
+              <app-row [row]="element"> </app-row>
+            </div>
+            <div *ngSwitchCase="'Container'">
+              <app-container [containerModel]="element"></app-container>
+            </div>
           </div>
         </div>
+        <span class="close" (click)="removeElement(index)">&times;</span>
       </div>
-      <span class="close" (click)="removeElement(index)">&times;</span>
     </div>
   </div>
 </div>
+

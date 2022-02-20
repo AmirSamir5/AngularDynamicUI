@@ -12,6 +12,7 @@ import { ElementService } from 'src/app/services/element.service';
 export class DraggableComponentComponent implements OnInit {
   height = 350;
   title?: string;
+  screenName?: string;
   i = 0;
   selectedElements: WidgetModel[] = [];
   selectedElement?: WidgetModel;
@@ -30,7 +31,8 @@ export class DraggableComponentComponent implements OnInit {
     );
     AppEvents.onScreenSelectEvent.subscribe(
       (screen) => {
-        this.title = screen.screen_name!;
+        this.title = screen.screen_name;
+        this.screenName = this.elementService.screenModel.screenPages.page_name;
       }
     );
   }

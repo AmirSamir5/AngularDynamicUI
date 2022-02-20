@@ -4,15 +4,12 @@
 <div class="content" role="main">
   <!-- Resources -->
   
-  <h2>Design Your Screen</h2>
-  <p>Drag and drop elements to format your json</p>
+  <div class="flex-container">
+   <app-elements></app-elements>
    <div class="flex-container">
       <div>
-         <app-elements></app-elements>
-      </div>
-      <div>
          <app-draggable-component></app-draggable-component>
-         <div class="row">
+         <!-- <div class="row">
             <button type="button" (click)="onGenerateJSON()" class="btn btn-warning generateButton">
                <span
                class="glyphicon glyphicon-ok">
@@ -24,12 +21,12 @@
                class="glyphicon glyphicon-save">
             </span> Save Screen
          </button>
-         </div>
-         <app-footer></app-footer>
-      </div>
-      <div>
-      <app-elements-properties></app-elements-properties>
+         </div> -->
+         
       </div>
    </div>
+   <app-elements-properties></app-elements-properties>
+  </div>
+   
   
 </div>
