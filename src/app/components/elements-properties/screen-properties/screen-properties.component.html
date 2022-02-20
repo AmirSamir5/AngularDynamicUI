@@ -37,4 +37,25 @@
       [(ngModel)]="screenProperty!.screen_id"
     />
   </label>
+  <div class="row">
+    <label> AppBar Actions </label>
+    <div class="example-button-container">
+      <button
+        mat-button
+        color="white"
+        class="my-fab"
+        (click)="onAddActionItem()"
+      >
+        <mat-icon class="my-icon">add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div *ngFor="let item of actionItems">
+    <mat-icon>{{ item.iconName }}</mat-icon>
+    {{
+      item.widgetConfiguration?.clickableConfiguration?.apiCode ??
+        item.widgetConfiguration?.clickableConfiguration
+          ?.destination_screen_lookUp?.name
+    }}
+  </div>
 </div>

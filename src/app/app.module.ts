@@ -50,6 +50,7 @@ import { SaveElementComponent } from './components/elements-properties/save-elem
 import { ExpansionComponent } from './components/side-menu/expansion/expansion.component';
 import { SavedScreensComponent } from './components/side-menu/saved-screens/saved-screens.component';
 import { SavedElementsComponent } from './components/side-menu/saved-elements/saved-elements.component';
+import { AddEditActionItemComponent } from './components/dialogs/add-edit-action-item/add-edit-action-item.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { SavedElementsComponent } from './components/side-menu/saved-elements/sa
     ExpansionComponent,
     SavedScreensComponent,
     SavedElementsComponent,
+    AddEditActionItemComponent,
   ],
   imports: [
     BrowserModule,
