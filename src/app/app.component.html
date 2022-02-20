@@ -3,30 +3,29 @@
 <app-navbar></app-navbar>
 <div class="content" role="main">
   <!-- Resources -->
-  
+
   <div class="flex-container">
-   <app-elements></app-elements>
-   <div class="flex-container">
+    <app-elements></app-elements>
+    <div class="flex-container">
       <div>
-         <app-draggable-component></app-draggable-component>
-         <!-- <div class="row">
-            <button type="button" (click)="onGenerateJSON()" class="btn btn-warning generateButton">
-               <span
-               class="glyphicon glyphicon-ok">
-            </span>
-                Generate Screen
-            </button>
+        <app-draggable-component></app-draggable-component>
+        <button
+          type="button"
+          (click)="onGenerateJSON()"
+          class="btn btn-warning generateButton"
+        >
+          <span class="glyphicon glyphicon-ok"> </span>
+          Generate Screen
+        </button>
+        <!-- <div class="row">
             <button type="button" (click)="onSaveScreen()" class="btn btn-primary saveButton">
                <span
                class="glyphicon glyphicon-save">
             </span> Save Screen
          </button>
          </div> -->
-         
       </div>
-   </div>
-   <app-elements-properties></app-elements-properties>
+    </div>
+    <app-elements-properties></app-elements-properties>
   </div>
-   
-  
 </div>
