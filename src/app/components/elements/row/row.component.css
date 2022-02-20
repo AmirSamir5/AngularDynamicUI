@@ -1,7 +1,9 @@
 .example-boundary {
-  min-width: 200px;
-  border: dotted #ccc 2px;
+  min-width: 100%;
+  border-radius: 2%;
   min-height: 50px;
+  background-color: white;
+  border: 1px solid black;
 }
 
 .row {
@@ -23,4 +25,8 @@
 .close {
   top: 2px;
   right: 2px;
+}
+
+.form-control{
+  margin: 4%;
 }

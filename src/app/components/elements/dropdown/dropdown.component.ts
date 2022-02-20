@@ -12,10 +12,10 @@ export class DropdownComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.title === undefined) {
-      this.title = 'Title';
+      this.title = 'Label';
     }
     if (this.hintText === undefined) {
-      this.hintText = 'Dropdown';
+      this.hintText = 'Select Item';
     }
   }
 }

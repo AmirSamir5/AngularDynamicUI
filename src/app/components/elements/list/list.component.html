@@ -1,7 +1,5 @@
-<div class="col">
-  <label>List</label>
-</div>
 <div class="example-boundary">
+  
   <mat-grid-list
     cols="6"
     rowHeight="80px"
@@ -10,10 +8,14 @@
     cdkDragBoundary=".example-boundary"
     (cdkDropListDropped)="drag($event)"
   >
+  <div *ngIf="listModel?.cell?.children === null">
+    <mat-grid-tile [colspan]="6" class="form-control"></mat-grid-tile>
+  </div>
     <mat-grid-tile
       cdkDrag
       *ngFor="let tile of listModel?.cell?.children!; let index = index"
       [colspan]="6"
+      [rowspan]="getItemRowspan(tile)"
       [ngSwitch]="tile.name"
       (click)="onRowSelected(tile, index); $event.stopPropagation()"
     >

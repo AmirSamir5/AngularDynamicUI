@@ -12,8 +12,17 @@ export const elements: WidgetModel[] = [
     name: 'Input Field',
   }),
   new WidgetModel({
+    widget_type: AppConstants.WIDGET_CALENDAR,
+    widgetConfiguration: { DateFormat: 'single date' },
+    name: 'Calendar',
+  }),
+  new WidgetModel({
     widget_type: AppConstants.WIDGET_SUBMIT_BUTTON,
     name: 'Button',
+  }),
+  new WidgetModel({
+    widget_type: AppConstants.WIDGET_CHECKBOX,
+    name: 'Checkbox',
   }),
   new WidgetModel({
     widget_type: AppConstants.WIDGET_LIST,
@@ -32,15 +41,6 @@ export const elements: WidgetModel[] = [
     widget_type: AppConstants.WIDGET_COLUMN,
     name: 'Column',
     children: [],
-  }),
-  new WidgetModel({
-    widget_type: AppConstants.WIDGET_CALENDAR,
-    widgetConfiguration: { DateFormat: 'single date' },
-    name: 'Calendar',
-  }),
-  new WidgetModel({
-    widget_type: AppConstants.WIDGET_CHECKBOX,
-    name: 'Checkbox',
   }),
   new WidgetModel({
     widget_type: AppConstants.WIDGET_CONTAINER,

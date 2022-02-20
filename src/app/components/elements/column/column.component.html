@@ -1,6 +1,3 @@
-<div class="col" *ngIf="showTitle">
-  <label>Column</label>
-</div>
 <div
   class="example-boundary col"
   cdkDropList
@@ -8,10 +5,15 @@
   cdkDragBoundary=".example-boundary"
   (cdkDropListDropped)="drag($event)"
 >
+  <div style="margin: 8px;" *ngIf="columnModel?.children === null">
+    <div class="form-control"></div>
+    <div style="margin-top: 2px;" class="form-control"></div>
+  </div>
   <mat-grid-list
     cols="6"
     rowHeight="50px"
     cdkDropList
+    *ngIf="columnModel?.children !== null && columnModel?.children?.length !== 0 "
     [cdkDropListData]="columnModel?.children!"
     cdkDragBoundary=".example-boundary"
     (cdkDropListDropped)="drag($event)"

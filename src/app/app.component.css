@@ -1,5 +1,5 @@
 :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",Avenir, Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 14px;
     color: #333;
     box-sizing: border-box;
@@ -24,18 +24,29 @@
     flex: 1;
   }
 
+  cdk-virtual-scroll-viewport::-webkit-scrollbar
+{
+  width: 4px;
+  background-color: #F5F5F5;
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: 
+  #CCCCCC;
+}
+
   .container{
     margin-top: 32px;
     width: 100%;
   }
 
   .content {
-    display: flex;
-    height: 100%;
+    height: 92%;
     max-width: 100%;
     flex-direction: column;
     align-items: center;
-    background-color: #efefef;
   }
   
   .flex-container {
@@ -45,31 +56,14 @@
     justify-content: space-evenly;
   }
 
-  .generateButton{
-    margin-top: 16px;
-    margin-right: 4px;
-    padding:16px;
-    font-size: 18px;
+  .draggable-container{
+    display: flex;
     width: 100%;
-    cursor: pointer;
-    transition: 0.5s ease-out;
-    background-color: black;
-  }
-  .saveButton{
-    margin-top: 16px;
-    margin-left: 4px;
-    padding:16px;
-    font-size: 18px;
-    width: 100%;
-    cursor: pointer;
-    transition: 0.5s ease-out;
-    background-color: #116530;
+    background-color: #efefef;
+    justify-content: space-evenly;
   }
 
-  .saveButton:hover, .generateButton:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  }
+  
 
   .row {
     display: flex;

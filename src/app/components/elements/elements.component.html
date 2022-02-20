@@ -1,11 +1,14 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-  <div><p>Select screen elements</p></div>
+  <label class="title">Vericash Library</label>
   <div
     *cdkVirtualFor="let item of items"
     class="example-item"
     (click)="elementOnClick(item)"
   >
-    <div [ngSwitch]="item.name">
+  <label>
+    {{ getItemName(item.name) }}
+  </label>
+    <div [ngSwitch]="item.name" class="element">
       <div *ngSwitchCase="'Button'">
         <app-button></app-button>
       </div>

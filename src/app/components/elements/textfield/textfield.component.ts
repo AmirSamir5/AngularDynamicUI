@@ -12,10 +12,10 @@ export class TextfieldComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.hintText === undefined) {
-      this.hintText = 'Input Field';
+      this.hintText = 'Placeholder';
     }
     if (this.title === undefined) {
-      this.title = 'Title';
+      this.title = 'Label';
     }
   }
 }
