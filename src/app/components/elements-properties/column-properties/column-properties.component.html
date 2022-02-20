@@ -272,6 +272,109 @@
         <mat-icon>{{ contact.iconName }}</mat-icon> {{ contact.codePoint }}
       </mat-option>
     </mat-select>
+    <div>
+      <label class="container-checkbox"
+        >Clickable
+        <input
+          type="checkbox"
+          [value]="
+            this.selectedElement!.widgetConfiguration?.clickableConfiguration
+              ?.isClickable ?? false
+          "
+          (change)="onClickablChange()"
+        />
+        <span class="checkmark"></span>
+      </label>
+
+      <label
+        *ngIf="
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable
+        "
+        >Clickable Type
+
+        <select
+          *ngIf="
+            this.selectedElement!.widgetConfiguration?.clickableConfiguration
+              ?.isClickable
+          "
+          [(ngModel)]="
+            (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type
+          "
+        >
+          <option [value]="item.value" *ngFor="let item of clickablesArr">
+            {{ item.name }}
+          </option>
+        </select>
+      </label>
+      <label
+        *ngIf="
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable &&
+          selectedElement!.widgetConfiguration?.clickableConfiguration?.type ===
+            'ClickableConfigurationType.callApi'
+        "
+        >API Code
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter API Code"
+          [(ngModel)]="
+            (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+              .apiCode
+          "
+        />
+      </label>
+      <label
+        *ngIf="
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable &&
+          (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+            .type === 'ClickableConfigurationType.redirect'
+        "
+        >Destination Screen Name
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Destination Screen Name"
+          [(ngModel)]="
+            (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+              .destination_screen_lookUp!.name
+          "
+        />
+      </label>
+      <label
+        *ngIf="
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable &&
+          (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+            .type === 'ClickableConfigurationType.redirect'
+        "
+        >Destination Screen Type
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Destination Screen Type"
+          [(ngModel)]="
+            (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+              .destination_screen_lookUp!.type
+          "
+        />
+      </label>
+      <label
+        *ngIf="
+          this.selectedElement!.widgetConfiguration?.clickableConfiguration
+            ?.isClickable
+        "
+        >Passed Keys
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Destination Screen Name"
+          (input)="onPassedKeys($event)"
+        />
+      </label>
+    </div>
   </div>
   <app-save-element [elementModel]="columnElementModel!"></app-save-element>
 </div>
