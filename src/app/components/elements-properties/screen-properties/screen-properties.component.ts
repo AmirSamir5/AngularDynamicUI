@@ -17,7 +17,6 @@ import { JsonResultDialogComponent } from '../../json-result-dialog/json-result-
 })
 export class ScreenPropertiesComponent implements OnInit {
   screenProperty?: ScreenModel;
-  actionItems: Array<WidgetModel> = [];
 
   constructor(
     private elementService: ElementService,
@@ -43,7 +42,7 @@ export class ScreenPropertiesComponent implements OnInit {
   }
 
   onAddActionItem() {
-    this.actionItems.push({
+    this.screenProperty?.appBarActions.push({
       name: 'Icon',
       iconName: 'add',
       style: {},
@@ -55,8 +54,10 @@ export class ScreenPropertiesComponent implements OnInit {
       },
     });
     const dialogRef = this.dialog.open(AddEditActionItemComponent, {
-      width: '50%',
-      data: this.actionItems[this.actionItems.length - 1],
+      width: '30%',
+      data: this.screenProperty?.appBarActions[
+        this.screenProperty?.appBarActions.length - 1
+      ],
     });
   }
   openSnackBar() {

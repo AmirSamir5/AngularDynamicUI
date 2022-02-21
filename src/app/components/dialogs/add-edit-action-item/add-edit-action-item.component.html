@@ -1,8 +1,7 @@
-<div class="container">
-  <div class="col-lg-6">
-    <div>
-      Icon: <mat-icon>{{ selectedElement.iconName }}</mat-icon>
-    </div>
+<div class="col">
+  <div class="row justify-content-center">
+    <label> Icon: </label>
+    <mat-icon>{{ selectedElement.iconName }}</mat-icon>
     <mat-select
       [(ngModel)]="selectedElement.iconName"
       (selectionChange)="selectChange($event)"
@@ -11,74 +10,80 @@
         <mat-icon>{{ icon.iconName }}</mat-icon> {{ icon.codePoint }}
       </mat-option>
     </mat-select>
-    <label
-      >Clickable Type
-      <select
-        [(ngModel)]="
-          (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type
-        "
-      >
-        <option [value]="item.value" *ngFor="let item of clickablesArr">
-          {{ item.name }}
-        </option>
-      </select>
-    </label>
-    <label
-      *ngIf="
-        selectedElement!.widgetConfiguration?.clickableConfiguration?.type ===
-        'ClickableConfigurationType.callApi'
+  </div>
+  <div class="row">
+    <label>Clickable Type </label>
+    <mat-select
+      [(ngModel)]="
+        (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type
       "
-      >API Code
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter API Code"
-        [(ngModel)]="
-          (selectedElement!.widgetConfiguration?.clickableConfiguration)!
-            .apiCode
-        "
-      />
-    </label>
-    <label
-      *ngIf="
-        (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type ===
-        'ClickableConfigurationType.redirect'
+      (selectionChange)="selectClickableChange($event)"
+    >
+      <mat-option [value]="item.value" *ngFor="let item of clickablesArr">
+        {{ item.name }}
+      </mat-option>
+    </mat-select>
+  </div>
+  <div
+    class="row"
+    *ngIf="
+      selectedElement!.widgetConfiguration?.clickableConfiguration?.type ===
+      'ClickableConfigurationType.callApi'
+    "
+  >
+    <label>API Code </label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter API Code"
+      [(ngModel)]="
+        (selectedElement!.widgetConfiguration?.clickableConfiguration)!.apiCode
       "
-      >Destination Screen Name
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter Destination Screen Name"
-        [(ngModel)]="
-          (selectedElement!.widgetConfiguration?.clickableConfiguration)!
-            .destination_screen_lookUp!.name
-        "
-      />
-    </label>
-    <label
-      *ngIf="
-        (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type ===
-        'ClickableConfigurationType.redirect'
+    />
+  </div>
+  <div
+    class="row"
+    *ngIf="
+      (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type ===
+      'ClickableConfigurationType.redirect'
+    "
+  >
+    <label>Destination Screen Name </label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Destination Screen Name"
+      [(ngModel)]="
+        (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+          .destination_screen_lookUp!.name
       "
-      >Destination Screen Type
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter Destination Screen Type"
-        [(ngModel)]="
-          (selectedElement!.widgetConfiguration?.clickableConfiguration)!
-            .destination_screen_lookUp!.type
-        "
-      />
-    </label>
-    <label
-      >Passed Keys
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter Destination Screen Name"
-        (input)="onPassedKeys($event)"
-      />
-    </label>
+    />
+  </div>
+  <div
+    class="row"
+    *ngIf="
+      (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type ===
+      'ClickableConfigurationType.redirect'
+    "
+  >
+    <label>Destination Screen Type </label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Destination Screen Type"
+      [(ngModel)]="
+        (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+          .destination_screen_lookUp!.type
+      "
+    />
+  </div>
+  <div class="row">
+    <label>Passed Keys </label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Destination Screen Name"
+      (input)="onPassedKeys($event)"
+    />
   </div>
 </div>

@@ -5,6 +5,7 @@ export class ScreenModel {
   public screen_name?: string;
   public screen_id?: number;
   public screenPages: ScreenPages = new ScreenPages('', []);
+  public appBarActions: WidgetModel[] = [];
   constructor({
     screen_name,
     screen_id,
