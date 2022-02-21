@@ -17,6 +17,7 @@
       [(ngModel)]="
         (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type
       "
+      (selectionChange)="selectClickableChange($event)"
     >
       <mat-option [value]="item.value" *ngFor="let item of clickablesArr">
         {{ item.name }}

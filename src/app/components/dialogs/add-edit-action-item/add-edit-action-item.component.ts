@@ -31,4 +31,12 @@ export class AddEditActionItemComponent implements OnInit {
       }
     });
   }
+
+  selectClickableChange(event) {
+    var val = event.value;
+    this.selectedElement.widgetConfiguration!.clickableConfiguration = {
+      type: val,
+      destination_screen_lookUp: {},
+    };
+  }
 }

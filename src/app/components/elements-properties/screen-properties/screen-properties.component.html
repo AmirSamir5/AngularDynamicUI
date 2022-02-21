@@ -50,7 +50,7 @@
       </button>
     </div>
   </div>
-  <div *ngFor="let item of actionItems">
+  <div *ngFor="let item of screenProperty?.appBarActions">
     <mat-icon>{{ item.iconName }}</mat-icon>
     {{
       item.widgetConfiguration?.clickableConfiguration?.apiCode ??
