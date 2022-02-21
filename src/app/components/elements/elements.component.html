@@ -1,19 +1,17 @@
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-  <div style="margin-top: 8px;"></div>
-  <app-saved-screens></app-saved-screens>
+  <app-side-menu></app-side-menu>
   <hr class="rounded" />
   <mat-accordion>
     <mat-expansion-panel class="mat-elevation-z0" [expanded]="screensOpenState">
       <mat-expansion-panel-header class="specific-class">
         <mat-panel-description>
-          <h4 class="title">Vericash Library</h4>
+          <label class="title">Vericash Library</label>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div
     *cdkVirtualFor="let item of items"
     class="example-item"
-    (click)="elementOnClick(item)"
-  >
+    (click)="elementOnClick(item)">
   <label>
     {{ getItemName(item.name) }}
   </label>
@@ -47,7 +45,7 @@
       </div>
     </div>
     <!-- <ng-container *ngComponentOutlet="item.type" ></ng-container> -->
-    <hr class="rounded" />
+    <hr class="rounded" style="margin: 16px 0;" />
       </div>
     </mat-expansion-panel>
   </mat-accordion>

@@ -7,8 +7,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar
 cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb
 {
   border-radius: 10px;
-  background-color: 
-  #CCCCCC;
+  background-color: #CCCCCC;
 }
 .example-viewport {
     height: 100%;
@@ -17,6 +16,12 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb
     overflow-x: hidden;
     background-color: white;
     
+  }
+
+  .title{
+    font-size: 18px;
+    font-weight: 800;
+    color: black;
   }
 
   /* .title{
@@ -46,6 +51,9 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb
   hr.rounded {
     border-top: 1px solid #bbb;
     border-radius: 5px;
+    border-color: #CCCCCC;
+    margin-top: 8px;
+    margin-bottom: 8px;
   }
 
   mat-accordion{
@@ -68,4 +76,9 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb
 
   hr{
     border-width: 1px;
+  }
+
+  label{
+    font-size: 13px;
+    font-weight: 450;
   }

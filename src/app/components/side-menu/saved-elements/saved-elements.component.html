@@ -1,11 +1,11 @@
 <div class="sidenav">
-  <div *ngIf="this.elements.length !== 0">
+<div *ngIf="this.elements.length !== 0">
     <div *ngFor="let element of elements; let index = index">
       <div class="row">
-        <a class="col-lg-6" (click)="onItemClick(element)">
+        <a (click)="onItemClick(element)">
           {{ element.name }}
         </a>
-        <div style="background-color: black" (click)="onItemDelete(index)">
+        <div (click)="onItemDelete(index)">
           <span class="glyphicon glyphicon-trash"></span>
         </div>
         <div style="height: 50px"></div>
