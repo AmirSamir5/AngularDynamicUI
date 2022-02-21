@@ -50,13 +50,31 @@
       </button>
     </div>
   </div>
-  <div *ngFor="let item of screenProperty?.appBarActions">
-    <mat-icon>{{ item.iconName }}</mat-icon>
-    {{
-      item.widgetConfiguration?.clickableConfiguration?.apiCode ??
-        item.widgetConfiguration?.clickableConfiguration
-          ?.destination_screen_lookUp?.name
-    }}
+  <div *ngFor="let item of screenProperty?.appBarActions; let index = index">
+    <div class="row justify-content-start">
+      <mat-icon>{{ item.iconName }}</mat-icon>
+      {{
+        item.widgetConfiguration?.clickableConfiguration?.apiCode ??
+          item.widgetConfiguration?.clickableConfiguration
+            ?.destination_screen_lookUp?.name
+      }}
+      <button
+        mat-button
+        color="white"
+        class="my-fab"
+        (click)="onEditAppbarAction(index)"
+      >
+        <mat-icon class="my-icon" color="red">edit</mat-icon>
+      </button>
+      <button
+        mat-button
+        color="red"
+        class="my-fab delete"
+        (click)="onDeleteAppbarAction(index)"
+      >
+        <mat-icon class="my-icon">delete</mat-icon>
+      </button>
+    </div>
   </div>
   <div class="row">
     <div>

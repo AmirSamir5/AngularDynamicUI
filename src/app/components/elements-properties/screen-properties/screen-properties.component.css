@@ -40,6 +40,9 @@ label {
   width: 24px;
   height: 24px;
 }
+.delete .my-fab {
+  background-color: red;
+}
 .my-icon {
   font-size: 16px;
   margin-top: -7px;

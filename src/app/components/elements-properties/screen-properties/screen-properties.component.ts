@@ -201,4 +201,16 @@ export class ScreenPropertiesComponent implements OnInit {
       });
     }
   }
+
+  onDeleteAppbarAction(index: number) {
+    console.log(index);
+    this.screenProperty?.appBarActions.splice(index, 1)!;
+  }
+
+  onEditAppbarAction(index: number) {
+    const dialogRef = this.dialog.open(AddEditActionItemComponent, {
+      width: '30%',
+      data: this.screenProperty?.appBarActions[index],
+    });
+  }
 }
