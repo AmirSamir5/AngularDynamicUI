@@ -7,7 +7,7 @@ import { SavedScreensComponent } from '../saved-screens/saved-screens.component'
   styleUrls: ['./expansion.component.css']
 })
 export class ExpansionComponent implements OnInit {
-  screensOpenState = false;
+  screensOpenState = true;
   @Input() title;
   @Input() type :any;
   

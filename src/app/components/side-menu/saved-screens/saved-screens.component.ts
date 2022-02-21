@@ -6,15 +6,16 @@ import { ElementService } from 'src/app/services/element.service';
 @Component({
   selector: 'app-saved-screens',
   templateUrl: './saved-screens.component.html',
-  styleUrls: ['./saved-screens.component.css']
+  styleUrls: ['./saved-screens.component.css'],
 })
 export class SavedScreensComponent implements OnInit {
-
+  screensOpenState = true;
   screens: Array<ScreenModel> = [];
-  
-  constructor(private elementService: ElementService) { }
+
+  constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
+    this.screensOpenState = this.screens.length === 0 ? false : true;
     AppEvents.openNavEvent.subscribe(() => {
       if (localStorage.getItem('screens') !== null) {
         this.screens = JSON.parse(localStorage.getItem('screens')!);
@@ -42,7 +43,7 @@ export class SavedScreensComponent implements OnInit {
     );
   }
 
-  closeNav(){
+  closeNav() {
     AppEvents.closeNavEvent.emit();
   }
 
@@ -63,5 +64,4 @@ export class SavedScreensComponent implements OnInit {
       this.screens.splice(0, this.screens.length);
     }
   }
-
 }

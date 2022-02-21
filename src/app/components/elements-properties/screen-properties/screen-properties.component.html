@@ -58,22 +58,24 @@
           ?.destination_screen_lookUp?.name
     }}
   </div>
-  <div>
-    <button
-      type="button"
-      (click)="onGenerateJSON()"
-      class="btn btn-danger generateButton"
-    >
-      <span class="glyphicon glyphicon-file"> </span> Generate Screen JSON
-    </button>
-  </div>
-  <div>
-    <button
-      type="button"
-      (click)="onSaveScreen()"
-      class="btn btn-primary saveButton"
-    >
-      <span class="glyphicon glyphicon-save"> </span> Save
-    </button>
+  <div class="row">
+    <div>
+      <button
+        type="button"
+        (click)="onGenerateJSON()"
+        class="btn btn-danger generateButton"
+      >
+        <span class="glyphicon glyphicon-file"> </span> Generate Screen JSON
+      </button>
+    </div>
+    <div>
+      <button
+        type="button"
+        (click)="onSaveScreen()"
+        class="btn btn-primary saveButton"
+      >
+        <span class="glyphicon glyphicon-save"> </span> Save
+      </button>
+    </div>
   </div>
 </div>

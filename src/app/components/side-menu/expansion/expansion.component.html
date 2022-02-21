@@ -1,6 +1,5 @@
 <mat-accordion>
-    <mat-expansion-panel (opened)="screensOpenState = true"
-                         (closed)="screensOpenState = false">
+    <mat-expansion-panel class="mat-elevation-z0" [expanded]="screensOpenState">
       <mat-expansion-panel-header class="specific-class">
         <mat-panel-description>
           <h4>{{ title }}</h4>

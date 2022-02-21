@@ -1,0 +1,27 @@
+.user-image{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.row {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    vertical-align: middle;
+    align-items: center;
+    min-height: 40px;
+    margin: 8px;
+  }
+  .col{
+      margin-right: 8px;
+      text-align: end;
+  }
+
+  h6{
+      font-weight: 350;
+  }
+
+  h5{
+      font-weight: 600;
+  }

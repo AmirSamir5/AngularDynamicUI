@@ -19,7 +19,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb
     
   }
 
-  .title{
+  /* .title{
     margin-left: 16px;
     margin-top: 16px;
     font-size: 20px;
@@ -28,7 +28,7 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb
   
   .example-item {
     margin: 16px;
-  }
+  } */
 
   .element {
     padding: 3%;
@@ -36,14 +36,36 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb
     border-radius: 2%;
   }
 
-  p{
+  /* p{
     align-items: center;
     font-size: 18px;
     margin: 16px;
     margin-left: 13%;
     font-weight: 450;
-  }
+  } */
   hr.rounded {
     border-top: 1px solid #bbb;
     border-radius: 5px;
+  }
+
+  mat-accordion{
+    background-color: white;
+  }
+
+  mat-expansion-panel{
+    background-color: white;
+  }
+
+
+  ::ng-deep .specific-class > .mat-expansion-indicator:after {
+    color: black;
+  }
+
+  h3,h4{
+    color: black;
+    font-weight: 800;
+  }
+
+  hr{
+    border-width: 1px;
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WidgetModel } from 'src/app/models/widget.model';
 import { ElementService } from 'src/app/services/element.service';
+import { SavedScreensComponent } from '../side-menu/saved-screens/saved-screens.component';
 
 @Component({
   selector: 'app-elements',
@@ -9,6 +10,7 @@ import { ElementService } from 'src/app/services/element.service';
 })
 export class ElementsComponent implements OnInit {
   readonly items: WidgetModel[] = [...this.elementService.getElements()];
+  screensOpenState = true;
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {}
