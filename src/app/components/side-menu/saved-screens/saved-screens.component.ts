@@ -9,13 +9,13 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./saved-screens.component.css'],
 })
 export class SavedScreensComponent implements OnInit {
-  screensOpenState = true;
+  
   screens: Array<ScreenModel> = [];
 
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    this.screensOpenState = this.screens.length === 0 ? false : true;
+    this.screens = JSON.parse(localStorage.getItem('screens')!) ?? [];
     AppEvents.openNavEvent.subscribe(() => {
       if (localStorage.getItem('screens') !== null) {
         this.screens = JSON.parse(localStorage.getItem('screens')!);

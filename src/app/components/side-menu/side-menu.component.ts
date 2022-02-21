@@ -5,7 +5,12 @@ import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 import { SavedElementsComponent } from './saved-elements/saved-elements.component';
 import { SavedScreensComponent } from './saved-screens/saved-screens.component';
+import {Observable, Observer} from 'rxjs';
 
+export interface ExampleTab {
+  label: string;
+  content: any;
+}
 @Component({
   selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
@@ -13,8 +18,8 @@ import { SavedScreensComponent } from './saved-screens/saved-screens.component';
 })
 export class SideMenuComponent implements OnInit {
   width = '0%';
-  public savedScreens = SavedScreensComponent;
-  public savedElements = SavedElementsComponent;
+  asyncTabs?: Observable<ExampleTab[]>;
+  screensOpenState = true;
 
   
   @HostListener('document:click', ['$event'])
@@ -24,7 +29,16 @@ export class SideMenuComponent implements OnInit {
     }
   }
 
-  constructor(private eRef: ElementRef) {}
+  constructor(private eRef: ElementRef) {
+    this.asyncTabs = new Observable((observer: Observer<ExampleTab[]>) => {
+      setTimeout(() => {
+        observer.next([
+          {label: 'Screens', content: SavedScreensComponent},
+          {label: 'Elements', content: SavedElementsComponent},
+        ]);
+      }, 1000);
+    });
+  }
 
   ngOnInit(): void {
     AppEvents.closeNavEvent.subscribe(()=> {

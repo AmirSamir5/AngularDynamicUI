@@ -1,12 +1,21 @@
-<div class="sidenav" [style.width]="this.width">
-  <div class="row">
-    <h1>Menu</h1>
-    <div class="spacer"></div>
-    <a class="closebtn" (click)="closeNav()">&times;</a>
-  </div>
-  
-  <app-expansion [title]="'Saved Screens'" [type]="savedScreens"></app-expansion>
-  <app-expansion [title]="'Saved Elements'"[type]="savedElements"></app-expansion>
-  
-</div>
-<span class="hamburgerButton" (click)="openNav()">&#9776;</span>
+
+<mat-accordion>
+    <mat-expansion-panel class="mat-elevation-z0" [expanded]="screensOpenState">
+        <mat-expansion-panel-header class="specific-class">
+        <mat-panel-description>
+            <label>Saved Items</label>
+        </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ng-container *ngIf="(asyncTabs | async) === null">
+        Loading tabs...
+        </ng-container>
+        
+        <mat-tab-group>
+        <mat-tab *ngFor="let tab of asyncTabs | async">
+            <ng-template mat-tab-label>{{tab.label}}</ng-template>
+            <ng-container *ngComponentOutlet="tab.content"></ng-container>
+        </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+</mat-accordion>
+

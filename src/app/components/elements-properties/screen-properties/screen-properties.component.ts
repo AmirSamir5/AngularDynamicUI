@@ -121,6 +121,7 @@ export class ScreenPropertiesComponent implements OnInit {
       }
 
       localStorage.setItem('screens', JSON.stringify(screens, null, 4));
+      AppEvents.openNavEvent.emit();
       this.openSnackBar();
     }
   }
