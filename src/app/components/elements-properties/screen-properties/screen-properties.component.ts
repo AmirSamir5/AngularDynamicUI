@@ -55,7 +55,7 @@ export class ScreenPropertiesComponent implements OnInit {
       },
     });
     const dialogRef = this.dialog.open(AddEditActionItemComponent, {
-      width: '50%',
+      width: '30%',
       data: this.actionItems[this.actionItems.length - 1],
     });
   }
