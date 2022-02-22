@@ -32,6 +32,7 @@ export class RowPropertiesComponent implements OnInit {
   varticalDirectionArr = AppConstants.VERTICAL_DIRECTION_LIST;
   clickablesArr = AppConstants.CLICKABLE_CONFIGURATION;
   iconArr = AppConstants.LIST_ICONS;
+  screensOpenState = true;
 
   constructor(private elementService: ElementService) {}
 

@@ -84,185 +84,211 @@
         (input)="getFlexValue($event)"
       />
     </label>
-    <label>
-      Margin
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter margin value"
-        (input)="getMarginValue($event)"
-      />
-    </label>
-    <label>
-      Padding
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter padding value"
-        (input)="getPaddingValue($event)"
-      />
-    </label>
-    <label>
-      Border Radius
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter border radius value"
-        (input)="getBorderRadiusValue($event)"
-      />
-    </label>
-    <label style="width: 100%">
-      Background Color
-      <input
-        ejs-colorpicker
-        type="color"
-        class="form-control"
-        id="colorpicker"
-        [(ngModel)]="selectedElement.style.backgroundColor"
-        name="colorpicker"
-      />
-    </label>
-    <label style="width: 100%">
-      Color
-      <input
-        ejs-colorpicker
-        type="color"
-        class="form-control"
-        id="colorpicker"
-        [(ngModel)]="selectedElement.style.color"
-        name="colorpicker"
-      />
-    </label>
-    <label>
-      Font Size
-      <input
-        type="number"
-        class="form-control"
-        placeholder="Enter element font size"
-        [(ngModel)]="selectedElement.style.fontSize"
-      />
-    </label>
-    <label>
-      Font Weight
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter element font weight"
-        [(ngModel)]="selectedElement.style.fontWeight"
-      />
-    </label>
-    <label>
-      Font Family
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter element font family"
-        [(ngModel)]="selectedElement.style.fontFamily"
-      />
-    </label>
-    <div>
-      <label class="container-checkbox"
-        >Clickable
-        <input
-          type="checkbox"
-          [value]="
-            this.selectedElement!.widgetConfiguration?.clickableConfiguration
-              ?.isClickable ?? false
-          "
-          (change)="onClickablChange()"
-        />
-        <span class="checkmark"></span>
-      </label>
+    <mat-accordion>
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        [expanded]="screensOpenState"
+      >
+        <mat-expansion-panel-header class="specific-class">
+          <mat-panel-description>
+            <label class="title">Element Style</label>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <label>
+          Margin
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter margin value"
+            (input)="getMarginValue($event)"
+          />
+        </label>
+        <label>
+          Padding
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter padding value"
+            (input)="getPaddingValue($event)"
+          />
+        </label>
+        <label>
+          Border Radius
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter border radius value"
+            (input)="getBorderRadiusValue($event)"
+          />
+        </label>
+        <label style="width: 100%">
+          Background Color
+          <input
+            ejs-colorpicker
+            type="color"
+            class="form-control"
+            id="colorpicker"
+            [(ngModel)]="selectedElement.style.backgroundColor"
+            name="colorpicker"
+          />
+        </label>
+        <label style="width: 100%">
+          Color
+          <input
+            ejs-colorpicker
+            type="color"
+            class="form-control"
+            id="colorpicker"
+            [(ngModel)]="selectedElement.style.color"
+            name="colorpicker"
+          />
+        </label>
+        <label>
+          Font Size
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Enter element font size"
+            [(ngModel)]="selectedElement.style.fontSize"
+          />
+        </label>
+        <label>
+          Font Weight
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter element font weight"
+            [(ngModel)]="selectedElement.style.fontWeight"
+          />
+        </label>
+        <label>
+          Font Family
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter element font family"
+            [(ngModel)]="selectedElement.style.fontFamily"
+          />
+        </label>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-      <label
-        *ngIf="
-          this.selectedElement!.widgetConfiguration?.clickableConfiguration
-            ?.isClickable
-        "
-        >Clickable Type
+    <mat-accordion>
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        [expanded]="screensOpenState"
+      >
+        <mat-expansion-panel-header class="specific-class">
+          <mat-panel-description>
+            <label class="title">Element Action</label>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <label class="container-checkbox"
+            >Clickable
+            <input
+              type="checkbox"
+              [value]="
+                this.selectedElement!.widgetConfiguration
+                  ?.clickableConfiguration?.isClickable ?? false
+              "
+              (change)="onClickablChange()"
+            />
+            <span class="checkmark"></span>
+          </label>
 
-        <select
-          *ngIf="
-            this.selectedElement!.widgetConfiguration?.clickableConfiguration
-              ?.isClickable
-          "
-          [(ngModel)]="
-            (selectedElement!.widgetConfiguration?.clickableConfiguration)!.type
-          "
-        >
-          <option [value]="item.value" *ngFor="let item of clickablesArr">
-            {{ item.name }}
-          </option>
-        </select>
-      </label>
-      <label
-        *ngIf="
-          this.selectedElement!.widgetConfiguration?.clickableConfiguration
-            ?.isClickable &&
-          selectedElement!.widgetConfiguration?.clickableConfiguration?.type ===
-            'ClickableConfigurationType.callApi'
-        "
-        >API Code
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter API Code"
-          [(ngModel)]="
-            (selectedElement!.widgetConfiguration?.clickableConfiguration)!
-              .apiCode
-          "
-        />
-      </label>
-      <label
-        *ngIf="
-          this.selectedElement!.widgetConfiguration?.clickableConfiguration
-            ?.isClickable &&
-          (selectedElement!.widgetConfiguration?.clickableConfiguration)!
-            .type === 'ClickableConfigurationType.redirect'
-        "
-        >Destination Screen Name
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Destination Screen Name"
-          [(ngModel)]="
-            (selectedElement!.widgetConfiguration?.clickableConfiguration)!
-              .destination_screen_lookUp!.name
-          "
-        />
-      </label>
-      <label
-        *ngIf="
-          this.selectedElement!.widgetConfiguration?.clickableConfiguration
-            ?.isClickable &&
-          (selectedElement!.widgetConfiguration?.clickableConfiguration)!
-            .type === 'ClickableConfigurationType.redirect'
-        "
-        >Destination Screen Type
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Destination Screen Type"
-          [(ngModel)]="
-            (selectedElement!.widgetConfiguration?.clickableConfiguration)!
-              .destination_screen_lookUp!.type
-          "
-        />
-      </label>
-      <label
-        *ngIf="
-          this.selectedElement!.widgetConfiguration?.clickableConfiguration
-            ?.isClickable
-        "
-        >Passed Keys
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Destination Screen Name"
-          (input)="onPassedKeys($event)"
-        />
-      </label>
-    </div>
+          <label
+            *ngIf="
+              this.selectedElement!.widgetConfiguration?.clickableConfiguration
+                ?.isClickable
+            "
+            >Clickable Type
+
+            <select
+              *ngIf="
+                this.selectedElement!.widgetConfiguration
+                  ?.clickableConfiguration?.isClickable
+              "
+              [(ngModel)]="
+                (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+                  .type
+              "
+            >
+              <option [value]="item.value" *ngFor="let item of clickablesArr">
+                {{ item.name }}
+              </option>
+            </select>
+          </label>
+          <label
+            *ngIf="
+              this.selectedElement!.widgetConfiguration?.clickableConfiguration
+                ?.isClickable &&
+              selectedElement!.widgetConfiguration?.clickableConfiguration
+                ?.type === 'ClickableConfigurationType.callApi'
+            "
+            >API Code
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter API Code"
+              [(ngModel)]="
+                (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+                  .apiCode
+              "
+            />
+          </label>
+          <label
+            *ngIf="
+              this.selectedElement!.widgetConfiguration?.clickableConfiguration
+                ?.isClickable &&
+              (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+                .type === 'ClickableConfigurationType.redirect'
+            "
+            >Destination Screen Name
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Destination Screen Name"
+              [(ngModel)]="
+                (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+                  .destination_screen_lookUp!.name
+              "
+            />
+          </label>
+          <label
+            *ngIf="
+              this.selectedElement!.widgetConfiguration?.clickableConfiguration
+                ?.isClickable &&
+              (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+                .type === 'ClickableConfigurationType.redirect'
+            "
+            >Destination Screen Type
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Destination Screen Type"
+              [(ngModel)]="
+                (selectedElement!.widgetConfiguration?.clickableConfiguration)!
+                  .destination_screen_lookUp!.type
+              "
+            />
+          </label>
+          <label
+            *ngIf="
+              this.selectedElement!.widgetConfiguration?.clickableConfiguration
+                ?.isClickable
+            "
+            >Passed Keys
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Destination Screen Name"
+              (input)="onPassedKeys($event)"
+            />
+          </label>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
   <div *ngIf="selectedElement !== undefined && selectedElement.name === 'Icon'">
     <div>
