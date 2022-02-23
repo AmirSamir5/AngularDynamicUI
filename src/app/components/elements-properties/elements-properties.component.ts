@@ -11,16 +11,15 @@ import { ElementService } from 'src/app/services/element.service';
 export class ElementsPropertiesComponent implements OnInit {
   item?: WidgetModel;
   index: number = 0;
+  screensOpenState = true;
 
   constructor(private elementService: ElementService) {}
 
   ngOnInit(): void {
-    AppEvents.EditElementEvent.subscribe(
-      ({ make: item, name: index }) => {
-        this.item = item;
-        this.index = index ?? 0;
-      }
-    );
+    AppEvents.EditElementEvent.subscribe(({ make: item, name: index }) => {
+      this.item = item;
+      this.index = index ?? 0;
+    });
     AppEvents.onRemoveElementEvent.subscribe(
       ({ make: elementsArr, name: element }) => {
         if (this.item === element) {
@@ -29,7 +28,7 @@ export class ElementsPropertiesComponent implements OnInit {
       }
     );
 
-    AppEvents.clearPropertiesEvent.subscribe(()=>{
+    AppEvents.clearPropertiesEvent.subscribe(() => {
       this.item = undefined;
     });
   }
