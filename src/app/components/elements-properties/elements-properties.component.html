@@ -10,11 +10,11 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="item !== undefined">
     <mat-expansion-panel class="mat-elevation-z0" [expanded]="screensOpenState">
       <mat-expansion-panel-header class="specific-class">
         <mat-panel-description>
-          <label class="title">Element Properties</label>
+          <label class="title">{{ item.name }} Properties</label>
         </mat-panel-description>
       </mat-expansion-panel-header>
 

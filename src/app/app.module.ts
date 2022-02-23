@@ -52,6 +52,7 @@ import { SavedScreensComponent } from './components/side-menu/saved-screens/save
 import { SavedElementsComponent } from './components/side-menu/saved-elements/saved-elements.component';
 import { AddEditActionItemComponent } from './components/dialogs/add-edit-action-item/add-edit-action-item.component';
 import { ProfileInfoComponent } from './components/navbar/profile-info/profile-info.component';
+import { FlutterJsonAdapter } from './services/flutter-json-adapter';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,7 @@ import { ProfileInfoComponent } from './components/navbar/profile-info/profile-i
     MatIconModule,
     MatSelectModule,
   ],
-  providers: [ElementService],
+  providers: [ElementService,FlutterJsonAdapter],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

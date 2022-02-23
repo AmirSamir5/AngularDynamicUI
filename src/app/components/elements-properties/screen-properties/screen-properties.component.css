@@ -1,7 +1,5 @@
 .col {
   align-items: center;
-  padding: 16px;
-  height: 100% !important;
 }
 .row {
   display: flex;
@@ -58,7 +56,6 @@ label {
   display: block;
   position: relative;
   padding-left: 35px;
-  margin-top: 15px;
   margin-bottom: 30px;
   cursor: pointer;
   font-size: 22px;
@@ -131,7 +128,6 @@ label.container-checkbox {
   display: block;
   position: relative;
   padding-left: 35px;
-  margin-top: 15px;
   margin-bottom: 30px;
   cursor: pointer;
   font-size: 22px;

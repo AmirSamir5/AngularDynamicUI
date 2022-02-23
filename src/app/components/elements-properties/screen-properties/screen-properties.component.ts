@@ -7,6 +7,7 @@ import { ScreenModel, ScreenPages } from 'src/app/models/screen.model';
 import { WidgetModel } from 'src/app/models/widget.model';
 import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
+import { FlutterJsonAdapter } from 'src/app/services/flutter-json-adapter';
 import { AddEditActionItemComponent } from '../../dialogs/add-edit-action-item/add-edit-action-item.component';
 import { JsonResultDialogComponent } from '../../json-result-dialog/json-result-dialog.component';
 
@@ -21,7 +22,8 @@ export class ScreenPropertiesComponent implements OnInit {
   constructor(
     private elementService: ElementService,
     private dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private flutterJSONService: FlutterJsonAdapter,
   ) {}
 
   ngOnInit(): void {
@@ -133,6 +135,8 @@ export class ScreenPropertiesComponent implements OnInit {
     var widgetArray: Array<WidgetModel> = [];
     var cells: Array<any> = [];
     var screenModel = this.elementService.screenModel;
+
+    this.flutterJSONService.generateFlutterJSON(this.elementService.selectedElements);
 
     this.elementService.selectedElements.forEach((element) => {
       console.log(element);
