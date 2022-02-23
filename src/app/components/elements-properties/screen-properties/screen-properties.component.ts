@@ -136,8 +136,6 @@ export class ScreenPropertiesComponent implements OnInit {
     var cells: Array<any> = [];
     var screenModel = this.elementService.screenModel;
 
-    this.flutterJSONService.generateFlutterJSON(this.elementService.selectedElements);
-
     this.elementService.selectedElements.forEach((element) => {
       console.log(element);
       var tmp = { ...element };
@@ -196,6 +194,7 @@ export class ScreenPropertiesComponent implements OnInit {
         return;
       }
       screenModel.screenPages.fields = widgetArray;
+      this.flutterJSONService.generateFlutterJSON(screenModel);
       const dialogRef = this.dialog.open(JsonResultDialogComponent, {
         width: '50%',
         data: {

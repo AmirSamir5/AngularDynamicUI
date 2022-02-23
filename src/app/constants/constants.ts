@@ -33,6 +33,7 @@ export class AppConstants {
   public static WIDGET_COLUMN = 'WidgetType.column';
   public static WIDGET_SCROLLVIEW = 'WidgetType.scrollView';
   public static WIDGET_ICON = 'WidgetType.icon';
+  public static WIDGET_EXPANDED = 'WidgetType.expanded';
 
   public static LOOKUP_LISTS = [
     // {

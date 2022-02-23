@@ -123,7 +123,7 @@ export class ColumnPropertiesComponent implements OnInit {
     } else {
       this.columnElementModel!.style.rowspan += 1;
     }
-    this.columnElementModel!.children?.push(
+    this.columnElementModel!.children!.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_TEXT,
         name: 'Text',
@@ -137,7 +137,7 @@ export class ColumnPropertiesComponent implements OnInit {
     } else {
       this.columnElementModel!.style.rowspan += 1;
     }
-    this.columnElementModel!.children?.push(
+    this.columnElementModel!.children!.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_BUTTON,
         name: 'Button',
@@ -151,7 +151,7 @@ export class ColumnPropertiesComponent implements OnInit {
     } else {
       this.columnElementModel!.style.rowspan += 1;
     }
-    this.columnElementModel!.children?.push(
+    this.columnElementModel!.children!.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_IMAGE,
         name: 'Image',
@@ -160,7 +160,7 @@ export class ColumnPropertiesComponent implements OnInit {
   }
 
   onSelectIcon() {
-    this.columnElementModel!.children?.push(
+    this.columnElementModel!.children!.push(
       new WidgetModel({
         widget_type: AppConstants.WIDGET_ICON,
         name: 'Icon',
