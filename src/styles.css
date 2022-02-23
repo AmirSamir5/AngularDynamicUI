@@ -5,9 +5,9 @@ html, body { height: 100%; background-color: #efefef; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
  .mat-expansion-panel-content > .mat-expansion-panel-body {
-    padding: 0 8px !important;
+    padding: 0 12px !important;
   }
 
   .mat-expansion-panel-header{
-    padding: 0 8px !important;
+    padding: 0 12px !important;
   }
