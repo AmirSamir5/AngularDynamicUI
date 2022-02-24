@@ -54,8 +54,17 @@ export class HelpersService {
       formatedScreen.screenPages.fields.push(
         new WidgetModel({
           widget_type: AppConstants.WIDGET_SCROLLVIEW,
-          children: this.deepCopy(screen.screenPages.fields),
+          child: new WidgetModel({
+            widget_type: AppConstants.WIDGET_COLUMN,
+            children: this.deepCopy(screen.screenPages.fields),
+          }),
         })
+      );
+      formatedScreen.screenPages.fields[0].child!.children!.forEach(
+        (child, index) => {
+          formatedScreen.screenPages.fields[0].child!.children![index] =
+            this.formatElement(child);
+        }
       );
     } else {
       formatedScreen.screenPages.fields.push(
@@ -67,10 +76,10 @@ export class HelpersService {
           }),
         })
       );
+      formatedScreen.screenPages.fields.forEach((child, index) => {
+        formatedScreen.screenPages.fields[index] = this.formatElement(child);
+      });
     }
-    formatedScreen.screenPages.fields.forEach((child, index) => {
-      formatedScreen.screenPages.fields[index] = this.formatElement(child);
-    });
 
     return formatedScreen;
     // return JSON.stringify(formatedScreen);
@@ -80,7 +89,12 @@ export class HelpersService {
     var formatedWidget: WidgetModel = this.deepCopy(widget);
     const expanded = formatedWidget.style.expanded;
     formatedWidget.style.expanded = undefined;
-    const style: StyleModel = formatedWidget.style;
+    const style: StyleModel = this.deepCopy(formatedWidget.style);
+    // Check Child
+
+    if (widget.child !== null && widget.child !== undefined) {
+      widget.child = this.formatElement(widget.child);
+    }
     //  Check Children
     if (
       widget.children !== null &&
@@ -115,7 +129,7 @@ export class HelpersService {
         widget_type: AppConstants.WIDGET_EXPANDED,
         child: formatedWidget,
       });
-    }
+    } ///////////////// else if flex
 
     return formatedWidget;
   }

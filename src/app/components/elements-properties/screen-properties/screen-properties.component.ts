@@ -8,6 +8,7 @@ import { WidgetModel } from 'src/app/models/widget.model';
 import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 import { FlutterJsonAdapter } from 'src/app/services/flutter-json-adapter';
+import { HelpersService } from 'src/app/services/helpers.service';
 import { AddEditActionItemComponent } from '../../dialogs/add-edit-action-item/add-edit-action-item.component';
 import { JsonResultDialogComponent } from '../../json-result-dialog/json-result-dialog.component';
 
@@ -23,7 +24,7 @@ export class ScreenPropertiesComponent implements OnInit {
     private elementService: ElementService,
     private dialog: MatDialog,
     private _snackBar: MatSnackBar,
-    private flutterJSONService: FlutterJsonAdapter,
+    private flutterJSONService: FlutterJsonAdapter
   ) {}
 
   ngOnInit(): void {
@@ -195,10 +196,15 @@ export class ScreenPropertiesComponent implements OnInit {
       }
       screenModel.screenPages.fields = widgetArray;
       this.flutterJSONService.generateFlutterJSON(screenModel);
+      console.log(HelpersService.formatDocument(screenModel));
       const dialogRef = this.dialog.open(JsonResultDialogComponent, {
         width: '50%',
         data: {
-          json: JSON.stringify(screenModel, null, 4),
+          json: JSON.stringify(
+            HelpersService.formatDocument(screenModel),
+            null,
+            4
+          ),
           cells: cells,
           screenName: screenModel!.screen_name,
         },
