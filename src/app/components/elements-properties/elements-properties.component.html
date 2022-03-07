@@ -10,11 +10,11 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion *ngIf="item !== undefined">
+  <mat-accordion>
     <mat-expansion-panel class="mat-elevation-z0" [expanded]="screensOpenState">
       <mat-expansion-panel-header class="specific-class">
         <mat-panel-description>
-          <label class="title">{{ item.name }} Properties</label>
+          <label class="title">{{ item?.name ?? "Element" }} Properties</label>
         </mat-panel-description>
       </mat-expansion-panel-header>
 
@@ -69,6 +69,12 @@
             [containerElementModel]="item"
             [index]="index"
           ></app-container-properties>
+        </div>
+      </div>
+      <div *ngIf="item === undefined">
+        <div class="col">
+          <img src="assets/selectElement.png" />
+          <p>Select elements to view their properties</p>
         </div>
       </div>
     </mat-expansion-panel>

@@ -95,3 +95,12 @@ label {
   font-size: 13px;
   font-weight: 450;
 }
+
+.col {
+  align-items: center;
+  text-align: center;
+}
+
+.col img {
+  margin-bottom: 15px;
+}

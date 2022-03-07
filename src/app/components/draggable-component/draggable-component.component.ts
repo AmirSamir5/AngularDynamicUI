@@ -29,12 +29,10 @@ export class DraggableComponentComponent implements OnInit {
         this.selectedElements = elementsArr;
       }
     );
-    AppEvents.onScreenSelectEvent.subscribe(
-      (screen) => {
-        this.title = screen.screen_name;
-        this.screenName = this.elementService.screenModel.screenPages.page_name;
-      }
-    );
+    AppEvents.onScreenSelectEvent.subscribe((screen) => {
+      this.title = screen.screen_name;
+      this.screenName = this.elementService.screenModel.screenPages.page_name;
+    });
   }
 
   drag(event: CdkDragDrop<WidgetModel[]>) {
@@ -54,10 +52,6 @@ export class DraggableComponentComponent implements OnInit {
     }
   }
 
-  onAppbarPressed(){
-    this.elementService.editSelectedItem(undefined, undefined);
-  }
-
   removeElement(index: number) {
     this.elementService.removeSelectedItems(index);
   }
@@ -65,6 +59,9 @@ export class DraggableComponentComponent implements OnInit {
   onClickElement(item: WidgetModel, index: number) {
     this.i = index;
     this.selectedElement = item;
-    var component = this.elementService.editSelectedItem(this.selectedElement, index);
+    var component = this.elementService.editSelectedItem(
+      this.selectedElement,
+      index
+    );
   }
 }
