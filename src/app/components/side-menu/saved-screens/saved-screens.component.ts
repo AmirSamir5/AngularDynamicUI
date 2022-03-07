@@ -9,7 +9,6 @@ import { ElementService } from 'src/app/services/element.service';
   styleUrls: ['./saved-screens.component.css'],
 })
 export class SavedScreensComponent implements OnInit {
-  
   screens: Array<ScreenModel> = [];
 
   constructor(private elementService: ElementService) {}
@@ -45,17 +44,6 @@ export class SavedScreensComponent implements OnInit {
 
   closeNav() {
     AppEvents.closeNavEvent.emit();
-  }
-
-  onItemDelete(index: number) {
-    if (
-      confirm(
-        'Are you sure about delete ' + this.screens[index].screen_name + ' ?'
-      )
-    ) {
-      this.screens.splice(index, 1);
-      localStorage.setItem('screens', JSON.stringify(this.screens));
-    }
   }
 
   clearAll() {

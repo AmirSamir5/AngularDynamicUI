@@ -19,6 +19,7 @@ import { JsonResultDialogComponent } from '../../json-result-dialog/json-result-
 })
 export class ScreenPropertiesComponent implements OnInit {
   screenProperty?: ScreenModel;
+  screens: Array<ScreenModel> = [];
 
   constructor(
     private elementService: ElementService,
@@ -32,6 +33,12 @@ export class ScreenPropertiesComponent implements OnInit {
       this.elementService.screenModel ?? new ScreenModel({});
     AppEvents.onScreenSelectEvent.subscribe((screen) => {
       this.screenProperty = screen;
+    });
+    this.screens = JSON.parse(localStorage.getItem('screens')!) ?? [];
+    AppEvents.openNavEvent.subscribe(() => {
+      if (localStorage.getItem('screens') !== null) {
+        this.screens = JSON.parse(localStorage.getItem('screens')!);
+      }
     });
   }
 
@@ -93,11 +100,16 @@ export class ScreenPropertiesComponent implements OnInit {
         window.alert('Please Enter Appbar Title!');
         return;
       }
+      if (this.elementService.screenModel?.screenPages.page_name === '') {
+        window.alert('Please Enter Screen Lookup Name!');
+        return;
+      }
       screenModel!.screenPages.fields = widgetArray;
 
       if (
         this.elementService.screenModel!.screen_id === undefined ||
-        this.elementService.screenModel!.screen_id === -1
+        this.elementService.screenModel!.screen_id === -1 ||
+        this.elementService.screenModel!.screen_id === null
       ) {
         window.alert('Please Enter Screen ID!');
         return;
@@ -209,6 +221,24 @@ export class ScreenPropertiesComponent implements OnInit {
           screenName: screenModel!.screen_name,
         },
       });
+    }
+  }
+
+  onItemDelete() {
+    var index = this.screens.findIndex(
+      (element) => element.screen_name === this.screenProperty?.screen_name
+    );
+    if (index !== -1) {
+      if (
+        confirm(
+          'Are you sure about delete ' + this.screenProperty?.screen_name + ' ?'
+        )
+      ) {
+        console.log('findIndex value', index);
+        this.screens.splice(index, 1);
+        localStorage.setItem('screens', JSON.stringify(this.screens));
+        AppEvents.openNavEvent.emit();
+      }
     }
   }
 
