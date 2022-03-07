@@ -234,7 +234,6 @@ export class ScreenPropertiesComponent implements OnInit {
           'Are you sure about delete ' + this.screenProperty?.screen_name + ' ?'
         )
       ) {
-        console.log('findIndex value', index);
         this.screens.splice(index, 1);
         localStorage.setItem('screens', JSON.stringify(this.screens));
         AppEvents.openNavEvent.emit();
