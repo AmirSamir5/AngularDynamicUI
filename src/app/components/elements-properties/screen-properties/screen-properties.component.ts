@@ -8,6 +8,7 @@ import { WidgetModel } from 'src/app/models/widget.model';
 import { AppEvents } from 'src/app/services/app-events';
 import { ElementService } from 'src/app/services/element.service';
 import { FlutterJsonAdapter } from 'src/app/services/flutter-json-adapter';
+import { HelpersService } from 'src/app/services/helpers.service';
 import { AddEditActionItemComponent } from '../../dialogs/add-edit-action-item/add-edit-action-item.component';
 import { JsonResultDialogComponent } from '../../json-result-dialog/json-result-dialog.component';
 
@@ -18,12 +19,13 @@ import { JsonResultDialogComponent } from '../../json-result-dialog/json-result-
 })
 export class ScreenPropertiesComponent implements OnInit {
   screenProperty?: ScreenModel;
+  screens: Array<ScreenModel> = [];
 
   constructor(
     private elementService: ElementService,
     private dialog: MatDialog,
     private _snackBar: MatSnackBar,
-    private flutterJSONService: FlutterJsonAdapter,
+    private flutterJSONService: FlutterJsonAdapter
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,12 @@ export class ScreenPropertiesComponent implements OnInit {
       this.elementService.screenModel ?? new ScreenModel({});
     AppEvents.onScreenSelectEvent.subscribe((screen) => {
       this.screenProperty = screen;
+    });
+    this.screens = JSON.parse(localStorage.getItem('screens')!) ?? [];
+    AppEvents.openNavEvent.subscribe(() => {
+      if (localStorage.getItem('screens') !== null) {
+        this.screens = JSON.parse(localStorage.getItem('screens')!);
+      }
     });
   }
 
@@ -92,11 +100,16 @@ export class ScreenPropertiesComponent implements OnInit {
         window.alert('Please Enter Appbar Title!');
         return;
       }
+      if (this.elementService.screenModel?.screenPages.page_name === '') {
+        window.alert('Please Enter Screen Lookup Name!');
+        return;
+      }
       screenModel!.screenPages.fields = widgetArray;
 
       if (
         this.elementService.screenModel!.screen_id === undefined ||
-        this.elementService.screenModel!.screen_id === -1
+        this.elementService.screenModel!.screen_id === -1 ||
+        this.elementService.screenModel!.screen_id === null
       ) {
         window.alert('Please Enter Screen ID!');
         return;
@@ -195,14 +208,36 @@ export class ScreenPropertiesComponent implements OnInit {
       }
       screenModel.screenPages.fields = widgetArray;
       this.flutterJSONService.generateFlutterJSON(screenModel);
+      console.log(HelpersService.formatDocument(screenModel));
       const dialogRef = this.dialog.open(JsonResultDialogComponent, {
         width: '50%',
         data: {
-          json: JSON.stringify(screenModel, null, 4),
+          json: JSON.stringify(
+            HelpersService.formatDocument(screenModel),
+            null,
+            4
+          ),
           cells: cells,
           screenName: screenModel!.screen_name,
         },
       });
+    }
+  }
+
+  onItemDelete() {
+    var index = this.screens.findIndex(
+      (element) => element.screen_name === this.screenProperty?.screen_name
+    );
+    if (index !== -1) {
+      if (
+        confirm(
+          'Are you sure about delete ' + this.screenProperty?.screen_name + ' ?'
+        )
+      ) {
+        this.screens.splice(index, 1);
+        localStorage.setItem('screens', JSON.stringify(this.screens));
+        AppEvents.openNavEvent.emit();
+      }
     }
   }
 

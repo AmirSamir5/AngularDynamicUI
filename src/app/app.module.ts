@@ -53,6 +53,7 @@ import { SavedElementsComponent } from './components/side-menu/saved-elements/sa
 import { AddEditActionItemComponent } from './components/dialogs/add-edit-action-item/add-edit-action-item.component';
 import { ProfileInfoComponent } from './components/navbar/profile-info/profile-info.component';
 import { FlutterJsonAdapter } from './services/flutter-json-adapter';
+import { ConfirmComponent } from './components/dialogs/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { FlutterJsonAdapter } from './services/flutter-json-adapter';
     SavedElementsComponent,
     AddEditActionItemComponent,
     ProfileInfoComponent,
+    ConfirmComponent,
   ],
   imports: [
     BrowserModule,

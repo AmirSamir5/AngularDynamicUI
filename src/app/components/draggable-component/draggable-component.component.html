@@ -1,19 +1,19 @@
-
-
-<h5 style="margin-top: 16px;">{{ screenName === '' ? 'Screen' : screenName ?? 'Screen'  }}</h5>
+<h5 style="margin-top: 16px">
+  {{ screenName === "" ? "Screen" : screenName ?? "Screen" }}
+</h5>
 <div class="content">
   <div class="statusbar">
     <img
-    width="92%"
-    alt="Mkento Logo"
-    src="assets/svg/status-bar-light.svg"
-    class="image"
+      width="92%"
+      alt="Mkento Logo"
+      src="assets/svg/status-bar-light.svg"
+      class="image"
     />
   </div>
-  <div class="appbar" (click)="onAppbarPressed()">
+  <div class="appbar">
     <div class="appbar-title">
       <div class="center">
-        {{ title ?? 'Appbar Title' }}
+        {{ title ?? "Appbar Title" }}
       </div>
     </div>
   </div>
@@ -35,7 +35,9 @@
         <div class="item">
           <div [ngSwitch]="element.name">
             <div *ngSwitchCase="'Button'">
-              <app-button [title]="element.fieldTitle ?? 'Button CTA'"></app-button>
+              <app-button
+                [title]="element.fieldTitle ?? 'Button CTA'"
+              ></app-button>
             </div>
             <div *ngSwitchCase="'Dropdown'">
               <app-dropdown
@@ -77,4 +79,3 @@
     </div>
   </div>
 </div>
-
