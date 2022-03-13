@@ -13,6 +13,24 @@
       Icon
     </button>
   </div>
+  <label>
+    Margin
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter margin value"
+      (input)="getMarginValue($event)"
+    />
+  </label>
+  <label>
+    Padding
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter padding value"
+      (input)="getPaddingValue($event)"
+    />
+  </label>
   <p>Col Main Axis Alignment</p>
   <select [(ngModel)]="columnElementModel!.style.mainAxisAlignment">
     <option [value]="item" *ngFor="let item of justifyArr">

@@ -16,6 +16,24 @@
       Column
     </button>
   </div>
+  <label>
+    Margin
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter margin value"
+      (input)="getMarginValue($event)"
+    />
+  </label>
+  <label>
+    Padding
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter padding value"
+      (input)="getPaddingValue($event)"
+    />
+  </label>
   <p>Row Main Axis Alignment</p>
   <select [(ngModel)]="rowElementModel!.style.mainAxisAlignment">
     <option [value]="item" *ngFor="let item of justifyArr">
